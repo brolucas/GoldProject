@@ -8122,6 +8122,11 @@ PrefabInstance:
       objectReference: {fileID: 1881311224}
     - target: {fileID: 6774791142897126944, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
+      propertyPath: levelName
+      value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774791142897126944, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
       propertyPath: gameOverScreen
       value: 
       objectReference: {fileID: 1937415542}

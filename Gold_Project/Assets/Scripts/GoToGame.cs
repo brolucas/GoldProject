@@ -11,12 +11,13 @@ public class GoToGame : MonoBehaviour
     public GameObject mainMenuScreen;
     public SwitchHUDSide switchHUDSide;
     public GameObject gameOverScreen;
+    public string levelName;
 
     private Scene gameScene;
 
     public void LaunchGame()
     {
-        SceneManager.LoadScene("Téo");
+        SceneManager.LoadScene(levelName);
         Time.timeScale = 1;
         /*if (switchHUDSide.isLeft)
         {
@@ -27,7 +28,6 @@ public class GoToGame : MonoBehaviour
             SceneManager.LoadScene("Téo");
             HUDRight.SetActive(true);
         }
-
         mainMenuScreen.SetActive(false);*/
     }
 
@@ -35,7 +35,7 @@ public class GoToGame : MonoBehaviour
     {
         //GameScreen.SetActive(false);
 
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(levelName);
         Time.timeScale = 0;
     }
 }
