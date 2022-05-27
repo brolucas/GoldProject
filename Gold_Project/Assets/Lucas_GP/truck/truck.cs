@@ -6,6 +6,8 @@ public class truck : MonoBehaviour
 {
     public int Truck_Hp= 10;
 
+    public GameObject Truck_Game_Over_Screen;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +29,9 @@ public class truck : MonoBehaviour
     }
     public void Loose()
     {
-        Debug.Log("Fin de partie");
+        Truck_Game_Over_Screen.SetActive(true);
+        Time.timeScale = 0;
+        //Debug.Log("Fin de partie");
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

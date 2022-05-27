@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6774791142897126948
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6774791142897126946}
+  - component: {fileID: 6774791142897126947}
+  - component: {fileID: 6774791142897126945}
+  - component: {fileID: 6774791142897126944}
+  - component: {fileID: 6774791142897126959}
+  - component: {fileID: 6774791142897126958}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6774791142897126946
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6774791142897126948}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1244.2501, y: 429.8685, z: -608.9701}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6774791142897126947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6774791142897126948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f154f23115a4f254ea0111bab1bd77c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenuScreen: {fileID: 0}
+--- !u!114 &6774791142897126945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6774791142897126948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87553a890a8f6964e8b0671b8eb3837f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerCounter: {fileID: 0}
+--- !u!114 &6774791142897126944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6774791142897126948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1efe4d337a7f36459bf4eec69b4bc14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HUDLeft: {fileID: 0}
+  HUDRight: {fileID: 0}
+  mainMenuScreen: {fileID: 0}
+  switchHUDSide: {fileID: 6774791142897126959}
+  gameOverScreen: {fileID: 0}
+--- !u!114 &6774791142897126959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6774791142897126948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a3cb48a50eae324d870dafabf493cd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftHUD: {fileID: 0}
+  rightHUD: {fileID: 0}
+  isLeft: 1
+--- !u!114 &6774791142897126958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6774791142897126948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 042171af6143025499a3d349c1b55248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WS_Ennemy_Prefab: {fileID: 6898869339770346148, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+    type: 3}
+  WS_Spawn_Point: {fileID: 0}
+  WS_Time_Between_Wave: 5
+  WS_List_Event:
+  - {fileID: 3233830087585181061, guid: 707146e6082b4904f89b0cec1ab23845, type: 3}
