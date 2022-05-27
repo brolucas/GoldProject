@@ -4,24 +4,30 @@ using UnityEngine;
 
 public class EnemiesTemp : MonoBehaviour
 {
-    public float health = 2500;
+    public float startingHealth = 2500.0f;
+    public float currentHealth = 0.0f;
+
+    public bool isBurning = false;
+    private bool isInvisible = false;
 
     public List<Turret> attackingTurret = new List<Turret>();
 
     //public float startTime = 0.0f;
 
-    public void Awake()
+    public void Start()
     {
         GameManager.Instance.enemies.Add(this);
-    }
 
-    public float durationToDie = 0.0f;
+        currentHealth = startingHealth;
+    }
 
     public void TakeDamage(float damage)
     {
-        health -= Mathf.Clamp(damage, 0, health);
+        currentHealth -= Mathf.Clamp(damage, 0, currentHealth);
 
-        if (health <= 0)
+        StartCoroutine(FlashOnDamage());
+
+        if (currentHealth <= 0)
         {
             foreach (var turret in attackingTurret)
             {
@@ -34,10 +40,37 @@ public class EnemiesTemp : MonoBehaviour
                 GameManager.Instance.enemies.Remove(this); 
             }
 
-            Debug.Log(durationToDie);
-
             Destroy(this.gameObject);
         }
     }
 
+    public IEnumerator FlashOnDamage()
+    {
+        if (isInvisible == false)
+        {
+            isInvisible = true;
+
+            Color tmp = this.GetComponent<SpriteRenderer>().color;
+            tmp.a = 0f;
+            this.GetComponent<SpriteRenderer>().color = tmp;
+
+            yield return new WaitForSeconds(0.1f);
+
+            tmp.a = 255f;
+            this.GetComponent<SpriteRenderer>().color = tmp;
+
+            isInvisible = false;
+        }
+    }
+
+    public IEnumerator Burn()
+    {
+        isBurning = true;
+
+        while (currentHealth > 0)
+        {
+            TakeDamage(startingHealth * 0.01f);
+            yield return new WaitForSeconds(1.0f);
+        }
+    }
 }
