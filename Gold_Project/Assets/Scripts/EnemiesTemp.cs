@@ -6,9 +6,9 @@ public class EnemiesTemp : MonoBehaviour
 {
     public float health = 2500;
 
-    public List<RadialTrigger> attackingTurret = new List<RadialTrigger>();
+    public List<Turret> attackingTurret = new List<Turret>();
 
-    public float startTime = 0.0f;
+    //public float startTime = 0.0f;
 
     public void Awake()
     {
@@ -25,11 +25,11 @@ public class EnemiesTemp : MonoBehaviour
         {
             foreach (var turret in attackingTurret)
             {
-                RadialTrigger turretAttacking = turret.GetComponent<RadialTrigger>();
+                Turret turretAttacking = turret.GetComponent<Turret>();
 
                 turretAttacking.targets.Remove(this);
 
-                turretAttacking.nextActionTime = 0;
+                //turretAttacking.fireCountDown = 0;
 
                 GameManager.Instance.enemies.Remove(this); 
             }
