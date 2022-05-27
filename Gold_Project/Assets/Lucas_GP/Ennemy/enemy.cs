@@ -21,13 +21,5 @@ public class enemy : MonoBehaviour
     {
         
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Truck"))
-        {
-            collision.gameObject.GetComponent<truck>().TakeDamage();
-            this.gameObject.SetActive(false);
-            Destroy(this.gameObject);
-        }
-    }
+    
 }

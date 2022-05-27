@@ -29,4 +29,12 @@ public class truck : MonoBehaviour
     {
         Debug.Log("Fin de partie");
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            TakeDamage();
+            Destroy(collision.gameObject);
+        }
+    }
 }
