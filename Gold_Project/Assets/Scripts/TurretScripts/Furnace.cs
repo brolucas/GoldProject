@@ -20,9 +20,11 @@ public class Furnace : Turret
             }
         }
 
+        #region RayToTarget
         Vector3 rayToTarget = currentTarget.transform.position - origin;
         Gizmos.color = Color.red;
         Gizmos.DrawLine(origin, origin + rayToTarget);
+        #endregion
 
         if (fireCountDown <= 0f)
         {
@@ -50,6 +52,9 @@ public class Furnace : Turret
 
         foreach (var enemies in GameManager.Instance.enemies)
         {
+            if (enemies == enemy)
+                return;
+
             Vector2 objPos = enemies.transform.position;
 
             float distance = Vector2.Distance(enemy.transform.position, objPos);
@@ -58,7 +63,12 @@ public class Furnace : Turret
 
             if (isInside)
             {
-                enemies.TakeDamage(10);
+                enemies.TakeDamage(this.atqPoints);
+
+                if (currentLevel == 10)
+                {
+                    PassiveLevelmax(enemies);
+                }
             }
         }
     }

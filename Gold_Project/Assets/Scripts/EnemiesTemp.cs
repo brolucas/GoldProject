@@ -10,6 +10,8 @@ public class EnemiesTemp : MonoBehaviour
     public bool isBurning = false;
     private bool isInvisible = false;
 
+    public float damagePerSeconds = 0.0f;
+
     public List<Turret> attackingTurret = new List<Turret>();
 
     //public float startTime = 0.0f;
@@ -19,6 +21,8 @@ public class EnemiesTemp : MonoBehaviour
         GameManager.Instance.enemies.Add(this);
 
         currentHealth = startingHealth;
+
+        StartCoroutine(DamagePerSeconds());
     }
 
     public void TakeDamage(float damage)
@@ -71,6 +75,20 @@ public class EnemiesTemp : MonoBehaviour
         {
             TakeDamage(startingHealth * 0.01f);
             yield return new WaitForSeconds(1.0f);
+        }
+    }
+
+    public IEnumerator DamagePerSeconds()
+    {
+        while (currentHealth > 0)
+        {
+            float baseHealth = currentHealth;
+
+            yield return new WaitForSeconds(1f);
+
+            baseHealth -= currentHealth;
+
+            damagePerSeconds = baseHealth;
         }
     }
 }

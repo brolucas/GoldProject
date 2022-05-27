@@ -16,8 +16,8 @@ public abstract class Turret : MonoBehaviour
     public int nbrOfTarget { get; private set; }
     [Range(0, 10)]
     public int currentLevel;
-    public float atqPtsBonus;
-    public float maxAtqPoints;
+    public float atqPtsBonus { get; set; }
+    public float maxAtqPoints { get; set; }
     #endregion
 
     private bool isInside;
