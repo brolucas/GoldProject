@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7743d70481d3ed54684c23ee6a43eb9b, type: 3}
   m_Name: SniperTower
   m_EditorClassIdentifier: 
-  healthPoints: 0
-  atqPoints: 0
-  fireRate: 0
-  range: 0
-  nbrOfTarget: 0
+  healthPoints: 1200
+  atqPoints: 120
+  fireRate: 1.5
+  range: 4
+  nbrOfTarget: 1
+  maxAtqPoints: 180
   design: {fileID: 0}
