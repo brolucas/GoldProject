@@ -39,16 +39,16 @@ public class Furnace : Turret
     {
         // inflicts damage to enemies near the target
 
-        Handles.color = Color.red;
-        Handles.DrawWireDisc(enemy.transform.position              // position
-                             , transform.forward // normal or new Vector3(0,0,1) same thing
-                             , 0.1f
-                             , explosionRange * 150.0f);  // range
-
-        Handles.color = Color.blue;
-        Handles.DrawWireDisc(enemy.transform.position              // position
-                             , transform.forward // normal or new Vector3(0,0,1) same thing
-                             , explosionRange);  // range
+        //Handles.color = Color.red;
+        //Handles.DrawWireDisc(enemy.transform.position              // position
+        //                     , transform.forward // normal or new Vector3(0,0,1) same thing
+        //                     , 0.1f
+        //                     , explosionRange * 150.0f);  // range
+        
+        //Handles.color = Color.blue;
+        //Handles.DrawWireDisc(enemy.transform.position              // position
+        //                     , transform.forward // normal or new Vector3(0,0,1) same thing
+        //                     , explosionRange);  // range
 
         foreach (var enemies in GameManager.Instance.enemies)
         {

@@ -96,10 +96,10 @@ public abstract class Turret : MonoBehaviour
             }
         }
 
-        Handles.color = targets.Count > 0 ? Color.red : Color.grey;
-        Handles.DrawWireDisc(origin            // position
-                             , transform.forward // normal or new Vector3(0,0,1) same thing
-                             , range);          // range
+        //Handles.color = targets.Count > 0 ? Color.red : Color.grey;
+        //Handles.DrawWireDisc(origin            // position
+        //                     , transform.forward // normal or new Vector3(0,0,1) same thing
+        //                     , range);          // range
 
         if (targets.Count <= 0)
             return;
