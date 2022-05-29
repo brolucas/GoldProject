@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class SniperTower : Turret
 {
@@ -30,7 +32,9 @@ public class SniperTower : Turret
         #region RayToTarget
         Vector3 rayToTarget = currentTarget.transform.position - origin;
         Gizmos.color = Color.red;
-        //Handles.DrawLine(origin, origin + rayToTarget, thickness);
+        #if UNITY_EDITOR
+        Handles.DrawLine(origin, origin + rayToTarget, thickness);
+        #endif
         #endregion
 
         if (fireCountDown <= 0f)

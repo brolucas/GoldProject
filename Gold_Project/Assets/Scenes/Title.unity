@@ -494,7 +494,9 @@ MonoBehaviour:
     cliquant sur Start, vous lancerez le menu principale o\xF9 le joueur pourra construire
     son deck de tourelle, puis en appuyant sur Launch, vous commencerez une partie
     o\xF9 il y aura le HUD, le camion d'arriv\xE9e, et des ennemies qui foncent en
-    lignes droite, ainsi qu'un \xE9cran de d\xE9faite et l'\xE9cran de pause. "
+    lignes droite, ainsi qu'un \xE9cran de d\xE9faite et l'\xE9cran de pause. Dans
+    cette \xE9cran de pause vous pourrez acc\xE9der \xE0 une autre sc\xE8ne avec
+    les 2 premi\xE8res tourelles."
 --- !u!222 &732262484
 CanvasRenderer:
   m_ObjectHideFlags: 0

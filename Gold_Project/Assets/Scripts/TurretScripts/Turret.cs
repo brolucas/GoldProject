@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public abstract class Turret : MonoBehaviour
 {
@@ -96,11 +98,13 @@ public abstract class Turret : MonoBehaviour
             }
         }
 
-        //Handles.color = targets.Count > 0 ? Color.red : Color.grey;
-        //Handles.DrawWireDisc(origin            // position
-        //                     , transform.forward // normal or new Vector3(0,0,1) same thing
-        //                     , range);          // range
+        #if UNITY_EDITOR
+        Handles.color = targets.Count > 0 ? Color.red : Color.grey;
+        Handles.DrawWireDisc(origin            // position
+                             , transform.forward // normal or new Vector3(0,0,1) same thing
+                             , range);          // range
 
+        #endif
         if (targets.Count <= 0)
             return;
         ChooseTarget(origin);

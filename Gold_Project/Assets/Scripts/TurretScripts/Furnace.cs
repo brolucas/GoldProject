@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class Furnace : Turret
 {
@@ -39,16 +41,19 @@ public class Furnace : Turret
     {
         // inflicts damage to enemies near the target
 
-        //Handles.color = Color.red;
-        //Handles.DrawWireDisc(enemy.transform.position              // position
-        //                     , transform.forward // normal or new Vector3(0,0,1) same thing
-        //                     , 0.1f
-        //                     , explosionRange * 150.0f);  // range
+        #if UNITY_EDITOR
+        Handles.color = Color.red;
+        Handles.DrawWireDisc(enemy.transform.position              // position
+                             , transform.forward // normal or new Vector3(0,0,1) same thing
+                             , 0.1f
+                             , explosionRange * 150.0f);  // range
         
-        //Handles.color = Color.blue;
-        //Handles.DrawWireDisc(enemy.transform.position              // position
-        //                     , transform.forward // normal or new Vector3(0,0,1) same thing
-        //                     , explosionRange);  // range
+        Handles.color = Color.blue;
+        Handles.DrawWireDisc(enemy.transform.position              // position
+                             , transform.forward // normal or new Vector3(0,0,1) same thing
+                             , explosionRange);  // range
+
+        #endif
 
         foreach (var enemies in GameManager.Instance.enemies)
         {
