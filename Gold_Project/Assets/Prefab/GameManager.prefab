@@ -60,7 +60,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87553a890a8f6964e8b0671b8eb3837f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerCounter: {fileID: 0}
+  timerCounterRight: {fileID: 0}
+  timerCounterLeft: {fileID: 0}
 --- !u!114 &6774791142897126944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,6 +79,8 @@ MonoBehaviour:
   mainMenuScreen: {fileID: 0}
   switchHUDSide: {fileID: 6774791142897126959}
   gameOverScreen: {fileID: 0}
+  levelName: MainMenu
+  TurretlevelName: "K\xE9vin"
 --- !u!114 &6774791142897126959
 MonoBehaviour:
   m_ObjectHideFlags: 0
