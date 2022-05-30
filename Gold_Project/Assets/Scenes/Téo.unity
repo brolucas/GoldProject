@@ -9279,6 +9279,43 @@ PrefabInstance:
       propertyPath: WS_Spawn_Point
       value: 
       objectReference: {fileID: 656924373}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: WS_Waves.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: WS_Waves.Array.data[0].Wave_Rate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: WS_Waves.Array.data[1].Wave_Rate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: WS_Waves.Array.data[0].Wave_Count
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: WS_Waves.Array.data[0].Wave_Enemy
+      value: 
+      objectReference: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+        type: 3}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: WS_Waves.Array.data[1].Wave_Count
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: WS_Waves.Array.data[1].Wave_Enemy
+      value: 
+      objectReference: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+        type: 3}
     - target: {fileID: 6774791142897126959, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
       propertyPath: leftHUD
