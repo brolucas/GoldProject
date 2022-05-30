@@ -14,5 +14,6 @@ public class TurretScriptable : ScriptableObject
     public int nbrOfTarget;
     public int maxAtqPoints;
 
-    public Sprite design;
+    public Sprite inGameDesign;
+    public Sprite UIDesign;
 }
