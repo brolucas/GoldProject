@@ -32,7 +32,7 @@ public class enemy : MonoBehaviour
 
     public void Die()
     {
-        WaveSpawner.WS_Enemy_Alives--;
+        WaveSpawner.enemyAlive--;
         Destroy(gameObject);
     }
     

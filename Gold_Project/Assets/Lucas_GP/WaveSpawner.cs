@@ -5,41 +5,41 @@ using UnityEngine;
 public class WaveSpawner : MonoBehaviour
 {
     [SerializeField]
-    public static int WS_Enemy_Alives = 0;
+    public static int enemyAlive = 0;
 
-    public Wave[] WS_Waves;
-
-    [SerializeField]
-    private Transform WS_Spawn_Point;
+    public Wave[] waves;
 
     [SerializeField]
-    private float WS_Time_Between_Wave = 5f;
+    private Transform spawnPoint;
 
-    private float WS_Countdown = 2f;
+    [SerializeField]
+    private float timeBetweenWave = 5f;
 
-    private int WS_Wave_Index = 0;
+    private float countdown = 2f;
+
+    private int wave_Index = 0;
+
 
 
     [SerializeField]
-    private Event[] WS_List_Event;
+    private GameObject[] listEvent;
 
 
 
     // Update is called once per frame
     void Update()
     {
-        if (WS_Enemy_Alives > 0)
+        if (enemyAlive > 0)
         {
             return;
         }
-        if (WS_Countdown <= 0f)
+        if (countdown <= 0f)
         {
             StartCoroutine(SpawnWave());
-            WS_Countdown = WS_Time_Between_Wave;
+            countdown = timeBetweenWave;
             return;
         }
-        
-         WS_Countdown -= Time.deltaTime;
+         countdown -= Time.deltaTime;
 
         
         
@@ -47,7 +47,7 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
-        Wave wave = WS_Waves[WS_Wave_Index];
+        Wave wave = waves[wave_Index];
 
         Debug.Log("Apparition d'une vague");
 
@@ -56,18 +56,24 @@ public class WaveSpawner : MonoBehaviour
             SpawnEnnemy(wave.Wave_Enemy);
             yield return new WaitForSeconds(1f/wave.Wave_Rate);
         }
-        WS_Wave_Index++;
+        wave_Index++;
+
+        if (wave_Index == waves.Length)
+        {
+            Debug.Log("Level Complete ! Congratulation");
+            this.enabled = false;
+        }
 
     }
 
     void SpawnEnnemy(GameObject ennemy)
     {
-        Instantiate(ennemy, WS_Spawn_Point.position, WS_Spawn_Point.rotation);
-        WS_Enemy_Alives++;
+        Instantiate(ennemy, spawnPoint.position, spawnPoint.rotation);
+        enemyAlive++;
     }
-    void SpawnEvent()
+    public void SpawnEvent()
     {
-        Instantiate(WS_List_Event[0], WS_Spawn_Point.position, WS_Spawn_Point.rotation);
+        Instantiate(listEvent[0], spawnPoint.position, spawnPoint.rotation);
 
     }
 }
