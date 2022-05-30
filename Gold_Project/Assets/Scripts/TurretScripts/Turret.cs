@@ -18,6 +18,17 @@ public abstract class Turret : MonoBehaviour
     public int currentLevel;
     public float atqPtsBonus { get; set; }
     public float maxAtqPoints { get; set; }
+    protected bool isAtqCap;
+
+    public enum TurretType
+    {
+        terreste,
+        aerial,
+        both
+    }
+
+    public TurretType turretType { get; protected set; }
+
     #endregion
 
     private bool isInside;
@@ -46,7 +57,7 @@ public abstract class Turret : MonoBehaviour
         if (turret.range <= 0)
             Debug.LogError("This is turret.range : 0" + this);
         if (turret.turretPrice <= 0)
-            Debug.LogError("This is turret.range : 0" + this);
+            Debug.LogError("This is turret.turretPrice : 0" + this);
         #endregion
 
         healthPoints = turret.healthPoints;
@@ -54,11 +65,27 @@ public abstract class Turret : MonoBehaviour
         atqPoints = turret.atqPoints;
         atqPtsBonus = 0;
         maxAtqPoints = turret.maxAtqPoints;
+        isAtqCap = turret.isAtqCap;
 
         fireRate = turret.fireRate;
         range = turret.range;
         nbrOfTarget = turret.nbrOfTarget;
         currentLevel = 0;
+
+        switch (turret.turretType)
+        {
+            case 1:
+                turretType = TurretType.terreste;
+                break;
+            case 2:
+                turretType = TurretType.aerial;
+                break;
+            case 3:
+                turretType = TurretType.both;
+                break;
+            default:
+                break;
+        }
     }
 
     private void OnMouseDrag()

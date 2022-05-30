@@ -49,9 +49,14 @@ public class SniperTower : Turret
     {
         // inflicts % of the target's max hp per attack
 
-        //atqPtsBonus = Mathf.Clamp(enemy.startingHealth * damageBonusBaseOnHP, 0, maxAtqPoints - atqPoints);
-
-        atqPtsBonus = enemy.startingHealth * damageBonusBaseOnHP; // no cap so may be 9999
+        if (!isAtqCap)
+        {
+            atqPtsBonus = enemy.startingHealth * damageBonusBaseOnHP; // no cap so may be 9999
+        }
+        else
+        {
+            atqPtsBonus = Mathf.Clamp(enemy.startingHealth * damageBonusBaseOnHP, 0, maxAtqPoints - atqPoints);
+        }
     }
 
     public override void PassiveLevelmax(EnemiesTemp enemy)

@@ -9276,9 +9276,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 656924373}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
       propertyPath: WS_Spawn_Point
       value: 
       objectReference: {fileID: 656924373}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: waves.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: waves.Array.data[0].Wave_Rate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: waves.Array.data[1].Wave_Rate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: waves.Array.data[0].Wave_Count
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: waves.Array.data[0].Wave_Enemy
+      value: 
+      objectReference: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+        type: 3}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: waves.Array.data[1].Wave_Count
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: waves.Array.data[1].Wave_Enemy
+      value: 
+      objectReference: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+        type: 3}
     - target: {fileID: 6774791142897126959, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
       propertyPath: leftHUD
@@ -9312,3 +9354,16 @@ MonoBehaviour:
   sniperTurret: {fileID: 2252493493366200415, guid: 7262708fb1470ec4e9de4518414f052e,
     type: 3}
   turretToBuild: {fileID: 0}
+--- !u!114 &6774791141816150509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6774791141816150504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81994cd44fb5078478e7bc9456b66220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies: []
