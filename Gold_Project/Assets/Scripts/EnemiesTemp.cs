@@ -7,6 +7,12 @@ public class EnemiesTemp : MonoBehaviour
     public float startingHealth = 2500.0f;
     public float currentHealth = 0.0f;
 
+    public int speed = 3;
+
+    public bool isFlying;
+
+    public float goldValue;
+
     public bool isBurning = false;
     private bool isInvisible = false;
 
@@ -23,8 +29,15 @@ public class EnemiesTemp : MonoBehaviour
         currentHealth = startingHealth;
 
         StartCoroutine(DamagePerSeconds());
+        this.GetComponent<Rigidbody2D>().AddForce(new Vector2(500 * speed * Time.deltaTime, 0));
     }
-
+    public void Update()
+    {
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
     public void TakeDamage(float damage)
     {
         currentHealth -= Mathf.Clamp(damage, 0, currentHealth);
@@ -41,10 +54,12 @@ public class EnemiesTemp : MonoBehaviour
 
                 //turretAttacking.fireCountDown = 0;
 
-                GameManager.Instance.enemies.Remove(this); 
+                GameManager.Instance.enemies.Remove(this);
+                truck.gold +=this.goldValue;
+
             }
 
-            Destroy(this.gameObject);
+            Die();
         }
     }
 
@@ -90,5 +105,10 @@ public class EnemiesTemp : MonoBehaviour
 
             damagePerSeconds = baseHealth;
         }
+    }
+    public void Die()
+    {
+        WaveSpawner.WS_Enemy_Alives--;
+        Destroy(gameObject);
     }
 }
