@@ -38,7 +38,7 @@ public class truck : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             TakeDamage();
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<enemy>().Die();
         }
     }
 }
