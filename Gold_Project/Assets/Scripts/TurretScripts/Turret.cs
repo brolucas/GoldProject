@@ -65,7 +65,7 @@ public abstract class Turret : MonoBehaviour
         atqPoints = turret.atqPoints;
         atqPtsBonus = 0;
         maxAtqPoints = turret.maxAtqPoints;
-        isAtqCap = turret.isAtqCap;
+        isAtqCap = turret.activeAtqCap;
 
         fireRate = turret.fireRate;
         range = turret.range;
