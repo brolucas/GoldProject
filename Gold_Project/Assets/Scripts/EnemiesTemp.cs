@@ -9,6 +9,10 @@ public class EnemiesTemp : MonoBehaviour
 
     public int speed = 3;
 
+    public bool isFlying;
+
+    public float goldValue;
+
     public bool isBurning = false;
     private bool isInvisible = false;
 
@@ -25,7 +29,7 @@ public class EnemiesTemp : MonoBehaviour
         currentHealth = startingHealth;
 
         StartCoroutine(DamagePerSeconds());
-        this.GetComponent<Rigidbody2D>().AddForce(new Vector2(200 * speed * Time.deltaTime, 0));
+        this.GetComponent<Rigidbody2D>().AddForce(new Vector2(500 * speed * Time.deltaTime, 0));
     }
     public void Update()
     {
@@ -50,10 +54,12 @@ public class EnemiesTemp : MonoBehaviour
 
                 //turretAttacking.fireCountDown = 0;
 
-                GameManager.Instance.enemies.Remove(this); 
+                GameManager.Instance.enemies.Remove(this);
+                truck.gold +=this.goldValue;
+
             }
 
-            Destroy(this.gameObject);
+            Die();
         }
     }
 

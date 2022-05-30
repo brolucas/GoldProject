@@ -6,6 +6,9 @@ public class truck : MonoBehaviour
 {
     public int Truck_Hp= 10;
 
+    
+    public static float gold = 1000;
+
     public GameObject Truck_Game_Over_Screen;
 
     // Start is called before the first frame update
@@ -21,6 +24,7 @@ public class truck : MonoBehaviour
         {
             Loose();
         }
+        
     }
 
     public void TakeDamage()

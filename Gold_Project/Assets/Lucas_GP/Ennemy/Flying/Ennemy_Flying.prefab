@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6709396344107502454}
   - component: {fileID: 2488951184649618190}
   m_Layer: 0
-  m_Name: Base_ennemi
+  m_Name: Ennemy_Flying
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,7 +147,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 500
   currentHealth: 0
-  speed: 500
+  speed: 25
+  isFlying: 1
+  goldValue: 100
   isBurning: 0
   damagePerSeconds: 0
   attackingTurret: []
