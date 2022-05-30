@@ -9,9 +9,9 @@ public class Shop : MonoBehaviour
         buildManager = BuildManager.Instance;
     }
 
-    public void PurchaseStandardTurret()
+    public void PurchaseTurret()
     {
-        Debug.Log("Sniper séléctionner");
+        //Debug.Log("Sniper séléctionner");
 
         buildManager.SetTurretToBuild(buildManager.sniperTurret);
     }
