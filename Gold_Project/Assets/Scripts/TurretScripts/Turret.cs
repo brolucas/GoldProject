@@ -36,6 +36,19 @@ public abstract class Turret : MonoBehaviour
             return;
         }
 
+        #region CheckStats
+        if (turret.healthPoints <= 0)
+            Debug.LogError("This is turret.healthPoints : 0" + this);
+        if (turret.atqPoints <= 0)
+            Debug.LogError("This is turret.atqPoints : 0" + this);
+        if (turret.fireRate <= 0)
+            Debug.LogError("This is turret.fireRate : 0" + this);
+        if (turret.range <= 0)
+            Debug.LogError("This is turret.range : 0" + this);
+        if (turret.turretPrice <= 0)
+            Debug.LogError("This is turret.range : 0" + this);
+        #endregion
+
         healthPoints = turret.healthPoints;
 
         atqPoints = turret.atqPoints;

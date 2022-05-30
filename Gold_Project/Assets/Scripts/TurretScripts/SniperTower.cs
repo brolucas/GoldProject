@@ -5,7 +5,8 @@ using UnityEditor;
 
 public class SniperTower : Turret
 {
-    public float damageBonusBaseOnHP = 15;
+    public float damageBonusBaseOnHP = 10;
+    public int pushHowFar = 2;
 
     private float thickness = 1.0f;
 
@@ -44,18 +45,17 @@ public class SniperTower : Turret
         fireCountDown -= Time.deltaTime / 2;
     }
 
-    //empty
     public override void TurretPassive(EnemiesTemp enemy)
     {
+        // inflicts % of the target's max hp per attack
 
+        //atqPtsBonus = Mathf.Clamp(enemy.startingHealth * damageBonusBaseOnHP, 0, maxAtqPoints - atqPoints);
+
+        atqPtsBonus = enemy.startingHealth * damageBonusBaseOnHP; // no cap so may be 9999
     }
 
     public override void PassiveLevelmax(EnemiesTemp enemy)
     {
-        // inflicts 15% of the target's max hp per attack
-
-        thickness = 3.0f;
-
-        atqPtsBonus = Mathf.Clamp(enemy.startingHealth * damageBonusBaseOnHP, 0, maxAtqPoints - atqPoints);
+        // To do 
     }
 }
