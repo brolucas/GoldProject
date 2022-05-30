@@ -785,27 +785,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 042171af6143025499a3d349c1b55248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WS_Waves:
+  waves:
   - Wave_Enemy: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
       type: 3}
     Wave_Count: 1
-    Wave_Rate: 1
-  - Wave_Enemy: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
-      type: 3}
-    Wave_Count: 2
-    Wave_Rate: 1
+    Wave_Rate: 2
   - Wave_Enemy: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
       type: 3}
     Wave_Count: 3
-    Wave_Rate: 1
-  - Wave_Enemy: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+    Wave_Rate: 2
+  - Wave_Enemy: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
       type: 3}
-    Wave_Count: 4
-    Wave_Rate: 1
-  WS_Spawn_Point: {fileID: 1374544566}
-  WS_Time_Between_Wave: 2
-  WS_List_Event:
-  - {fileID: 3233830087585181061, guid: 707146e6082b4904f89b0cec1ab23845, type: 3}
+    Wave_Count: 2
+    Wave_Rate: 2
+  - Wave_Enemy: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count: 3
+    Wave_Rate: 2
+  - Wave_Enemy: {fileID: 0}
+    Wave_Count: 0
+    Wave_Rate: 0
+  spawnPoint: {fileID: 1374544566}
+  timeBetweenWave: 5
+  listEvent: []
 --- !u!4 &1545288994
 Transform:
   m_ObjectHideFlags: 0

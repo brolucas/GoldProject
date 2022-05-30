@@ -55,10 +55,9 @@ public class EnemiesTemp : MonoBehaviour
                 //turretAttacking.fireCountDown = 0;
 
                 GameManager.Instance.enemies.Remove(this);
-                truck.gold +=this.goldValue;
 
             }
-
+            truck.gold += this.goldValue;
             Die();
         }
     }
@@ -108,7 +107,7 @@ public class EnemiesTemp : MonoBehaviour
     }
     public void Die()
     {
-        WaveSpawner.WS_Enemy_Alives--;
+        WaveSpawner.enemyAlive--;
         Destroy(gameObject);
     }
 }
