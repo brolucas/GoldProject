@@ -59,7 +59,7 @@ public abstract class Turret : MonoBehaviour
             Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 
             0);
     }
-
+    
     private void OnDrawGizmos()
     {
         Vector3 origin = transform.position;

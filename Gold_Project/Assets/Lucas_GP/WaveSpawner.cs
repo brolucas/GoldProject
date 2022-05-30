@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
-
+    [SerializeField]
     public static int WS_Enemy_Alives = 0;
 
     public Wave[] WS_Waves;
@@ -17,7 +17,7 @@ public class WaveSpawner : MonoBehaviour
 
     private float WS_Countdown = 2f;
 
-    private int WS_Wave_Index = 1;
+    private int WS_Wave_Index = 0;
 
 
     [SerializeField]
