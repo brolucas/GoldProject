@@ -21,6 +21,7 @@ public class PathNode
         this.x = x;
         this.y = y;
         isWalkale = true;
+
     }
 
     public void CalculateFCost()
