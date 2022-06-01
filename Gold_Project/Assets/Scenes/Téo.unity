@@ -7404,6 +7404,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 883bf40fddbf3004eb82c8e985f8ed6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priceText: {fileID: 1135758702}
+  rangeText: {fileID: 370262717}
+  damageText: {fileID: 1619185754}
 --- !u!1 &1810562847
 GameObject:
   m_ObjectHideFlags: 0
@@ -7826,7 +7829,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1877022836
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7867,7 +7870,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -4
-  m_Sprite: {fileID: 21300000, guid: 87d69e776f52a94439dcb6eda14b56a0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3e9a2d975282148498502184ae6b19a4, type: 3}
   m_Color: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7886,8 +7889,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1877022835}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6, y: 1.37, z: 1}
+  m_LocalPosition: {x: 2.03, y: 0, z: 0}
+  m_LocalScale: {x: 1.63, y: 1.85, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -9414,9 +9417,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddcabb5b20172ba47a57bc17679406c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sniperTurret: {fileID: 2252493493366200415, guid: 7262708fb1470ec4e9de4518414f052e,
+  sniperTurret: {fileID: 1159671648371618135, guid: 7262708fb1470ec4e9de4518414f052e,
     type: 3}
-  turretToBuild: {fileID: 0}
+  turretToBuild: {fileID: 1159671648371618135, guid: 7262708fb1470ec4e9de4518414f052e,
+    type: 3}
 --- !u!114 &6774791141816150509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9429,4 +9433,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81994cd44fb5078478e7bc9456b66220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies: []
+  enemies:
+  - {fileID: 2488951184649618190, guid: 54169df03662d4e4daf3dfd18e565e01, type: 3}
+  - {fileID: 2488951184649618190, guid: 54169df03662d4e4daf3dfd18e565e01, type: 3}
+  - {fileID: 2488951184649618190, guid: 54169df03662d4e4daf3dfd18e565e01, type: 3}
+  allTurret: []
+  rangeSprite: {fileID: 4973951708042549589, guid: 843828b30fd82ff4088d2962f24999e7,
+    type: 3}

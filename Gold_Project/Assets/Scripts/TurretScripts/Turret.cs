@@ -20,6 +20,7 @@ public abstract class Turret : MonoBehaviour
     public int atqPoints { get; private set; }
     public float fireRate { get; private set; }
     public float range;
+    public int turretPrice { get; private set; }
     public int nbrOfTarget { get; private set; }
     [Range(0, 10)]
     public int currentLevel;
