@@ -19,13 +19,22 @@ public class WaveSpawner : MonoBehaviour
 
     private int wave_Index = 0;
 
+    private bool lastWave = false;
+
 
 
     [SerializeField]
     private GameObject[] listEvent;
 
 
-
+    private void Start()
+    {
+        System.Random alea = new System.Random();
+        int eventAlea = alea.Next(3, 5);
+        waves[eventAlea]._event = true;
+        eventAlea = alea.Next(7, 10);
+        waves[eventAlea]._event = true;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -40,7 +49,10 @@ public class WaveSpawner : MonoBehaviour
             return;
         }
          countdown -= Time.deltaTime;
-
+        if (lastWave)
+        {
+            this.enabled = false;
+        }
         
         
     }
@@ -75,12 +87,16 @@ public class WaveSpawner : MonoBehaviour
             SpawnEnnemy(wave.Wave_Fly);
             yield return new WaitForSeconds(1f / wave.Wave_Rate);
         }
-        wave_Index++;
 
-        if (wave_Index == waves.Length)
+        if (wave_Index == waves.Length-1)
         {
             Debug.Log("LAST WAVES ! ");
-            this.enabled = false;
+            lastWave = true;
+        }
+        else
+        {
+            wave_Index++;
+
         }
 
     }

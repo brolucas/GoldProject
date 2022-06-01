@@ -10,13 +10,18 @@ public class truck : MonoBehaviour
     public static float gold = 1000;
 
     public GameObject Truck_Game_Over_Screen;
-
+    public GameObject Truck_Victory_Screen;
+    public WaveSpawner WS;
    
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!WS.isActiveAndEnabled && Truck_Hp > 0)
+        {
+            Truck_Victory_Screen.SetActive(true);
+            Time.timeScale = 0;
+        }
         
     }
 

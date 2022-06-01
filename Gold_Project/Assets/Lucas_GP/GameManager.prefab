@@ -47,7 +47,35 @@ MonoBehaviour:
   waves:
   - Wave_Base: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
       type: 3}
-    Wave_Count_Base: 3
+    Wave_Count_Base: 1
+    Wave_Fast: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_Count_Fast: 1
+    Wave_Slow: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Count_Slow: 1
+    Wave_Fly: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Fly: 1
+    _event: 0
+    Wave_Rate: 2
+  - Wave_Base: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Base: 1
+    Wave_Fast: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_Count_Fast: 2
+    Wave_Slow: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Count_Slow: 2
+    Wave_Fly: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Fly: 2
+    _event: 0
+    Wave_Rate: 2
+  - Wave_Base: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Base: 0
     Wave_Fast: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
     Wave_Count_Fast: 0
@@ -56,7 +84,7 @@ MonoBehaviour:
     Wave_Count_Slow: 0
     Wave_Fly: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
       type: 3}
-    Wave_Count_Fly: 0
+    Wave_Count_Fly: 2
     _event: 0
     Wave_Rate: 2
   - Wave_Base: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
@@ -84,12 +112,40 @@ MonoBehaviour:
     Wave_Count_Slow: 0
     Wave_Fly: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
       type: 3}
+    Wave_Count_Fly: 3
+    _event: 0
+    Wave_Rate: 2
+  - Wave_Base: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Base: 2
+    Wave_Fast: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_Count_Fast: 0
+    Wave_Slow: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Count_Slow: 0
+    Wave_Fly: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
     Wave_Count_Fly: 0
     _event: 0
     Wave_Rate: 2
   - Wave_Base: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
       type: 3}
-    Wave_Count_Base: 0
+    Wave_Count_Base: 2
+    Wave_Fast: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_Count_Fast: 0
+    Wave_Slow: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Count_Slow: 0
+    Wave_Fly: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Fly: 0
+    _event: 0
+    Wave_Rate: 2
+  - Wave_Base: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Base: 2
     Wave_Fast: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
     Wave_Count_Fast: 0
@@ -106,7 +162,7 @@ MonoBehaviour:
     Wave_Count_Base: 0
     Wave_Fast: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
-    Wave_Count_Fast: 0
+    Wave_Count_Fast: 3
     Wave_Slow: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
       type: 3}
     Wave_Count_Slow: 0
@@ -120,63 +176,7 @@ MonoBehaviour:
     Wave_Count_Base: 0
     Wave_Fast: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
-    Wave_Count_Fast: 0
-    Wave_Slow: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
-      type: 3}
-    Wave_Count_Slow: 0
-    Wave_Fly: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
-      type: 3}
-    Wave_Count_Fly: 0
-    _event: 0
-    Wave_Rate: 2
-  - Wave_Base: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
-      type: 3}
-    Wave_Count_Base: 0
-    Wave_Fast: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
-      type: 3}
-    Wave_Count_Fast: 0
-    Wave_Slow: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
-      type: 3}
-    Wave_Count_Slow: 0
-    Wave_Fly: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
-      type: 3}
-    Wave_Count_Fly: 0
-    _event: 0
-    Wave_Rate: 2
-  - Wave_Base: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
-      type: 3}
-    Wave_Count_Base: 0
-    Wave_Fast: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
-      type: 3}
-    Wave_Count_Fast: 0
-    Wave_Slow: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
-      type: 3}
-    Wave_Count_Slow: 0
-    Wave_Fly: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
-      type: 3}
-    Wave_Count_Fly: 0
-    _event: 0
-    Wave_Rate: 2
-  - Wave_Base: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
-      type: 3}
-    Wave_Count_Base: 0
-    Wave_Fast: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
-      type: 3}
-    Wave_Count_Fast: 0
-    Wave_Slow: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
-      type: 3}
-    Wave_Count_Slow: 0
-    Wave_Fly: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
-      type: 3}
-    Wave_Count_Fly: 0
-    _event: 0
-    Wave_Rate: 2
-  - Wave_Base: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
-      type: 3}
-    Wave_Count_Base: 0
-    Wave_Fast: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
-      type: 3}
-    Wave_Count_Fast: 0
+    Wave_Count_Fast: 4
     Wave_Slow: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
       type: 3}
     Wave_Count_Slow: 0
