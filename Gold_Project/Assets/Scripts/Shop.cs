@@ -15,12 +15,7 @@ public class Shop : MonoBehaviour
     public void PurchaseTurret()
     {
         //Debug.Log("Sniper séléctionner");
-        Turret turret = buildManager.sniperTurret.GetComponent<Turret>();
 
         buildManager.SetTurretToBuild(buildManager.sniperTurret);
-
-        rangeText.text = buildManager.sniperTurret.range.ToString();
-        priceText.text = turret.turretPrice.ToString();
-        damageText.text = turret.atqPoints.ToString();
     }
 }
