@@ -5,7 +5,8 @@ using UnityEditor;
 
 public class SniperTower : Turret
 {
-    public float damageBonusBaseOnHP = 15;
+    public float damageBonusBaseOnHP = 10;
+    public int pushHowFar = 2;
 
     private float thickness = 1.0f;
 
@@ -29,10 +30,7 @@ public class SniperTower : Turret
 
         #region RayToTarget
         Vector3 rayToTarget = currentTarget.transform.position - origin;
-        Gizmos.color = Color.red;
-        #if UNITY_EDITOR
-        Handles.DrawLine(origin, origin + rayToTarget, thickness);
-        #endif
+        Debug.DrawLine(origin, origin + rayToTarget, Color.red);
         #endregion
 
         if (fireCountDown <= 0f)
@@ -44,18 +42,22 @@ public class SniperTower : Turret
         fireCountDown -= Time.deltaTime / 2;
     }
 
-    //empty
     public override void TurretPassive(EnemiesTemp enemy)
     {
+        // inflicts % of the target's max hp per attack
 
+        if (!isAtqCap)
+        {
+            atqPtsBonus = enemy.startingHealth * damageBonusBaseOnHP; // no cap so may be 9999
+        }
+        else
+        {
+            atqPtsBonus = Mathf.Clamp(enemy.startingHealth * damageBonusBaseOnHP, 0, maxAtqPoints - atqPoints);
+        }
     }
 
     public override void PassiveLevelmax(EnemiesTemp enemy)
     {
-        // inflicts 15% of the target's max hp per attack
-
-        thickness = 3.0f;
-
-        atqPtsBonus = Mathf.Clamp(enemy.startingHealth * damageBonusBaseOnHP, 0, maxAtqPoints - atqPoints);
+        // To do 
     }
 }

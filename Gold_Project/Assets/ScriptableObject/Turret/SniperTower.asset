@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7743d70481d3ed54684c23ee6a43eb9b, type: 3}
   m_Name: SniperTower
   m_EditorClassIdentifier: 
-  healthPoints: 1200
-  atqPoints: 120
-  fireRate: 1.5
-  range: 4
+  turretType: 1
+  healthPoints: 175
+  range: 1.5
   nbrOfTarget: 1
+  turretPrice: 175
+  atqPoints: 50
+  fireRate: 1
   maxAtqPoints: 180
+  activeAtqCap: 0
   inGameDesign: {fileID: 0}
   UIDesign: {fileID: 21300000, guid: 062037edf9fbb684e9bd03cf7bcc2a23, type: 3}

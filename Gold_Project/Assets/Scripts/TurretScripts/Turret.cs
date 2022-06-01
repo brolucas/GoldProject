@@ -1,23 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public abstract class Turret : MonoBehaviour
 {
     [SerializeField]
     private TurretScriptable turret;
 
+    private GameManager gameManager;
+
+    private GameObject rangeSprite;
+    private Vector3 localScale;
+
     #region Turret Stats
     public float healthPoints {get; private set;}
     public int atqPoints { get; private set; }
     public float fireRate { get; private set; }
-    public float range { get; private set; }
+    public float range;
     public int nbrOfTarget { get; private set; }
     [Range(0, 10)]
     public int currentLevel;
     public float atqPtsBonus { get; set; }
     public float maxAtqPoints { get; set; }
+    protected bool isAtqCap;
+
+    public enum TurretType
+    {
+        terreste,
+        aerial,
+        both
+    }
+
+    public TurretType turretType { get; protected set; }
+
     #endregion
 
     private bool isInside;
@@ -36,16 +54,55 @@ public abstract class Turret : MonoBehaviour
             return;
         }
 
+        gameManager = GameManager.Instance;
+
+        gameManager.allTurret.Add(this);
+
+        #region CheckStats
+        if (turret.healthPoints <= 0)
+            Debug.LogError("This is turret.healthPoints : 0" + this);
+        if (turret.atqPoints <= 0)
+            Debug.LogError("This is turret.atqPoints : 0" + this);
+        if (turret.fireRate <= 0)
+            Debug.LogError("This is turret.fireRate : 0" + this);
+        if (turret.range <= 0)
+            Debug.LogError("This is turret.range : 0" + this);
+        if (turret.turretPrice <= 0)
+            Debug.LogError("This is turret.turretPrice : 0" + this);
+        #endregion
+
         healthPoints = turret.healthPoints;
 
         atqPoints = turret.atqPoints;
         atqPtsBonus = 0;
         maxAtqPoints = turret.maxAtqPoints;
+        isAtqCap = turret.activeAtqCap;
 
         fireRate = turret.fireRate;
         range = turret.range;
         nbrOfTarget = turret.nbrOfTarget;
         currentLevel = 0;
+
+        switch (turret.turretType)
+        {
+            case 1:
+                turretType = TurretType.terreste;
+                break;
+            case 2:
+                turretType = TurretType.aerial;
+                break;
+            case 3:
+                turretType = TurretType.both;
+                break;
+            default:
+                break;
+        }
+
+        //Show the range of the turret
+        rangeSprite = Instantiate(gameManager.rangeSprite, this.transform.position, this.transform.rotation, this.transform);
+
+        localScale = rangeSprite.transform.localScale;
+        rangeSprite.transform.localScale = new Vector3(localScale.x * range, localScale.y * range, 0);
     }
 
     private void OnMouseDrag()
@@ -59,28 +116,34 @@ public abstract class Turret : MonoBehaviour
             Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 
             0);
     }
-    
-    private void OnDrawGizmos()
+
+    private void Update()
     {
         Vector3 origin = transform.position;
-        if (GameManager.Instance == null)
+        if (gameManager == null)
             return;
 
-        if (GameManager.Instance.enemies.Count <= 0)
+        if (gameManager.enemies.Count <= 0)
             return;
 
-        foreach (var enemy in GameManager.Instance.enemies)
+        // Change the visibility range // need opti
+        rangeSprite.transform.localScale = new Vector3(localScale.x * range, localScale.y * range, 0);
+
+        foreach (var enemy in gameManager.enemies)
         {
             if (enemy == null)
+            {
+                Debug.LogError("There is a null error");
                 return;
+            }
 
             Vector2 objPos = enemy.transform.position;
-            
+
             float distance = Vector2.Distance(objPos, origin);
 
             isInside = distance < range;
 
-            if(isInside)
+            if (isInside)
             {
                 if (!targets.Contains(enemy))
                 {
@@ -96,26 +159,21 @@ public abstract class Turret : MonoBehaviour
             }
         }
 
-        #if UNITY_EDITOR
-        Handles.color = targets.Count > 0 ? Color.red : Color.grey;
-        Handles.DrawWireDisc(origin            // position
-                             , transform.forward // normal or new Vector3(0,0,1) same thing
+        /*#if UNITY_EDITOR
+        Gizmos.color = targets.Count > 0 ? Color.red : Color.grey;
+        Gizmos.DrawWireSphere(origin            // position
                              , range);          // range
 
         #endif
+
         Gizmos.DrawWireSphere(origin            // position
-            , range);          // range
+            , range);          // range*/
+
         if (targets.Count <= 0)
             return;
         ChooseTarget(origin);
-
-        /*switch (currentLevel)
-        {
-            case 10:
-                Debug.Log("The Turret is level max");
-                break;
-        }*/
     }
+
 
     public virtual void ChooseTarget(Vector3 origin)
     {
@@ -123,8 +181,7 @@ public abstract class Turret : MonoBehaviour
 
         Vector3 firstTarget = targets[0].transform.position - origin;
 
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(origin, origin + firstTarget);
+        Debug.DrawLine(origin, origin + firstTarget, Color.red);
 
         EnemiesTemp enemyScript = targets[0].GetComponent<EnemiesTemp>();
 

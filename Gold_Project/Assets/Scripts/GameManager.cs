@@ -6,7 +6,11 @@ public class GameManager : MonoBehaviour
 {
     public List<EnemiesTemp> enemies = new List<EnemiesTemp>();
 
+    public List<Turret> allTurret = new List<Turret>();
+
     private static GameManager instance = null;
+
+    public GameObject rangeSprite;
 
     // Game Instance Singleton
     public static GameManager Instance
