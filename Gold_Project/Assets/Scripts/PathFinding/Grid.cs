@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Grid<TGridObject> : MonoBehaviour
 {
-	private int width;
-	private int height;
-	private float cellSize;
+	public int width;
+	public int height;
+	public float cellSize;
 	private Vector3 originPos;
 	private TGridObject[,] gridArray;
 	private Cell[,] cellArray;
