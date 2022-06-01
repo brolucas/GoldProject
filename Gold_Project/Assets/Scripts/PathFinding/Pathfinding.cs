@@ -13,7 +13,7 @@ public class Pathfinding
 
 	public Pathfinding(int width, int height)
 	{
-		grid = new Grid<PathNode>(width, height, 10f, Vector3.zero, (grid, 0, 0 ));
+		grid = new Grid<PathNode>(width, height, 10f, Vector3.zero, (Grid<PathNode> g, int x, int y) => new PathNode(g, x, y));
 	}
 
 	private List<PathNode> FindPath(int startX, int startY, int endX, int endY)
