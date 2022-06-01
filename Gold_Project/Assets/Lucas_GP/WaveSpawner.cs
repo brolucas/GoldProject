@@ -1,87 +1,81 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
-enum State
-{
-    Wait,
-    Play,
-    Event
-}
 public class WaveSpawner : MonoBehaviour
 {
-    private State WS_State = State.Wait;
     [SerializeField]
-    private Transform WS_Ennemy_Prefab;
+    public static int enemyAlive = 0;
 
-    [SerializeField]
-    private Transform WS_Spawn_Point;
+    public Wave[] waves;
 
     [SerializeField]
-    private float WS_Time_Between_Wave = 5f;
-
-    private float WS_Countdown = 2f;
-
-    private int WS_Wave_Index = 5;
-
-    private int WS_Number_Ennemy_In_Wave;
+    private Transform spawnPoint;
 
     [SerializeField]
-    private Event[] WS_List_Event;
+    private float timeBetweenWave = 5f;
 
-    private Boolean WS_Event = false;
+    private float countdown = 2f;
+
+    private int wave_Index = 0;
+
+    public Text wave_Text;
+
+
+    [SerializeField]
+    private GameObject[] listEvent;
 
 
     // Update is called once per frame
     void Update()
     {
-        if (WS_Countdown <= 0f)
+        wave_Text.text = ("Wave : " + wave_Index + " / 10");
+
+        if (enemyAlive > 0)
+        {
+            return;
+        }
+        if (countdown <= 0f)
         {
             StartCoroutine(SpawnWave());
-            WS_Countdown = WS_Time_Between_Wave;
-            WS_State = State.Play;
+            countdown = timeBetweenWave;
+            return;
         }
-        if (WS_State == State.Wait)
-        {
-            WS_Countdown -= Time.deltaTime;
+         countdown -= Time.deltaTime;
 
-        }
-        if (WS_Number_Ennemy_In_Wave == 0 )
-        {
-            SpawnEvent();
-            WS_State = State.Wait;
-        }
-        /*if (WS_State == State.Event)
-        {
-            SpawnEvent();
-            WS_State = State.Wait;
-        }*/
-        
+
     }
 
     IEnumerator SpawnWave()
     {
-        WS_Wave_Index++;
+        Wave wave = waves[wave_Index];
 
         Debug.Log("Apparition d'une vague");
 
-        for (int i = 0; i < WS_Wave_Index; i++)
+        for (int i = 0; i < wave.Wave_Count; i++)
         {
-            SpawnEnnemy();
-            yield return new WaitForSeconds(0.5f);
+            SpawnEnnemy(wave.Wave_Enemy);
+            yield return new WaitForSeconds(1f/wave.Wave_Rate);
         }
-        WS_Number_Ennemy_In_Wave = 0;
+        wave_Index++;
+
+        if (wave_Index == waves.Length)
+        {
+            Debug.Log("Level Complete ! Congratulation");
+            this.enabled = false;
+        }
 
     }
 
-    void SpawnEnnemy()
+    void SpawnEnnemy(GameObject ennemy)
     {
-        Instantiate(WS_Ennemy_Prefab, WS_Spawn_Point.position, WS_Spawn_Point.rotation);
+        Instantiate(ennemy, spawnPoint.position, spawnPoint.rotation);
+        enemyAlive++;
     }
-    void SpawnEvent()
+    public void SpawnEvent()
     {
-        Instantiate(WS_List_Event[0], WS_Spawn_Point.position, WS_Spawn_Point.rotation);
-        WS_Number_Ennemy_In_Wave = WS_Wave_Index;
+        Instantiate(listEvent[0], spawnPoint.position, spawnPoint.rotation);
 
     }
 }

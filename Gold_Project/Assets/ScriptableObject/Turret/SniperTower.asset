@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7743d70481d3ed54684c23ee6a43eb9b, type: 3}
+  m_Name: SniperTower
+  m_EditorClassIdentifier: 
+  healthPoints: 1200
+  atqPoints: 120
+  fireRate: 1.5
+  range: 4
+  nbrOfTarget: 1
+  maxAtqPoints: 180
+  inGameDesign: {fileID: 0}
+  UIDesign: {fileID: 21300000, guid: 062037edf9fbb684e9bd03cf7bcc2a23, type: 3}

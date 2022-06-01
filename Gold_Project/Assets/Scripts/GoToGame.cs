@@ -12,6 +12,7 @@ public class GoToGame : MonoBehaviour
     public SwitchHUDSide switchHUDSide;
     public GameObject gameOverScreen;
     public string levelName;
+    public string TurretlevelName;
 
     private Scene gameScene;
 
@@ -29,6 +30,12 @@ public class GoToGame : MonoBehaviour
             HUDRight.SetActive(true);
         }
         mainMenuScreen.SetActive(false);*/
+    }
+
+    public void TurretScene()
+    {
+        SceneManager.LoadScene(TurretlevelName);
+        Time.timeScale = 1;
     }
 
     public void BackToMainMenu()
