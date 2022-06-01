@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Grid : MonoBehaviour
 {
-	private int width;
-	private int height;
-	private float cellSize;
+	public int width;
+	public int height;
+	public float cellSize;
 	private Vector3 originPos;
 	private int[,] gridArray;
 	private Cell[,] cellArray;
