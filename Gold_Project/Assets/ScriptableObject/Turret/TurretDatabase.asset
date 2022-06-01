@@ -12,4 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ebeec26dc4b4ec49b9236f228bc17c7, type: 3}
   m_Name: TurretDatabase
   m_EditorClassIdentifier: 
-  turrets: []
+  turrets:
+  - label: Sniper Tower
+    kindOfTurret: 1
+    healthPoints: 175
+    range: 1.5
+    nbrOfTarget: 1
+    turretPrice: 175
+    targetType: 1
+    atqPoints: 50
+    fireRate: 1
+    maxAtqPoints: 180
+    activeAtqCap: 0
+    inGameDesign: {fileID: 0}
+    UIDesign: {fileID: 0}

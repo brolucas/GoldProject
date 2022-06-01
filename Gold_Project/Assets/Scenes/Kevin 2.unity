@@ -2709,7 +2709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a9222fd48a1de14a9858ee55616de2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turret: {fileID: 11400000, guid: e225f925a2da36544a2070fa2ce34bf9, type: 2}
+  turretDatabase: {fileID: 0}
   range: 0
   currentLevel: 0
   canBeMoved: 0
@@ -7500,6 +7500,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 883bf40fddbf3004eb82c8e985f8ed6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priceText: {fileID: 0}
+  rangeText: {fileID: 0}
+  damageText: {fileID: 0}
 --- !u!1 &1810562847
 GameObject:
   m_ObjectHideFlags: 0
@@ -9467,7 +9470,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81994cd44fb5078478e7bc9456b66220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies: []
+  enemies:
+  - {fileID: 0}
+  - {fileID: 0}
   allTurret: []
   rangeSprite: {fileID: 4973951708042549589, guid: 843828b30fd82ff4088d2962f24999e7,
     type: 3}
