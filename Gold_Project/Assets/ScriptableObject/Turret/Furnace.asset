@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7743d70481d3ed54684c23ee6a43eb9b, type: 3}
   m_Name: Furnace
   m_EditorClassIdentifier: 
+  turretType: 1
   healthPoints: 200
-  atqPoints: 5
-  fireRate: 10
   range: 1.5
   nbrOfTarget: 1
-  maxAtqPoints: 100
-  isAtqCap: 0
   turretPrice: 200
-  turretType: 1
+  atqPoints: 5
+  fireRate: 1000
+  maxAtqPoints: 100
+  activeAtqCap: 0
   inGameDesign: {fileID: 0}
   UIDesign: {fileID: 0}

@@ -22,8 +22,7 @@ public class Furnace : Turret
 
         #region RayToTarget
         Vector3 rayToTarget = currentTarget.transform.position - origin;
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(origin, origin + rayToTarget);
+        Debug.DrawLine(origin, origin + rayToTarget, Color.red);
         #endregion
 
         if (fireCountDown <= 0f)
@@ -39,7 +38,7 @@ public class Furnace : Turret
     {
         // inflicts damage to enemies near the target
 
-        #if UNITY_EDITOR
+        /*#if UNITY_EDITOR
         Handles.color = Color.red;
         Handles.DrawWireDisc(enemy.transform.position              // position
                              , transform.forward // normal or new Vector3(0,0,1) same thing
@@ -51,7 +50,7 @@ public class Furnace : Turret
                              , transform.forward // normal or new Vector3(0,0,1) same thing
                              , explosionRange);  // range
 
-        #endif
+        #endif*/
 
         foreach (var enemies in GameManager.Instance.enemies)
         {

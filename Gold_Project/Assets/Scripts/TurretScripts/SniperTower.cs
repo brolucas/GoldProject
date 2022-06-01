@@ -30,10 +30,7 @@ public class SniperTower : Turret
 
         #region RayToTarget
         Vector3 rayToTarget = currentTarget.transform.position - origin;
-        Gizmos.color = Color.red;
-        #if UNITY_EDITOR
-        Handles.DrawLine(origin, origin + rayToTarget, thickness);
-        #endif
+        Debug.DrawLine(origin, origin + rayToTarget, Color.red);
         #endregion
 
         if (fireCountDown <= 0f)
