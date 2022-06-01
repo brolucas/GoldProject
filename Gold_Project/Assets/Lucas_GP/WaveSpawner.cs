@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -19,16 +20,18 @@ public class WaveSpawner : MonoBehaviour
 
     private int wave_Index = 0;
 
+    public Text wave_Text;
 
 
     [SerializeField]
     private GameObject[] listEvent;
 
 
-
     // Update is called once per frame
     void Update()
     {
+        wave_Text.text = ("Wave : " + wave_Index + " / 10");
+
         if (enemyAlive > 0)
         {
             return;
@@ -41,8 +44,7 @@ public class WaveSpawner : MonoBehaviour
         }
          countdown -= Time.deltaTime;
 
-        
-        
+
     }
 
     IEnumerator SpawnWave()

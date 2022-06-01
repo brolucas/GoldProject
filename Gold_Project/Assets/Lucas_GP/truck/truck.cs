@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class truck : MonoBehaviour
 {
     public int Truck_Hp= 10;
 
-    
+    public Text Truck_Coins_Text;
+
     public static float gold = 1000;
 
     public GameObject Truck_Game_Over_Screen;
@@ -24,7 +27,8 @@ public class truck : MonoBehaviour
         {
             Loose();
         }
-        
+
+        Truck_Coins_Text.text = ("Coins : " + gold.ToString());
     }
 
     public void TakeDamage()
