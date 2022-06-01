@@ -47,4 +47,11 @@ public class BuildManager : MonoBehaviour
     {
         turretToBuild = turret;
     }
+
+    public void CreateTurret(KindOfTurret type)
+    {
+        GameObject newTurret = Instantiate(turretToBuild);
+
+        newTurret.GetComponent<Turret>().InitTurretData(type);
+    }
 }

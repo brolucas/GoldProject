@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-public abstract class Turret : MonoBehaviour
+public class Turret : MonoBehaviour
 {
     [SerializeField]
-    private TurretScriptable turret;
+    private TurretDatabase turretDatabase;
 
     private GameManager gameManager;
 
@@ -16,26 +17,30 @@ public abstract class Turret : MonoBehaviour
     private Vector3 localScale;
 
     #region Turret Stats
-    public float healthPoints {get; private set;}
-    public int atqPoints { get; private set; }
-    public float fireRate { get; private set; }
+
+    public string label { get; private set; }
+    public KindOfTurret kindOfTurret { get; private set; }
+
+    //Turret Stats
+    public float healthPoints { get; private set; }
+    [Range(0, 10)]
     public float range;
     public int nbrOfTarget { get; private set; }
+    public int turretPrice { get; private set; }
+    public TargetType targetType { get; private set; }
     [Range(0, 10)]
     public int currentLevel;
+
+    //Attack Stats
+    public int atqPoints { get; private set; }
     public float atqPtsBonus { get; set; }
-    public float maxAtqPoints { get; set; }
+    public float fireRate { get; private set; }
+    public int maxAtqPoints { get; private set; }
     protected bool isAtqCap;
 
-    public enum TurretType
-    {
-        terreste,
-        aerial,
-        both
-    }
-
-    public TurretType turretType { get; protected set; }
-
+    //Design
+    public Sprite inGameDesign { get; private set; }
+    public Sprite UIDesign { get; private set; }
     #endregion
 
     private bool isInside;
@@ -48,7 +53,8 @@ public abstract class Turret : MonoBehaviour
 
     public void Start()
     {
-        if (turret == null)
+
+        if (turretDatabase == null)
         {
             Debug.LogError("This turret doens't have a TurretScriptable attach to it : " + this);
             return;
@@ -58,51 +64,69 @@ public abstract class Turret : MonoBehaviour
 
         gameManager.allTurret.Add(this);
 
-        #region CheckStats
-        if (turret.healthPoints <= 0)
-            Debug.LogError("This is turret.healthPoints : 0" + this);
-        if (turret.atqPoints <= 0)
-            Debug.LogError("This is turret.atqPoints : 0" + this);
-        if (turret.fireRate <= 0)
-            Debug.LogError("This is turret.fireRate : 0" + this);
-        if (turret.range <= 0)
-            Debug.LogError("This is turret.range : 0" + this);
-        if (turret.turretPrice <= 0)
-            Debug.LogError("This is turret.turretPrice : 0" + this);
-        #endregion
-
-        healthPoints = turret.healthPoints;
-
-        atqPoints = turret.atqPoints;
-        atqPtsBonus = 0;
-        maxAtqPoints = turret.maxAtqPoints;
-        isAtqCap = turret.activeAtqCap;
-
-        fireRate = turret.fireRate;
-        range = turret.range;
-        nbrOfTarget = turret.nbrOfTarget;
-        currentLevel = 0;
-
-        switch (turret.turretType)
-        {
-            case 1:
-                turretType = TurretType.terreste;
-                break;
-            case 2:
-                turretType = TurretType.aerial;
-                break;
-            case 3:
-                turretType = TurretType.both;
-                break;
-            default:
-                break;
-        }
-
-        //Show the range of the turret
+        #region Show the range of the turret
         rangeSprite = Instantiate(gameManager.rangeSprite, this.transform.position, this.transform.rotation, this.transform);
 
         localScale = rangeSprite.transform.localScale;
         rangeSprite.transform.localScale = new Vector3(localScale.x * range, localScale.y * range, 0);
+        #endregion
+    }
+
+    public void InitTurretData(KindOfTurret type)
+    {
+        TurretData turretData = turretDatabase.turrets.Find(data => data.kindOfTurret == type);
+
+        if (turretData == null)
+        {
+            Debug.LogError("There is TurretData of the type : " + type);
+            return;
+        }
+
+        #region CheckStats
+
+        if (turretData.healthPoints <= 0)
+            Debug.LogError("Shouldn't this turret.healthPoints be : 0" + this);
+        if (turretData.range <= 0)
+            Debug.LogError("Shouldn't this turret.range be : 0" + this);
+        if (turretData.nbrOfTarget <= 0)
+            Debug.LogError("Shouldn't this turret.nbrOfTarget be : 0" + this);
+        if (turretData.turretPrice <= 0)
+            Debug.LogError("Shouldn't this turret.turretPrice be : 0" + this);
+        if (turretData.targetType == TargetType.Default)
+            Debug.LogError("Shouldn't this turret.targetType be : DEFAULT " + this);
+        
+        if (turretData.atqPoints <= 0)
+            Debug.LogError("Shouldn't this turret.atqPoints be : 0" + this);
+        if (turretData.fireRate <= 0)
+            Debug.LogError("Shouldn't this turret.fireRate be : 0" + this);
+
+        /*if (turretData.inGameDesign == null)
+            Debug.LogError(this + "Doesn't have a sprite");
+        if (turretData.UIDesign == null)
+            Debug.LogError(this + "Doesn't have a sprite");*/
+        #endregion
+
+        #region Initialize Stats
+
+        label = turretData.label;
+        kindOfTurret = turretData.kindOfTurret;
+
+        healthPoints = turretData.healthPoints;
+        range = turretData.range;
+        nbrOfTarget = turretData.nbrOfTarget;
+        turretPrice = turretData.turretPrice;
+
+        atqPoints = turretData.atqPoints;
+        atqPtsBonus = 0;
+        fireRate = turretData.fireRate;
+        maxAtqPoints = turretData.maxAtqPoints;
+        isAtqCap = turretData.activeAtqCap;
+
+        inGameDesign = turretData.inGameDesign;
+        UIDesign = turretData.UIDesign;
+
+        currentLevel = 0;
+        #endregion
     }
 
     private void OnMouseDrag()
@@ -161,7 +185,7 @@ public abstract class Turret : MonoBehaviour
 
         /*#if UNITY_EDITOR
         Gizmos.color = targets.Count > 0 ? Color.red : Color.grey;
-        Gizmos.DrawWireSphere(origin            // position
+        Handles.DrawWireSphere(origin            // position
                              , range);          // range
 
         #endif
@@ -216,7 +240,57 @@ public abstract class Turret : MonoBehaviour
 
     public virtual void TurretPassive(EnemiesTemp enemy)
     {
-        Debug.LogError("Shouln't be using this virtual method (TurretPassive)");
+        switch (kindOfTurret)
+        {
+            case KindOfTurret.SniperTower:
+                {
+                    // inflicts % of the target's max hp per attack
+
+                    int damageBonusBaseOnHP = 10;
+
+                    if (!isAtqCap)
+                    {
+                        atqPtsBonus = enemy.startingHealth * damageBonusBaseOnHP; // no cap so may be 9999
+                    }
+                    else
+                    {
+                        atqPtsBonus = Mathf.Clamp(enemy.startingHealth * damageBonusBaseOnHP, 0, maxAtqPoints - atqPoints);
+                    }
+                    break;
+                }
+           case KindOfTurret.Furnace:
+                {
+                    foreach (var enemies in GameManager.Instance.enemies)
+                    {
+                        if (enemies == enemy)
+                            return;
+
+                        Vector2 objPos = enemies.transform.position;
+
+                        float distance = Vector2.Distance(enemy.transform.position, objPos);
+
+                        float explosionRange = 1;
+
+                        bool isInside = distance < explosionRange;
+
+                        if (isInside)
+                        {
+                            enemies.TakeDamage(this.atqPoints);
+
+                            if (currentLevel == 10)
+                            {
+                                PassiveLevelmax(enemies);
+                            }
+                        }
+                    }
+
+                    break;
+                }
+
+            default:
+                
+                break;
+        }
     }
 
     public virtual void PassiveLevelmax(EnemiesTemp enemy)

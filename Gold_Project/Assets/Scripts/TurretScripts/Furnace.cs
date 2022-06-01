@@ -36,6 +36,7 @@ public class Furnace : Turret
 
     public override void TurretPassive(EnemiesTemp enemy)
     {
+        #region testGizmos
         // inflicts damage to enemies near the target
 
         /*#if UNITY_EDITOR
@@ -51,6 +52,7 @@ public class Furnace : Turret
                              , explosionRange);  // range
 
         #endif*/
+        #endregion
 
         foreach (var enemies in GameManager.Instance.enemies)
         {
