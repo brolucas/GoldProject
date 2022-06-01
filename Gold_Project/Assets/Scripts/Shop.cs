@@ -3,7 +3,6 @@ using UnityEngine.UI;
 public class Shop : MonoBehaviour
 {
     private BuildManager buildManager;
-    private Turret turret;
     public Text priceText;
     public Text rangeText;
     public Text damageText;
@@ -19,8 +18,9 @@ public class Shop : MonoBehaviour
         Turret turret = buildManager.sniperTurret.GetComponent<Turret>();
 
         buildManager.SetTurretToBuild(buildManager.sniperTurret);
-        //priceText.text = turret.turr
-        rangeText.text = turret.range.ToString();
+
+        rangeText.text = buildManager.sniperTurret.range.ToString();
+        priceText.text = turret.turretPrice.ToString();
         damageText.text = turret.atqPoints.ToString();
     }
 }

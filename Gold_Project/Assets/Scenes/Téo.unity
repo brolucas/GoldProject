@@ -7404,6 +7404,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 883bf40fddbf3004eb82c8e985f8ed6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priceText: {fileID: 1135758702}
+  rangeText: {fileID: 370262717}
+  damageText: {fileID: 1619185754}
 --- !u!1 &1810562847
 GameObject:
   m_ObjectHideFlags: 0
@@ -9414,9 +9417,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddcabb5b20172ba47a57bc17679406c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sniperTurret: {fileID: 2252493493366200415, guid: 7262708fb1470ec4e9de4518414f052e,
+  sniperTurret: {fileID: 1159671648371618135, guid: 7262708fb1470ec4e9de4518414f052e,
     type: 3}
-  turretToBuild: {fileID: 0}
+  turretToBuild: {fileID: 1159671648371618135, guid: 7262708fb1470ec4e9de4518414f052e,
+    type: 3}
 --- !u!114 &6774791141816150509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9429,4 +9433,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81994cd44fb5078478e7bc9456b66220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies: []
+  enemies:
+  - {fileID: 2488951184649618190, guid: 54169df03662d4e4daf3dfd18e565e01, type: 3}
+  - {fileID: 2488951184649618190, guid: 54169df03662d4e4daf3dfd18e565e01, type: 3}
+  - {fileID: 2488951184649618190, guid: 54169df03662d4e4daf3dfd18e565e01, type: 3}
+  allTurret: []
+  rangeSprite: {fileID: 4973951708042549589, guid: 843828b30fd82ff4088d2962f24999e7,
+    type: 3}
