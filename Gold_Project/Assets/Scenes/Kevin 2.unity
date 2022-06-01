@@ -2028,7 +2028,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2710,6 +2710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turret: {fileID: 11400000, guid: e225f925a2da36544a2070fa2ce34bf9, type: 2}
+  range: 0
   currentLevel: 0
   canBeMoved: 0
   targets: []
@@ -7331,7 +7332,7 @@ PrefabInstance:
     - target: {fileID: 2839210569179321154, guid: 28da6559888611048a67939a8e1952b7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2839210569179321154, guid: 28da6559888611048a67939a8e1952b7,
         type: 3}
@@ -9277,75 +9278,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2140670338}
   m_CullTransparentMesh: 1
---- !u!1001 &338830505679404790
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1143328412174790258, guid: 843828b30fd82ff4088d2962f24999e7,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1143328412174790258, guid: 843828b30fd82ff4088d2962f24999e7,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.489
-      objectReference: {fileID: 0}
-    - target: {fileID: 1143328412174790258, guid: 843828b30fd82ff4088d2962f24999e7,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1143328412174790258, guid: 843828b30fd82ff4088d2962f24999e7,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -18.409033
-      objectReference: {fileID: 0}
-    - target: {fileID: 1143328412174790258, guid: 843828b30fd82ff4088d2962f24999e7,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1143328412174790258, guid: 843828b30fd82ff4088d2962f24999e7,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1143328412174790258, guid: 843828b30fd82ff4088d2962f24999e7,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1143328412174790258, guid: 843828b30fd82ff4088d2962f24999e7,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1143328412174790258, guid: 843828b30fd82ff4088d2962f24999e7,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1143328412174790258, guid: 843828b30fd82ff4088d2962f24999e7,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1143328412174790258, guid: 843828b30fd82ff4088d2962f24999e7,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4973951708042549589, guid: 843828b30fd82ff4088d2962f24999e7,
-        type: 3}
-      propertyPath: m_Name
-      value: Zone
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 843828b30fd82ff4088d2962f24999e7, type: 3}
 --- !u!1001 &6774791141816150503
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9520,7 +9452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddcabb5b20172ba47a57bc17679406c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sniperTurret: {fileID: 2252493493366200415, guid: 7262708fb1470ec4e9de4518414f052e,
+  sniperTurret: {fileID: 1159671648371618135, guid: 7262708fb1470ec4e9de4518414f052e,
     type: 3}
   turretToBuild: {fileID: 0}
 --- !u!114 &6774791141816150509
@@ -9537,3 +9469,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   allTurret: []
+  rangeSprite: {fileID: 4973951708042549589, guid: 843828b30fd82ff4088d2962f24999e7,
+    type: 3}
