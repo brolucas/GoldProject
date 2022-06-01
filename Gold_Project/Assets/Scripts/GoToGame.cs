@@ -8,7 +8,6 @@ public class GoToGame : MonoBehaviour
 {
     public GameObject HUDLeft;
     public GameObject HUDRight;
-    public GameObject mainMenuScreen;
     public SwitchHUDSide switchHUDSide;
     public GameObject gameOverScreen;
     public string levelName;
