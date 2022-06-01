@@ -34,7 +34,7 @@ public class Grid<TGridObject> : MonoBehaviour
 		{
 			for(int y = 0; y < gridArray.GetLength(1); y++)
 			{
-				cellArray[x, y] = new Cell();
+				cellArray[x, y] = new Cell(null, x, y);
 				Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.white, 100f);
 				Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.white, 100f); 
 			}
