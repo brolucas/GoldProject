@@ -51,16 +51,35 @@ public class WaveSpawner : MonoBehaviour
 
         Debug.Log("Apparition d'une vague");
 
-        for (int i = 0; i < wave.Wave_Count; i++)
+        if (wave._event)
         {
-            SpawnEnnemy(wave.Wave_Enemy);
+            SpawnEvent();
+        }
+        for (int i = 0; i < wave.Wave_Count_Fast; i++)
+        {
+            SpawnEnnemy(wave.Wave_Fast);
             yield return new WaitForSeconds(1f/wave.Wave_Rate);
+        }
+        for (int i = 0; i < wave.Wave_Count_Slow; i++)
+        {
+            SpawnEnnemy(wave.Wave_Slow);
+            yield return new WaitForSeconds(1f / wave.Wave_Rate);
+        }
+        for (int i = 0; i < wave.Wave_Count_Base; i++)
+        {
+            SpawnEnnemy(wave.Wave_Base);
+            yield return new WaitForSeconds(1f / wave.Wave_Rate);
+        }
+        for (int i = 0; i < wave.Wave_Count_Fly; i++)
+        {
+            SpawnEnnemy(wave.Wave_Fly);
+            yield return new WaitForSeconds(1f / wave.Wave_Rate);
         }
         wave_Index++;
 
         if (wave_Index == waves.Length)
         {
-            Debug.Log("Level Complete ! Congratulation");
+            Debug.Log("LAST WAVES ! ");
             this.enabled = false;
         }
 
@@ -73,7 +92,11 @@ public class WaveSpawner : MonoBehaviour
     }
     public void SpawnEvent()
     {
-        Instantiate(listEvent[0], spawnPoint.position, spawnPoint.rotation);
+        System.Random alea = new System.Random();
+        int eventAlea = alea.Next(0, 10);
+        Instantiate(listEvent[eventAlea], spawnPoint.position, spawnPoint.rotation);
+        Debug.Log("Event Launched !" + listEvent[eventAlea].ToString());
 
     }
+
 }

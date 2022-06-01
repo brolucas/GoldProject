@@ -33,10 +33,7 @@ public class EnemiesTemp : MonoBehaviour
     }
     public void Update()
     {
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
+        
     }
     public void TakeDamage(float damage)
     {

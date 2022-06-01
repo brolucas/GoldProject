@@ -11,25 +11,22 @@ public class truck : MonoBehaviour
 
     public GameObject Truck_Game_Over_Screen;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+   
 
     // Update is called once per frame
     void Update()
     {
-        if (this.Truck_Hp <= 0 )
-        {
-            Loose();
-        }
+        
         
     }
 
     public void TakeDamage()
     {
         this.Truck_Hp --;
+        if (this.Truck_Hp <= 0)
+        {
+            Loose();
+        }
     }
     public void Loose()
     {
