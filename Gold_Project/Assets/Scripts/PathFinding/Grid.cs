@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grid<TGridObject>
+public class Grid<TGridObject> : MonoBehaviour
 {
 	private int width;
 	private int height;
@@ -56,9 +56,21 @@ public class Grid<TGridObject>
 
 	public void SetTurret(int x, int y)
 	{
-		if(x >= 0 && y >= 0 && x < width && y < height)
+		if (x >= 0 && y >= 0 && x < width && y < height)
 		{
 			cellArray[x, y].isTurret = !cellArray[x, y].isTurret;
+
+			if (BuildManager.Instance.GetTurretToBuild() == null)
+				Debug.LogError("turret to build is null");
+
+			Vector3 position = GetWorldPosition(x, y);
+
+			GameObject turret = Instantiate(BuildManager.Instance.GetTurretToBuild(), new Vector3(position.x + cellSize / 2, position.y + cellSize / 2, 0), Quaternion.identity);
+
+			turret.transform.GetChild(1).localScale = new Vector3(cellSize, cellSize, cellSize);
+
+			BuildManager.Instance.turretToBuild = null;
+
 			Debug.Log("cell status : turret:" + cellArray[x, y].isTurret + " barricade:" + cellArray[x, y].isBarricade + " Event" + cellArray[x, y].isEvent);
 		}
 	}
