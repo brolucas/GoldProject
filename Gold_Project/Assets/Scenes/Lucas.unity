@@ -674,6 +674,36 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1374544566}
+    - target: {fileID: 4502616256424384565, guid: 557db369e55ddc444ae142129a3edc57,
+        type: 3}
+      propertyPath: waves.Array.data[0].Wave_Count_Fly
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4502616256424384565, guid: 557db369e55ddc444ae142129a3edc57,
+        type: 3}
+      propertyPath: waves.Array.data[1].Wave_Count_Fly
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4502616256424384565, guid: 557db369e55ddc444ae142129a3edc57,
+        type: 3}
+      propertyPath: waves.Array.data[0].Wave_Count_Fast
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4502616256424384565, guid: 557db369e55ddc444ae142129a3edc57,
+        type: 3}
+      propertyPath: waves.Array.data[0].Wave_Count_Slow
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4502616256424384565, guid: 557db369e55ddc444ae142129a3edc57,
+        type: 3}
+      propertyPath: waves.Array.data[1].Wave_Count_Fast
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4502616256424384565, guid: 557db369e55ddc444ae142129a3edc57,
+        type: 3}
+      propertyPath: waves.Array.data[1].Wave_Count_Slow
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4502616256424384566, guid: 557db369e55ddc444ae142129a3edc57,
         type: 3}
       propertyPath: m_RootOrder

@@ -110,7 +110,7 @@ public class WaveSpawner : MonoBehaviour
     {
         System.Random alea = new System.Random();
         int eventAlea = alea.Next(0, 10);
-        Instantiate(listEvent[eventAlea], spawnPoint.position, spawnPoint.rotation);
+        Instantiate(listEvent[eventAlea], new Vector3(eventAlea,eventAlea,0), spawnPoint.rotation);
         Debug.Log("Event Launched !" + listEvent[eventAlea].ToString());
 
     }
