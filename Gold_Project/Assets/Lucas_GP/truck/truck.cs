@@ -9,7 +9,7 @@ public class truck : MonoBehaviour
     public int Truck_Hp= 5;
 
     public Text Truck_Coins_Text;
-    public Text Truck_Waves_Text;
+    //public Text Truck_Waves_Text;
 
     public static float gold = 200;
 
@@ -49,7 +49,7 @@ public class truck : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             TakeDamage();
-            collision.gameObject.GetComponent<EnemiesTemp>().Die();
+            StartCoroutine(collision.gameObject.GetComponent<EnemiesTemp>().Die());
         }
     }
 }
