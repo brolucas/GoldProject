@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class truck : MonoBehaviour
 {
-    public int Truck_Hp= 10;
+    public int Truck_Hp= 5;
 
     public Text Truck_Coins_Text;
 
-    public static float gold = 1000;
+    public static float gold = 200;
 
     public GameObject Truck_Game_Over_Screen;
     public GameObject Truck_Victory_Screen;

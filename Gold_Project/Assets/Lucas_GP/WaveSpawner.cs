@@ -67,27 +67,55 @@ public class WaveSpawner : MonoBehaviour
         {
             SpawnEvent();
         }
-        for (int i = 0; i < wave.Wave_Count_Fast; i++)
+        if (wave.Wave_nb_Runner > 0)
         {
-            SpawnEnnemy(wave.Wave_Fast);
-            yield return new WaitForSeconds(1f/wave.Wave_Rate);
-        }
-        for (int i = 0; i < wave.Wave_Count_Slow; i++)
-        {
-            SpawnEnnemy(wave.Wave_Slow);
-            yield return new WaitForSeconds(1f / wave.Wave_Rate);
-        }
-        for (int i = 0; i < wave.Wave_Count_Base; i++)
-        {
-            SpawnEnnemy(wave.Wave_Base);
-            yield return new WaitForSeconds(1f / wave.Wave_Rate);
-        }
-        for (int i = 0; i < wave.Wave_Count_Fly; i++)
-        {
-            SpawnEnnemy(wave.Wave_Fly);
-            yield return new WaitForSeconds(1f / wave.Wave_Rate);
+            for (int i = 0; i < wave.Wave_nb_Runner; i++)
+            {
+                SpawnEnnemy(wave.Wave_Runner);
+                yield return new WaitForSeconds(1f / wave.Wave_Rate);
+            }
         }
 
+        if (wave.Wave_Manchot_nbr > 0)
+        {
+            for (int i = 0; i < wave.Wave_Manchot_nbr; i++)
+            {
+                SpawnEnnemy(wave.Wave_Manchot);
+                yield return new WaitForSeconds(1f / wave.Wave_Rate);
+            }
+        }
+        if (wave.Wave_Count_Kamikaze > 0)
+        {
+            for (int i = 0; i < wave.Wave_Count_Kamikaze; i++)
+            {
+                SpawnEnnemy(wave.Wave_Kamikaze);
+                yield return new WaitForSeconds(1f / wave.Wave_Rate);
+            }
+        }
+        if (wave.Wave_Count_CRS > 0)
+        {
+            for (int i = 0; i < wave.Wave_Count_CRS; i++)
+            {
+                SpawnEnnemy(wave.Wave_CRS);
+                yield return new WaitForSeconds(1f / wave.Wave_Rate);
+            }
+        }
+        if (wave.Wave_Count_Volant > 0)
+        {
+            for (int i = 0; i < wave.Wave_Count_Volant; i++)
+            {
+                SpawnEnnemy(wave.Wave_Volant);
+                yield return new WaitForSeconds(1f / wave.Wave_Rate);
+            }
+        }
+        if (wave.Wave_Count_Boss > 0)
+        {
+            for (int i = 0; i < wave.Wave_Count_Boss; i++)
+            {
+                SpawnEnnemy(wave.Wave_Boss);
+                yield return new WaitForSeconds(1f / wave.Wave_Rate);
+            }
+        }
         if (wave_Index == waves.Length-1)
         {
             Debug.Log("LAST WAVES ! ");

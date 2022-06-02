@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6709396344107502454}
   - component: {fileID: 2488951184649618190}
   m_Layer: 0
-  m_Name: Ennemy_Flying
+  m_Name: CRS
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
     type: 3}
-  m_Color: {r: 0.9758564, g: 1, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -145,11 +145,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373ee22e8fe23fa4bb65d9b1af348171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 500
+  startingHealth: 200
   currentHealth: 0
-  speed: 25
-  isFlying: 1
-  goldValue: 100
+  speed: 4
+  isFlying: 0
+  goldValue: 7
   isBurning: 0
   damagePerSeconds: 0
   attackingTurret: []
