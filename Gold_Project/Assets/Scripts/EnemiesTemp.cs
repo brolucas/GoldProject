@@ -4,23 +4,25 @@ using UnityEngine;
 
 public class EnemiesTemp : MonoBehaviour
 {
+    [Header("Enemy Stats")]
     public float startingHealth = 2500.0f;
     public float currentHealth = 0.0f;
-
     public int speed = 3;
 
     public bool isFlying;
 
     public float goldValue;
 
+    //Furnace
     public bool isBurning = false;
+    public int nbrOfAtqSuffed = 0;
+
+    //Flash on damage
     private bool isInvisible = false;
 
     public float damagePerSeconds = 0.0f;
 
     public List<Turret> attackingTurret = new List<Turret>();
-
-    //public float startTime = 0.0f;
 
     public void Start()
     {
@@ -31,10 +33,7 @@ public class EnemiesTemp : MonoBehaviour
         StartCoroutine(DamagePerSeconds());
         this.GetComponent<Rigidbody2D>().AddForce(new Vector2(500 * speed * Time.deltaTime, 0));
     }
-    public void Update()
-    {
-        
-    }
+
     public void TakeDamage(float damage)
     {
         currentHealth -= Mathf.Clamp(damage, 0, currentHealth);
@@ -43,19 +42,9 @@ public class EnemiesTemp : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            foreach (var turret in attackingTurret)
-            {
-                Turret turretAttacking = turret.GetComponent<Turret>();
-
-                turretAttacking.targets.Remove(this);
-
-                //turretAttacking.fireCountDown = 0;
-
-                GameManager.Instance.enemies.Remove(this);
-
-            }
+            //Let this here bc should give us gold when hit the truck
             truck.gold += this.goldValue;
-            Die();
+            StartCoroutine(Die());
         }
     }
 
@@ -78,15 +67,24 @@ public class EnemiesTemp : MonoBehaviour
         }
     }
 
-    public IEnumerator Burn()
+    public IEnumerator Burn(float duration, float damage, bool isMaxLevelPassiveActive = false, float maxPassiveParameters = 0)
     {
         isBurning = true;
 
-        while (currentHealth > 0)
+        while (duration > 0)
         {
-            TakeDamage(startingHealth * 0.01f);
+            TakeDamage(damage);
+
+            if (isMaxLevelPassiveActive)
+            {
+                TakeDamage(startingHealth * maxPassiveParameters);
+            }
+
             yield return new WaitForSeconds(1.0f);
+            duration--;
         }
+
+        isBurning = false;
     }
 
     public IEnumerator DamagePerSeconds()
@@ -102,9 +100,34 @@ public class EnemiesTemp : MonoBehaviour
             damagePerSeconds = baseHealth;
         }
     }
-    public void Die()
+
+    public void OnDestroy()
     {
+        // Just in case take it off if optimization 
+        // If the target isn't clear off the turrets will bug
+        foreach (var turret in GameManager.Instance.allTurret)
+        {
+            turret.targets.Remove(this);
+        }
+    }
+
+    public IEnumerator Die()
+    {
+        foreach (var turret in attackingTurret)
+        {
+            Turret turretAttacking = turret.GetComponent<Turret>();
+
+            turretAttacking.targets.Remove(this);
+        }
+
+        attackingTurret.Clear();
+        GameManager.Instance.enemies.Remove(this);
+
         WaveSpawner.enemyAlive--;
+
+        //Wait until this enemy have been erased from all list before destroying it
+        yield return new WaitUntil(() => !GameManager.Instance.enemies.Contains(this));
+        
         Destroy(gameObject);
     }
 }
