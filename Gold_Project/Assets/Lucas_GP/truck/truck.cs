@@ -13,19 +13,17 @@ public class truck : MonoBehaviour
     public static float gold = 1000;
 
     public GameObject Truck_Game_Over_Screen;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject Truck_Victory_Screen;
+    public WaveSpawner WS;
+   
 
     // Update is called once per frame
     void Update()
     {
-        if (this.Truck_Hp <= 0 )
+        if (!WS.isActiveAndEnabled && Truck_Hp > 0)
         {
-            Loose();
+            Truck_Victory_Screen.SetActive(true);
+            Time.timeScale = 0;
         }
 
         Truck_Coins_Text.text = ("Coins : " + gold.ToString());
@@ -34,6 +32,10 @@ public class truck : MonoBehaviour
     public void TakeDamage()
     {
         this.Truck_Hp --;
+        if (this.Truck_Hp <= 0)
+        {
+            Loose();
+        }
     }
     public void Loose()
     {

@@ -31,7 +31,10 @@ public class EnemiesTemp : MonoBehaviour
         StartCoroutine(DamagePerSeconds());
         this.GetComponent<Rigidbody2D>().AddForce(new Vector2(500 * speed * Time.deltaTime, 0));
     }
-
+    public void Update()
+    {
+        
+    }
     public void TakeDamage(float damage)
     {
         currentHealth -= Mathf.Clamp(damage, 0, currentHealth);
@@ -40,6 +43,17 @@ public class EnemiesTemp : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            foreach (var turret in attackingTurret)
+            {
+                Turret turretAttacking = turret.GetComponent<Turret>();
+
+                turretAttacking.targets.Remove(this);
+
+                //turretAttacking.fireCountDown = 0;
+
+                GameManager.Instance.enemies.Remove(this);
+
+            }
             truck.gold += this.goldValue;
             Die();
         }
@@ -62,11 +76,6 @@ public class EnemiesTemp : MonoBehaviour
 
             isInvisible = false;
         }
-    }
-
-    public void OnDestroy()
-    {
-        
     }
 
     public IEnumerator Burn()
@@ -95,21 +104,7 @@ public class EnemiesTemp : MonoBehaviour
     }
     public void Die()
     {
-        // remove the enemy from the lists
-        foreach (var turret in GameManager.Instance.allTurret)
-        {
-            GameManager.Instance.enemies.Remove(this);
-
-            if (turret.targets.Contains(this))
-            {
-                Turret turretAttacking = turret.GetComponent<Turret>();
-
-                turretAttacking.targets.Remove(this);
-            }
-        }
-
         WaveSpawner.enemyAlive--;
-
         Destroy(gameObject);
     }
 }
