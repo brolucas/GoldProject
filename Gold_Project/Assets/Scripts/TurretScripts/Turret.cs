@@ -25,6 +25,7 @@ public class Turret : MonoBehaviour
     public float healthPoints { get; private set; }
     [Range(0, 10)]
     public float range;
+    public int turretPrice { get; private set; }
     public int nbrOfTarget { get; private set; }
     public int turretPrice { get; private set; }
     public TargetType targetType { get; private set; }
