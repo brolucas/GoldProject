@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -30,6 +29,7 @@ public class Turret : MonoBehaviour
     public TargetType targetType { get; private set; }
     [Range(0, 10)]
     public int currentLevel;
+    public int maxLevel = 3;
 
     //Attack Stats
     public int atqPoints { get; private set; }
@@ -207,9 +207,9 @@ public class Turret : MonoBehaviour
         ChooseTarget(origin);
     }
 
-
     public virtual void ChooseTarget(Vector3 origin)
     {
+        #region Normal Attack
         //Attack the first target to enter the range until it die or goes out of range
 
         Vector3 firstTarget = targets[0].transform.position - origin;
@@ -223,15 +223,94 @@ public class Turret : MonoBehaviour
             Shoot(enemyScript);
             fireCountDown = 1 / fireRate;
         }
-
         fireCountDown -= Time.deltaTime / 2;
+        #endregion
+
+        switch (kindOfTurret)
+        {
+            case KindOfTurret.Basic:
+                {
+                    //
+
+
+                    break;
+                }
+            case KindOfTurret.SniperTower:
+                {
+                    EnemiesTemp currentTarget = targets[0];
+
+                    //Search for the target with the highest maxHealth
+                    foreach (var target in targets)
+                    {
+                        if (target.startingHealth > currentTarget.startingHealth)
+                        {
+                            currentTarget = target;
+                        }
+                    }
+
+                    #region RayToTarget
+                    Vector3 rayToTarget = currentTarget.transform.position - origin;
+                    Debug.DrawLine(origin, origin + rayToTarget, Color.red);
+                    #endregion
+
+                    if (fireCountDown <= 0f)
+                    {
+                        Shoot(currentTarget.GetComponent<EnemiesTemp>());
+                        fireCountDown = 1 / fireRate;
+                    }
+
+                    fireCountDown -= Time.deltaTime / 2;
+
+                    break;
+                }
+            case KindOfTurret.Furnace:
+                {
+                    EnemiesTemp currentTarget = targets[0];
+
+                    //Search for a target that doesn't Burn
+                    foreach (var target in targets)
+                    {
+                        if (!target.isBurning)
+                        {
+                            currentTarget = target;
+                            continue;
+                        }
+                    }
+
+                    #region RayToTarget
+                    Vector3 rayToTarget = currentTarget.transform.position - origin;
+                    Debug.DrawLine(origin, origin + rayToTarget, Color.red);
+                    #endregion
+
+                    if (fireCountDown <= 0f)
+                    {
+                        Shoot(currentTarget.GetComponent<EnemiesTemp>());
+                        fireCountDown = 1 / fireRate;
+                    }
+
+                    fireCountDown -= Time.deltaTime / 2;
+
+
+                    break;
+                }
+            case KindOfTurret.Zap:
+                {
+                    // 
+
+
+                    break;
+                }
+            default:
+
+                break;
+        }
     }
 
     public virtual void Shoot(EnemiesTemp enemy)
     {
         TurretPassive(enemy);
 
-        if (currentLevel == 10)
+        if (currentLevel >= maxLevel)
             PassiveLevelmax(enemy);
 
         float damage = Mathf.Clamp(atqPoints + atqPtsBonus, 0, maxAtqPoints);
@@ -245,6 +324,9 @@ public class Turret : MonoBehaviour
         {
             enemy.attackingTurret.Add(this);
         }
+
+        if (enemy == null)
+            targets.Remove(enemy);
     }
 
     public virtual void TurretPassive(EnemiesTemp enemy)
@@ -269,31 +351,38 @@ public class Turret : MonoBehaviour
                 }
             case KindOfTurret.Furnace:
                 {
-                    float burnDuration = 5.0f;
+                    // Enemies that suffer 5 attacks are burned burned enemies suffer 1 point of damage
 
-                    float damageBasedOnMaxHealth = basePassiveParameters;
+                    enemy.nbrOfAtqSuffed += Mathf.Clamp(1,0,5);
 
-                    foreach (var enemies in GameManager.Instance.enemies)
+                    if (enemy.nbrOfAtqSuffed >= capPassive/*5*/)
                     {
-                        if (enemies == enemy)
-                            return;
-
-                        Vector2 objPos = enemies.transform.position;
-
-                        float distance = Vector2.Distance(enemy.transform.position, objPos);
-
+                        float burnDuration = 5.0f;
+                        float damage = basePassiveParameters/*1*/;
+                        float damageBasedOnMaxHealth = maxPassiveParameters;
                         float explosionRange = 1;
 
-                        bool isInside = distance < explosionRange;
-
-                        if (isInside)
+                        foreach (var enemies in GameManager.Instance.enemies)
                         {
-                            enemies.Burn(burnDuration, damageBasedOnMaxHealth);
+                            if (enemies == enemy)
+                                return;
 
-                            if (currentLevel == 10)
+                            Vector2 objPos = enemies.transform.position;
+
+                            float distance = Vector2.Distance(enemy.transform.position, objPos);
+
+                            bool isInside = distance < explosionRange;
+
+                            if (isInside)
                             {
-                                if (enemy.isBurning == false)
-                                    StartCoroutine(enemy.Burn());
+                                if (currentLevel >= maxLevel)
+                                {
+                                    enemies.Burn(burnDuration, damage, true, maxPassiveParameters/*1*/);
+                                }
+                                else //Is not max level
+                                {
+                                    enemies.Burn(burnDuration, damage);
+                                }
                             }
                         }
                     }
@@ -309,6 +398,33 @@ public class Turret : MonoBehaviour
 
     public virtual void PassiveLevelmax(EnemiesTemp enemy)
     {
-        Debug.LogError("Shouln't be using this virtual method (PassiveLevelmax)");
+        switch (kindOfTurret)
+        {
+            case KindOfTurret.Basic:
+                {
+                    //
+
+
+                    break;
+                }
+            case KindOfTurret.SniperTower: // TO DO
+                {
+                    // the enemies are pushed back 2 squares
+                    int pushHowFar = (int)maxPassiveParameters;
+                    
+                    break;
+                }
+            // case KindOfTurret.Furnace: Is in the basic passive
+            case KindOfTurret.Zap: 
+                {
+                    // 
+
+
+                    break;
+                }
+            default:
+
+                break;
+        }
     }
 }

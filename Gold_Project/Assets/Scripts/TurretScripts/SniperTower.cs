@@ -5,7 +5,7 @@ using UnityEditor;
 
 public class SniperTower : Turret
 {
-    public float damageBonusBaseOnHP = 10;
+    /*public float damageBonusBaseOnHP = 10;
     public int pushHowFar = 2;
 
     private void Awake()
@@ -57,5 +57,5 @@ public class SniperTower : Turret
     public override void PassiveLevelmax(EnemiesTemp enemy)
     {
         // To do 
-    }
+    }*/
 }
