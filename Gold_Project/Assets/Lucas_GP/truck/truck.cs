@@ -26,7 +26,7 @@ public class truck : MonoBehaviour
             Time.timeScale = 0;
         }
 
-        Truck_Coins_Text.text = ("Coins : " + gold.ToString());
+        Truck_Coins_Text.text = ("  : " + gold.ToString());
     }
 
     public void TakeDamage()
