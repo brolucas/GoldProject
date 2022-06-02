@@ -80,7 +80,7 @@ MonoBehaviour:
   HUDRight: {fileID: 0}
   switchHUDSide: {fileID: 6774791142897126959}
   gameOverScreen: {fileID: 0}
-  levelName: MainMenu
+  levelName: "T\xE9o"
   TurretlevelName: "K\xE9vin"
 --- !u!114 &6774791142897126959
 MonoBehaviour:
