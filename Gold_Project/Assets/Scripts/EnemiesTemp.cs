@@ -44,7 +44,7 @@ public class EnemiesTemp : MonoBehaviour
         {
             //Let this here bc should give us gold when hit the truck
             truck.gold += this.goldValue;
-            Die();
+            StartCoroutine(Die());
         }
     }
 
@@ -127,7 +127,7 @@ public class EnemiesTemp : MonoBehaviour
 
         //Wait until this enemy have been erased from all list before destroying it
         yield return new WaitUntil(() => !GameManager.Instance.enemies.Contains(this));
-
+        
         Destroy(gameObject);
     }
 }

@@ -30,9 +30,7 @@ public enum KindOfTurret
 [CreateAssetMenu(fileName = "New Turret", menuName ="Turret")]
 public class TurretDatabase : ScriptableObject
 {
-
     public List<TurretData> turrets = new List<TurretData>();
-
 }
 
 [System.Serializable]

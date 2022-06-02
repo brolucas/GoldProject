@@ -10,10 +10,13 @@ public class Turret : MonoBehaviour
     [SerializeField]
     private TurretDatabase turretDatabase;
 
+    [SerializeField]
     private GameManager gameManager;
 
     private GameObject rangeSprite;
     private Vector3 localScale;
+
+    public SpriteRenderer spriteRenderer;
 
     #region Turret Stats
 
@@ -56,9 +59,29 @@ public class Turret : MonoBehaviour
 
     public List<EnemiesTemp> targets = new List<EnemiesTemp>();
 
+    public void Awake()
+    {
+        if (turretDatabase == null)
+        {
+            TurretDatabase turretDatabaseNew = (TurretDatabase)ScriptableObject.CreateInstance(typeof(TurretDatabase));
+
+            turretDatabase = turretDatabaseNew; 
+        }
+
+        if (GameManager.Instance == null)
+        {
+            Debug.LogError("There is no GameManager in the scene");
+        }
+
+        if (gameManager == null)
+        {
+            gameManager = FindObjectOfType<GameManager>();
+        }
+
+        InitTurretData(BuildManager.Instance.turretToBuild);
+    }
     public void Start()
     {
-
         if (turretDatabase == null)
         {
             Debug.LogError("This turret doens't have a TurretScriptable attach to it : " + this);
@@ -75,11 +98,13 @@ public class Turret : MonoBehaviour
         localScale = rangeSprite.transform.localScale;
         rangeSprite.transform.localScale = new Vector3(localScale.x * range, localScale.y * range, 0);
         #endregion
+
+        spriteRenderer.sprite = inGameDesign;
     }
 
     public void InitTurretData(KindOfTurret type)
     {
-        TurretData turretData = turretDatabase.turrets.Find(data => data.kindOfTurret == type);
+        TurretData turretData = gameManager.GetStatsKindOfTurret(type);
 
         if (turretData == null)
         {
@@ -138,7 +163,7 @@ public class Turret : MonoBehaviour
         #endregion
     }
 
-    private void OnMouseDrag()
+    /*private void OnMouseDrag()
     {
         if (!canBeMoved)
             return;
@@ -148,6 +173,11 @@ public class Turret : MonoBehaviour
             Camera.main.ScreenToWorldPoint(Input.mousePosition).x,
             Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 
             0);
+    }*/
+
+    private void OnMouseDown()
+    {
+        BuildManager.Instance.shop.selectedTurretInGame = this.gameObject;
     }
 
     private void Update()
@@ -426,5 +456,10 @@ public class Turret : MonoBehaviour
 
                 break;
         }
+    }
+
+    public void Upgrade()
+    {
+        
     }
 }

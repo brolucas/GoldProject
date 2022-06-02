@@ -34,24 +34,62 @@ public class BuildManager : MonoBehaviour
     }
     #endregion
 
-    public GameObject sniperTurret;
+    public truck truck;
 
-    public GameObject turretToBuild;
+    public GameObject turretPrefab;
+
+    public Shop shop;
+
+    public KindOfTurret turretToBuild;
+
+    private GameManager gameManager;
+
+    public void Start()
+    {
+        if (turretPrefab == null)
+        {
+            turretPrefab = (GameObject)Resources.Load("Assets/Prefab/TurretPrefab.prefab", typeof(GameObject));
+        }
+
+        gameManager = GameManager.Instance;
+    }
 
     public GameObject GetTurretToBuild()
     {
-        return turretToBuild;
+        return turretPrefab;
     }
 
-    public void SetTurretToBuild(GameObject turret)
+    public void SetTurretToBuild(KindOfTurret kindOfTurretSelected)
     {
-        turretToBuild = turret;
+        turretToBuild = kindOfTurretSelected;
     }
 
-    public void CreateTurret(KindOfTurret type)
+    public void CreateTurret(Vector3 position, float cellSize = 0)
     {
-        GameObject newTurret = Instantiate(turretToBuild);
+        if (turretToBuild == KindOfTurret.DefaultDoNotUseIt)
+            return;
 
-        newTurret.GetComponent<Turret>().InitTurretData(type);
+        TurretData turretData = gameManager.GetStatsKindOfTurret(turretToBuild);
+
+        if (truck.gold >= turretData.turretPrice)
+        {
+            if (turretToBuild == KindOfTurret.DefaultDoNotUseIt)
+            {
+                Debug.LogError("You are trying to create a turret but there is no turret selected !");
+                return;
+            }
+
+            GameObject newTurret = Instantiate(turretPrefab, position, Quaternion.identity);
+
+            if (cellSize > 0)
+            {
+                newTurret.transform.GetChild(1).localScale = new Vector3(cellSize, cellSize, cellSize);
+            }
+
+            turretToBuild = KindOfTurret.DefaultDoNotUseIt;
+
+            truck.gold -= turretData.turretPrice;
+        }
+
     }
 }
