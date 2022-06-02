@@ -82,6 +82,6 @@ public class Furnace : Turret
         // applies the burn to the affected targets inflicting 1 % of the target's max hp per second
 
         if (enemy.isBurning == false)
-            StartCoroutine(enemy.Burn());
+            StartCoroutine(enemy.Burn(1,1));
     }
 }

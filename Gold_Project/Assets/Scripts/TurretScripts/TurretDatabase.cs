@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum TargetType
 {
-    Default,
+    DefaultDoNotUseIt,
     Terreste,
     Aerial,
     Both
@@ -12,9 +12,19 @@ public enum TargetType
 
 public enum KindOfTurret
 {
-    Default,
+    DefaultDoNotUseIt,
+    Basic,
+    //Mortar,
+    //Discord,
     SniperTower,
-    Furnace
+    //Anti_Aerial,
+    Furnace,
+    //Channelizer,
+    //Central,
+    //Immobilizer,
+    Zap,
+    //Teleporter,
+    //Viktor,
 };
 
 [CreateAssetMenu(fileName = "New Turret", menuName ="Turret")]
@@ -48,6 +58,10 @@ public class TurretData
     [Tooltip("Check if yes")]
     public bool activeAtqCap;
 
+    [Header("Passive Stats")]
+    public float basePassiveParameters;
+    public float maxPassiveParameters;
+    public float capPassive;
 
     [Header("Design")]
     public Sprite inGameDesign;

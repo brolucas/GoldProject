@@ -27,7 +27,6 @@ public class Turret : MonoBehaviour
     public float range;
     public int turretPrice { get; private set; }
     public int nbrOfTarget { get; private set; }
-    public int turretPrice { get; private set; }
     public TargetType targetType { get; private set; }
     [Range(0, 10)]
     public int currentLevel;
@@ -42,6 +41,11 @@ public class Turret : MonoBehaviour
     //Design
     public Sprite inGameDesign { get; private set; }
     public Sprite UIDesign { get; private set; }
+
+    //Passive Stats
+    public float basePassiveParameters { get; private set; }
+    public float maxPassiveParameters { get; private set; }
+    public float capPassive { get; private set; }
     #endregion
 
     private bool isInside;
@@ -93,7 +97,7 @@ public class Turret : MonoBehaviour
             Debug.LogError("Shouldn't this turret.nbrOfTarget be : 0" + this);
         if (turretData.turretPrice <= 0)
             Debug.LogError("Shouldn't this turret.turretPrice be : 0" + this);
-        if (turretData.targetType == TargetType.Default)
+        if (turretData.targetType == TargetType.DefaultDoNotUseIt)
             Debug.LogError("Shouldn't this turret.targetType be : DEFAULT " + this);
         
         if (turretData.atqPoints <= 0)
@@ -125,6 +129,10 @@ public class Turret : MonoBehaviour
 
         inGameDesign = turretData.inGameDesign;
         UIDesign = turretData.UIDesign;
+
+        basePassiveParameters = turretData.basePassiveParameters;
+        maxPassiveParameters = turretData.maxPassiveParameters;
+        capPassive = turretData.capPassive;
 
         currentLevel = 0;
         #endregion
@@ -247,7 +255,7 @@ public class Turret : MonoBehaviour
                 {
                     // inflicts % of the target's max hp per attack
 
-                    int damageBonusBaseOnHP = 10;
+                    int damageBonusBaseOnHP = (int)basePassiveParameters;
 
                     if (!isAtqCap)
                     {
@@ -259,8 +267,12 @@ public class Turret : MonoBehaviour
                     }
                     break;
                 }
-           case KindOfTurret.Furnace:
+            case KindOfTurret.Furnace:
                 {
+                    float burnDuration = 5.0f;
+
+                    float damageBasedOnMaxHealth = basePassiveParameters;
+
                     foreach (var enemies in GameManager.Instance.enemies)
                     {
                         if (enemies == enemy)
@@ -276,11 +288,12 @@ public class Turret : MonoBehaviour
 
                         if (isInside)
                         {
-                            enemies.TakeDamage(this.atqPoints);
+                            enemies.Burn(burnDuration, damageBasedOnMaxHealth);
 
                             if (currentLevel == 10)
                             {
-                                PassiveLevelmax(enemies);
+                                if (enemy.isBurning == false)
+                                    StartCoroutine(enemy.Burn());
                             }
                         }
                     }

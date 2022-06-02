@@ -8,8 +8,6 @@ public class SniperTower : Turret
     public float damageBonusBaseOnHP = 10;
     public int pushHowFar = 2;
 
-    private float thickness = 1.0f;
-
     private void Awake()
     {
         damageBonusBaseOnHP = damageBonusBaseOnHP / 100;
