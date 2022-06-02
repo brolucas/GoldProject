@@ -13,8 +13,24 @@ MonoBehaviour:
   m_Name: TurretDatabase
   m_EditorClassIdentifier: 
   turrets:
-  - label: Sniper Tower
+  - label: Basic
     kindOfTurret: 1
+    healthPoints: 100
+    range: 2
+    nbrOfTarget: 1
+    turretPrice: 100
+    targetType: 1
+    atqPoints: 25
+    fireRate: 2
+    maxAtqPoints: 50
+    activeAtqCap: 0
+    basePassiveParameters: 100
+    maxPassiveParameters: 5
+    capPassive: 0
+    inGameDesign: {fileID: 0}
+    UIDesign: {fileID: 0}
+  - label: Sniper Tower
+    kindOfTurret: 2
     healthPoints: 175
     range: 1.5
     nbrOfTarget: 1
@@ -24,5 +40,40 @@ MonoBehaviour:
     fireRate: 1
     maxAtqPoints: 180
     activeAtqCap: 0
+    basePassiveParameters: 10
+    maxPassiveParameters: 2
+    capPassive: 0
+    inGameDesign: {fileID: 0}
+    UIDesign: {fileID: 0}
+  - label: Furnace
+    kindOfTurret: 3
+    healthPoints: 200
+    range: 1.5
+    nbrOfTarget: 1
+    turretPrice: 200
+    targetType: 1
+    atqPoints: 50
+    fireRate: 10
+    maxAtqPoints: 180
+    activeAtqCap: 0
+    basePassiveParameters: 1
+    maxPassiveParameters: 1
+    capPassive: 5
+    inGameDesign: {fileID: 0}
+    UIDesign: {fileID: 0}
+  - label: Zap
+    kindOfTurret: 4
+    healthPoints: 350
+    range: 1
+    nbrOfTarget: 1
+    turretPrice: 400
+    targetType: 1
+    atqPoints: 10
+    fireRate: 1
+    maxAtqPoints: 180
+    activeAtqCap: 0
+    basePassiveParameters: 10
+    maxPassiveParameters: 2
+    capPassive: 50
     inGameDesign: {fileID: 0}
     UIDesign: {fileID: 0}
