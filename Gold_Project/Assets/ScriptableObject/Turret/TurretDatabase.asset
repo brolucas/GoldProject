@@ -32,7 +32,7 @@ MonoBehaviour:
   - label: Sniper Tower
     kindOfTurret: 2
     healthPoints: 175
-    range: 1.5
+    range: 2
     nbrOfTarget: 1
     turretPrice: 175
     targetType: 1
