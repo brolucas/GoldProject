@@ -11,22 +11,20 @@ public class truck : MonoBehaviour
     public Text Truck_Coins_Text;
     //public Text Truck_Waves_Text;
 
-    public static float gold = 200;
+    public float gold = 200;
 
     public GameObject Truck_Game_Over_Screen;
-    public GameObject Truck_Victory_Screen;
     public WaveSpawner WS;
-   
+
+    private void start()
+    {
+        Truck_Coins_Text.text = ("  : " + gold.ToString());
+        gold = 200;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (!WS.isActiveAndEnabled && Truck_Hp > 0)
-        {
-            Truck_Victory_Screen.SetActive(true);
-            Time.timeScale = 0;
-        }
-
         Truck_Coins_Text.text = ("  : " + gold.ToString());
     }
 

@@ -9699,6 +9699,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6774791141816150509, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
+      propertyPath: truck
+      value: 
+      objectReference: {fileID: 1987987812}
+    - target: {fileID: 6774791141816150509, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
       propertyPath: turretDatabase
       value: 
       objectReference: {fileID: 11400000, guid: aeead099ddab7d94fbfbec987f614a22,
@@ -9713,6 +9718,11 @@ PrefabInstance:
       propertyPath: HUDRight
       value: 
       objectReference: {fileID: 1881311224}
+    - target: {fileID: 6774791142897126944, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: levelName
+      value: MainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 6774791142897126944, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
       propertyPath: gameOverScreen
@@ -9808,6 +9818,11 @@ PrefabInstance:
       propertyPath: waves.Array.size
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: wave_Victory_Screen
+      value: 
+      objectReference: {fileID: 604349543}
     - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
       propertyPath: waves.Array.data[0].Wave_Count_CRS

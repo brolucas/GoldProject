@@ -57,7 +57,7 @@ public class EnemiesTemp : MonoBehaviour
         if (currentHealth <= 0)
         {
             //Let this here bc should give us gold when hit the truck
-            truck.gold += this.goldValue;
+            GameManager.Instance.truck.gold += this.goldValue;
             StartCoroutine(Die());
         }
     }

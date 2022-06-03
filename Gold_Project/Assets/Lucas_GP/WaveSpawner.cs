@@ -23,7 +23,7 @@ public class WaveSpawner : MonoBehaviour
 
     private bool lastWave = false;
 
-
+    public GameObject wave_Victory_Screen;
 
     [SerializeField]
     private GameObject[] listEvent;
@@ -36,11 +36,13 @@ public class WaveSpawner : MonoBehaviour
         waves[eventAlea]._event = true;
         eventAlea = alea.Next(7, 10);
         waves[eventAlea]._event = true;
+
     }
     // Update is called once per frame
     void Update()
     {
         wave_Text.text = ("Wave : " + wave_Index.ToString() + " / 10");
+
         if (enemyAlive > 0)
         {
             return;
@@ -54,8 +56,13 @@ public class WaveSpawner : MonoBehaviour
          countdown -= Time.deltaTime;
         if (lastWave)
         {
-            this.enabled = false;
-        }
+            if (enemyAlive <= 0)
+            {
+                wave_Victory_Screen.SetActive(true);
+                Time.timeScale = 0;
+            }
+            //this.enabled = false;
+        }   
         
         
     }
