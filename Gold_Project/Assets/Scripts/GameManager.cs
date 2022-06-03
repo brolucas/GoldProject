@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 
     public TurretDatabase turretDatabase;
 
+    public truck truck;
+
     // Game Instance Singleton
     public static GameManager Instance
     {
@@ -32,7 +34,7 @@ public class GameManager : MonoBehaviour
         }
 
         instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
     }
 
     public TurretData GetStatsKindOfTurret(KindOfTurret kindOfTurret)

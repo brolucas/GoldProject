@@ -10,25 +10,15 @@ public class GoToGame : MonoBehaviour
     public GameObject HUDRight;
     public SwitchHUDSide switchHUDSide;
     public GameObject gameOverScreen;
-    public string levelName;
+    public Text levelName;
     public string TurretlevelName;
 
     private Scene gameScene;
 
     public void LaunchGame()
     {
-        SceneManager.LoadScene(levelName);
+        SceneManager.LoadScene(levelName.text);
         Time.timeScale = 1;
-        /*if (switchHUDSide.isLeft)
-        {
-            HUDLeft.SetActive(true);
-        }
-        else
-        {
-            SceneManager.LoadScene("Téo");
-            HUDRight.SetActive(true);
-        }
-        mainMenuScreen.SetActive(false);*/
     }
 
     public void TurretScene()
@@ -39,9 +29,7 @@ public class GoToGame : MonoBehaviour
 
     public void BackToMainMenu()
     {
-        //GameScreen.SetActive(false);
-
-        SceneManager.LoadScene(levelName);
+        SceneManager.LoadScene("MainMenu");
         Time.timeScale = 0;
     }
 }
