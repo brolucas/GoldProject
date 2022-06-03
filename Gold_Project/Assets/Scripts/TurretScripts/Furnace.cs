@@ -5,7 +5,7 @@ using UnityEditor;
 
 public class Furnace : Turret
 {
-    public float explosionRange = 1;
+    /*public float explosionRange = 1;
 
     public override void ChooseTarget(Vector3 origin)
     {
@@ -36,9 +36,10 @@ public class Furnace : Turret
 
     public override void TurretPassive(EnemiesTemp enemy)
     {
+        #region testGizmos
         // inflicts damage to enemies near the target
 
-        /*#if UNITY_EDITOR
+        *//*#if UNITY_EDITOR
         Handles.color = Color.red;
         Handles.DrawWireDisc(enemy.transform.position              // position
                              , transform.forward // normal or new Vector3(0,0,1) same thing
@@ -50,7 +51,8 @@ public class Furnace : Turret
                              , transform.forward // normal or new Vector3(0,0,1) same thing
                              , explosionRange);  // range
 
-        #endif*/
+        #endif*//*
+        #endregion
 
         foreach (var enemies in GameManager.Instance.enemies)
         {
@@ -80,6 +82,6 @@ public class Furnace : Turret
         // applies the burn to the affected targets inflicting 1 % of the target's max hp per second
 
         if (enemy.isBurning == false)
-            StartCoroutine(enemy.Burn());
-    }
+            StartCoroutine(enemy.Burn(1,1));
+    }*/
 }

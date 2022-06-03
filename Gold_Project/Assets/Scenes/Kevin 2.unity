@@ -455,7 +455,7 @@ RectTransform:
   - {fileID: 1937415543}
   - {fileID: 491483882}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -949,7 +949,7 @@ GameObject:
   - component: {fileID: 149775298}
   - component: {fileID: 149775297}
   m_Layer: 5
-  m_Name: TurretButton (1)
+  m_Name: TurretButton2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1021,14 +1021,14 @@ MonoBehaviour:
       - m_Target: {fileID: 1803292675}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
         m_MethodName: PurchaseTurret
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 149775297}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &149775298
 MonoBehaviour:
@@ -1159,7 +1159,7 @@ GameObject:
   - component: {fileID: 234031246}
   - component: {fileID: 234031245}
   m_Layer: 5
-  m_Name: TurretButton (4)
+  m_Name: ObstacleButton1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2000,41 +2000,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 628487206}
   m_CullTransparentMesh: 1
---- !u!1 &656924372
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 656924373}
-  m_Layer: 5
-  m_Name: SpawnPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &656924373
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 656924372}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &676824952
 GameObject:
   m_ObjectHideFlags: 0
@@ -2519,7 +2484,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &816013525
 GameObject:
@@ -2679,107 +2644,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 825174216}
   m_CullTransparentMesh: 1
---- !u!1 &829075688
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 829075691}
-  - component: {fileID: 829075690}
-  - component: {fileID: 829075689}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &829075689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 829075688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a9222fd48a1de14a9858ee55616de2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turret: {fileID: 11400000, guid: e225f925a2da36544a2070fa2ce34bf9, type: 2}
-  range: 0
-  currentLevel: 0
-  canBeMoved: 0
-  targets: []
-  explosionRange: 5
---- !u!212 &829075690
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 829075688}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 062037edf9fbb684e9bd03cf7bcc2a23, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 5.12, y: 5.12}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &829075691
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 829075688}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.66, y: -0.33, z: -18.100126}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &846098967
 GameObject:
   m_ObjectHideFlags: 0
@@ -4045,7 +3909,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 6774791141816150503}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6774791141816150504}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f154f23115a4f254ea0111bab1bd77c3, type: 3}
@@ -4057,7 +3921,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 6774791141816150503}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6774791141816150504}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1efe4d337a7f36459bf4eec69b4bc14, type: 3}
@@ -4069,7 +3933,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 6774791141816150503}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6774791141816150504}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a3cb48a50eae324d870dafabf493cd4, type: 3}
@@ -5185,7 +5049,7 @@ GameObject:
   - component: {fileID: 1318916626}
   - component: {fileID: 1318916625}
   m_Layer: 5
-  m_Name: TurretButton
+  m_Name: TurretButton1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5257,10 +5121,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1803292675}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
         m_MethodName: PurchaseTurret
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1318916625}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5286,8 +5150,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 0}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5955,7 +5819,7 @@ GameObject:
   - component: {fileID: 1416727753}
   - component: {fileID: 1416727752}
   m_Layer: 5
-  m_Name: TurretButton (3)
+  m_Name: TurretButton4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6027,10 +5891,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1803292675}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
         m_MethodName: PurchaseTurret
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1416727752}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7300,7 +7164,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1785985137
 PrefabInstance:
@@ -7369,6 +7233,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 8262161137113511699, guid: 28da6559888611048a67939a8e1952b7,
+        type: 3}
+      propertyPath: WS
+      value: 
+      objectReference: {fileID: 6774791141816150508}
     - target: {fileID: 8262161137113511699, guid: 28da6559888611048a67939a8e1952b7,
         type: 3}
       propertyPath: Truck_Game_Over_Screen
@@ -7500,6 +7369,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 883bf40fddbf3004eb82c8e985f8ed6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turretDatabase: {fileID: 11400000, guid: aeead099ddab7d94fbfbec987f614a22, type: 2}
+  buildManager: {fileID: 6774791141816150507}
+  priceText: {fileID: 0}
+  rangeText: {fileID: 0}
+  damageText: {fileID: 0}
+  deck: 01000000020000000300000004000000
+  deckButtons:
+  - {fileID: 1318916625}
+  - {fileID: 149775297}
+  - {fileID: 2127543450}
+  - {fileID: 1416727752}
 --- !u!1 &1810562847
 GameObject:
   m_ObjectHideFlags: 0
@@ -8774,7 +8654,7 @@ GameObject:
   - component: {fileID: 2070563233}
   - component: {fileID: 2070563232}
   m_Layer: 5
-  m_Name: TurretButton (5)
+  m_Name: ObstacleButton2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9038,7 +8918,7 @@ GameObject:
   - component: {fileID: 2127543451}
   - component: {fileID: 2127543450}
   m_Layer: 5
-  m_Name: TurretButton (2)
+  m_Name: TurretButton3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9110,10 +8990,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1803292675}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
         m_MethodName: PurchaseTurret
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 2127543450}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -9285,6 +9165,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6774791141816150505, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: turretPrefab
+      value: 
+      objectReference: {fileID: 1159671648371618135, guid: 7262708fb1470ec4e9de4518414f052e,
+        type: 3}
     - target: {fileID: 6774791142897126944, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
       propertyPath: HUDLeft
@@ -9313,7 +9199,7 @@ PrefabInstance:
     - target: {fileID: 6774791142897126946, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6774791142897126946, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
@@ -9379,12 +9265,12 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnPoint
       value: 
-      objectReference: {fileID: 656924373}
+      objectReference: {fileID: 0}
     - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
       propertyPath: WS_Spawn_Point
       value: 
-      objectReference: {fileID: 656924373}
+      objectReference: {fileID: 0}
     - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
       propertyPath: waves.Array.size
@@ -9434,40 +9320,27 @@ PrefabInstance:
       objectReference: {fileID: 1881311224}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcb83c3b66d220949b0a9acbc2a0e49c, type: 3}
---- !u!1 &6774791141816150504 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6774791142897126948, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+--- !u!114 &6774791141816150507 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6774791141816150505, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
     type: 3}
   m_PrefabInstance: {fileID: 6774791141816150503}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6774791141816150505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6774791141816150504}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ddcabb5b20172ba47a57bc17679406c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sniperTurret: {fileID: 1159671648371618135, guid: 7262708fb1470ec4e9de4518414f052e,
-    type: 3}
-  turretToBuild: {fileID: 0}
---- !u!114 &6774791141816150509
+--- !u!114 &6774791141816150508 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6774791141816150503}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6774791141816150504}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81994cd44fb5078478e7bc9456b66220, type: 3}
+  m_Script: {fileID: 11500000, guid: 042171af6143025499a3d349c1b55248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies: []
-  allTurret: []
-  rangeSprite: {fileID: 4973951708042549589, guid: 843828b30fd82ff4088d2962f24999e7,
-    type: 3}

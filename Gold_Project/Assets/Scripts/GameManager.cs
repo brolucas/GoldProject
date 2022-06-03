@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject rangeSprite;
 
+    public TurretDatabase turretDatabase;
+
     // Game Instance Singleton
     public static GameManager Instance
     {
@@ -31,5 +33,14 @@ public class GameManager : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(this.gameObject);
+    }
+
+    public TurretData GetStatsKindOfTurret(KindOfTurret kindOfTurret)
+    {
+        // Get the stats in the scriptable object TurretDatabase based on the type kindOfTurret
+
+        TurretData turretData = GameManager.Instance.turretDatabase.turrets.Find(data => data.kindOfTurret == kindOfTurret);
+
+        return turretData;
     }
 }

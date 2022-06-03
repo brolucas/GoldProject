@@ -2,34 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyType
-{
-    GROUND,
-    FLY,
-    TERRORIST
-};
-
 public class EnemiesTemp : MonoBehaviour
 {
+    [Header("Enemy Stats")]
     public float startingHealth = 2500.0f;
     public float currentHealth = 0.0f;
-    public EnemyType type;
-
     public int speed = 3;
+
+    public bool isFlying;
 
     public float goldValue;
 
+    //Furnace
     public bool isBurning = false;
+    public int nbrOfAtqSuffed = 0;
+
+    //Flash on damage
     private bool isInvisible = false;
 
     public float damagePerSeconds = 0.0f;
 
     public List<Turret> attackingTurret = new List<Turret>();
-
-    private int currentPathIndex;
-    private List<Vector3> pathVectorList;
-    public GameObject endPoint;
-    //public float startTime = 0.0f;
 
     public void Start()
     {
@@ -41,48 +34,6 @@ public class EnemiesTemp : MonoBehaviour
         this.GetComponent<Rigidbody2D>().AddForce(new Vector2(500 * speed * Time.deltaTime, 0));
     }
 
-    public void Update()
-    {
-        HandleMovement();
-        if(pathVectorList != null)
-        {
-            SetTargetPosition(endPoint.transform.position);
-        }
-    }
-    private void HandleMovement()
-    {
-        if (pathVectorList != null)
-        {
-            Vector3 targetPosition = pathVectorList[currentPathIndex];
-            if (Vector3.Distance(transform.position, targetPosition) > 1f)
-            {
-                Vector3 moveDir = (targetPosition - transform.position).normalized;
-
-                float distanceBefore = Vector3.Distance(transform.position, targetPosition);
-                transform.position = transform.position + moveDir * speed * Time.deltaTime;
-            }
-            else
-            {
-                currentPathIndex++;
-                if (currentPathIndex >= pathVectorList.Count)
-                {
-                    pathVectorList = null;
-                }
-            }
-        }
-    }
-    public IEnumerator SetTargetPosition(Vector3 targetPosition)
-    {
-        currentPathIndex = 0;
-        pathVectorList = Pathfinding.Instance.FindPath(this.transform.position, targetPosition);
-
-        if (pathVectorList != null && pathVectorList.Count > 1)
-        {
-            pathVectorList.RemoveAt(0);
-        }
-        yield return new WaitForSeconds(0.1f);
-    }
-
     public void TakeDamage(float damage)
     {
         currentHealth -= Mathf.Clamp(damage, 0, currentHealth);
@@ -91,8 +42,9 @@ public class EnemiesTemp : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            //Let this here bc should give us gold when hit the truck
             truck.gold += this.goldValue;
-            Die();
+            StartCoroutine(Die());
         }
     }
 
@@ -115,20 +67,24 @@ public class EnemiesTemp : MonoBehaviour
         }
     }
 
-    public void OnDestroy()
-    {
-        
-    }
-
-    public IEnumerator Burn()
+    public IEnumerator Burn(float duration, float damage, bool isMaxLevelPassiveActive = false, float maxPassiveParameters = 0)
     {
         isBurning = true;
 
-        while (currentHealth > 0)
+        while (duration > 0)
         {
-            TakeDamage(startingHealth * 0.01f);
+            TakeDamage(damage);
+
+            if (isMaxLevelPassiveActive)
+            {
+                TakeDamage(startingHealth * maxPassiveParameters);
+            }
+
             yield return new WaitForSeconds(1.0f);
+            duration--;
         }
+
+        isBurning = false;
     }
 
     public IEnumerator DamagePerSeconds()
@@ -144,29 +100,34 @@ public class EnemiesTemp : MonoBehaviour
             damagePerSeconds = baseHealth;
         }
     }
-    public void Die()
+
+    public void OnDestroy()
     {
-        // remove the enemy from the lists
+        // Just in case take it off if optimization 
+        // If the target isn't clear off the turrets will bug
         foreach (var turret in GameManager.Instance.allTurret)
         {
-            GameManager.Instance.enemies.Remove(this);
-
-            if (turret.targets.Contains(this))
-            {
-                Turret turretAttacking = turret.GetComponent<Turret>();
-
-                turretAttacking.targets.Remove(this);
-            }
+            turret.targets.Remove(this);
         }
+    }
+
+    public IEnumerator Die()
+    {
+        foreach (var turret in attackingTurret)
+        {
+            Turret turretAttacking = turret.GetComponent<Turret>();
+
+            turretAttacking.targets.Remove(this);
+        }
+
+        attackingTurret.Clear();
+        GameManager.Instance.enemies.Remove(this);
 
         WaveSpawner.enemyAlive--;
 
+        //Wait until this enemy have been erased from all list before destroying it
+        yield return new WaitUntil(() => !GameManager.Instance.enemies.Contains(this));
+        
         Destroy(gameObject);
-    }
-
-    public void SetPath(List<Vector3> newPath)
-    {
-        currentPathIndex = 0;
-        pathVectorList = newPath;
     }
 }

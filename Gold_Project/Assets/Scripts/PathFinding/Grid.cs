@@ -65,13 +65,9 @@ public class Grid<TGridObject> : MonoBehaviour
 
 			Vector3 position = GetWorldPosition(x, y);
 
-			GameObject turret = Instantiate(BuildManager.Instance.GetTurretToBuild(), new Vector3(position.x + cellSize / 2, position.y + cellSize / 2, 0), Quaternion.identity);
+			BuildManager.Instance.CreateTurret(new Vector3(position.x + cellSize / 2, position.y + cellSize / 2));
 
-			turret.transform.GetChild(1).localScale = new Vector3(cellSize, cellSize, cellSize);
-
-			BuildManager.Instance.turretToBuild = null;
-
-			Debug.Log("cell status : turret:" + cellArray[x, y].isTurret + " barricade:" + cellArray[x, y].isBarricade + " Event" + cellArray[x, y].isEvent);
+			//Debug.Log("cell status : turret:" + cellArray[x, y].isTurret + " barricade:" + cellArray[x, y].isBarricade + " Event" + cellArray[x, y].isEvent);
 		}
 	}
 	public void SetTurret(Vector3 worldPosition)

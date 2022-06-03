@@ -6,34 +6,37 @@ using UnityEngine.UI;
 
 public class truck : MonoBehaviour
 {
-    public int Truck_Hp= 10;
+    public int Truck_Hp= 5;
 
     public Text Truck_Coins_Text;
+    public Text Truck_Waves_Text;
 
-    public static float gold = 1000;
+    public static float gold = 200;
 
     public GameObject Truck_Game_Over_Screen;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject Truck_Victory_Screen;
+    public WaveSpawner WS;
+   
 
     // Update is called once per frame
     void Update()
     {
-        if (this.Truck_Hp <= 0 )
+        if (!WS.isActiveAndEnabled && Truck_Hp > 0)
         {
-            Loose();
+            Truck_Victory_Screen.SetActive(true);
+            Time.timeScale = 0;
         }
 
-        Truck_Coins_Text.text = ("Coins : " + gold.ToString());
+        Truck_Coins_Text.text = ("  : " + gold.ToString());
     }
 
     public void TakeDamage()
     {
         this.Truck_Hp --;
+        if (this.Truck_Hp <= 0)
+        {
+            Loose();
+        }
     }
     public void Loose()
     {
