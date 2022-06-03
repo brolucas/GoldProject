@@ -227,8 +227,8 @@ public class Turret : MonoBehaviour
         if (targets.Count <= 0)
             return;
 
-        /*#region Normal Attack
-        //Attack the first target to enter the range until it die or goes out of range
+        #region Normal Attack
+        /*//Attack the first target to enter the range until it die or goes out of range
 
         Vector3 firstTarget = targets[0].transform.position - origin;
 
@@ -241,8 +241,8 @@ public class Turret : MonoBehaviour
             Shoot(enemyScript);
             fireCountDown = 1 / fireRate;
         }
-        fireCountDown -= Time.deltaTime / 2;
-        #endregion*/
+        fireCountDown -= Time.deltaTime / 2;*/
+        #endregion
 
         switch (kindOfTurret)
         {
