@@ -2,14 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyType
+{
+    GROUND,
+    FLY,
+    TERRORIST
+};
+
 public class EnemiesTemp : MonoBehaviour
 {
     public float startingHealth = 2500.0f;
     public float currentHealth = 0.0f;
+    public EnemyType type;
 
     public int speed = 3;
-
-    public bool isFlying;
 
     public float goldValue;
 
@@ -20,6 +26,9 @@ public class EnemiesTemp : MonoBehaviour
 
     public List<Turret> attackingTurret = new List<Turret>();
 
+    private int currentPathIndex;
+    private List<Vector3> pathVectorList;
+    public GameObject endPoint;
     //public float startTime = 0.0f;
 
     public void Start()
@@ -30,6 +39,48 @@ public class EnemiesTemp : MonoBehaviour
 
         StartCoroutine(DamagePerSeconds());
         this.GetComponent<Rigidbody2D>().AddForce(new Vector2(500 * speed * Time.deltaTime, 0));
+    }
+
+    public void Update()
+    {
+        HandleMovement();
+        if(pathVectorList != null)
+        {
+            SetTargetPosition(endPoint.transform.position);
+        }
+    }
+    private void HandleMovement()
+    {
+        if (pathVectorList != null)
+        {
+            Vector3 targetPosition = pathVectorList[currentPathIndex];
+            if (Vector3.Distance(transform.position, targetPosition) > 1f)
+            {
+                Vector3 moveDir = (targetPosition - transform.position).normalized;
+
+                float distanceBefore = Vector3.Distance(transform.position, targetPosition);
+                transform.position = transform.position + moveDir * speed * Time.deltaTime;
+            }
+            else
+            {
+                currentPathIndex++;
+                if (currentPathIndex >= pathVectorList.Count)
+                {
+                    pathVectorList = null;
+                }
+            }
+        }
+    }
+    public IEnumerator SetTargetPosition(Vector3 targetPosition)
+    {
+        currentPathIndex = 0;
+        pathVectorList = Pathfinding.Instance.FindPath(this.transform.position, targetPosition);
+
+        if (pathVectorList != null && pathVectorList.Count > 1)
+        {
+            pathVectorList.RemoveAt(0);
+        }
+        yield return new WaitForSeconds(0.1f);
     }
 
     public void TakeDamage(float damage)
@@ -111,5 +162,11 @@ public class EnemiesTemp : MonoBehaviour
         WaveSpawner.enemyAlive--;
 
         Destroy(gameObject);
+    }
+
+    public void SetPath(List<Vector3> newPath)
+    {
+        currentPathIndex = 0;
+        pathVectorList = newPath;
     }
 }
