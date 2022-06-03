@@ -1,0 +1,384 @@
+fileFormatVersion: 2
+guid: 136b2769a84efd940af0d5f7b5535139
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2911499368290302228
+    second: "Bomb_decoup\xE9_0"
+  - first:
+      213: 4638334782380706322
+    second: "Bomb_decoup\xE9_1"
+  - first:
+      213: 3185652367125999971
+    second: "Bomb_decoup\xE9_2"
+  - first:
+      213: 9127648473496413378
+    second: "Bomb_decoup\xE9_3"
+  - first:
+      213: 2941884061674654131
+    second: "Bomb_decoup\xE9_4"
+  - first:
+      213: -6361163787327267253
+    second: "Bomb_decoup\xE9_5"
+  - first:
+      213: -5763888595844786201
+    second: "Bomb_decoup\xE9_6"
+  - first:
+      213: 7352297048107518235
+    second: "Bomb_decoup\xE9_7"
+  - first:
+      213: -5477037965067767100
+    second: "Bomb_decoup\xE9_8"
+  - first:
+      213: 2796253632452902704
+    second: "Bomb_decoup\xE9_9"
+  - first:
+      213: -3431897408945709469
+    second: "Bomb_decoup\xE9_10"
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "Bomb_decoup\xE9_0"
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 465
+        width: 81
+        height: 55
+      alignment: 9
+      pivot: {x: 0.5577776, y: 0.21069004}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 419b7baef39b76820800000000000000
+      internalID: 2911499368290302228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Bomb_decoup\xE9_1"
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 471
+        width: 56
+        height: 68
+      alignment: 9
+      pivot: {x: 0.61700004, y: 0.3623527}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21a042dd8ecae5040800000000000000
+      internalID: 4638334782380706322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Bomb_decoup\xE9_2"
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 344
+        width: 244
+        height: 240
+      alignment: 9
+      pivot: {x: 0.49999988, y: 0.38690007}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3617d6813f5b53c20800000000000000
+      internalID: 3185652367125999971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Bomb_decoup\xE9_3"
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 471
+        width: 56
+        height: 68
+      alignment: 9
+      pivot: {x: 0.34957123, y: 0.33482316}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c4e3612debebae70800000000000000
+      internalID: 9127648473496413378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Bomb_decoup\xE9_4"
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 465
+        width: 81
+        height: 55
+      alignment: 9
+      pivot: {x: 0.38444388, y: 0.24472657}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b94082a7fba3d820800000000000000
+      internalID: 2941884061674654131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Bomb_decoup\xE9_5"
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 368
+        width: 56
+        height: 68
+      alignment: 9
+      pivot: {x: 0.6504285, y: 0.6376464}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4e97420d3b98b7a0800000000000000
+      internalID: -6361163787327267253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Bomb_decoup\xE9_6"
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 369
+        width: 56
+        height: 68
+      alignment: 9
+      pivot: {x: 0.34957123, y: 0.6927055}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e71fb74cdd8200b0800000000000000
+      internalID: -5763888595844786201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Bomb_decoup\xE9_7"
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 182
+        width: 127
+        height: 130
+      alignment: 9
+      pivot: {x: 0.8906136, y: 0.14720036}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b190a9b063b980660800000000000000
+      internalID: 7352297048107518235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Bomb_decoup\xE9_8"
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 78
+        width: 267
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c2bec64df6adf3b0800000000000000
+      internalID: -5477037965067767100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Bomb_decoup\xE9_9"
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 182
+        width: 127
+        height: 130
+      alignment: 9
+      pivot: {x: 0.11675641, y: 0.14000033}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03f30401dd94ec620800000000000000
+      internalID: 2796253632452902704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Bomb_decoup\xE9_10"
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 12
+        width: 25
+        height: 46
+      alignment: 9
+      pivot: {x: 0.4625586, y: 0.90695494}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36e15325d737f50d0800000000000000
+      internalID: -3431897408945709469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

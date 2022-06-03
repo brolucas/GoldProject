@@ -24,14 +24,28 @@ public class EnemiesTemp : MonoBehaviour
 
     public List<Turret> attackingTurret = new List<Turret>();
 
+    public int currentPathIndex;
+    public List<Vector3> pathVectorList;
+    public Transform endPoint;
+
     public void Start()
     {
-        GameManager.Instance.enemies.Add(this);
-
+        endPoint = Pathfinding.Instance.endPoint;
+        //GameManager.Instance.enemies.Add(this);
+        SetTargetPosition(endPoint.position);
         currentHealth = startingHealth;
 
         StartCoroutine(DamagePerSeconds());
-        this.GetComponent<Rigidbody2D>().AddForce(new Vector2(500 * speed * Time.deltaTime, 0));
+        //this.GetComponent<Rigidbody2D>().AddForce(new Vector2(500 * speed * Time.deltaTime, 0));
+    }
+
+    public void Update()
+    {
+        HandleMovement();
+        if (pathVectorList != null)
+        {
+            SetTargetPosition(endPoint.position);
+        }
     }
 
     public void TakeDamage(float damage)
@@ -43,7 +57,7 @@ public class EnemiesTemp : MonoBehaviour
         if (currentHealth <= 0)
         {
             //Let this here bc should give us gold when hit the truck
-            truck.gold += this.goldValue;
+            GameManager.Instance.truck.gold += this.goldValue;
             StartCoroutine(Die());
         }
     }
@@ -101,7 +115,7 @@ public class EnemiesTemp : MonoBehaviour
         }
     }
 
-    public void OnDestroy()
+    /*public void OnDestroy()
     {
         // Just in case take it off if optimization 
         // If the target isn't clear off the turrets will bug
@@ -109,7 +123,7 @@ public class EnemiesTemp : MonoBehaviour
         {
             turret.targets.Remove(this);
         }
-    }
+    }*/
 
     public IEnumerator Die()
     {
@@ -129,5 +143,47 @@ public class EnemiesTemp : MonoBehaviour
         yield return new WaitUntil(() => !GameManager.Instance.enemies.Contains(this));
         
         Destroy(gameObject);
+    }
+
+    private void HandleMovement()
+    {
+        if (pathVectorList != null)
+        {
+            Vector3 targetPosition = pathVectorList[currentPathIndex];
+            if (Vector3.Distance(transform.position, targetPosition) > 0.1f)
+            {
+                Vector3 moveDir = (targetPosition - transform.position).normalized;
+                Debug.Log(targetPosition);
+
+                //float distanceBefore = Vector3.Distance(transform.position, targetPosition);
+                transform.position = transform.position + moveDir * speed * Time.deltaTime;
+            }
+            else
+            {
+                currentPathIndex++;
+                if (currentPathIndex >= pathVectorList.Count)
+                {
+                    pathVectorList = null;
+                }
+            }
+        }
+    }
+
+    public void SetTargetPosition(Vector3 targetPosition)
+    {
+        currentPathIndex = 0;
+
+        pathVectorList = Pathfinding.Instance.FindPath(this.transform.position, targetPosition);
+
+        if (pathVectorList != null && pathVectorList.Count > 1)
+        {
+            pathVectorList.RemoveAt(0);
+        }
+    }
+
+    public void SetPath(List<Vector3> newPath)
+    {
+        currentPathIndex = 0;
+        pathVectorList = newPath;
     }
 }

@@ -48,7 +48,7 @@ public class Grid<TGridObject> : MonoBehaviour
 		return new Vector3(x, y) * cellSize + originPos;
 	}
 
-	private void GetXY(Vector3 worldPosition, out int x, out int y)
+	public void GetXY(Vector3 worldPosition, out int x, out int y)
     {
 		x = Mathf.FloorToInt((worldPosition - originPos).x / cellSize);
 		y = Mathf.FloorToInt((worldPosition - originPos).y / cellSize);

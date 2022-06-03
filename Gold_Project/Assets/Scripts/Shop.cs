@@ -58,7 +58,7 @@ public class Shop : MonoBehaviour
     {
         GameObject turret = selectedTurretInGame;
 
-        truck.gold += selectedTurretInGame.GetComponent<Turret>().turretPrice / 2;
+        GameManager.Instance.truck.gold += selectedTurretInGame.GetComponent<Turret>().turretPrice / 2;
 
         selectedTurretInGame = null;
 
