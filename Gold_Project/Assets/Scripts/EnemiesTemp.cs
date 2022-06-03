@@ -30,8 +30,9 @@ public class EnemiesTemp : MonoBehaviour
 
     public void Start()
     {
+        endPoint = Pathfinding.Instance.endPoint;
         //GameManager.Instance.enemies.Add(this);
-        SetTargetPosition(endPoint.transform.position);
+        SetTargetPosition(endPoint.position);
         currentHealth = startingHealth;
 
         StartCoroutine(DamagePerSeconds());
@@ -43,7 +44,7 @@ public class EnemiesTemp : MonoBehaviour
         HandleMovement();
         if (pathVectorList != null)
         {
-            SetTargetPosition(endPoint.transform.position);
+            SetTargetPosition(endPoint.position);
         }
     }
 
@@ -152,6 +153,7 @@ public class EnemiesTemp : MonoBehaviour
             if (Vector3.Distance(transform.position, targetPosition) > 0.1f)
             {
                 Vector3 moveDir = (targetPosition - transform.position).normalized;
+                Debug.Log(targetPosition);
 
                 //float distanceBefore = Vector3.Distance(transform.position, targetPosition);
                 transform.position = transform.position + moveDir * speed * Time.deltaTime;
@@ -170,6 +172,7 @@ public class EnemiesTemp : MonoBehaviour
     public void SetTargetPosition(Vector3 targetPosition)
     {
         currentPathIndex = 0;
+
         pathVectorList = Pathfinding.Instance.FindPath(this.transform.position, targetPosition);
 
         if (pathVectorList != null && pathVectorList.Count > 1)

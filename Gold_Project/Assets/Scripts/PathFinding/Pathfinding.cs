@@ -8,6 +8,7 @@ public class Pathfinding
 	private const int MOVE_DIAGONAL_COST = 14;
 
 	public static Pathfinding Instance { get; private set; }
+	public Transform endPoint;
 
 	private Grid<PathNode> grid;
 	private List<PathNode> openList;

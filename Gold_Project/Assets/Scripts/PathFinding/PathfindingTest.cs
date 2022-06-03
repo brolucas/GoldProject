@@ -11,8 +11,9 @@ public class PathfindingTest : MonoBehaviour
     void Start()
     {
         pathfinding = new Pathfinding(15, 7, this.transform);
-        enemy.endPoint = end.transform;
+        pathfinding.endPoint = end.transform;
 
+        enemy.endPoint = end.transform;
     }
 
     // Update is called once per frame
