@@ -11,7 +11,8 @@ public class PathfindingTest : MonoBehaviour
     void Start()
     {
         pathfinding = new Pathfinding(15, 7, this.transform);
-        enemy.endPoint = end;
+        enemy.endPoint = end.transform;
+
     }
 
     // Update is called once per frame
@@ -20,6 +21,13 @@ public class PathfindingTest : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             EnemiesTemp enemyTest = Instantiate(enemy, spawn.transform.position, spawn.transform.rotation);
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            pathfinding.GetGrid().GetXY(mouseWorldPosition, out int x, out int y);
+            pathfinding.GetNode(x, y).SetIsWalkable(!pathfinding.GetNode(x, y).isWalkable);
         }
     }
 }
