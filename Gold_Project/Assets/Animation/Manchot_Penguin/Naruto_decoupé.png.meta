@@ -1,0 +1,372 @@
+fileFormatVersion: 2
+guid: 38ab547edbe0b7543b22dcd738666c0c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2055745831419996938
+    second: "Naruto_decoup\xE9_0"
+  - first:
+      213: -6508262095101963226
+    second: "Naruto_decoup\xE9_1"
+  - first:
+      213: 3523611236846954251
+    second: "Naruto_decoup\xE9_2"
+  - first:
+      213: 5489046532940315946
+    second: "Naruto_decoup\xE9_3"
+  - first:
+      213: 8693051884527590558
+    second: "Naruto_decoup\xE9_4"
+  - first:
+      213: -7512331183004263161
+    second: "Naruto_decoup\xE9_5"
+  - first:
+      213: -4622149070421323975
+    second: "Naruto_decoup\xE9_6"
+  - first:
+      213: -4493956996672784346
+    second: "Naruto_decoup\xE9_7"
+  - first:
+      213: -5258383543680539381
+    second: "Naruto_decoup\xE9_8"
+  - first:
+      213: -3093987519687366520
+    second: "Naruto_decoup\xE9_9"
+  - first:
+      213: 4996592433600964688
+    second: "Naruto_decoup\xE9_10"
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "Naruto_decoup\xE9_0"
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 465
+        width: 81
+        height: 55
+      alignment: 9
+      pivot: {x: 0.5693332, y: 0.1766546}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0b674e11f9778c10800000000000000
+      internalID: 2055745831419996938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Naruto_decoup\xE9_1"
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 471
+        width: 56
+        height: 68
+      alignment: 9
+      pivot: {x: 0.6002854, y: 0.33482316}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 624de445b120ea5a0800000000000000
+      internalID: -6508262095101963226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Naruto_decoup\xE9_2"
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 354
+        width: 244
+        height: 240
+      alignment: 9
+      pivot: {x: 0.49999988, y: 0.35570005}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0766d240c166e030800000000000000
+      internalID: 3523611236846954251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Naruto_decoup\xE9_3"
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 471
+        width: 56
+        height: 68
+      alignment: 9
+      pivot: {x: 0.38299996, y: 0.38988227}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2d3f7f4db20d2c40800000000000000
+      internalID: 5489046532940315946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Naruto_decoup\xE9_4"
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 465
+        width: 81
+        height: 55
+      alignment: 9
+      pivot: {x: 0.38444462, y: 0.22770885}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9c9e4791ace3a870800000000000000
+      internalID: 8693051884527590558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Naruto_decoup\xE9_5"
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 239
+        width: 90
+        height: 154
+      alignment: 9
+      pivot: {x: 0.8951996, y: 0.09277968}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70dd0f15796deb790800000000000000
+      internalID: -7512331183004263161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Naruto_decoup\xE9_6"
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 368
+        width: 56
+        height: 68
+      alignment: 9
+      pivot: {x: 0.6504285, y: 0.6651759}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93f82aed8e3dadfb0800000000000000
+      internalID: -4622149070421323975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Naruto_decoup\xE9_7"
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 369
+        width: 56
+        height: 68
+      alignment: 9
+      pivot: {x: 0.3328574, y: 0.8578814}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 628ff69ebe142a1c0800000000000000
+      internalID: -4493956996672784346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Naruto_decoup\xE9_8"
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 78
+        width: 267
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b056922f6087607b0800000000000000
+      internalID: -5258383543680539381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Naruto_decoup\xE9_9"
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 239
+        width: 95
+        height: 123
+      alignment: 9
+      pivot: {x: 0.08618999, y: 0.10429283}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 888ea855eb2ff05d0800000000000000
+      internalID: -3093987519687366520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Naruto_decoup\xE9_10"
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 12
+        width: 25
+        height: 46
+      alignment: 9
+      pivot: {x: 0.42511842, y: 0.8662594}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 058a0346856775540800000000000000
+      internalID: 4996592433600964688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
