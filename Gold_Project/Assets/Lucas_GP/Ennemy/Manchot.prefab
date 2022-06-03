@@ -148,13 +148,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 275
   currentHealth: 0
-  speed: 4
+  speed: 2
   isFlying: 0
   goldValue: 5
   isBurning: 0
   nbrOfAtqSuffed: 0
   damagePerSeconds: 0
   attackingTurret: []
+  distanceToNextTarget: 0
   currentPathIndex: 0
   pathVectorList: []
   endPoint: {fileID: 0}

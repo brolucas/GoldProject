@@ -14,7 +14,7 @@ public class PathfindingTest : MonoBehaviour
 	void Start()
 	{
 		buildManager = BuildManager.Instance;
-		pathfinding = new Pathfinding(15, 7, cellSize, this.transform);
+		pathfinding = new Pathfinding(13, 7, cellSize, this.transform);
 		pathfinding.endPoint = end.transform;
 
 		//enemy.endPoint = end.transform;
