@@ -32,7 +32,7 @@ public class EnemiesTemp : MonoBehaviour
     public void Start()
     {
         endPoint = Pathfinding.Instance.endPoint;
-        //GameManager.Instance.enemies.Add(this);
+        GameManager.Instance.enemies.Add(this);
         SetTargetPosition(endPoint.position);
         currentHealth = startingHealth;
 
