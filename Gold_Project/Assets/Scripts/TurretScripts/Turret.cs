@@ -80,6 +80,7 @@ public class Turret : MonoBehaviour
 
         InitTurretData(BuildManager.Instance.turretToBuild);
     }
+
     public void Start()
     {
         if (turretDatabase == null)
@@ -273,7 +274,7 @@ public class Turret : MonoBehaviour
 
                     if (fireCountDown <= 0f)
                     {
-                        Shoot(currentTarget.GetComponent<EnemiesTemp>());
+                        Shoot(currentTarget);
                         fireCountDown = 1 / fireRate;
                     }
 
@@ -283,7 +284,52 @@ public class Turret : MonoBehaviour
                 }
             case KindOfTurret.Furnace:
                 {
-                    EnemiesTemp currentTarget = targets[0];
+                    EnemiesTemp currentTarget = ChooseTargetClosestToTruck();
+
+                    if (currentTarget.isBurning)
+                    {
+                        foreach (var target in targets)
+                        {
+                            if (target == currentTarget)
+                                continue;
+
+                            if (currentTarget.pathVectorList.Count < target.pathVectorList.Count)
+                            {
+                                currentTarget = target;
+                            }
+                            else if (currentTarget.pathVectorList.Count == target.pathVectorList.Count
+                                && currentTarget.distanceToNextTarget < target.distanceToNextTarget)
+                            {
+                                currentTarget = target;
+                            }
+                        }
+                    }
+
+                    while (currentTarget.isBurning)
+                    {
+                        foreach (var target in targets)
+                        {
+                            if (target == currentTarget)
+                                continue;
+
+                            if (currentTarget.pathVectorList.Count < target.pathVectorList.Count)
+                            {
+                                currentTarget = target;
+                            }
+                            else if (currentTarget.pathVectorList.Count == target.pathVectorList.Count
+                                && currentTarget.distanceToNextTarget < target.distanceToNextTarget)
+                            {
+                                currentTarget = target;
+                            }
+                        }
+                    }
+
+                    /*if (currentTarget.isBurning)
+                    {
+                        targets.Remove(currentTarget);
+                    }*/
+
+                    
 
                     //Search for a target that doesn't Burn
                     foreach (var target in targets)
@@ -302,7 +348,7 @@ public class Turret : MonoBehaviour
 
                     if (fireCountDown <= 0f)
                     {
-                        Shoot(currentTarget.GetComponent<EnemiesTemp>());
+                        Shoot(currentTarget);
                         fireCountDown = 1 / fireRate;
                     }
 
@@ -324,6 +370,43 @@ public class Turret : MonoBehaviour
         }
     }
 
+
+    public EnemiesTemp ChooseTargetClosestToTruck()
+    {
+        // Choose the target closest to get to the truck
+        EnemiesTemp currentTarget = targets[0];
+
+        List<EnemiesTemp> listEnemiesClosestToTruck = new List<EnemiesTemp>();
+
+        foreach (var target in targets)
+        {
+            listEnemiesClosestToTruck.Add(target);
+
+            if (target == currentTarget)
+                continue;
+
+            if (currentTarget.pathVectorList.Count < target.pathVectorList.Count)
+            {
+                currentTarget = target;
+            }
+            else if (currentTarget.pathVectorList.Count == target.pathVectorList.Count
+                && currentTarget.distanceToNextTarget < target.distanceToNextTarget)
+            {
+                currentTarget = target;
+            }
+        }
+
+        for (int i = 0; i < listEnemiesClosestToTruck.Count; i++)
+        {
+            if (listEnemiesClosestToTruck[i].pathVectorList.Count > listEnemiesClosestToTruck[i + 1].pathVectorList.Count)
+            {
+                //currentTarget = target;
+            }
+        }
+        //Swap<EnemiesTemp>(listEnemiesClosestToTruck, listEnemiesClosestToTruck[i], listEnemiesClosestToTruck[i + 1]);
+
+        return listEnemiesClosestToTruck[0];
+    }
     public virtual void Shoot(EnemiesTemp enemy)
     {
         TurretPassive(enemy);
@@ -464,5 +547,12 @@ public class Turret : MonoBehaviour
                 return true;
         }
         return false;
+    }
+
+    public static void Swap<T>(IList<T> list, int indexA, int indexB)
+    {
+        T tmp = list[indexA];
+        list[indexA] = list[indexB];
+        list[indexB] = tmp;
     }
 }
