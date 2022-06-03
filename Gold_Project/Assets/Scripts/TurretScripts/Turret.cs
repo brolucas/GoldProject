@@ -182,15 +182,17 @@ public class Turret : MonoBehaviour
 
     private void Update()
     {
-        Vector3 origin = transform.position;
-        if (gameManager == null)
-            return;
-
-        if (gameManager.enemies.Count <= 0)
-            return;
-
         // Change the visibility range // need opti
         rangeSprite.transform.localScale = new Vector3(localScale.x * range, localScale.y * range, 0);
+
+        Vector3 origin = transform.position;
+        ChooseTarget(origin);
+    }
+
+    public virtual void ChooseTarget(Vector3 origin)
+    {
+        if (gameManager.enemies.Count <= 0)
+            return;
 
         foreach (var enemy in gameManager.enemies)
         {
@@ -222,24 +224,10 @@ public class Turret : MonoBehaviour
             }
         }
 
-        /*#if UNITY_EDITOR
-        Gizmos.color = targets.Count > 0 ? Color.red : Color.grey;
-        Handles.DrawWireSphere(origin            // position
-                             , range);          // range
-
-        #endif
-
-        Gizmos.DrawWireSphere(origin            // position
-            , range);          // range*/
-
         if (targets.Count <= 0)
             return;
-        ChooseTarget(origin);
-    }
 
-    public virtual void ChooseTarget(Vector3 origin)
-    {
-        #region Normal Attack
+        /*#region Normal Attack
         //Attack the first target to enter the range until it die or goes out of range
 
         Vector3 firstTarget = targets[0].transform.position - origin;
@@ -254,7 +242,7 @@ public class Turret : MonoBehaviour
             fireCountDown = 1 / fireRate;
         }
         fireCountDown -= Time.deltaTime / 2;
-        #endregion
+        #endregion*/
 
         switch (kindOfTurret)
         {
@@ -383,6 +371,8 @@ public class Turret : MonoBehaviour
                 {
                     // Enemies that suffer 5 attacks are burned burned enemies suffer 1 point of damage
 
+                    
+
                     enemy.nbrOfAtqSuffed += Mathf.Clamp(1,0,5);
 
                     if (enemy.nbrOfAtqSuffed >= capPassive/*5*/)
@@ -461,5 +451,18 @@ public class Turret : MonoBehaviour
     public void Upgrade()
     {
         
+    }
+
+    public bool IsPointInsideCone(Vector3 point, Vector3 coneOrigin, Vector3 coneDirection, int maxAngle, int maxDistance)
+    {
+        var distanceToConeOrigin = (point - coneOrigin).magnitude;
+        if (distanceToConeOrigin < maxDistance)
+        {
+            var pointDirection = point - coneOrigin;
+            var angle = Vector3.Angle(coneDirection, pointDirection);
+            if (angle < maxAngle)
+                return true;
+        }
+        return false;
     }
 }
