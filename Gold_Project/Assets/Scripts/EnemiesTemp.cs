@@ -24,6 +24,7 @@ public class EnemiesTemp : MonoBehaviour
 
     public List<Turret> attackingTurret = new List<Turret>();
 
+    public float distanceToNextTarget;
     public int currentPathIndex;
     public List<Vector3> pathVectorList;
     public Transform endPoint;
@@ -115,7 +116,7 @@ public class EnemiesTemp : MonoBehaviour
         }
     }
 
-    /*public void OnDestroy()
+    public void OnDestroy()
     {
         // Just in case take it off if optimization 
         // If the target isn't clear off the turrets will bug
@@ -123,7 +124,7 @@ public class EnemiesTemp : MonoBehaviour
         {
             turret.targets.Remove(this);
         }
-    }*/
+    }
 
     public IEnumerator Die()
     {
@@ -150,10 +151,11 @@ public class EnemiesTemp : MonoBehaviour
         if (pathVectorList != null)
         {
             Vector3 targetPosition = pathVectorList[currentPathIndex];
-            if (Vector3.Distance(transform.position, targetPosition) > 0.1f)
+            distanceToNextTarget = Vector3.Distance(transform.position, targetPosition);
+            if (distanceToNextTarget > 0.1f)
             {
                 Vector3 moveDir = (targetPosition - transform.position).normalized;
-                Debug.Log(targetPosition);
+                
 
                 //float distanceBefore = Vector3.Distance(transform.position, targetPosition);
                 transform.position = transform.position + moveDir * speed * Time.deltaTime;
@@ -172,7 +174,7 @@ public class EnemiesTemp : MonoBehaviour
     public void SetTargetPosition(Vector3 targetPosition)
     {
         currentPathIndex = 0;
-
+        Debug.Log(targetPosition);
         pathVectorList = Pathfinding.Instance.FindPath(this.transform.position, targetPosition);
 
         if (pathVectorList != null && pathVectorList.Count > 1)
