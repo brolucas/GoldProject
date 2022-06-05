@@ -32,7 +32,7 @@ MonoBehaviour:
   - label: Sniper Tower
     kindOfTurret: 2
     healthPoints: 175
-    range: 2
+    range: 3
     nbrOfTarget: 1
     turretPrice: 175
     targetType: 1
@@ -52,9 +52,9 @@ MonoBehaviour:
     nbrOfTarget: 1
     turretPrice: 200
     targetType: 1
-    atqPoints: 50
+    atqPoints: 5
     fireRate: 10
-    maxAtqPoints: 180
+    maxAtqPoints: 50
     activeAtqCap: 0
     basePassiveParameters: 1
     maxPassiveParameters: 1
