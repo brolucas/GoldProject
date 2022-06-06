@@ -371,20 +371,20 @@ public class Turret : MonoBehaviour
 
                     enemy.nbrOfAtqSuffed += Mathf.Clamp(1,0,5);
 
-                    if (enemy.nbrOfAtqSuffed >= capPassive/*5*/)
+                    /*if (enemy.nbrOfAtqSuffed >= capPassive*//*5*//*)
                     {
                         float burnDuration = 5.0f;
-                        float damage = basePassiveParameters/*1*/;
+                        float damage = basePassiveParameters*//*1*//*;
                         float damageBasedOnMaxHealth = maxPassiveParameters;
 
-                        /*if (!enemy.isBurning)
+                        if (!enemy.isBurning)
                         {
-                            enemy.StartCoroutine(enemy.Burn(burnDuration, damage, true, maxPassiveParameters *//*1*//*));
-                        }*/
+                            enemy.StartCoroutine(enemy.Burn(burnDuration, damage, true, maxPassiveParameters 1));
+                        }
 
                         //float explosionRange = 1;
 
-                        /*foreach (var enemies in GameManager.Instance.enemies)
+                        foreach (var enemies in GameManager.Instance.enemies)
                         {
                             if (enemies == enemy)
                                 return;
@@ -399,15 +399,15 @@ public class Turret : MonoBehaviour
                             {
                                 if (currentLevel >= maxLevel)
                                 {
-                                    enemies.Burn(burnDuration, damage, true, maxPassiveParameters*//*1*//*);
+                                    enemies.Burn(burnDuration, damage, true, maxPassiveParameters1);
                                 }
                                 else //Is not max level
                                 {
                                     enemies.Burn(burnDuration, damage, false, 0);
                                 }
                             }
-                        }*/
-                    }
+                        }
+                    }*/
 
                     break;
                 }
