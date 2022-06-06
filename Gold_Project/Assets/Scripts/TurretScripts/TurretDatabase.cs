@@ -12,6 +12,7 @@ public enum TargetType
 
 public enum KindOfTurret
 {
+    // -- /!\ Do not Add a new Type above another add it below the last one PLS /!\ -- //
     DefaultDoNotUseIt,
     Basic,
     Mortar,
@@ -25,6 +26,7 @@ public enum KindOfTurret
     Zap,
     Teleporter,
     Viktor,
+    // ex : NewType,
 };
 
 [CreateAssetMenu(fileName = "New Turret", menuName ="Turret")]

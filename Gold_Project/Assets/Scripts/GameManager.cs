@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
         }
 
         instance = this;
+
+        enemies.Clear();
         //DontDestroyOnLoad(this.gameObject);
     }
 
