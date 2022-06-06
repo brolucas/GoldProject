@@ -1,0 +1,357 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6774791142897126948
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6774791142897126946}
+  - component: {fileID: 6774791142897126947}
+  - component: {fileID: 6774791142897126945}
+  - component: {fileID: 6774791142897126944}
+  - component: {fileID: 6774791142897126959}
+  - component: {fileID: 6774791141816150505}
+  - component: {fileID: 6774791141816150509}
+  - component: {fileID: 3713440690705765454}
+  m_Layer: 0
+  m_Name: GameManager 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6774791142897126946
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6774791142897126948}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1244.2501, y: 429.8685, z: -608.9701}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6774791142897126947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6774791142897126948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f154f23115a4f254ea0111bab1bd77c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenuScreen: {fileID: 0}
+--- !u!114 &6774791142897126945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6774791142897126948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87553a890a8f6964e8b0671b8eb3837f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerCounterRight: {fileID: 0}
+  timerCounterLeft: {fileID: 0}
+--- !u!114 &6774791142897126944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6774791142897126948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1efe4d337a7f36459bf4eec69b4bc14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HUDLeft: {fileID: 0}
+  HUDRight: {fileID: 0}
+  switchHUDSide: {fileID: 6774791142897126959}
+  gameOverScreen: {fileID: 0}
+  levelName: {fileID: 0}
+  TurretlevelName: "K\xE9vin"
+--- !u!114 &6774791142897126959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6774791142897126948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a3cb48a50eae324d870dafabf493cd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftHUD: {fileID: 0}
+  rightHUD: {fileID: 0}
+  isLeft: 1
+--- !u!114 &6774791141816150505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6774791142897126948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddcabb5b20172ba47a57bc17679406c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  truck: {fileID: 0}
+  turretPrefab: {fileID: 0}
+  shop: {fileID: 0}
+  turretToBuild: 0
+--- !u!114 &6774791141816150509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6774791142897126948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81994cd44fb5078478e7bc9456b66220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 2488951184649618190, guid: 54169df03662d4e4daf3dfd18e565e01, type: 3}
+  - {fileID: 2488951184649618190, guid: 54169df03662d4e4daf3dfd18e565e01, type: 3}
+  - {fileID: 2488951184649618190, guid: 54169df03662d4e4daf3dfd18e565e01, type: 3}
+  allTurret: []
+  rangeSprite: {fileID: 4973951708042549589, guid: 843828b30fd82ff4088d2962f24999e7,
+    type: 3}
+  turretDatabase: {fileID: 0}
+  truck: {fileID: 0}
+  baricades: []
+--- !u!114 &3713440690705765454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6774791142897126948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4216503e2490f4090479c4b50781bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves:
+  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_nb_Runner: 1
+    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Manchot_nbr: 0
+    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
+      type: 3}
+    Wave_Count_Kamikaze: 0
+    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
+      type: 3}
+    Wave_Count_CRS: 0
+    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Volant: 0
+    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Boss: 0
+    _event: 0
+    Wave_Rate: 2
+  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_nb_Runner: 1
+    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Manchot_nbr: 0
+    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
+      type: 3}
+    Wave_Count_Kamikaze: 0
+    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
+      type: 3}
+    Wave_Count_CRS: 0
+    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Volant: 0
+    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Boss: 0
+    _event: 0
+    Wave_Rate: 2
+  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_nb_Runner: 1
+    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Manchot_nbr: 0
+    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
+      type: 3}
+    Wave_Count_Kamikaze: 0
+    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
+      type: 3}
+    Wave_Count_CRS: 0
+    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Volant: 0
+    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Boss: 0
+    _event: 0
+    Wave_Rate: 2
+  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_nb_Runner: 1
+    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Manchot_nbr: 0
+    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
+      type: 3}
+    Wave_Count_Kamikaze: 0
+    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
+      type: 3}
+    Wave_Count_CRS: 0
+    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Volant: 0
+    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Boss: 0
+    _event: 0
+    Wave_Rate: 2
+  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_nb_Runner: 1
+    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Manchot_nbr: 0
+    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
+      type: 3}
+    Wave_Count_Kamikaze: 0
+    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
+      type: 3}
+    Wave_Count_CRS: 0
+    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Volant: 0
+    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Boss: 0
+    _event: 0
+    Wave_Rate: 2
+  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_nb_Runner: 1
+    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Manchot_nbr: 0
+    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
+      type: 3}
+    Wave_Count_Kamikaze: 0
+    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
+      type: 3}
+    Wave_Count_CRS: 0
+    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Volant: 0
+    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Boss: 0
+    _event: 0
+    Wave_Rate: 2
+  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_nb_Runner: 1
+    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Manchot_nbr: 0
+    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
+      type: 3}
+    Wave_Count_Kamikaze: 0
+    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
+      type: 3}
+    Wave_Count_CRS: 0
+    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Volant: 0
+    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Boss: 0
+    _event: 0
+    Wave_Rate: 2
+  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_nb_Runner: 1
+    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Manchot_nbr: 0
+    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
+      type: 3}
+    Wave_Count_Kamikaze: 0
+    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
+      type: 3}
+    Wave_Count_CRS: 0
+    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Volant: 0
+    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Boss: 0
+    _event: 0
+    Wave_Rate: 2
+  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_nb_Runner: 1
+    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Manchot_nbr: 0
+    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
+      type: 3}
+    Wave_Count_Kamikaze: 0
+    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
+      type: 3}
+    Wave_Count_CRS: 0
+    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Volant: 0
+    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Boss: 0
+    _event: 0
+    Wave_Rate: 2
+  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_nb_Runner: 1
+    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Manchot_nbr: 0
+    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
+      type: 3}
+    Wave_Count_Kamikaze: 0
+    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
+      type: 3}
+    Wave_Count_CRS: 0
+    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Volant: 0
+    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Boss: 0
+    _event: 0
+    Wave_Rate: 2
+  spawnPoint:
+  - {fileID: 0}
+  spawnPoint2: {fileID: 0}
+  timeBetweenWave: 5
+  wave_Text: {fileID: 0}
+  wave_Victory_Screen: {fileID: 0}
+  listEvent: []

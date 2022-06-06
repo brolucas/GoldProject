@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WaveSpawner : MonoBehaviour
+public class WaveSpawner3 : MonoBehaviour
 {
     [SerializeField]
     public static int enemyAlive = 0;
@@ -16,6 +16,8 @@ public class WaveSpawner : MonoBehaviour
 
     [SerializeField]
     private Transform spawnPoint2;
+
+   
 
     [SerializeField]
     private float timeBetweenWave = 5f;
@@ -168,6 +170,12 @@ public class WaveSpawner : MonoBehaviour
                 Pathfinding.Instance.GetGrid().GetXY(temp, out int x, out int y);
                 Pathfinding.Instance.GetNode(x, y).SetIsWalkable(!Pathfinding.Instance.GetNode(x, y).isWalkable);
                 Pathfinding.Instance.GetNode(x, y).SetIsWalkable(!Pathfinding.Instance.GetNode(x + 1, y).isWalkable);
+                Pathfinding.Instance.GetNode(x, y).SetIsWalkable(!Pathfinding.Instance.GetNode(x , y+1).isWalkable);
+                Pathfinding.Instance.GetNode(x, y).SetIsWalkable(!Pathfinding.Instance.GetNode(x + 1, y+1).isWalkable);
+                Pathfinding.Instance.GetNode(x, y).SetIsWalkable(!Pathfinding.Instance.GetNode(x, y + 2).isWalkable);
+                Pathfinding.Instance.GetNode(x, y).SetIsWalkable(!Pathfinding.Instance.GetNode(x +2, y + 2).isWalkable);
+
+
                 // istevent.transform.GetChild(1).localScale = new Vector3(0, 0, 0);
                 break;
 
@@ -178,7 +186,7 @@ public class WaveSpawner : MonoBehaviour
                 {
                     foreach(GameObject element in GameManager.Instance.baricades)
                     {
-                        element.GetComponent<Baricade>().takeDamage((element.GetComponent<Baricade>().baseHp * 33) / 100);
+                        element.GetComponent<Baricade>().takeDamage(element.GetComponent<Baricade>().baseHp);
 
                     }
                 }

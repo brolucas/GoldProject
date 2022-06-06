@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     public truck truck;
 
+    public List<GameObject> baricades = new List<GameObject>();
+
     // Game Instance Singleton
     public static GameManager Instance
     {
