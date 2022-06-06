@@ -163,7 +163,6 @@ public class WaveSpawner3 : MonoBehaviour
         switch (noevent)
         {
             case 0:
-                Debug.Log("Event Launched !" + listEvent[0].ToString());
 
                 GameObject istevent = Instantiate(listEvent[0], temp, Quaternion.identity);
 
@@ -176,11 +175,10 @@ public class WaveSpawner3 : MonoBehaviour
                 Pathfinding.Instance.GetNode(x, y).SetIsWalkable(!Pathfinding.Instance.GetNode(x +2, y + 2).isWalkable);
 
 
-                // istevent.transform.GetChild(1).localScale = new Vector3(0, 0, 0);
+                //istevent.transform.GetChild(1).localScale = new Vector3(0, 0, 0);
                 break;
 
             case 1:
-                Debug.Log("Event Launched !" + listEvent[1].ToString());
                 
                 if (GameManager.Instance.baricades.Capacity != 0)
                 {
@@ -192,11 +190,9 @@ public class WaveSpawner3 : MonoBehaviour
                 }
                 break;
             case 2:
-                Debug.Log("Event Launched !" + listEvent[2].ToString());
                 spawnPoint.Add(spawnPoint2);
                 break;
             case 3:
-                Debug.Log("Event Launched !" + listEvent[3].ToString());
                 break;
 
         }

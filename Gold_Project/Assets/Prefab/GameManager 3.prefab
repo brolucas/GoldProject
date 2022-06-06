@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 6774791142897126959}
   - component: {fileID: 6774791141816150505}
   - component: {fileID: 6774791141816150509}
-  - component: {fileID: 3713440690705765454}
+  - component: {fileID: 3307029290719206331}
   m_Layer: 0
-  m_Name: GameManager 2
+  m_Name: GameManager 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,7 +135,7 @@ MonoBehaviour:
   turretDatabase: {fileID: 0}
   truck: {fileID: 0}
   baricades: []
---- !u!114 &3713440690705765454
+--- !u!114 &3307029290719206331
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6774791142897126948}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad4216503e2490f4090479c4b50781bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c070a4fee119df4eb367b48ae7cf7bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
@@ -348,8 +348,7 @@ MonoBehaviour:
     Wave_Count_Boss: 0
     _event: 0
     Wave_Rate: 2
-  spawnPoint:
-  - {fileID: 0}
+  spawnPoint: []
   spawnPoint2: {fileID: 0}
   timeBetweenWave: 5
   wave_Text: {fileID: 0}
