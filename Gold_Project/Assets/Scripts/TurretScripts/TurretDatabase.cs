@@ -14,17 +14,17 @@ public enum KindOfTurret
 {
     DefaultDoNotUseIt,
     Basic,
-    //Mortar,
-    //Discord,
+    Mortar,
+    Discord,
     SniperTower,
-    //Anti_Aerial,
+    Anti_Aerial,
     Furnace,
-    //Channelizer,
-    //Central,
-    //Immobilizer,
+    Channelizer,
+    Central,
+    Immobilizer,
     Zap,
-    //Teleporter,
-    //Viktor,
+    Teleporter,
+    Viktor,
 };
 
 [CreateAssetMenu(fileName = "New Turret", menuName ="Turret")]
