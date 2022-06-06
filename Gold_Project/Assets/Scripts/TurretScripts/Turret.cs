@@ -79,7 +79,16 @@ public class Turret : MonoBehaviour
             gameManager = FindObjectOfType<GameManager>();
         }
 
+        #region Show the range of the turret
+        rangeSprite = Instantiate(gameManager.rangeSprite, this.transform.position, this.transform.rotation, this.transform);
+
+        localScale = rangeSprite.transform.localScale;
+        
+        #endregion
+
         InitTurretData(BuildManager.Instance.turretToBuild);
+
+        rangeSprite.transform.localScale = new Vector3(range * 2, range * 2, 0);//1.265
     }
 
     public void Start()
@@ -93,13 +102,6 @@ public class Turret : MonoBehaviour
         gameManager = GameManager.Instance;
 
         gameManager.allTurret.Add(this);
-
-        #region Show the range of the turret
-        rangeSprite = Instantiate(gameManager.rangeSprite, this.transform.position, this.transform.rotation, this.transform);
-
-        localScale = rangeSprite.transform.localScale;
-        rangeSprite.transform.localScale = new Vector3(localScale.x * range, localScale.y * range, 0);//1.265
-        #endregion
 
         spriteRenderer.sprite = inGameDesign;
     }
@@ -144,7 +146,7 @@ public class Turret : MonoBehaviour
         kindOfTurret = turretData.kindOfTurret;
 
         healthPoints = turretData.healthPoints;
-        range = turretData.range * rangeMult;// x 1.52
+        range =  (localScale.x + (turretData.range * 2) * localScale.x) / 2;
         nbrOfTarget = turretData.nbrOfTarget;
         turretPrice = turretData.turretPrice;
 
@@ -185,10 +187,17 @@ public class Turret : MonoBehaviour
     private void Update()
     {
         // Change the visibility range // need opti
-        rangeSprite.transform.localScale = new Vector3(localScale.x * range, localScale.y * range, 0);
+        rangeSprite.transform.localScale = new Vector3(range * 2, range * 2, 0);
 
         Vector3 origin = transform.position;
+
         ChooseTarget(origin);
+
+    }
+
+    private void OnDrawGizmos()
+    {
+        Handles.DrawWireDisc(transform.position, transform.forward, range);
     }
 
     public virtual void ChooseTarget(Vector3 origin)
@@ -311,6 +320,8 @@ public class Turret : MonoBehaviour
         Debug.DrawLine(origin, origin + rayToTarget, Color.red);
         #endregion
 
+        TurretPassive(currentTarget);  
+
         if (fireCountDown <= 0f)
         {
             Shoot(currentTarget);
@@ -318,11 +329,11 @@ public class Turret : MonoBehaviour
         }
 
         fireCountDown -= Time.deltaTime;
+
     }
 
     public virtual void Shoot(EnemiesTemp enemy)
     {
-        TurretPassive(enemy);
 
         if (currentLevel >= maxLevel)
             PassiveLevelmax(enemy);
@@ -370,6 +381,15 @@ public class Turret : MonoBehaviour
                 {
                     // Enemies that suffer 5 attacks are burned burned enemies suffer 1 point of damage
 
+                    Debug.DrawLine(transform.position, transform.position + transform.right);
+
+                    Debug.LogError("sa");
+
+                    /*foreach (var target in targets)
+                    {
+                    }*/
+
+                    #region ATTEND
                     enemy.nbrOfAtqSuffed += Mathf.Clamp(1,0,5);
 
                     if (enemy.nbrOfAtqSuffed >= capPassive/*5*/)
@@ -409,6 +429,7 @@ public class Turret : MonoBehaviour
                             }
                         }
                     }
+                    #endregion
 
                     break;
                 }
