@@ -147,9 +147,13 @@ public class WaveSpawner : MonoBehaviour
     public void SpawnEvent()
     {
         System.Random alea = new System.Random();
-        int eventAlea = alea.Next(0, 10);
-        Instantiate(listEvent[eventAlea], new Vector3(eventAlea,eventAlea,0), spawnPoint.rotation);
-        Debug.Log("Event Launched !" + listEvent[eventAlea].ToString());
+        int x1 = alea.Next(0, 15);
+        int y1 = alea.Next(0, 10);
+        Vector3 temp = new Vector3(x1, y1, 0);
+        Instantiate(listEvent[0], temp, spawnPoint.rotation);
+        Pathfinding.Instance.GetGrid().GetXY(temp, out int x, out int y);
+        Pathfinding.Instance.GetNode(x, y).SetIsWalkable(!Pathfinding.Instance.GetNode(x, y).isWalkable);
+        Debug.Log("Event Launched !" + listEvent[0].ToString());
 
     }
 
