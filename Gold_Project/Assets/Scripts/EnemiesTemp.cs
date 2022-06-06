@@ -17,6 +17,9 @@ public class EnemiesTemp : MonoBehaviour
     public bool isBurning = false;
     public int nbrOfAtqSuffed = 0;
 
+    public float timeToDie = 0;
+    public bool tookDamage = false;
+
     //Flash on damage
     private bool isInvisible = false;
 
@@ -47,10 +50,21 @@ public class EnemiesTemp : MonoBehaviour
         {
             SetTargetPosition(endPoint.position);
         }
+
+        if (tookDamage)
+        {
+            TimeToDie(Time.deltaTime);
+        }
     }
 
     public void TakeDamage(float damage)
     {
+        if (!tookDamage)
+        {
+            tookDamage = true;
+            timeToDie = 1;
+        }
+
         currentHealth -= Mathf.Clamp(damage, 0, currentHealth);
 
         StartCoroutine(FlashOnDamage());
@@ -61,6 +75,14 @@ public class EnemiesTemp : MonoBehaviour
             GameManager.Instance.truck.gold += this.goldValue;
             StartCoroutine(Die());
         }
+    }
+
+    public void TimeToDie(float delta)
+    {
+        if (currentHealth <= 0)
+            return;
+
+        timeToDie += delta;
     }
 
     public IEnumerator FlashOnDamage()

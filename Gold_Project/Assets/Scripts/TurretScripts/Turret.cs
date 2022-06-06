@@ -14,6 +14,7 @@ public class Turret : MonoBehaviour
     private GameManager gameManager;
 
     private GameObject rangeSprite;
+    private float rangeMult = 1.52f;
     private Vector3 localScale;
 
     public SpriteRenderer spriteRenderer;
@@ -80,6 +81,7 @@ public class Turret : MonoBehaviour
 
         InitTurretData(BuildManager.Instance.turretToBuild);
     }
+
     public void Start()
     {
         if (turretDatabase == null)
@@ -96,7 +98,7 @@ public class Turret : MonoBehaviour
         rangeSprite = Instantiate(gameManager.rangeSprite, this.transform.position, this.transform.rotation, this.transform);
 
         localScale = rangeSprite.transform.localScale;
-        rangeSprite.transform.localScale = new Vector3(localScale.x * range, localScale.y * range, 0);
+        rangeSprite.transform.localScale = new Vector3(localScale.x * range, localScale.y * range, 0);//1.265
         #endregion
 
         spriteRenderer.sprite = inGameDesign;
@@ -142,7 +144,7 @@ public class Turret : MonoBehaviour
         kindOfTurret = turretData.kindOfTurret;
 
         healthPoints = turretData.healthPoints;
-        range = turretData.range;
+        range = turretData.range * rangeMult;// x 1.52
         nbrOfTarget = turretData.nbrOfTarget;
         turretPrice = turretData.turretPrice;
 
@@ -244,6 +246,8 @@ public class Turret : MonoBehaviour
         fireCountDown -= Time.deltaTime / 2;*/
         #endregion
 
+        EnemiesTemp currentTarget = targets[0];
+
         switch (kindOfTurret)
         {
             case KindOfTurret.Basic:
@@ -255,8 +259,6 @@ public class Turret : MonoBehaviour
                 }
             case KindOfTurret.SniperTower:
                 {
-                    EnemiesTemp currentTarget = targets[0];
-
                     //Search for the target with the highest maxHealth
                     foreach (var target in targets)
                     {
@@ -265,50 +267,31 @@ public class Turret : MonoBehaviour
                             currentTarget = target;
                         }
                     }
-
-                    #region RayToTarget
-                    Vector3 rayToTarget = currentTarget.transform.position - origin;
-                    Debug.DrawLine(origin, origin + rayToTarget, Color.red);
-                    #endregion
-
-                    if (fireCountDown <= 0f)
-                    {
-                        Shoot(currentTarget.GetComponent<EnemiesTemp>());
-                        fireCountDown = 1 / fireRate;
-                    }
-
-                    fireCountDown -= Time.deltaTime / 2;
-
                     break;
                 }
             case KindOfTurret.Furnace:
                 {
-                    EnemiesTemp currentTarget = targets[0];
+                    SortListClosestToTruckAndDoesntBurn(targets);
 
-                    //Search for a target that doesn't Burn
+                    bool allTargetAreBurning = false;
+
                     foreach (var target in targets)
                     {
-                        if (!target.isBurning)
+                        if (target.isBurning)
                         {
-                            currentTarget = target;
-                            continue;
+                            allTargetAreBurning = true;
+                        }
+                        else
+                        {
+                            target.isBurning = false;
+                            break;
                         }
                     }
 
-                    #region RayToTarget
-                    Vector3 rayToTarget = currentTarget.transform.position - origin;
-                    Debug.DrawLine(origin, origin + rayToTarget, Color.red);
-                    #endregion
-
-                    if (fireCountDown <= 0f)
+                    if (allTargetAreBurning)
                     {
-                        Shoot(currentTarget.GetComponent<EnemiesTemp>());
-                        fireCountDown = 1 / fireRate;
+                        currentTarget = ChooseTargetClosestToTruck();
                     }
-
-                    fireCountDown -= Time.deltaTime / 2;
-
-
                     break;
                 }
             case KindOfTurret.Zap:
@@ -322,6 +305,19 @@ public class Turret : MonoBehaviour
 
                 break;
         }
+
+        #region RayToTarget
+        Vector3 rayToTarget = currentTarget.transform.position - origin;
+        Debug.DrawLine(origin, origin + rayToTarget, Color.red);
+        #endregion
+
+        if (fireCountDown <= 0f)
+        {
+            Shoot(currentTarget);
+            fireCountDown = 1 / fireRate;
+        }
+
+        fireCountDown -= Time.deltaTime;
     }
 
     public virtual void Shoot(EnemiesTemp enemy)
@@ -331,11 +327,14 @@ public class Turret : MonoBehaviour
         if (currentLevel >= maxLevel)
             PassiveLevelmax(enemy);
 
-        float damage = Mathf.Clamp(atqPoints + atqPtsBonus, 0, maxAtqPoints);
+        float damage = atqPoints + atqPtsBonus;
+
+        if (isAtqCap)
+        {
+             damage = Mathf.Clamp(atqPoints + atqPtsBonus, 0, maxAtqPoints);
+        }
 
         enemy.TakeDamage(damage);
-
-        //Debug.Log(damage + " damage dealt");
 
         //Add this turret to the attacking turret of the ennemy
         if (!enemy.attackingTurret.Contains(this))
@@ -355,7 +354,7 @@ public class Turret : MonoBehaviour
                 {
                     // inflicts % of the target's max hp per attack
 
-                    int damageBonusBaseOnHP = (int)basePassiveParameters;
+                    float damageBonusBaseOnHP = basePassiveParameters / 100;
 
                     if (!isAtqCap)
                     {
@@ -371,8 +370,6 @@ public class Turret : MonoBehaviour
                 {
                     // Enemies that suffer 5 attacks are burned burned enemies suffer 1 point of damage
 
-                    
-
                     enemy.nbrOfAtqSuffed += Mathf.Clamp(1,0,5);
 
                     if (enemy.nbrOfAtqSuffed >= capPassive/*5*/)
@@ -380,7 +377,13 @@ public class Turret : MonoBehaviour
                         float burnDuration = 5.0f;
                         float damage = basePassiveParameters/*1*/;
                         float damageBasedOnMaxHealth = maxPassiveParameters;
-                        float explosionRange = 1;
+
+                        if (!enemy.isBurning)
+                        {
+                            enemy.StartCoroutine(enemy.Burn(burnDuration, damage, true, maxPassiveParameters/*1*/));
+                        }
+
+                        //float explosionRange = 1;
 
                         foreach (var enemies in GameManager.Instance.enemies)
                         {
@@ -401,7 +404,7 @@ public class Turret : MonoBehaviour
                                 }
                                 else //Is not max level
                                 {
-                                    enemies.Burn(burnDuration, damage);
+                                    enemies.Burn(burnDuration, damage, false, 0);
                                 }
                             }
                         }
@@ -453,6 +456,7 @@ public class Turret : MonoBehaviour
         
     }
 
+    #region Util Function
     public bool IsPointInsideCone(Vector3 point, Vector3 coneOrigin, Vector3 coneDirection, int maxAngle, int maxDistance)
     {
         var distanceToConeOrigin = (point - coneOrigin).magnitude;
@@ -465,4 +469,147 @@ public class Turret : MonoBehaviour
         }
         return false;
     }
+
+    public static void Swap<T>(IList<T> list, int indexA, int indexB)
+    {
+        T tmp = list[indexA];
+        list[indexA] = list[indexB];
+        list[indexB] = tmp;
+    }
+
+    public EnemiesTemp ChooseTargetClosestToTruck()
+    {
+        // Choose the target closest to get to the truck
+        EnemiesTemp currentTarget = targets[0];
+
+        foreach (var target in targets)
+        {
+            if (target == currentTarget)
+                continue;
+
+            if (currentTarget.pathVectorList.Count > target.pathVectorList.Count)
+            {
+                currentTarget = target;
+            }
+            else if (currentTarget.pathVectorList.Count == target.pathVectorList.Count
+                && currentTarget.distanceToNextTarget > target.distanceToNextTarget)
+            {
+                currentTarget = target;
+            }
+        }
+
+        return currentTarget;
+    }
+
+    //TriCocktail
+    private void SortListClosestToTruckAndDoesntBurn(List<EnemiesTemp> list, int index = 1, bool hasSwap = false)
+    {
+        for (int i = 0; i < list.Count - index; i++)
+        {
+            if (list[i].isBurning || list[i + 1].isBurning)
+            {
+                if (list[i].isBurning && !list[i + 1].isBurning)
+                {
+                    Swap<EnemiesTemp>(list, i, i + 1);
+
+                    hasSwap = true;
+                    continue;
+                }
+
+                continue;
+            }
+            else if (list[i].pathVectorList.Count > list[i + 1].pathVectorList.Count)
+            {
+                Swap<EnemiesTemp>(list, i, i + 1);
+
+                hasSwap = true;
+            }
+            else if (list[i].pathVectorList.Count == list[i + 1].pathVectorList.Count
+            && list[i].distanceToNextTarget > list[i + 1].distanceToNextTarget)
+            {
+                Swap<EnemiesTemp>(list, i, i + 1);
+
+                hasSwap = true;
+            }
+        }
+
+        for (int i = list.Count - index - 1; i > 0; --i)
+        {
+            if (list[i].isBurning || list[i - 1].isBurning)
+            {
+                if (!list[i].isBurning && list[i - 1].isBurning)
+                {
+                    Swap<EnemiesTemp>(list, i, i - 1);
+
+                    hasSwap = true;
+                    continue;
+                }
+
+                continue;
+            }
+            
+            else if (list[i].pathVectorList.Count < list[i - 1].pathVectorList.Count)
+            {
+                Swap<EnemiesTemp>(list, i, i - 1);
+
+                hasSwap = true;
+            }
+            else if (list[i].pathVectorList.Count == list[i - 1].pathVectorList.Count
+            && list[i].distanceToNextTarget < list[i - 1].distanceToNextTarget)
+            {
+                Swap<EnemiesTemp>(list, i, i - 1);
+
+                hasSwap = true;
+            }
+        }
+
+        if (hasSwap)
+        {
+            SortListClosestToTruckAndDoesntBurn(list, ++index);
+        }
+    }
+
+    private  void SortListClosestToTruck(List<EnemiesTemp> list, int index = 1, bool hasSwap = false)
+    {
+
+        for (int i = 0; i < list.Count - index; i++)
+        {
+            if (list[i].pathVectorList.Count > list[i + 1].pathVectorList.Count)
+            {
+                Swap<EnemiesTemp>(list, i, i + 1);
+
+                hasSwap = true;
+            }
+            else if (list[i].pathVectorList.Count == list[i + 1].pathVectorList.Count
+            && list[i].distanceToNextTarget > list[i + 1].distanceToNextTarget)
+            {
+                Swap<EnemiesTemp>(list, i, i + 1);
+
+                hasSwap = true;
+            }
+        }
+
+        for (int i = list.Count - index - 1; i > 0; --i)
+        {
+            if (list[i].pathVectorList.Count < list[i - 1].pathVectorList.Count)
+            {
+                Swap<EnemiesTemp>(list, i, i - 1);
+
+                hasSwap = true;
+            }
+            else if (list[i].pathVectorList.Count == list[i - 1].pathVectorList.Count
+            && list[i].distanceToNextTarget < list[i + 1].distanceToNextTarget)
+            {
+                Swap<EnemiesTemp>(list, i, i - 1);
+
+                hasSwap = true;
+            }
+        }
+
+        if (hasSwap)
+        {
+            SortListClosestToTruck(list, ++index);
+        }
+    }
+    #endregion
 }
