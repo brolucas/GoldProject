@@ -14,6 +14,7 @@ public class Turret : MonoBehaviour
     private GameManager gameManager;
 
     private GameObject rangeSprite;
+    private float rangeMult = 1.52f;
     private Vector3 localScale;
 
     public SpriteRenderer spriteRenderer;
@@ -97,7 +98,7 @@ public class Turret : MonoBehaviour
         rangeSprite = Instantiate(gameManager.rangeSprite, this.transform.position, this.transform.rotation, this.transform);
 
         localScale = rangeSprite.transform.localScale;
-        rangeSprite.transform.localScale = new Vector3(localScale.x * range, localScale.y * range, 0);
+        rangeSprite.transform.localScale = new Vector3(localScale.x * range, localScale.y * range, 0);//1.265
         #endregion
 
         spriteRenderer.sprite = inGameDesign;
@@ -143,7 +144,7 @@ public class Turret : MonoBehaviour
         kindOfTurret = turretData.kindOfTurret;
 
         healthPoints = turretData.healthPoints;
-        range = turretData.range;
+        range = turretData.range * rangeMult;// x 1.52
         nbrOfTarget = turretData.nbrOfTarget;
         turretPrice = turretData.turretPrice;
 
@@ -371,15 +372,15 @@ public class Turret : MonoBehaviour
 
                     enemy.nbrOfAtqSuffed += Mathf.Clamp(1,0,5);
 
-                    /*if (enemy.nbrOfAtqSuffed >= capPassive*//*5*//*)
+                    if (enemy.nbrOfAtqSuffed >= capPassive/*5*/)
                     {
                         float burnDuration = 5.0f;
-                        float damage = basePassiveParameters*//*1*//*;
+                        float damage = basePassiveParameters/*1*/;
                         float damageBasedOnMaxHealth = maxPassiveParameters;
 
                         if (!enemy.isBurning)
                         {
-                            enemy.StartCoroutine(enemy.Burn(burnDuration, damage, true, maxPassiveParameters 1));
+                            enemy.StartCoroutine(enemy.Burn(burnDuration, damage, true, maxPassiveParameters/*1*/));
                         }
 
                         //float explosionRange = 1;
@@ -399,7 +400,7 @@ public class Turret : MonoBehaviour
                             {
                                 if (currentLevel >= maxLevel)
                                 {
-                                    enemies.Burn(burnDuration, damage, true, maxPassiveParameters1);
+                                    enemies.Burn(burnDuration, damage, true, maxPassiveParameters/*1*/);
                                 }
                                 else //Is not max level
                                 {
@@ -407,7 +408,7 @@ public class Turret : MonoBehaviour
                                 }
                             }
                         }
-                    }*/
+                    }
 
                     break;
                 }
@@ -501,7 +502,7 @@ public class Turret : MonoBehaviour
     }
 
     //TriCocktail
-    private static void SortListClosestToTruckAndDoesntBurn(List<EnemiesTemp> list, int index = 1, bool hasSwap = false)
+    private void SortListClosestToTruckAndDoesntBurn(List<EnemiesTemp> list, int index = 1, bool hasSwap = false)
     {
         for (int i = 0; i < list.Count - index; i++)
         {
@@ -568,7 +569,7 @@ public class Turret : MonoBehaviour
         }
     }
 
-    private static void SortListClosestToTruck(List<EnemiesTemp> list, int index = 1, bool hasSwap = false)
+    private  void SortListClosestToTruck(List<EnemiesTemp> list, int index = 1, bool hasSwap = false)
     {
 
         for (int i = 0; i < list.Count - index; i++)
