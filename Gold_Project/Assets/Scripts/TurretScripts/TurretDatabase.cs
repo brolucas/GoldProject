@@ -12,19 +12,21 @@ public enum TargetType
 
 public enum KindOfTurret
 {
+    // -- /!\ Do not Add a new Type above another add it below the last one PLS /!\ -- //
     DefaultDoNotUseIt,
     Basic,
-    //Mortar,
-    //Discord,
+    Mortar,
+    Discord,
     SniperTower,
-    //Anti_Aerial,
+    Anti_Aerial,
     Furnace,
-    //Channelizer,
-    //Central,
-    //Immobilizer,
+    Channelizer,
+    Central,
+    Immobilizer,
     Zap,
-    //Teleporter,
-    //Viktor,
+    Teleporter,
+    Viktor,
+    // ex : NewType,
 };
 
 [CreateAssetMenu(fileName = "New Turret", menuName ="Turret")]
