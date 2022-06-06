@@ -394,7 +394,7 @@ public class Turret : MonoBehaviour
 
                             float distance = Vector2.Distance(enemy.transform.position, objPos);
 
-                            bool isInside = distance < explosionRange;
+                            //bool isInside = distance < explosionRange;
 
                             if (isInside)
                             {
