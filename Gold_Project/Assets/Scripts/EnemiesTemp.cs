@@ -7,11 +7,19 @@ public class EnemiesTemp : MonoBehaviour
     [Header("Enemy Stats")]
     public float startingHealth = 2500.0f;
     public float currentHealth = 0.0f;
-    public int speed = 3;
+    public int baseSpeed = 3;
+    public int currentSpeed = 3;
 
     public bool isFlying;
 
     public float goldValue;
+
+    public bool getTouch = false;
+    public bool getZapped = false;
+
+    //Discord 
+    public bool isConfuse = false;
+    public int ConfuseCombo = 0;
 
     //Furnace
     public bool isBurning = false;
@@ -61,13 +69,22 @@ public class EnemiesTemp : MonoBehaviour
     {
         if (!tookDamage)
         {
+            getZapped = true;
+            getTouch = true;
+            if (isConfuse)
+            {
+                damage += damage * (0.05f * ConfuseCombo);
+            }
+
             tookDamage = true;
             timeToDie = 1;
         }
 
         currentHealth -= Mathf.Clamp(damage, 0, currentHealth);
 
-        StartCoroutine(FlashOnDamage());
+        //StartCoroutine(FlashOnDamage());
+
+        getTouch = false;
 
         if (currentHealth <= 0)
         {
@@ -108,13 +125,29 @@ public class EnemiesTemp : MonoBehaviour
     {
         isBurning = true;
 
+        if (isMaxLevelPassiveActive == false)
+        {
+            foreach (var turret in attackingTurret)
+            {
+                if (turret.kindOfTurret == KindOfTurret.Furnace)
+                {
+                    if (turret.currentLevel >= turret.maxLevel)
+                    {
+                        isMaxLevelPassiveActive = true;
+                    }
+                }
+            }
+        }
+
         while (duration > 0)
         {
             TakeDamage(damage);
 
+            Debug.Log(damage);
+
             if (isMaxLevelPassiveActive)
             {
-                TakeDamage(startingHealth * maxPassiveParameters);
+                TakeDamage(startingHealth * maxPassiveParameters / 100);
             }
 
             yield return new WaitForSeconds(1.0f);
@@ -180,7 +213,7 @@ public class EnemiesTemp : MonoBehaviour
                 
 
                 //float distanceBefore = Vector3.Distance(transform.position, targetPosition);
-                transform.position = transform.position + moveDir * speed * Time.deltaTime;
+                transform.position = transform.position + moveDir * currentSpeed * Time.deltaTime;
             }
             else
             {
