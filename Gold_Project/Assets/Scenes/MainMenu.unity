@@ -928,7 +928,6 @@ MonoBehaviour:
   switchHUDSide: {fileID: 0}
   gameOverScreen: {fileID: 0}
   levelName: {fileID: 1758244010}
-  TurretlevelName: 
 --- !u!1 &2077792025
 GameObject:
   m_ObjectHideFlags: 0
