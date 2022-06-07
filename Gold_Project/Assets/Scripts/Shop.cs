@@ -53,6 +53,47 @@ public class Shop : MonoBehaviour
         }
     }
 
+    public void DisplayCurrentTurretStats()
+    {
+        Turret turret = selectedTurretInGame.GetComponent<Turret>();
+
+        int upgradeCost = 50;
+
+        float range = turret.RangeConvertion(turret.range, false);
+
+        switch (turret.currentLevel)
+        {
+            case 1:
+                upgradeCost = 50;
+                infoTurretText.text = ("Level : " + turret.currentLevel + "/" + turret.maxLevel + "\n" +
+                               "Upgrade cost : " + (turret.turretPrice + upgradeCost) + "\n" +
+                               "Range : " + range + "\n" +
+                               "HP : " + turret.maxHealthPoint + "/" + turret.currentHP + "\n" +
+                               "Damage : " + turret.atqPoints + "\n" +
+                               "Target : " + turret.targetType);
+                break;
+            case 2:
+                upgradeCost = 75;
+                infoTurretText.text = ("Level : " + turret.currentLevel + "/" + turret.maxLevel + "\n" +
+                               "Upgrade cost : " + (turret.turretPrice + upgradeCost) + "\n" +
+                               "Range : " + range + "\n" +
+                               "HP : " + turret.maxHealthPoint + "/" + turret.currentHP + "\n" +
+                               "Damage : " + turret.atqPoints + "\n" +
+                               "Target : " + turret.targetType);
+                break;
+            case 3:
+                infoTurretText.text = ("Max Level" + "\n" +
+                               "No more upgrade" + "\n" +
+                               "Range : " + range + "\n" +
+                               "HP : " + turret.maxHealthPoint + "/" + turret.currentHP + "\n" +
+                               "Damage : " + turret.atqPoints + "\n" +
+                               "Target : " + turret.targetType);
+                break;
+            default:
+                break;
+        }
+    }
+
     public void PurchaseTurret(Button thisButton)
     {
         KindOfTurret kindOfTurret = buttonToEnum[thisButton];
@@ -84,5 +125,7 @@ public class Shop : MonoBehaviour
         Turret turret = selectedTurretInGame.GetComponent<Turret>();
 
         turret.Upgrade();
+
+        DisplayCurrentTurretStats();
     }
 }

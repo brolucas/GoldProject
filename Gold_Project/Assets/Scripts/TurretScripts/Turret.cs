@@ -9,6 +9,7 @@ public class Turret : MonoBehaviour
 {
     [SerializeField]
     private TurretDatabase turretDatabase;
+    private TurretData turretData;
 
     [SerializeField]
     private GameManager gameManager;
@@ -118,7 +119,7 @@ public int atqPoints { get; private set; }
 
     public void InitTurretData(KindOfTurret type)
     {
-        TurretData turretData = gameManager.GetStatsKindOfTurret(type);
+        turretData = gameManager.GetStatsKindOfTurret(type);
 
         if (turretData == null)
         {
@@ -157,8 +158,10 @@ public int atqPoints { get; private set; }
 
         maxHealthPoint = turretData.healthPoints;
         currentHP = turretData.healthPoints;
-        range =  (localScale.x + (turretData.range * 2) * localScale.x) / 2;
+        range = RangeConvertion(range, true);
+
         nbrOfTarget = turretData.nbrOfTarget;
+        targetType = turretData.targetType;
         turretPrice = turretData.turretPrice;
 
         atqPoints = turretData.atqPoints;
@@ -193,6 +196,8 @@ public int atqPoints { get; private set; }
     private void OnMouseDown()
     {
         BuildManager.Instance.shop.selectedTurretInGame = this.gameObject;
+
+        BuildManager.Instance.shop.DisplayCurrentTurretStats();
     }
 
     private void Update()
@@ -220,6 +225,12 @@ public int atqPoints { get; private set; }
             default:
                 break;
         }
+
+        float rage = (localScale.x + (3 * 2) * localScale.x) / 2;
+
+        rage = (localScale.x - ((3 / 2)/ localScale.x)) *2;
+
+        Debug.Log(rage);
     }
 
     private void OnDrawGizmos()
@@ -496,7 +507,7 @@ public int atqPoints { get; private set; }
 
     public virtual void PassiveLevelmax(EnemiesTemp enemy)
     {
-        Debug.LogError("PassiveLevelmax");
+        //Debug.LogError("PassiveLevelmax");
 
         switch (kindOfTurret)
         {
@@ -596,6 +607,9 @@ public int atqPoints { get; private set; }
         if (isMaxLevel == true)
             return;
 
+        float maxHP = gameManager.GetStatsKindOfTurret(kindOfTurret).healthPoints;
+        int atq = gameManager.GetStatsKindOfTurret(kindOfTurret).atqPoints;
+
         switch (currentLevel)
         {
             case 1:
@@ -607,7 +621,10 @@ public int atqPoints { get; private set; }
                 {
                     gameManager.truck.gold -= turretPrice + 50;
                 }
-                    break;
+                currentHP += maxHP;
+                maxHealthPoint += maxHP;
+                atqPoints += atq;
+                break;
             case 2:
                 if (gameManager.truck.gold < turretPrice + 75)
                 {
@@ -617,27 +634,15 @@ public int atqPoints { get; private set; }
                 {
                     gameManager.truck.gold -= turretPrice + 75;
                 }
+                currentHP += maxHP;
+                maxHealthPoint += maxHP;
+                atqPoints += atq;
                 break;
             default:
                 break;
         }
 
         currentLevel += Mathf.Clamp(1, 0, maxLevel - currentLevel);
-
-        switch (currentLevel)
-        {
-            case 2:
-                currentHP += maxHealthPoint;
-                maxHealthPoint = maxHealthPoint * 2;
-                break;
-            case 3:
-                currentHP += maxHealthPoint;
-                maxHealthPoint = maxHealthPoint * 2;
-                isMaxLevel = true;
-                break;
-            default:
-                break;
-        }
     }
 
     #region Util Function
@@ -794,6 +799,25 @@ public int atqPoints { get; private set; }
         {
             SortListClosestToTruck(list, ++index);
         }
+    }
+
+    public float RangeConvertion(float range, bool rangeToInGameRange)
+    {
+        if (rangeToInGameRange)
+        {
+            range = (localScale.x + (turretData.range * 2) * localScale.x) / 2;
+        }
+        else // in Game Range to Range in the LD
+        {
+            /*range = range * 2;
+            range = range - localScale.x;
+            range = range / localScale.x;
+            range = range / 2;*/
+
+            range = ((range * 2 - localScale.x) / localScale.x) / 2;
+        }
+
+        return range;
     }
     #endregion
 }
