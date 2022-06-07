@@ -4055,7 +4055,10 @@ MonoBehaviour:
 
     Life Points : 10
 
-    Damage 20'
+    Damage 20
+
+    Target
+    : Both'
 --- !u!222 &1135758703
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7712,9 +7715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretDatabase: {fileID: 11400000, guid: aeead099ddab7d94fbfbec987f614a22, type: 2}
-  priceText: {fileID: 1135758702}
-  rangeText: {fileID: 0}
-  damageText: {fileID: 0}
+  infoTurretText: {fileID: 1135758702}
   deck: 01000000020000000300000004000000
   deckButtons:
   - {fileID: 1318916625}

@@ -54,7 +54,8 @@ public class Shop : MonoBehaviour
         infoTurretText.text = ("Price : " + turretData.turretPrice + "\n" +
                                "Range : " + turretData.range + "\n" +
                                "Life Points : " + turretData.healthPoints + "\n" +
-                               "Damage : " + turretData.atqPoints);
+                               "Damage : " + turretData.atqPoints +"\n"+
+                               "Target : " + turretData.targetType);
 
         buildManager.SetTurretToBuild(kindOfTurret);
     }
