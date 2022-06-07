@@ -7484,6 +7484,8 @@ MonoBehaviour:
   spawn: {fileID: 656924372}
   end: {fileID: 1631603153}
   cellSize: 1.265
+  decorPrefab: {fileID: 6931081967130245136, guid: 3ade14f955391784185568174325ed16,
+    type: 3}
   levelData:
     label: Level1
     decors:
