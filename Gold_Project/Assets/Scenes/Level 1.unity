@@ -7484,6 +7484,17 @@ MonoBehaviour:
   spawn: {fileID: 656924372}
   end: {fileID: 1631603153}
   cellSize: 1.265
+  levelData:
+    label: Level1
+    decors:
+    - image: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847,
+        type: 3}
+      x: 3
+      y: 3
+    - image: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847,
+        type: 3}
+      x: 9
+      y: 3
 --- !u!4 &1779229154
 Transform:
   m_ObjectHideFlags: 0

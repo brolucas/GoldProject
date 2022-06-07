@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pathfinding
+public class Pathfinding:MonoBehaviour
 {
 	private const int MOVE_STRAIGHT_COST = 10;
 	private const int MOVE_DIAGONAL_COST = 14;
@@ -14,13 +14,22 @@ public class Pathfinding
 	private List<PathNode> openList;
 	private List<PathNode> closedList;
 
-	public Pathfinding(int width, int height, float cellSize, Transform transf)
+	public Pathfinding(int width, int height, float cellSize, Transform transf, Transform end, LevelData levelData)
 	{
 		Instance = this;
 		grid = new Grid<PathNode>(width, height, cellSize, new Vector3(transf.position.x, transf.position.y), (Grid<PathNode> g, int x, int y) => new PathNode(g, x, y));
+		endPoint = end;
+		foreach(Decor decor in levelData.decors)
+        {
+			GetNode(decor.x, decor.y).SetIsWalkable(false);
+			Vector3 position = grid.GetWorldPosition(decor.x, decor.y);
+			position = new Vector3(position.x + cellSize / 2, position.y + cellSize / 2);
+			GameObject newDecor = Instantiate(levelData.DecorPrefab, position, Quaternion.identity);
+			newDecor.GetComponent<SpriteRenderer>().sprite = decor.image;
+		}
 	}
 
-	public List<Vector3> FindPath(Vector3 startWorldPosition, Vector3 endWorldPosition)
+    public List<Vector3> FindPath(Vector3 startWorldPosition, Vector3 endWorldPosition)
 	{
 		grid.GetXY(startWorldPosition, out int startX, out int startY);
 		grid.GetXY(endWorldPosition, out int endX, out int endY);
@@ -76,26 +85,26 @@ public class Pathfinding
 			closedList.Add(currentNode);
 
 			foreach(PathNode neighbourNode in GetNeighbourList(currentNode))
-            {
+			{
 				if (closedList.Contains(neighbourNode)) continue;
-                if (!neighbourNode.isWalkable)
-                {
+				if (!neighbourNode.isWalkable)
+				{
 					closedList.Add(neighbourNode);
 					continue;
-                }
+				}
 				int tentativeGCost = currentNode.gCost + CalculateDistanceCost(currentNode, neighbourNode);
 				if(tentativeGCost < neighbourNode.gCost)
-                {
+				{
 					neighbourNode.cameFromNode = currentNode;
 					neighbourNode.gCost = tentativeGCost;
 					neighbourNode.hCost = CalculateDistanceCost(neighbourNode, endNode);
 					neighbourNode.CalculateFCost();
-                }
+				}
 
-                if (!openList.Contains(neighbourNode)){
+				if (!openList.Contains(neighbourNode)){
 					openList.Add(neighbourNode);
-                }
-            }
+				}
+			}
 		}
 		return null;
 	}
@@ -137,18 +146,18 @@ public class Pathfinding
 	}
 
 	private List<PathNode> CalculatePath(PathNode endNode)
-    {
+	{
 		List<PathNode> path = new List<PathNode>();
 		path.Add(endNode);
 		PathNode currentNode = endNode;
 		while(currentNode.cameFromNode != null)
-        {
+		{
 			path.Add(currentNode.cameFromNode);
 			currentNode = currentNode.cameFromNode;
-        }
+		}
 		path.Reverse();
 		return path;
-    }
+	}
 
 	public PathNode GetNode(int x, int y)
 	{
@@ -156,8 +165,8 @@ public class Pathfinding
 	}
 
 	public Grid<PathNode> GetGrid()
-    {
+	{
 		return this.grid;
-    }
+	}
 
 }
