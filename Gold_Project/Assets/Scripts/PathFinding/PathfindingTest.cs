@@ -9,13 +9,14 @@ public class PathfindingTest : MonoBehaviour
 	public GameObject spawn, end;
 	public float cellSize;
 	BuildManager buildManager;
+	public GameObject decorPrefab;
 	public LevelData levelData;
 
 	// Start is called before the first frame update
 	void Start()
 	{
 		buildManager = BuildManager.Instance;
-		pathfinding = new Pathfinding(13, 7, cellSize, this.transform, end.transform, levelData);
+		pathfinding = new Pathfinding(13, 7, cellSize, this.transform, end.transform, decorPrefab, levelData);
 
 		//enemy.endPoint = end.transform;
 	}

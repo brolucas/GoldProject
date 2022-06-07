@@ -17,7 +17,6 @@ public class LevelData
 
     [Header("Level Info")]
     public List<Decor> decors = new List<Decor>();
-    public GameObject DecorPrefab;
 }
 
 [System.Serializable]

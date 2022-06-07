@@ -14,7 +14,7 @@ public class Pathfinding:MonoBehaviour
 	private List<PathNode> openList;
 	private List<PathNode> closedList;
 
-	public Pathfinding(int width, int height, float cellSize, Transform transf, Transform end, LevelData levelData)
+	public Pathfinding(int width, int height, float cellSize, Transform transf, Transform end,GameObject decorPrefab, LevelData levelData)
 	{
 		Instance = this;
 		grid = new Grid<PathNode>(width, height, cellSize, new Vector3(transf.position.x, transf.position.y), (Grid<PathNode> g, int x, int y) => new PathNode(g, x, y));
@@ -24,7 +24,7 @@ public class Pathfinding:MonoBehaviour
 			GetNode(decor.x, decor.y).SetIsWalkable(false);
 			Vector3 position = grid.GetWorldPosition(decor.x, decor.y);
 			position = new Vector3(position.x + cellSize / 2, position.y + cellSize / 2);
-			GameObject newDecor = Instantiate(levelData.DecorPrefab, position, Quaternion.identity);
+			GameObject newDecor = Instantiate(decorPrefab, position, Quaternion.identity);
 			newDecor.GetComponent<SpriteRenderer>().sprite = decor.image;
 		}
 	}
