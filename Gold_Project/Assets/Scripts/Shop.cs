@@ -10,9 +10,7 @@ public class Shop : MonoBehaviour
     private BuildManager buildManager;
     private GameManager gameManager;
 
-    public Text priceText;
-    public Text rangeText;
-    public Text damageText;
+    public Text infoTurretText;
 
     public List<KindOfTurret> deck = new List<KindOfTurret>();
 
@@ -50,6 +48,13 @@ public class Shop : MonoBehaviour
     public void PurchaseTurret(Button thisButton)
     {
         KindOfTurret kindOfTurret = buttonToEnum[thisButton];
+
+        TurretData turretData = turretDatabase.turrets.Find(data => data.kindOfTurret == kindOfTurret);
+
+        infoTurretText.text = ("Price : " + turretData.turretPrice + "\n" +
+                               "Range : " + turretData.range + "\n" +
+                               "Life Points : " + turretData.healthPoints + "\n" +
+                               "Damage : " + turretData.atqPoints);
 
         buildManager.SetTurretToBuild(kindOfTurret);
     }
