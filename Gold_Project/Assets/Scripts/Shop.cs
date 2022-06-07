@@ -30,6 +30,8 @@ public class Shop : MonoBehaviour
 
             turretDatabase = turretDatabaseNew;
         }
+
+        selectedTurretInGame = null;
     }
 
     private void Start()
@@ -42,6 +44,12 @@ public class Shop : MonoBehaviour
             buttonToEnum.Add(deckButtons[i], deck[i]);
 
             TurretData turretData = turretDatabase.turrets.Find(data => data.kindOfTurret == deck[i]);
+
+            if (turretData == null)
+            {
+                Debug.LogError("There is a turret in the deck that doesn't have a DataBase yet !!");
+                continue;
+            }
 
             deckButtons[i].GetComponent<Image>().sprite = turretData.UIDesign;
         }
@@ -63,5 +71,12 @@ public class Shop : MonoBehaviour
         selectedTurretInGame = null;
 
         Destroy(turret.transform.parent.gameObject);
+    }
+
+    public void Upgrade()
+    {
+        Turret turret = selectedTurretInGame.GetComponent<Turret>();
+
+        turret.Upgrade();
     }
 }

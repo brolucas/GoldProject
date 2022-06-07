@@ -32,7 +32,8 @@ public class Turret : MonoBehaviour
     public KindOfTurret kindOfTurret { get; private set; }
 
     //Turret Stats
-    public float healthPoints { get; private set; }
+    public float maxHealthPoint { get; private set; }
+    public float currentHP;
     [Range(0, 10)]
     public float range;
     public int turretPrice { get; private set; }
@@ -40,10 +41,11 @@ public class Turret : MonoBehaviour
     public TargetType targetType { get; private set; }
     [Range(1, 3)]
     public int currentLevel = 1;
-    public int maxLevel = 3;
+    public int maxLevel { get; private set; } = 3;
+    public bool isMaxLevel { get; private set; } = false;
 
-    //Attack Stats
-    public int atqPoints { get; private set; }
+//Attack Stats
+public int atqPoints { get; private set; }
     public float atqPtsBonus { get; set; }
     public float fireRate { get; private set; }
     public int maxAtqPoints { get; private set; }
@@ -153,7 +155,8 @@ public class Turret : MonoBehaviour
         label = turretData.label;
         kindOfTurret = turretData.kindOfTurret;
 
-        healthPoints = turretData.healthPoints;
+        maxHealthPoint = turretData.healthPoints;
+        currentHP = turretData.healthPoints;
         range =  (localScale.x + (turretData.range * 2) * localScale.x) / 2;
         nbrOfTarget = turretData.nbrOfTarget;
         turretPrice = turretData.turretPrice;
@@ -590,7 +593,51 @@ public class Turret : MonoBehaviour
 
     public void Upgrade()
     {
-        
+        if (isMaxLevel == true)
+            return;
+
+        switch (currentLevel)
+        {
+            case 1:
+                if (gameManager.truck.gold < turretPrice + 50)
+                {
+                    return;
+                }  
+                else
+                {
+                    gameManager.truck.gold -= turretPrice + 50;
+                }
+                    break;
+            case 2:
+                if (gameManager.truck.gold < turretPrice + 75)
+                {
+                    return;
+                }
+                else
+                {
+                    gameManager.truck.gold -= turretPrice + 75;
+                }
+                break;
+            default:
+                break;
+        }
+
+        currentLevel += Mathf.Clamp(1, 0, maxLevel - currentLevel);
+
+        switch (currentLevel)
+        {
+            case 2:
+                currentHP += maxHealthPoint;
+                maxHealthPoint = maxHealthPoint * 2;
+                break;
+            case 3:
+                currentHP += maxHealthPoint;
+                maxHealthPoint = maxHealthPoint * 2;
+                isMaxLevel = true;
+                break;
+            default:
+                break;
+        }
     }
 
     #region Util Function

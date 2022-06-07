@@ -52,6 +52,9 @@ public class BuildManager : MonoBehaviour
         }
 
         gameManager = GameManager.Instance;
+
+        // == empty
+        turretToBuild = KindOfTurret.DefaultDoNotUseIt;
     }
 
     public GameObject GetTurretToBuild()
