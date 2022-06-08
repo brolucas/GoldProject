@@ -16,7 +16,7 @@ public class truck : MonoBehaviour
     public GameObject Truck_Game_Over_Screen;
     public WaveSpawner WS;
 
-    private void start()
+    private void Start()
     {
         Truck_Coins_Text.text = ("  : " + gold.ToString());
         gold = 200;
