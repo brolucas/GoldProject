@@ -34,6 +34,7 @@ public class SceneFader : MonoBehaviour
 
     public void FadeTo(string scene)
     {
+        Time.timeScale = 1;
         StartCoroutine(FadeOut(scene));
     } 
 
@@ -55,7 +56,12 @@ public class SceneFader : MonoBehaviour
 
         }
 
+        /*if (SceneManager.GetActiveScene().name != "MainMenu" || SceneManager.GetActiveScene().name != "Title" || SceneManager.GetActiveScene().name != "Logo")
+        {
+            GameManager.Instance.enemies.Clear();
+        }*/
         SceneManager.LoadScene(scene);
+
     }
     
 }
