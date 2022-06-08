@@ -25,7 +25,10 @@ public class SceneFader : MonoBehaviour
             float a = curve.Evaluate(t);
             img.color = new Color(0f, 0f, 0f, a);
             yield return 0;
-
+        }
+        if (SceneManager.GetActiveScene().name == "Logo")
+        {
+            SceneManager.LoadScene("MainMenu");
         }
     }
 

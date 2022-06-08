@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
@@ -58,12 +59,12 @@ public class WaveSpawner : MonoBehaviour
             return;
         }
          countdown -= Time.deltaTime;
-        if (lastWave)
+        if (lastWave && SceneManager.GetActiveScene().name != "MainMenu")
         {
             if (enemyAlive <= 0)
             {
                 wave_Victory_Screen.SetActive(true);
-                Time.timeScale = 0;
+                //Time.timeScale = 0;
             }
             //this.enabled = false;
         }   
