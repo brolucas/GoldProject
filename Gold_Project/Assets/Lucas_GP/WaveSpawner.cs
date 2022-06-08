@@ -34,6 +34,8 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField]
     private GameObject[] listEvent;
 
+    private bool notDone = false;
+
 
     private void Start()
     {
@@ -65,6 +67,16 @@ public class WaveSpawner : MonoBehaviour
             if (enemyAlive <= 0)
             {
                 wave_Victory_Screen.SetActive(true);
+                if (!notDone)
+                {
+                    GoToGame.levelIndex++;
+                    notDone = true;
+                    if (GoToGame.levelIndex >= 10)
+                    {
+                        SceneManager.LoadScene("Credits");
+                        GoToGame.levelIndex = 1;
+                    }
+                }
                 //Time.timeScale = 0;
             }
             //this.enabled = false;
@@ -156,20 +168,27 @@ public class WaveSpawner : MonoBehaviour
     {
         System.Random alea = new System.Random();
         int noevent = 0;
-        int x1 = alea.Next(0, 11);
+        int x1 = alea.Next(1, 11);
         int y1 = alea.Next(0, 6);
-        Vector3 temp = new Vector3(4, 5, 0);
+        Vector3 temp = new Vector3(x1, y1, 0);
 
         switch (noevent)
         {
             case 0:
                 Debug.Log("Event Launched !" + listEvent[0].ToString());
 
-                GameObject istevent = Instantiate(listEvent[0], temp, Quaternion.identity);
-
                 Pathfinding.Instance.GetGrid().GetXY(temp, out int x, out int y);
-                Pathfinding.Instance.GetNode(x, y).SetIsWalkable(!Pathfinding.Instance.GetNode(x, y).isWalkable);
-                Pathfinding.Instance.GetNode(x, y).SetIsWalkable(!Pathfinding.Instance.GetNode(x + 1, y).isWalkable);
+                Pathfinding.Instance.GetNode(x, y).SetIsWalkable(false);
+                Pathfinding.Instance.GetNode(x + 1, y).SetIsWalkable(false);
+                Vector3 position = Pathfinding.Instance.GetGrid().GetWorldPosition(x,y);
+                position = new Vector3(position.x + Pathfinding.Instance.GetGrid().cellSize / 2, position.y + Pathfinding.Instance.GetGrid().cellSize / 2);
+                
+                Vector3 position1 = Pathfinding.Instance.GetGrid().GetWorldPosition(x+1, y);
+                position1 = new Vector3(position1.x + Pathfinding.Instance.GetGrid().cellSize / 2, position1.y + Pathfinding.Instance.GetGrid().cellSize / 2);
+                
+                GameObject istevent = Instantiate(listEvent[0], position, Quaternion.identity);
+                GameObject istevent1 = Instantiate(listEvent[0], position1, Quaternion.identity);
+
                 // istevent.transform.GetChild(1).localScale = new Vector3(0, 0, 0);
                 break;
 

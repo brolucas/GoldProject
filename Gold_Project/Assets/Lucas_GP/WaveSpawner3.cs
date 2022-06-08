@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class WaveSpawner3 : MonoBehaviour
@@ -33,7 +34,7 @@ public class WaveSpawner3 : MonoBehaviour
 
     [SerializeField]
     private GameObject[] listEvent;
-
+    private bool notDone = false;
 
     private void Start()
     {
@@ -65,7 +66,16 @@ public class WaveSpawner3 : MonoBehaviour
             if (enemyAlive <= 0)
             {
                 wave_Victory_Screen.SetActive(true);
-                Time.timeScale = 0;
+                if (!notDone)
+                {
+                    GoToGame.levelIndex++;
+                    notDone = true;
+                    if (GoToGame.levelIndex >= 10)
+                    {
+                        SceneManager.LoadScene("Credits");
+                        GoToGame.levelIndex = 1;
+                    }
+                }
             }
             //this.enabled = false;
         }   

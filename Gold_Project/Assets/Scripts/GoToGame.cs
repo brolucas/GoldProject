@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class GoToGame : MonoBehaviour
 {
-    public int levelIndex = 1;
-    
+    public static int levelIndex = 1;
+
     public void BackToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
