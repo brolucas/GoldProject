@@ -39,7 +39,7 @@ public class truck : MonoBehaviour
     public void Loose()
     {
         Truck_Game_Over_Screen.SetActive(true);
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         Destroy(this);
         //Debug.Log("Fin de partie");
     }

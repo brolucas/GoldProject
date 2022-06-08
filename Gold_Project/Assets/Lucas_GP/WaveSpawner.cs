@@ -42,7 +42,7 @@ public class WaveSpawner : MonoBehaviour
         waves[eventAlea]._event = true;
         eventAlea = alea.Next(7, 10);
         waves[eventAlea]._event = true;
-
+        enemyAlive = 0;
     }
     // Update is called once per frame
     void Update()
@@ -59,7 +59,7 @@ public class WaveSpawner : MonoBehaviour
             countdown = timeBetweenWave;
             return;
         }
-         countdown -= Time.deltaTime;
+        countdown -= Time.deltaTime;
         if (lastWave && SceneManager.GetActiveScene().name != "MainMenu")
         {
             if (enemyAlive <= 0)
