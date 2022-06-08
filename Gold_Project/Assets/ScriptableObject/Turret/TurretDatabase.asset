@@ -43,8 +43,8 @@ MonoBehaviour:
     basePassiveParameters: 10
     maxPassiveParameters: 2
     capPassive: 0
-    inGameDesign: {fileID: 21300000, guid: c975020d9cec8684db3b85d83beb9e46, type: 3}
-    UIDesign: {fileID: 21300000, guid: c975020d9cec8684db3b85d83beb9e46, type: 3}
+    inGameDesign: {fileID: 21300000, guid: 3f074810cce335a4081ac124519ed72c, type: 3}
+    UIDesign: {fileID: 21300000, guid: 3f074810cce335a4081ac124519ed72c, type: 3}
   - label: Furnace
     kindOfTurret: 6
     healthPoints: 200
@@ -59,8 +59,24 @@ MonoBehaviour:
     basePassiveParameters: 1
     maxPassiveParameters: 1
     capPassive: 5
-    inGameDesign: {fileID: 21300000, guid: 0fbb3222d3fcf25478780977b5e439bd, type: 3}
-    UIDesign: {fileID: 21300000, guid: 0fbb3222d3fcf25478780977b5e439bd, type: 3}
+    inGameDesign: {fileID: 21300000, guid: 8119b7a3c3fc769449d55861899b4cb1, type: 3}
+    UIDesign: {fileID: 21300000, guid: 8119b7a3c3fc769449d55861899b4cb1, type: 3}
+  - label: Mortar
+    kindOfTurret: 2
+    healthPoints: 125
+    range: 3
+    nbrOfTarget: 1
+    turretPrice: 125
+    targetType: 1
+    atqPoints: 150
+    fireRate: 0.25
+    maxAtqPoints: 140
+    activeAtqCap: 0
+    basePassiveParameters: 0.5
+    maxPassiveParameters: 8
+    capPassive: 0
+    inGameDesign: {fileID: 21300000, guid: 0833b296c24f3fc4bb5bf648b561e9a6, type: 3}
+    UIDesign: {fileID: 21300000, guid: 0833b296c24f3fc4bb5bf648b561e9a6, type: 3}
   - label: Zap
     kindOfTurret: 10
     healthPoints: 350
@@ -109,19 +125,3 @@ MonoBehaviour:
     capPassive: 0
     inGameDesign: {fileID: 21300000, guid: 672e33a98d9bb9040ab4474f1b42ab96, type: 3}
     UIDesign: {fileID: 21300000, guid: 672e33a98d9bb9040ab4474f1b42ab96, type: 3}
-  - label: Mortar
-    kindOfTurret: 2
-    healthPoints: 125
-    range: 3
-    nbrOfTarget: 1
-    turretPrice: 125
-    targetType: 1
-    atqPoints: 150
-    fireRate: 0.25
-    maxAtqPoints: 140
-    activeAtqCap: 0
-    basePassiveParameters: 0.5
-    maxPassiveParameters: 8
-    capPassive: 0
-    inGameDesign: {fileID: 21300000, guid: 84d3d6edceaa4d14b8a7e0bde7d4b251, type: 3}
-    UIDesign: {fileID: 21300000, guid: 84d3d6edceaa4d14b8a7e0bde7d4b251, type: 3}

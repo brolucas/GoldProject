@@ -235,7 +235,7 @@ public int atqPoints { get; private set; }
 
     private void OnDrawGizmos()
     {
-        Handles.DrawWireDisc(transform.position, transform.forward, range);
+        //Handles.DrawWireDisc(transform.position, transform.forward, range);
     }
 
     public virtual void ChooseTarget(Vector3 origin)

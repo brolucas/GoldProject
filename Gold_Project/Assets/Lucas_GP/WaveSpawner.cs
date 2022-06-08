@@ -211,7 +211,6 @@ public class WaveSpawner : MonoBehaviour
             case 3:
                 Debug.Log("Event Launched !" + listEvent[3].ToString());
                 break;
-
         }
         
 

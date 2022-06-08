@@ -28,7 +28,8 @@ public class SceneFader : MonoBehaviour
         }
         if (SceneManager.GetActiveScene().name == "Logo")
         {
-            SceneManager.LoadScene("MainMenu");
+            string scene = "Title";
+            StartCoroutine(FadeOut(scene));
         }
     }
 
