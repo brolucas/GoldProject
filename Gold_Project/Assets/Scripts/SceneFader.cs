@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class SceneFader : MonoBehaviour
 {
     public Image img;
-
+    public Text levelName;
     public AnimationCurve curve;
 
     private void Start()
@@ -32,6 +32,11 @@ public class SceneFader : MonoBehaviour
     public void FadeTo(string scene)
     {
         StartCoroutine(FadeOut(scene));
+    } 
+
+    public void FadeToGame(Text levelName)
+    {
+        StartCoroutine(FadeOut(levelName.text));
     }
 
     IEnumerator FadeOut(string scene)
