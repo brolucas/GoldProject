@@ -25,12 +25,17 @@ public class SceneFader : MonoBehaviour
             float a = curve.Evaluate(t);
             img.color = new Color(0f, 0f, 0f, a);
             yield return 0;
-
+        }
+        if (SceneManager.GetActiveScene().name == "Logo")
+        {
+            string scene = "Title";
+            StartCoroutine(FadeOut(scene));
         }
     }
 
     public void FadeTo(string scene)
     {
+        Time.timeScale = 1;
         StartCoroutine(FadeOut(scene));
     } 
 
@@ -52,7 +57,12 @@ public class SceneFader : MonoBehaviour
 
         }
 
+        /*if (SceneManager.GetActiveScene().name != "MainMenu" || SceneManager.GetActiveScene().name != "Title" || SceneManager.GetActiveScene().name != "Logo")
+        {
+            GameManager.Instance.enemies.Clear();
+        }*/
         SceneManager.LoadScene(scene);
+
     }
     
 }
