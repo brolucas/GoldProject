@@ -10,12 +10,15 @@ public class PathfindingTest : MonoBehaviour
 	public float cellSize;
 	BuildManager buildManager;
 	public GameObject decorPrefab;
-	public LevelData levelData;
+	public LevelDataBase levelDataBase;
+	public LevelLabel levelLabel;
+	private LevelData levelData;
 
 	// Start is called before the first frame update
 	void Start()
 	{
 		buildManager = BuildManager.Instance;
+		levelData = levelDataBase.levels.Find(LevelData => LevelData.levelLabel == levelLabel);
 		pathfinding = new Pathfinding(13, 7, cellSize, this.transform, end.transform, decorPrefab, levelData);
 
 		//enemy.endPoint = end.transform;

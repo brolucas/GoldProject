@@ -14,26 +14,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - label: Level1
+    levelLabel: 0
     decors:
-    - image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-      x: 0
-      y: 0
-    - image: {fileID: 0}
-      x: 0
-      y: 0
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 3
+      y: 3
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 3
+      y: 9
   - label: Level2
+    levelLabel: 1
     decors:
-    - image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-      x: 0
-      y: 0
-    - image: {fileID: 0}
-      x: 0
-      y: 0
-  - label: Level2
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 3
+      y: 2
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 3
+      y: 5
+  - label: Level3
+    levelLabel: 2
     decors:
-    - image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
       x: 0
       y: 0
-    - image: {fileID: 0}
-      x: 0
-      y: 0
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 7
+      y: 13

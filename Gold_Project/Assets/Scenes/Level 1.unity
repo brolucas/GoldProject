@@ -7486,17 +7486,8 @@ MonoBehaviour:
   cellSize: 1.265
   decorPrefab: {fileID: 6931081967130245136, guid: 3ade14f955391784185568174325ed16,
     type: 3}
-  levelData:
-    label: Level1
-    decors:
-    - image: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847,
-        type: 3}
-      x: 3
-      y: 3
-    - image: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847,
-        type: 3}
-      x: 9
-      y: 3
+  levelDataBase: {fileID: 11400000, guid: 8a2eeda7c19de594790374f09c45474a, type: 2}
+  levelLabel: 0
 --- !u!4 &1779229154
 Transform:
   m_ObjectHideFlags: 0
