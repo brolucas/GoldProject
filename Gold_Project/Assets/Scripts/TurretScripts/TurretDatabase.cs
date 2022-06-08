@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum TargetType
 {
@@ -66,4 +67,7 @@ public class TurretData
     [Header("Design")]
     public Sprite inGameDesign;
     public Sprite UIDesign;
+
+    [TextArea(5, 20)]
+    public string description;
 }

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6774791142897126958}
   - component: {fileID: 6774791141816150505}
   - component: {fileID: 6774791141816150509}
+  - component: {fileID: 1850627467}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -79,9 +80,7 @@ MonoBehaviour:
   HUDLeft: {fileID: 0}
   HUDRight: {fileID: 0}
   switchHUDSide: {fileID: 6774791142897126959}
-  gameOverScreen: {fileID: 0}
-  levelName: "T\xE9o"
-  TurretlevelName: "K\xE9vin"
+  levelName: {fileID: 0}
 --- !u!114 &6774791142897126959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,6 +312,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   timeBetweenWave: 5
   wave_Text: {fileID: 0}
+  wave_Victory_Screen: {fileID: 0}
   listEvent:
   - {fileID: 882767662396786120, guid: 707146e6082b4904f89b0cec1ab23845, type: 3}
   - {fileID: 882767662396786120, guid: 04c6390c8f2a79d409c78b43d3dbfada, type: 3}
@@ -336,10 +336,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddcabb5b20172ba47a57bc17679406c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sniperTurret: {fileID: 1159671648371618135, guid: 7262708fb1470ec4e9de4518414f052e,
-    type: 3}
-  turretToBuild: {fileID: 1159671648371618135, guid: 7262708fb1470ec4e9de4518414f052e,
-    type: 3}
+  truck: {fileID: 0}
+  turretPrefab: {fileID: 0}
+  shop: {fileID: 0}
+  turretToBuild: 0
 --- !u!114 &6774791141816150509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,10 +352,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81994cd44fb5078478e7bc9456b66220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 2488951184649618190, guid: 54169df03662d4e4daf3dfd18e565e01, type: 3}
-  - {fileID: 2488951184649618190, guid: 54169df03662d4e4daf3dfd18e565e01, type: 3}
-  - {fileID: 2488951184649618190, guid: 54169df03662d4e4daf3dfd18e565e01, type: 3}
+  enemies: []
   allTurret: []
   rangeSprite: {fileID: 4973951708042549589, guid: 843828b30fd82ff4088d2962f24999e7,
     type: 3}
+  turretDatabase: {fileID: 11400000, guid: aeead099ddab7d94fbfbec987f614a22, type: 2}
+  truck: {fileID: 0}
+  deckButton: []
+  deckTurret: 
+--- !u!114 &1850627467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6774791142897126948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45427a08ab060b7459368e5455f772f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryButton:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  AddDeckImage: {fileID: 0}
+  turretSelected: 0
+  turretImageUI: {fileID: 0}
+  description: {fileID: 0}
+  TurretDeckBuilder: {fileID: 0}

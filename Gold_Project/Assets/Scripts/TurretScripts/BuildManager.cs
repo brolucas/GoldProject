@@ -44,6 +44,8 @@ public class BuildManager : MonoBehaviour
 
     private GameManager gameManager;
 
+    private Deck deck;
+
     public void Start()
     {
         if (turretPrefab == null)
@@ -55,6 +57,8 @@ public class BuildManager : MonoBehaviour
 
         // == empty
         turretToBuild = KindOfTurret.DefaultDoNotUseIt;
+
+        deck = GetComponent<Deck>();
     }
 
     public GameObject GetTurretToBuild()
