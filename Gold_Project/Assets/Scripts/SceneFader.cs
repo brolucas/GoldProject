@@ -69,6 +69,7 @@ public class SceneFader : MonoBehaviour
         {
             GameManager.Instance.enemies.Clear();
         }*/
+
         SceneManager.LoadScene(scene);
 
     }
