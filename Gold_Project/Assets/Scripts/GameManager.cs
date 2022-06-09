@@ -26,8 +26,6 @@ public class GameManager : MonoBehaviour
     public List<GameObject> baricades = new List<GameObject>();
     public UnityEngine.SceneManagement.Scene currentScene { get; set; }
 
-    public List<GameObject> baricades = new List<GameObject>();
-
     // Game Instance Singleton
     public static GameManager Instance
     {
