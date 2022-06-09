@@ -16,7 +16,7 @@ public class truck : MonoBehaviour
     public GameObject Truck_Game_Over_Screen;
     public WaveSpawner WS;
 
-    private void start()
+    private void Start()
     {
         Truck_Coins_Text.text = ("  : " + gold.ToString());
         gold = 200;
@@ -39,7 +39,8 @@ public class truck : MonoBehaviour
     public void Loose()
     {
         Truck_Game_Over_Screen.SetActive(true);
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
+        Destroy(this);
         //Debug.Log("Fin de partie");
     }
     private void OnTriggerEnter2D(Collider2D collision)
