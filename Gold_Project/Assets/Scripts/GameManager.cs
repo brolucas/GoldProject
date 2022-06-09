@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public Deck deck;
 
     private Shop shop;
-
+    public List<GameObject> baricades = new List<GameObject>();
     public UnityEngine.SceneManagement.Scene currentScene { get; set; }
 
     public List<GameObject> baricades = new List<GameObject>();
