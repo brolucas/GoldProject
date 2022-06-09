@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     public Dictionary<Button, KindOfTurret> buttonToEnumDeck = new Dictionary<Button, KindOfTurret>();
 
     private Shop shop;
-
+    public List<GameObject> baricades = new List<GameObject>();
     public UnityEngine.SceneManagement.Scene currentScene { get; set; }
 
     // Game Instance Singleton
