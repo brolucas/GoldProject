@@ -210,7 +210,7 @@ PrefabInstance:
     - target: {fileID: 6774791142897126945, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6774791142897126946, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
@@ -280,7 +280,7 @@ PrefabInstance:
     - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5052569513841025955, guid: fcb83c3b66d220949b0a9acbc2a0e49c, type: 3}
@@ -319,7 +319,8 @@ MonoBehaviour:
   - {fileID: 1461303983}
   - {fileID: 666251586}
   - {fileID: 173509357}
-  AddDeckImage: {fileID: 447713609}
+  addDeckImage: {fileID: 0}
+  removeDeckObj: {fileID: 0}
   turretSelected: 0
   turretImageUI: {fileID: 860735778}
   description: {fileID: 1146835268}
@@ -422,7 +423,8 @@ MonoBehaviour:
   - {fileID: 815633832}
   - {fileID: 1416610561}
   deckButton: []
-  AddDeckImage: {fileID: 447713609}
+  addDeckImage: {fileID: 0}
+  removeDeckObj: {fileID: 0}
   turretSelected: 0
   turretImageUI: {fileID: 860735778}
   description: {fileID: 1146835268}
@@ -2494,7 +2496,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1758244010}
+      objectReference: {fileID: 0}
     - target: {fileID: 7300640099369622854, guid: c1d701af7e8bdbd4386f66d1bc3c1b00,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -2647,18 +2649,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1d701af7e8bdbd4386f66d1bc3c1b00, type: 3}
---- !u!114 &1758244010 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7300640098273414108, guid: c1d701af7e8bdbd4386f66d1bc3c1b00,
-    type: 3}
-  m_PrefabInstance: {fileID: 1758244009}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1804641366 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3613817658044356129, guid: 9f6f7cdf81204844d846186beb43ce1a,
