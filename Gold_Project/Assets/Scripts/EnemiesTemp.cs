@@ -40,6 +40,9 @@ public class EnemiesTemp : MonoBehaviour
     public List<Vector3> pathVectorList;
     public Transform endPoint;
 
+    [Header("Pathfinding variables")]
+    private bool hasArrived;
+
     public void Start()
     {
         endPoint = Pathfinding.Instance.endPoint;
@@ -49,14 +52,18 @@ public class EnemiesTemp : MonoBehaviour
 
         StartCoroutine(DamagePerSeconds());
         //this.GetComponent<Rigidbody2D>().AddForce(new Vector2(500 * speed * Time.deltaTime, 0));
+
+        hasArrived = false;
     }
 
     public void Update()
     {
         HandleMovement();
-        if (pathVectorList != null)
+        if (pathVectorList != null && (hasArrived || Pathfinding.Instance.mapHasChanged))
         {
             SetTargetPosition(endPoint.position);
+            Pathfinding.Instance.mapHasChanged = false;
+            if (hasArrived) hasArrived = false;
         }
 
         if (tookDamage)
@@ -218,6 +225,7 @@ public class EnemiesTemp : MonoBehaviour
             else
             {
                 currentPathIndex++;
+                hasArrived = true;
                 if (currentPathIndex >= pathVectorList.Count)
                 {
                     pathVectorList = null;

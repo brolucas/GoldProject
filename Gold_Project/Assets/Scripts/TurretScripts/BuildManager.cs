@@ -73,8 +73,9 @@ public class BuildManager : MonoBehaviour
             return;
 
         TurretData turretData = gameManager.GetStatsKindOfTurret(turretToBuild);
+        Pathfinding.Instance.GetGrid().GetXY(position, out int xNode, out int yNode);
 
-        if (truck.gold >= turretData.turretPrice)
+        if (truck.gold >= turretData.turretPrice && !Pathfinding.Instance.GetNode(xNode, yNode).isTurret)
         {
             if (turretToBuild == KindOfTurret.DefaultDoNotUseIt)
             {
@@ -83,8 +84,9 @@ public class BuildManager : MonoBehaviour
             }
 
             GameObject newTurret = Instantiate(turretPrefab, position, Quaternion.identity);
-            Pathfinding.Instance.GetGrid().GetXY(position, out int x, out int y);
-            Pathfinding.Instance.GetNode(x, y).SetIsWalkable(false);
+            //Pathfinding.Instance.GetGrid().GetXY(position, out int x, out int y);
+            //Pathfinding.Instance.GetNode(x, y).SetIsWalkable(false);
+            Pathfinding.Instance.GetNode(xNode, yNode).isTurret = true;
 
             if (cellSize > 0)
             {

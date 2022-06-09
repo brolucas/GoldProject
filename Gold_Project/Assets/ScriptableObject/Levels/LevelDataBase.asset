@@ -22,8 +22,8 @@ MonoBehaviour:
       y: 3
     - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
         type: 3}
-      x: 3
-      y: 9
+      x: 9
+      y: 3
   - label: Level2
     levelLabel: 1
     decors:
