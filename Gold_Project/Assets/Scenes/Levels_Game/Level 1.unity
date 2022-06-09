@@ -10091,6 +10091,7 @@ MonoBehaviour:
     sentences:
     - Message 1
     - Message 2
+  tutoPanel: {fileID: 317843784410188565}
 --- !u!4 &317843783791865025
 Transform:
   m_ObjectHideFlags: 0
