@@ -37,8 +37,6 @@ public class AudioManager : MonoBehaviour
                 s.source.Play();
             }
         }
-
-        GameManager.Instance.Init();
     }
 
     public void Play(string clipname)

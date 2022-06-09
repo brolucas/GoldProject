@@ -6,10 +6,9 @@ public class Shop : MonoBehaviour
 { 
     private BuildManager buildManager;
     private GameManager gameManager;
+    private DataManager dataManager;
 
     public Text infoTurretText;
-
-    public List<KindOfTurret> deck = new List<KindOfTurret>();
 
     public List<Button> deckButtons = new List<Button>();
 
@@ -31,12 +30,13 @@ public class Shop : MonoBehaviour
     {
         buildManager = BuildManager.Instance;
         gameManager = GameManager.Instance;
+        dataManager = DataManager.Instance;
 
         for (int i = 0; i < deckButtons.Count; i++)
         {
-            buttonToEnum.Add(deckButtons[i], deck[i]);
+            buttonToEnum.Add(deckButtons[i], dataManager.deckData.deckTurret[i]);
 
-            TurretData turretData = gameManager.GetStatsKindOfTurret(deck[i]);
+            TurretData turretData = gameManager.GetStatsKindOfTurret(dataManager.deckData.deckTurret[i]);
 
             if (turretData == null)
             {
