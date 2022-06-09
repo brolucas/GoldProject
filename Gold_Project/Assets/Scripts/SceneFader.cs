@@ -31,6 +31,11 @@ public class SceneFader : MonoBehaviour
             string scene = "Title";
             StartCoroutine(FadeOut(scene));
         }
+
+        if (SceneManager.GetActiveScene().name == "Level 1")
+        {
+            TutoTrigger.instance.TriggerTuto();
+        }
     }
 
     public void FadeTo(string scene)

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public class Tuto
 {
-    public Image tutoImage;
+    public Sprite[] tutoSprites;
 
     [TextArea(5, 10)]
     public string[] sentences;
