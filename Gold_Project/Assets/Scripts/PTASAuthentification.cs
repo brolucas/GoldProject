@@ -6,7 +6,7 @@ using UnityEngine.SocialPlatforms;
 
 public class PTASAuthentification : MonoBehaviour
 {
-    public static PlayGamesPlatform platform;
+    /*public static PlayGamesPlatform platform;
 
     void Start()
     {
@@ -29,5 +29,5 @@ public class PTASAuthentification : MonoBehaviour
         {
             
         }
-    }
+    }*/
 }

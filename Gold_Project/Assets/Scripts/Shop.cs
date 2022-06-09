@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 { 
-    private BuildManager buildManager;
     private GameManager gameManager;
     private DataManager dataManager;
 
@@ -28,7 +27,6 @@ public class Shop : MonoBehaviour
 
     private void Start()
     {
-        buildManager = BuildManager.Instance;
         gameManager = GameManager.Instance;
         dataManager = DataManager.Instance;
 
@@ -40,7 +38,7 @@ public class Shop : MonoBehaviour
 
             if (turretData == null)
             {
-                Debug.LogError("There is a turret in the deck that doesn't have a DataBase yet !!");
+                Debug.LogWarning("There is a turret in the deck that doesn't have a DataBase yet !!");
                 continue;
             }
 
@@ -101,7 +99,7 @@ public class Shop : MonoBehaviour
                                "Damage : " + turretData.atqPoints +"\n"+
                                "Target : " + turretData.targetType);
 
-        buildManager.SetTurretToBuild(kindOfTurret);
+        BuildManager.Instance.SetTurretToBuild(kindOfTurret);
     }
     
     public void SellTurret()

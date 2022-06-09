@@ -215,7 +215,7 @@ PrefabInstance:
     - target: {fileID: 6774791142897126946, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6774791142897126946, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
@@ -315,12 +315,12 @@ MonoBehaviour:
   - {fileID: 815633832}
   - {fileID: 1416610561}
   deckButton:
-  - {fileID: 1992122389}
-  - {fileID: 1461303983}
-  - {fileID: 666251586}
-  - {fileID: 173509357}
-  addDeckImage: {fileID: 0}
-  removeDeckObj: {fileID: 0}
+  - {fileID: 1992122388}
+  - {fileID: 1461303982}
+  - {fileID: 666251585}
+  - {fileID: 173509356}
+  addDeckImage: {fileID: 447713609}
+  removeDeckObj: {fileID: 424444812}
   turretSelected: 0
   turretImageUI: {fileID: 860735778}
   description: {fileID: 1146835268}
@@ -341,6 +341,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &173509356 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 173509357, guid: c1d701af7e8bdbd4386f66d1bc3c1b00,
+    type: 3}
+  m_PrefabInstance: {fileID: 1758244009}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173509353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &173509357
@@ -387,7 +399,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 198112487}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Deck, Assembly-CSharp
         m_MethodName: SetSelectedTurretViaDeck
         m_Mode: 2
@@ -399,36 +411,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &198112487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6774791141328432968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45427a08ab060b7459368e5455f772f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryButton:
-  - {fileID: 1340782004}
-  - {fileID: 2027434385}
-  - {fileID: 1875600947}
-  - {fileID: 1991590582}
-  - {fileID: 683432807}
-  - {fileID: 280265359}
-  - {fileID: 681089875}
-  - {fileID: 2049820180}
-  - {fileID: 815633832}
-  - {fileID: 1416610561}
-  deckButton: []
-  addDeckImage: {fileID: 0}
-  removeDeckObj: {fileID: 0}
-  turretSelected: 0
-  turretImageUI: {fileID: 860735778}
-  description: {fileID: 1146835268}
-  TurretDeckAddRemove: {fileID: 0}
 --- !u!224 &275459219 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7300640098904734900, guid: c1d701af7e8bdbd4386f66d1bc3c1b00,
@@ -447,6 +429,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &424444812 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3613817658246871497, guid: 9f6f7cdf81204844d846186beb43ce1a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1506108304}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &447713609 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3613817657865455146, guid: 9f6f7cdf81204844d846186beb43ce1a,
@@ -457,6 +445,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &627669345 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5412985623692836157, guid: c1d701af7e8bdbd4386f66d1bc3c1b00,
+    type: 3}
+  m_PrefabInstance: {fileID: 1758244009}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &666251582 stripped
@@ -475,6 +475,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &666251585 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 666251586, guid: c1d701af7e8bdbd4386f66d1bc3c1b00,
+    type: 3}
+  m_PrefabInstance: {fileID: 1758244009}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666251582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &666251586
@@ -521,7 +533,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 198112487}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Deck, Assembly-CSharp
         m_MethodName: SetSelectedTurretViaDeck
         m_Mode: 2
@@ -655,7 +667,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1340782004 stripped
 MonoBehaviour:
@@ -765,6 +777,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1461303982 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1461303983, guid: c1d701af7e8bdbd4386f66d1bc3c1b00,
+    type: 3}
+  m_PrefabInstance: {fileID: 1758244009}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461303979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1461303983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -809,7 +833,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 198112487}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Deck, Assembly-CSharp
         m_MethodName: SetSelectedTurretViaDeck
         m_Mode: 2
@@ -841,7 +865,7 @@ PrefabInstance:
     - target: {fileID: 454790755115000082, guid: 24f19e5fd88d80946be2dd914af5555d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 454790755115000082, guid: 24f19e5fd88d80946be2dd914af5555d,
         type: 3}
@@ -933,6 +957,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3252618971970743903, guid: 24f19e5fd88d80946be2dd914af5555d,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 154904885}
     - target: {fileID: 9183064884766861578, guid: 24f19e5fd88d80946be2dd914af5555d,
         type: 3}
       propertyPath: m_Name
@@ -1137,7 +1166,7 @@ PrefabInstance:
     - target: {fileID: 3613817658246871499, guid: 9f6f7cdf81204844d846186beb43ce1a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DeleteFromDeck
+      value: RemoveFromDeck
       objectReference: {fileID: 0}
     - target: {fileID: 3613817658246871499, guid: 9f6f7cdf81204844d846186beb43ce1a,
         type: 3}
@@ -1198,6 +1227,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2061126936}
     m_Modifications:
+    - target: {fileID: 173509357, guid: c1d701af7e8bdbd4386f66d1bc3c1b00, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 154904894}
+    - target: {fileID: 173509357, guid: c1d701af7e8bdbd4386f66d1bc3c1b00, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetSelectedTurretViaDeck
+      objectReference: {fileID: 0}
+    - target: {fileID: 666251586, guid: c1d701af7e8bdbd4386f66d1bc3c1b00, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 154904894}
+    - target: {fileID: 666251586, guid: c1d701af7e8bdbd4386f66d1bc3c1b00, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetSelectedTurretViaDeck
+      objectReference: {fileID: 0}
+    - target: {fileID: 1461303983, guid: c1d701af7e8bdbd4386f66d1bc3c1b00, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 154904894}
+    - target: {fileID: 1461303983, guid: c1d701af7e8bdbd4386f66d1bc3c1b00, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetSelectedTurretViaDeck
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992122389, guid: c1d701af7e8bdbd4386f66d1bc3c1b00, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 154904894}
+    - target: {fileID: 1992122389, guid: c1d701af7e8bdbd4386f66d1bc3c1b00, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetSelectedTurretViaDeck
+      objectReference: {fileID: 0}
     - target: {fileID: 21286999561452419, guid: c1d701af7e8bdbd4386f66d1bc3c1b00,
         type: 3}
       propertyPath: m_Name
@@ -2496,7 +2557,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 627669345}
     - target: {fileID: 7300640099369622854, guid: c1d701af7e8bdbd4386f66d1bc3c1b00,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -2697,6 +2758,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1992122388 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1992122389, guid: c1d701af7e8bdbd4386f66d1bc3c1b00,
+    type: 3}
+  m_PrefabInstance: {fileID: 1758244009}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992122385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1992122389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2741,7 +2814,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 198112487}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Deck, Assembly-CSharp
         m_MethodName: SetSelectedTurretViaDeck
         m_Mode: 2
@@ -2974,364 +3047,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6774791141328432962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6774791141328432968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 042171af6143025499a3d349c1b55248, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves:
-  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
-      type: 3}
-    Wave_nb_Runner: 4
-    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
-      type: 3}
-    Wave_Manchot_nbr: 4
-    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
-      type: 3}
-    Wave_Count_Kamikaze: 3
-    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
-      type: 3}
-    Wave_Count_CRS: 3
-    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
-      type: 3}
-    Wave_Count_Volant: 2
-    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
-      type: 3}
-    Wave_Count_Boss: 1
-    _event: 0
-    Wave_Rate: 2
-  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
-      type: 3}
-    Wave_nb_Runner: 0
-    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
-      type: 3}
-    Wave_Manchot_nbr: 0
-    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
-      type: 3}
-    Wave_Count_Kamikaze: 0
-    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
-      type: 3}
-    Wave_Count_CRS: 0
-    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
-      type: 3}
-    Wave_Count_Volant: 0
-    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
-      type: 3}
-    Wave_Count_Boss: 0
-    _event: 0
-    Wave_Rate: 2
-  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
-      type: 3}
-    Wave_nb_Runner: 0
-    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
-      type: 3}
-    Wave_Manchot_nbr: 0
-    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
-      type: 3}
-    Wave_Count_Kamikaze: 0
-    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
-      type: 3}
-    Wave_Count_CRS: 0
-    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
-      type: 3}
-    Wave_Count_Volant: 0
-    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
-      type: 3}
-    Wave_Count_Boss: 0
-    _event: 0
-    Wave_Rate: 2
-  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
-      type: 3}
-    Wave_nb_Runner: 0
-    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
-      type: 3}
-    Wave_Manchot_nbr: 0
-    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
-      type: 3}
-    Wave_Count_Kamikaze: 0
-    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
-      type: 3}
-    Wave_Count_CRS: 0
-    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
-      type: 3}
-    Wave_Count_Volant: 0
-    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
-      type: 3}
-    Wave_Count_Boss: 0
-    _event: 0
-    Wave_Rate: 2
-  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
-      type: 3}
-    Wave_nb_Runner: 0
-    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
-      type: 3}
-    Wave_Manchot_nbr: 0
-    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
-      type: 3}
-    Wave_Count_Kamikaze: 0
-    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
-      type: 3}
-    Wave_Count_CRS: 0
-    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
-      type: 3}
-    Wave_Count_Volant: 0
-    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
-      type: 3}
-    Wave_Count_Boss: 0
-    _event: 0
-    Wave_Rate: 2
-  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
-      type: 3}
-    Wave_nb_Runner: 0
-    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
-      type: 3}
-    Wave_Manchot_nbr: 0
-    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
-      type: 3}
-    Wave_Count_Kamikaze: 0
-    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
-      type: 3}
-    Wave_Count_CRS: 0
-    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
-      type: 3}
-    Wave_Count_Volant: 0
-    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
-      type: 3}
-    Wave_Count_Boss: 0
-    _event: 0
-    Wave_Rate: 2
-  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
-      type: 3}
-    Wave_nb_Runner: 0
-    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
-      type: 3}
-    Wave_Manchot_nbr: 0
-    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
-      type: 3}
-    Wave_Count_Kamikaze: 0
-    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
-      type: 3}
-    Wave_Count_CRS: 0
-    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
-      type: 3}
-    Wave_Count_Volant: 0
-    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
-      type: 3}
-    Wave_Count_Boss: 0
-    _event: 0
-    Wave_Rate: 2
-  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
-      type: 3}
-    Wave_nb_Runner: 0
-    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
-      type: 3}
-    Wave_Manchot_nbr: 0
-    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
-      type: 3}
-    Wave_Count_Kamikaze: 0
-    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
-      type: 3}
-    Wave_Count_CRS: 0
-    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
-      type: 3}
-    Wave_Count_Volant: 0
-    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
-      type: 3}
-    Wave_Count_Boss: 0
-    _event: 0
-    Wave_Rate: 2
-  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
-      type: 3}
-    Wave_nb_Runner: 0
-    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
-      type: 3}
-    Wave_Manchot_nbr: 0
-    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
-      type: 3}
-    Wave_Count_Kamikaze: 0
-    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
-      type: 3}
-    Wave_Count_CRS: 0
-    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
-      type: 3}
-    Wave_Count_Volant: 0
-    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
-      type: 3}
-    Wave_Count_Boss: 0
-    _event: 0
-    Wave_Rate: 2
-  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
-      type: 3}
-    Wave_nb_Runner: 0
-    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
-      type: 3}
-    Wave_Manchot_nbr: 0
-    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
-      type: 3}
-    Wave_Count_Kamikaze: 0
-    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
-      type: 3}
-    Wave_Count_CRS: 0
-    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
-      type: 3}
-    Wave_Count_Volant: 0
-    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
-      type: 3}
-    Wave_Count_Boss: 0
-    _event: 0
-    Wave_Rate: 2
-  spawnPoint:
-  - {fileID: 0}
-  spawnPoint2: {fileID: 0}
-  timeBetweenWave: 5
-  countdown: 2
-  wave_Text: {fileID: 0}
-  wave_Victory_Screen: {fileID: 0}
-  listEvent:
-  - {fileID: 882767662396786120, guid: 707146e6082b4904f89b0cec1ab23845, type: 3}
-  - {fileID: 882767662396786120, guid: 04c6390c8f2a79d409c78b43d3dbfada, type: 3}
-  - {fileID: 882767662396786120, guid: 841b4b4c0a1bb694ba67c7454a78d425, type: 3}
-  - {fileID: 882767662396786120, guid: 0c431959c2e7cc747a7343f9afdff2d8, type: 3}
-  - {fileID: 882767662396786120, guid: 36f16ec9c541de240b3626d23cd4cdbd, type: 3}
-  - {fileID: 882767662396786120, guid: 2c9fc33b5264c754baa9e8d869f26e80, type: 3}
-  - {fileID: 882767662396786120, guid: 539bdea3b5feaaa42b1e67a2bddb5350, type: 3}
-  - {fileID: 882767662396786120, guid: 89e53f269f7c4bb45b7b079d81bf7413, type: 3}
-  - {fileID: 882767662396786120, guid: 5670a6cda7172b34880459da1828d1f5, type: 3}
-  - {fileID: 882767662396786120, guid: d66f852a9f428244c8808a29a7d13056, type: 3}
---- !u!114 &6774791141328432963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6774791141328432968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a3cb48a50eae324d870dafabf493cd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftHUD: {fileID: 0}
-  rightHUD: {fileID: 0}
-  isLeft: 1
---- !u!1 &6774791141328432968
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6774791141328432974}
-  - component: {fileID: 6774791141328432975}
-  - component: {fileID: 6774791141328432973}
-  - component: {fileID: 6774791141328432972}
-  - component: {fileID: 6774791141328432963}
-  - component: {fileID: 6774791141328432962}
-  - component: {fileID: 6774791142411765893}
-  - component: {fileID: 6774791142411765889}
-  - component: {fileID: 198112487}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &6774791141328432972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6774791141328432968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1efe4d337a7f36459bf4eec69b4bc14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6774791141328432973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6774791141328432968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87553a890a8f6964e8b0671b8eb3837f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerCounterRight: {fileID: 0}
-  timerCounterLeft: {fileID: 0}
---- !u!4 &6774791141328432974
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6774791141328432968}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1244.2501, y: 429.8685, z: -608.9701}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6774791141328432975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6774791141328432968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f154f23115a4f254ea0111bab1bd77c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenuScreen: {fileID: 0}
---- !u!114 &6774791142411765889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6774791141328432968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81994cd44fb5078478e7bc9456b66220, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemies: []
-  allTurret: []
-  rangeSprite: {fileID: 4973951708042549589, guid: 843828b30fd82ff4088d2962f24999e7,
-    type: 3}
-  turretDatabase: {fileID: 11400000, guid: aeead099ddab7d94fbfbec987f614a22, type: 2}
-  truck: {fileID: 0}
-  dataManager: {fileID: 0}
-  deckData: {fileID: 0}
-  deck: {fileID: 0}
-  baricades: []
---- !u!114 &6774791142411765893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6774791141328432968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddcabb5b20172ba47a57bc17679406c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  truck: {fileID: 0}
-  turretPrefab: {fileID: 0}
-  shop: {fileID: 0}
-  turretToBuild: 0
