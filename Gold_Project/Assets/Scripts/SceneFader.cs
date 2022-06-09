@@ -9,6 +9,7 @@ public class SceneFader : MonoBehaviour
     public Image img;
     public Text levelName;
     public AnimationCurve curve;
+    public GameObject gameManager;
 
     private void Start()
     {
@@ -37,6 +38,7 @@ public class SceneFader : MonoBehaviour
             GoToGame.tutoDone = true;
             TutoTrigger.instance.TriggerTuto();
         }
+        gameManager.SetActive(true);
     }
 
     public void FadeTo(string scene)

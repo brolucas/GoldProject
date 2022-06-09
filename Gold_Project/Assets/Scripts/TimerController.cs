@@ -22,8 +22,8 @@ public class TimerController : MonoBehaviour
 
     void Start()
     {
-        timerCounterRight.text = "00:00";
-        timerCounterLeft.text = "00:00";
+        timerCounterRight.text = "00 : 00";
+        timerCounterLeft.text = "00 : 00";
         timerGoing = false;
 
         BeginTimer();
@@ -48,7 +48,7 @@ public class TimerController : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             timePlaying = TimeSpan.FromSeconds(elapsedTime);
-            string timePlayingStr = timePlaying.ToString("mm':'ss");
+            string timePlayingStr = timePlaying.ToString("mm' : 'ss");
             timerCounterRight.text = timePlayingStr;
             timerCounterLeft.text = timePlayingStr;
 
