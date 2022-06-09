@@ -167,7 +167,7 @@ public class WaveSpawner : MonoBehaviour
     public void SpawnEvent()
     {
         System.Random alea = new System.Random();
-        int noevent = 0;
+        int noevent = alea.Next(0,3);
         int x1 = alea.Next(1, 11);
         int y1 = alea.Next(0, 6);
         Vector3 temp = new Vector3(x1, y1, 0);
