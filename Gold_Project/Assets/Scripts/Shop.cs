@@ -89,17 +89,20 @@ public class Shop : MonoBehaviour
 
     public void PurchaseTurret(Button thisButton)
     {
-        KindOfTurret kindOfTurret = buttonToEnum[thisButton];
+        if (TutoTrigger.instance.isFinished)
+        {
+            KindOfTurret kindOfTurret = buttonToEnum[thisButton];
 
-        TurretData turretData = gameManager.turretDatabase.turrets.Find(data => data.kindOfTurret == kindOfTurret);
+            TurretData turretData = gameManager.turretDatabase.turrets.Find(data => data.kindOfTurret == kindOfTurret);
 
-        infoTurretText.text = ("Price : " + turretData.turretPrice + "\n" +
-                               "Range : " + turretData.range + "\n" +
-                               "Life Points : " + turretData.healthPoints + "\n" +
-                               "Damage : " + turretData.atqPoints +"\n"+
-                               "Target : " + turretData.targetType);
+            infoTurretText.text = ("Price : " + turretData.turretPrice + "\n" +
+                                   "Range : " + turretData.range + "\n" +
+                                   "Life Points : " + turretData.healthPoints + "\n" +
+                                   "Damage : " + turretData.atqPoints + "\n" +
+                                   "Target : " + turretData.targetType);
 
-        BuildManager.Instance.SetTurretToBuild(kindOfTurret);
+            BuildManager.Instance.SetTurretToBuild(kindOfTurret);
+        }
     }
     
     public void SellTurret()
