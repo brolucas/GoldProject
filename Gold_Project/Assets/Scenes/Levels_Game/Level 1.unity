@@ -10095,8 +10095,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tuto:
     tutoSprites:
-    - {fileID: 21300000, guid: e6ff849019b86e04e965a8897ec382fb, type: 3}
-    - {fileID: 21300000, guid: 3a5afba92347225458b36bc096af06d3, type: 3}
+    - {fileID: 21300000, guid: 8c4ee932c2c06d840a6d2a034d91b37d, type: 3}
+    - {fileID: 21300000, guid: 8c4ee932c2c06d840a6d2a034d91b37d, type: 3}
     sentences:
     - Message 1
     - Message 2
