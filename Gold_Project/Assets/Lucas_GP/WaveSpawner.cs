@@ -166,8 +166,8 @@ public class WaveSpawner : MonoBehaviour
                 GameObject istevent = Instantiate(listEvent[0], temp, Quaternion.identity);
 
                 Pathfinding.Instance.GetGrid().GetXY(temp, out int x, out int y);
-                Pathfinding.Instance.GetNode(x, y).SetIsWalkable(!Pathfinding.Instance.GetNode(x, y).isWalkable);
-                Pathfinding.Instance.GetNode(x, y).SetIsWalkable(!Pathfinding.Instance.GetNode(x + 1, y).isWalkable);
+                Pathfinding.Instance.GetNode(x, y).isEvent = istevent;
+                Pathfinding.Instance.GetNode(x, y).isUsed = true;
                 // istevent.transform.GetChild(1).localScale = new Vector3(0, 0, 0);
                 break;
 

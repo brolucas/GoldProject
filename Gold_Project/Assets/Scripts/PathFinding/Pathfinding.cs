@@ -24,7 +24,7 @@ public class Pathfinding:MonoBehaviour
 		foreach(Decor decor in levelData.decors)
         {
 			GetNode(decor.x, decor.y).SetIsWalkable(false);
-			GetNode(decor.x, decor.y).isDecor = true;
+			GetNode(decor.x, decor.y).isDecor = decor;
 			Vector3 position = grid.GetWorldPosition(decor.x, decor.y);
 			position = new Vector3(position.x + cellSize / 2, position.y + cellSize / 2);
 			GameObject newDecor = Instantiate(decorPrefab, position, Quaternion.identity);

@@ -167,12 +167,18 @@ public class WaveSpawner3 : MonoBehaviour
                 GameObject istevent = Instantiate(listEvent[0], temp, Quaternion.identity);
 
                 Pathfinding.Instance.GetGrid().GetXY(temp, out int x, out int y);
-                Pathfinding.Instance.GetNode(x, y).SetIsWalkable(!Pathfinding.Instance.GetNode(x, y).isWalkable);
-                Pathfinding.Instance.GetNode(x, y).SetIsWalkable(!Pathfinding.Instance.GetNode(x + 1, y).isWalkable);
-                Pathfinding.Instance.GetNode(x, y).SetIsWalkable(!Pathfinding.Instance.GetNode(x , y+1).isWalkable);
-                Pathfinding.Instance.GetNode(x, y).SetIsWalkable(!Pathfinding.Instance.GetNode(x + 1, y+1).isWalkable);
-                Pathfinding.Instance.GetNode(x, y).SetIsWalkable(!Pathfinding.Instance.GetNode(x, y + 2).isWalkable);
-                Pathfinding.Instance.GetNode(x, y).SetIsWalkable(!Pathfinding.Instance.GetNode(x +2, y + 2).isWalkable);
+                Pathfinding.Instance.GetNode(x, y).isEvent = istevent;
+                Pathfinding.Instance.GetNode(x + 1, y).isEvent = istevent;
+                Pathfinding.Instance.GetNode(x, y + 1).isEvent = istevent;
+                Pathfinding.Instance.GetNode(x + 1, y + 1).isEvent = istevent;
+                Pathfinding.Instance.GetNode(x, y + 2).isEvent = istevent;
+                Pathfinding.Instance.GetNode(x + 2, y + 2).isEvent = istevent;
+                Pathfinding.Instance.GetNode(x, y).isUsed = true;
+                Pathfinding.Instance.GetNode(x + 1, y).isUsed = true;
+                Pathfinding.Instance.GetNode(x, y + 1).isUsed = true;
+                Pathfinding.Instance.GetNode(x + 1, y + 1).isUsed = true;
+                Pathfinding.Instance.GetNode(x, y + 2).isUsed = true;
+                Pathfinding.Instance.GetNode(x + 2, y + 2).isUsed = true;
 
 
                 //istevent.transform.GetChild(1).localScale = new Vector3(0, 0, 0);
