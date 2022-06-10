@@ -22,6 +22,7 @@ public class LevelSelector : MonoBehaviour
                 listeLevel[i].interactable = false;
             }
         }
+        //Vider le contenu du deck
     }
 
     // Update is called once per frame
