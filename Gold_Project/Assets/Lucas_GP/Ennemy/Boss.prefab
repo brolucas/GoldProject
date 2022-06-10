@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 255277567047928808}
   - component: {fileID: 6709396344107502454}
   - component: {fileID: 2488951184649618190}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Boss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -148,13 +148,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 400
   currentHealth: 0
-  speed: 2
+  baseSpeed: 3
+  currentSpeed: 3
   isFlying: 1
   goldValue: 15
+  getTouch: 0
+  getZapped: 0
+  isConfuse: 0
+  ConfuseCombo: 0
   isBurning: 0
   nbrOfAtqSuffed: 0
+  timeToDie: 0
+  tookDamage: 0
   damagePerSeconds: 0
   attackingTurret: []
+  distanceToNextTarget: 0
   currentPathIndex: 0
   pathVectorList: []
   endPoint: {fileID: 0}
@@ -165,6 +173,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6898869339770346148}
     m_Modifications:
+    - target: {fileID: 2279312378319710852, guid: 6e2a8f5891f72b342b07c866678fc75d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2279312378319710859, guid: 6e2a8f5891f72b342b07c866678fc75d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -174,6 +187,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2279312378375237152, guid: 6e2a8f5891f72b342b07c866678fc75d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2279312378474438871, guid: 6e2a8f5891f72b342b07c866678fc75d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2279312378918525495, guid: 6e2a8f5891f72b342b07c866678fc75d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2279312378921658332, guid: 6e2a8f5891f72b342b07c866678fc75d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2279312379432567736, guid: 6e2a8f5891f72b342b07c866678fc75d,
         type: 3}
@@ -249,6 +282,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GManchot
+      objectReference: {fileID: 0}
+    - target: {fileID: 2279312379432567737, guid: 6e2a8f5891f72b342b07c866678fc75d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2279312379654809232, guid: 6e2a8f5891f72b342b07c866678fc75d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2279312379654809239, guid: 6e2a8f5891f72b342b07c866678fc75d,
         type: 3}
