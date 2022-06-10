@@ -51,6 +51,7 @@ public class TutoManager : MonoBehaviour
         Debug.Log("Sentences.Count = " + sentences.Count);
         if (sentences.Count == 0)
         {
+            TutoTrigger.instance.isFinished = true;
             EndTuto();
             return;
         }
@@ -63,6 +64,7 @@ public class TutoManager : MonoBehaviour
     {
         if (sprites.Count == 0)
         {
+            TutoTrigger.instance.isFinished = true;
             EndTuto();
             return;
         }
@@ -75,6 +77,8 @@ public class TutoManager : MonoBehaviour
     void EndTuto()
     {
         Time.timeScale = 1;
+        AchivementsFinishing.instance.Achievement(true, "CgkIiorxr7YfEAIQAg");
         TutoTrigger.instance.tutoPanel.SetActive(false);
+
     }
 }

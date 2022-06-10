@@ -88,6 +88,7 @@ public class BuildManager : MonoBehaviour
             Pathfinding.Instance.GetGrid().GetXY(position, out int x, out int y);
             Pathfinding.Instance.GetNode(x, y).isTurret = newTurret;
             Pathfinding.Instance.GetNode(x, y).isUsed = true;
+            Pathfinding.Instance.mapHasChanged = true;
 
             if (cellSize > 0)
             {
