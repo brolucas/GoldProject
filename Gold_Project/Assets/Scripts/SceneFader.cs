@@ -49,6 +49,13 @@ public class SceneFader : MonoBehaviour
 
     public void FadeToGame(Text levelName)
     {
+        if (DataManager.Instance.deckData.deckTurret.Contains(KindOfTurret.DefaultDoNotUseIt))
+        {
+            Debug.LogWarning("You need to have 4 turrets in the Deck !!");
+            return;
+
+        }
+
         StartCoroutine(FadeOut(levelName.text));
     }
 
@@ -62,7 +69,6 @@ public class SceneFader : MonoBehaviour
             float a = curve.Evaluate(t);
             img.color = new Color(0f, 0f, 0f, a);
             yield return 0;
-
         }
 
         /*if (SceneManager.GetActiveScene().name != "MainMenu" || SceneManager.GetActiveScene().name != "Title" || SceneManager.GetActiveScene().name != "Logo")
@@ -71,7 +77,5 @@ public class SceneFader : MonoBehaviour
         }*/
 
         SceneManager.LoadScene(scene);
-
     }
-    
 }

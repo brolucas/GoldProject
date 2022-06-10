@@ -6,11 +6,20 @@ using UnityEngine.EventSystems;
 
 public class Deck : MonoBehaviour
 {
+    // Link the inventory button to a turretType
     public List<Button> inventoryButton = new List<Button>();
     public Dictionary<Button, KindOfTurret> buttonToEnumInventory = new Dictionary<Button, KindOfTurret>();
 
+    // Link the deck slot button to a turretType
+    public List<Button> deckButton = new List<Button>();
+    public Dictionary<Button, KindOfTurret> buttonToEnumDeck = new Dictionary<Button, KindOfTurret>();
+
+    private Button selectedDeckSlotButton;
+
     [SerializeField]
-    private Image AddDeckImage;
+    private Image addDeckImage;
+    [SerializeField]
+    private GameObject removeDeckObj;
 
     public KindOfTurret turretSelected;
 
@@ -21,7 +30,7 @@ public class Deck : MonoBehaviour
     private GameManager gameManager;
 
     [SerializeField]
-    private GameObject TurretDeckBuilder;
+    private GameObject TurretDeckAddRemove;
 
     public void Start()
     {
@@ -30,33 +39,20 @@ public class Deck : MonoBehaviour
         if (gameManager.currentScene.name != "MainMenu")
             return;
 
-        /*TurretData turretData = GameManager.Instance.GetStatsKindOfTurret(KindOfTurret.SniperTower);
-        description.text = turretData.description;
-
-        */
-
         for (int i = 0; i < gameManager.turretDatabase.turrets.Count; i++)
         {
             buttonToEnumInventory.Add(inventoryButton[i], gameManager.turretDatabase.turrets[i].kindOfTurret);
 
             inventoryButton[i].GetComponent<Image>().sprite = gameManager.turretDatabase.turrets[i].UIDesign;
-
-            /*TurretData turretData = turretDatabase.turrets.Find(data => data.kindOfTurret == deck[i]);
-
-            if (turretData == null)
-            {
-                Debug.LogError("There is a turret in the deck that doesn't have a DataBase yet !!");
-                continue;
-            }
-
-            deckButtons[i].GetComponent<Image>().sprite = turretData.UIDesign;*/
         }
 
-        TurretDeckBuilder.SetActive(false);
+        TurretDeckAddRemove.SetActive(false);
     }
 
     public void SetSelectedTurretViaInventory(Button thisButton)
     {
+        removeDeckObj.SetActive(false);
+
         KindOfTurret kindOfTurret = buttonToEnumInventory[thisButton];
 
         SetTurretSelected(thisButton, kindOfTurret);
@@ -64,7 +60,14 @@ public class Deck : MonoBehaviour
 
     public void SetSelectedTurretViaDeck(Button thisButton)
     {
-        KindOfTurret kindOfTurret = gameManager.buttonToEnumDeck[thisButton];
+        if (buttonToEnumDeck[thisButton] == KindOfTurret.DefaultDoNotUseIt)
+            return;
+
+        removeDeckObj.SetActive(true);
+
+        selectedDeckSlotButton = thisButton;
+
+        KindOfTurret kindOfTurret = buttonToEnumDeck[thisButton];
 
         SetTurretSelected(thisButton, kindOfTurret);
     }
@@ -73,9 +76,9 @@ public class Deck : MonoBehaviour
     {
         turretSelected = kindOfTurret;
 
-        if (TurretDeckBuilder.activeSelf == false)
+        if (TurretDeckAddRemove.activeSelf == false)
         {
-            TurretDeckBuilder.SetActive(true);
+            TurretDeckAddRemove.SetActive(true);
         }
 
         TurretData turretData = gameManager.GetStatsKindOfTurret(kindOfTurret);
@@ -83,36 +86,49 @@ public class Deck : MonoBehaviour
         description.text = turretData.description;
         turretImageUI.sprite = turretData.UIDesign;
 
-        if (gameManager.deckTurret.Contains(kindOfTurret))
+        if (gameManager.deckData.deckTurret.Contains(kindOfTurret))
         {
-            AddDeckImage.color = Color.red;
+            addDeckImage.color = Color.red;
+            addDeckImage.GetComponentInChildren<Text>().text = "Already in Deck";
+            addDeckImage.GetComponentInChildren<Text>().color = Color.white;
         }
         else
         {
-            AddDeckImage.color = Color.white;
+            addDeckImage.color = Color.white;
+            addDeckImage.GetComponentInChildren<Text>().text = "Add to Deck";
+            addDeckImage.GetComponentInChildren<Text>().color = Color.black;
         }
     }
 
     public void AddToDeck()
     {
-        if (!gameManager.deckTurret.Contains(KindOfTurret.DefaultDoNotUseIt))
+        if (!gameManager.deckData.deckTurret.Contains(KindOfTurret.DefaultDoNotUseIt))
             return;
 
-        if (gameManager.deckTurret.Contains(turretSelected))
+        if (gameManager.deckData.deckTurret.Contains(turretSelected))
             //You can't add more than 4 turrets 
             // Already in the deck 
             return;
 
         gameManager.TryToAddTurretInDeck(turretSelected);
 
-        TurretDeckBuilder.SetActive(false);
+        TurretDeckAddRemove.SetActive(false);
     }
 
-    public void DeleteFromDeck()
+    public void RemoveFromDeck()
     {
-       
-        //gameManager.UpdateDeck();
+        if (!gameManager.deckData.deckTurret.Contains(turretSelected))
+        {
+            Debug.Log("You can't remove this turret because it is not in the deck");
+            return;
+        }
 
-        TurretDeckBuilder.SetActive(false);
+        gameManager.RemoveTurretFromDeck(turretSelected, selectedDeckSlotButton);
+
+        buttonToEnumDeck[selectedDeckSlotButton] = KindOfTurret.DefaultDoNotUseIt;
+
+        selectedDeckSlotButton.GetComponent<Image>().sprite = null;
+
+        TurretDeckAddRemove.SetActive(false);
     }
 }

@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 6774791142897126958}
   - component: {fileID: 6774791141816150505}
   - component: {fileID: 6774791141816150509}
-  - component: {fileID: 1850627467}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -77,10 +76,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1efe4d337a7f36459bf4eec69b4bc14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HUDLeft: {fileID: 0}
-  HUDRight: {fileID: 0}
-  switchHUDSide: {fileID: 6774791142897126959}
-  levelName: {fileID: 0}
 --- !u!114 &6774791142897126959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,8 +304,11 @@ MonoBehaviour:
     Wave_Count_Boss: 0
     _event: 0
     Wave_Rate: 2
-  spawnPoint: {fileID: 0}
+  spawnPoint:
+  - {fileID: 0}
+  spawnPoint2: {fileID: 0}
   timeBetweenWave: 5
+  countdown: 2
   wave_Text: {fileID: 0}
   wave_Victory_Screen: {fileID: 0}
   listEvent:
@@ -336,7 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddcabb5b20172ba47a57bc17679406c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  truck: {fileID: 0}
+  truck: {fileID: 8262161137113511699, guid: 28da6559888611048a67939a8e1952b7, type: 3}
   turretPrefab: {fileID: 0}
   shop: {fileID: 0}
   turretToBuild: 0
@@ -358,33 +356,9 @@ MonoBehaviour:
     type: 3}
   turretDatabase: {fileID: 11400000, guid: aeead099ddab7d94fbfbec987f614a22, type: 2}
   truck: {fileID: 0}
-  deckButton: []
-  deckTurret: 
---- !u!114 &1850627467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6774791142897126948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45427a08ab060b7459368e5455f772f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryButton:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  AddDeckImage: {fileID: 0}
-  turretSelected: 0
-  turretImageUI: {fileID: 0}
-  description: {fileID: 0}
-  TurretDeckBuilder: {fileID: 0}
+  dataManager: {fileID: 1276064566901145631, guid: 5d468dcf44b9d3b46afae9a1fcf3181b,
+    type: 3}
+  deckData: {fileID: 1276064566901145630, guid: 5d468dcf44b9d3b46afae9a1fcf3181b,
+    type: 3}
+  deck: {fileID: 0}
+  baricades: []

@@ -17,9 +17,6 @@ public class Turret : MonoBehaviour
     private GameObject rangeSprite;
     private Vector3 localScale;
 
-    public GameObject meshFilterParent;
-    public MeshFilter meshFilter;
-
     public SpriteRenderer spriteRenderer;
 
     [Range(1, 180)]
@@ -82,7 +79,7 @@ public int atqPoints { get; private set; }
 
         if (GameManager.Instance == null)
         {
-            Debug.LogError("There is no GameManager in the scene");
+            Debug.LogWarning("There is no GameManager in the scene");
         }
 
         if (gameManager == null)
@@ -106,7 +103,7 @@ public int atqPoints { get; private set; }
     {
         if (turretDatabase == null)
         {
-            Debug.LogError("This turret doens't have a TurretScriptable attach to it : " + this);
+            Debug.LogWarning("This turret doens't have a TurretScriptable attach to it : " + this);
             return;
         }
 
@@ -123,27 +120,27 @@ public int atqPoints { get; private set; }
 
         if (turretData == null)
         {
-            Debug.LogError("There is TurretData of the type : " + type);
+            Debug.LogWarning("There is TurretData of the type : " + type);
             return;
         }
 
         #region CheckStats
 
         if (turretData.healthPoints <= 0)
-            Debug.LogError("Shouldn't this turret.healthPoints be : 0" + this);
+            Debug.LogWarning("Shouldn't this turret.healthPoints be : 0" + this);
         if (turretData.range <= 0)
-            Debug.LogError("Shouldn't this turret.range be : 0" + this);
+            Debug.LogWarning("Shouldn't this turret.range be : 0" + this);
         if (turretData.nbrOfTarget <= 0)
-            Debug.LogError("Shouldn't this turret.nbrOfTarget be : 0" + this);
+            Debug.LogWarning("Shouldn't this turret.nbrOfTarget be : 0" + this);
         if (turretData.turretPrice <= 0)
-            Debug.LogError("Shouldn't this turret.turretPrice be : 0" + this);
+            Debug.LogWarning("Shouldn't this turret.turretPrice be : 0" + this);
         if (turretData.targetType == TargetType.DefaultDoNotUseIt)
-            Debug.LogError("Shouldn't this turret.targetType be : DEFAULT " + this);
+            Debug.LogWarning("Shouldn't this turret.targetType be : DEFAULT " + this);
         
         if (turretData.atqPoints <= 0)
-            Debug.LogError("Shouldn't this turret.atqPoints be : 0" + this);
+            Debug.LogWarning("Shouldn't this turret.atqPoints be : 0" + this);
         if (turretData.fireRate <= 0)
-            Debug.LogError("Shouldn't this turret.fireRate be : 0" + this);
+            Debug.LogWarning("Shouldn't this turret.fireRate be : 0" + this);
 
         /*if (turretData.inGameDesign == null)
             Debug.LogError(this + "Doesn't have a sprite");
@@ -250,7 +247,7 @@ public int atqPoints { get; private set; }
         {
             if (enemy == null)
             {
-                Debug.LogError("There is a null error");
+                Debug.LogWarning("There is a null error");
                 return;
             }
 

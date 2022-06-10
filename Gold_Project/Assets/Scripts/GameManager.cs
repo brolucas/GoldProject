@@ -18,10 +18,9 @@ public class GameManager : MonoBehaviour
 
     public truck truck;
 
-    public List<Button> deckButton = new List<Button>();
-    public List<KindOfTurret> deckTurret = new List<KindOfTurret>();
-
-    public Dictionary<Button, KindOfTurret> buttonToEnumDeck = new Dictionary<Button, KindOfTurret>();
+    public DataManager dataManager;
+    public DeckData deckData;
+    public Deck deck;
 
     private Shop shop;
     public List<GameObject> baricades = new List<GameObject>();
@@ -36,15 +35,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Awake()
+    public void Awake()
     {
-        Init();
-    }
-
-    public void Init()
-    {
-        currentScene = SceneManager.GetActiveScene();
-
         // if the singleton hasn't been initialized yet
         if (instance != null && instance != this)
         {
@@ -53,16 +45,17 @@ public class GameManager : MonoBehaviour
 
         instance = this;
 
+        dataManager = DataManager.Instance;
+        if (deckData == null)
+        {
+            deckData = dataManager.deckData;
+        }
+        
+        currentScene = SceneManager.GetActiveScene();
+
         enemies.Clear();
 
-        for (int i = 0; i < 4; i++)
-        {
-            deckTurret.Add(KindOfTurret.DefaultDoNotUseIt);
-        }
-
         shop = FindObjectOfType<Shop>();
-
-        DontDestroyOnLoad(this.gameObject);
 
         foreach (TurretData turretData in turretDatabase.turrets)
         {
@@ -80,35 +73,21 @@ public class GameManager : MonoBehaviour
             GetComponent<TimerController>().enabled = false;
             GetComponent<WaveSpawner>().enabled = false;
 
-            for (int i = 0; i < deckButton.Count; i++)
+            // For each slot add a type to it
+            for (int i = 0; i < deck.deckButton.Count; i++)
             {
-                buttonToEnumDeck.Add(deckButton[i], deckTurret[i]);
+                deck.buttonToEnumDeck.Add(deck.deckButton[i], deckData.deckTurret[i]);
 
                 Debug.Log("Main Menu");
             }
-        }
-        else
-        {
-            /*deckButton.Clear();
 
-
-            GetComponent<TimerController>().enabled = true;
-            GetComponent<WaveSpawner>().enabled = true;
-
-            shop.deck.Clear();
-            deckButton.Clear();
-
-            Destroy(GetComponent<Deck>());
-
-            for (int i = 0; i < deckTurret.Count; i++)
-            {
-                shop.deck.Add(deckTurret[i]);
-            }
-            Debug.Log("Other Scene");*/
-
+            deck = GetComponent<Deck>();
         }
     }
-
+    public void Update()
+    {
+        dataManager = DataManager.Instance;
+    }
     public TurretData GetStatsKindOfTurret(KindOfTurret kindOfTurret)
     {
         // Get the stats in the scriptable object TurretDatabase based on the type kindOfTurret
@@ -120,64 +99,31 @@ public class GameManager : MonoBehaviour
 
     public void TryToAddTurretInDeck(KindOfTurret kindOfTurret)
     {
-        for (int i = 0; i < deckButton.Count; i++)
+        for (int i = 0; i < deck.deckButton.Count; i++)
         {
-            if (buttonToEnumDeck[deckButton[i]] == KindOfTurret.DefaultDoNotUseIt)
+            if (deck.buttonToEnumDeck[deck.deckButton[i]] == KindOfTurret.DefaultDoNotUseIt)
             {
-                buttonToEnumDeck[deckButton[i]] = kindOfTurret;
-                deckTurret[i] = kindOfTurret;
-                deckButton[i].GetComponent<Image>().sprite = GetStatsKindOfTurret(kindOfTurret).UIDesign;
+                //Change value in the dictionnary
+                deck.buttonToEnumDeck[deck.deckButton[i]] = kindOfTurret;
+
+                //Change value in the DECK in deckData
+                deckData.deckTurret[i] = kindOfTurret;
+
+                deck.deckButton[i].GetComponent<Image>().sprite = GetStatsKindOfTurret(kindOfTurret).UIDesign;
                 break;
             }
-
-            /*if (deckTurret.Count == 0)
-                return;
-
-            if (GetStatsKindOfTurret(deckTurret[i]) != null)
-            {
-                buttonToEnumDeck.Add(deckButton[i], deckTurret[i]);
-            }*/
-
-            /*if (GetStatsKindOfTurret(deckTurret[i]) == null)
-            {
-                deckButton[i].GetComponent<Image>().sprite = null;
-            }
-            else
-            {
-                deckButton[i].GetComponent<Image>().sprite = GetStatsKindOfTurret(deckTurret[i]).UIDesign;
-            }*/
         }
     }
 
-    public void RemoveTurretFromDeck(KindOfTurret kindOfTurret)
+    public void RemoveTurretFromDeck(KindOfTurret kindOfTurret, Button slotButton)
     {
-        /*buttonToEnumDeck.ContainsValue(kindOfTurret) = kindOfTurret;
-        
-
-        for (int i = 0; i < deckTurret.Count; i++)
+        for (int i = 0; i < deckData.deckTurret.Count; i++)
         {
-            if (deckTurret[i] == kindOfTurret)
+            if (deckData.deckTurret[i] == kindOfTurret)
             {
-                deckTurret[i] = KindOfTurret.DefaultDoNotUseIt;
+                deckData.deckTurret[i] = KindOfTurret.DefaultDoNotUseIt;
                 break;
             }
-
-            *//*if (deckTurret.Count == 0)
-                return;
-
-            if (GetStatsKindOfTurret(deckTurret[i]) != null)
-            {
-                buttonToEnumDeck.Add(deckButton[i], deckTurret[i]);
-            }*/
-
-            /*if (GetStatsKindOfTurret(deckTurret[i]) == null)
-            {
-                deckButton[i].GetComponent<Image>().sprite = null;
-            }
-            else
-            {
-                deckButton[i].GetComponent<Image>().sprite = GetStatsKindOfTurret(deckTurret[i]).UIDesign;
-            }*//*
-        }*/
+        }
     }
 }
