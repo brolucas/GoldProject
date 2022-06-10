@@ -18,31 +18,145 @@ MonoBehaviour:
     decors:
     - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
         type: 3}
-      x: 3
+      x: 2
+      y: 1
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 4
+      y: 1
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 4
       y: 3
     - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
         type: 3}
-      x: 9
+      x: 4
+      y: 4
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 8
+      y: 2
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 8
       y: 3
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 8
+      y: 5
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 10
+      y: 5
   - label: Level2
     levelLabel: 1
     decors:
     - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
         type: 3}
       x: 3
+      y: 3
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 6
       y: 2
     - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
         type: 3}
-      x: 3
+      x: 6
+      y: 3
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 6
       y: 5
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 9
+      y: 3
   - label: Level3
     levelLabel: 2
     decors:
     - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
         type: 3}
-      x: 0
-      y: 0
+      x: 5
+      y: 2
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 5
+      y: 4
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 8
+      y: 2
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 8
+      y: 4
+  - label: Level4
+    levelLabel: 3
+    decors:
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 2
+      y: 2
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 9
+      y: 4
+  - label: Level5
+    levelLabel: 4
+    decors:
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 4
+      y: 2
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 9
+      y: 3
+  - label: Level6
+    levelLabel: 5
+    decors:
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 3
+      y: 4
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 6
+      y: 3
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 9
+      y: 2
+  - label: Level7
+    levelLabel: 6
+    decors:
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 3
+      y: 3
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 9
+      y: 2
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 9
+      y: 4
+  - label: Level8
+    levelLabel: 7
+    decors:
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 6
+      y: 4
+    - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
+        type: 3}
+      x: 11
+      y: 3
+  - label: Level9
+    levelLabel: 8
+    decors:
     - image: {fileID: -2413806693520163455, guid: 6f63d9810fd44be49af5fbffc7e6aa7b,
         type: 3}
       x: 7
-      y: 13
+      y: 3

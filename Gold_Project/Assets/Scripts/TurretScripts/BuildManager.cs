@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class BuildManager : MonoBehaviour
 {
+    public truck truck;
+
+    public GameObject turretPrefab;
+
+    public Shop shop;
+
+    public KindOfTurret turretToBuild;
+
+    private Deck deck;
+
     #region Singleton
     private static BuildManager instance = null;
 
@@ -34,16 +44,6 @@ public class BuildManager : MonoBehaviour
     }
     #endregion
 
-    public truck truck;
-
-    public GameObject turretPrefab;
-
-    public Shop shop;
-
-    public KindOfTurret turretToBuild;
-
-    private GameManager gameManager;
-
     public void Start()
     {
         if (turretPrefab == null)
@@ -51,10 +51,12 @@ public class BuildManager : MonoBehaviour
             turretPrefab = (GameObject)Resources.Load("Assets/Prefab/TurretPrefab.prefab", typeof(GameObject));
         }
 
-        gameManager = GameManager.Instance;
-
         // == empty
         turretToBuild = KindOfTurret.DefaultDoNotUseIt;
+
+        deck = GetComponent<Deck>();
+
+        shop = FindObjectOfType<Shop>();
     }
 
     public GameObject GetTurretToBuild()
@@ -72,22 +74,19 @@ public class BuildManager : MonoBehaviour
         if (turretToBuild == KindOfTurret.DefaultDoNotUseIt)
             return;
 
-        TurretData turretData = gameManager.GetStatsKindOfTurret(turretToBuild);
-        Pathfinding.Instance.GetGrid().GetXY(position, out int xNode, out int yNode);
+        TurretData turretData = GameManager.Instance.GetStatsKindOfTurret(turretToBuild);
 
-        if (truck.gold >= turretData.turretPrice && !Pathfinding.Instance.GetNode(xNode, yNode).isTurret)
+        if (truck.gold >= turretData.turretPrice)
         {
             if (turretToBuild == KindOfTurret.DefaultDoNotUseIt)
             {
-                Debug.LogError("You are trying to create a turret but there is no turret selected !");
+                Debug.LogWarning("You are trying to create a turret but there is no turret selected !");
                 return;
             }
 
             GameObject newTurret = Instantiate(turretPrefab, position, Quaternion.identity);
-            //Pathfinding.Instance.GetGrid().GetXY(position, out int x, out int y);
-            //Pathfinding.Instance.GetNode(x, y).SetIsWalkable(false);
-            Pathfinding.Instance.GetNode(xNode, yNode).isTurret = newTurret;
-            Pathfinding.Instance.GetNode(xNode, yNode).isUsed = true;
+            Pathfinding.Instance.GetGrid().GetXY(position, out int x, out int y);
+            Pathfinding.Instance.GetNode(x, y).SetIsWalkable(false);
 
             if (cellSize > 0)
             {
