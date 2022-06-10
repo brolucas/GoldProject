@@ -66,7 +66,10 @@ public int atqPoints { get; private set; }
 
     public bool canBeMoved = false;
 
-    public List<EnemiesTemp> targets = new List<EnemiesTemp>();
+    public List<EnemiesTemp> inRangeEnemies = new List<EnemiesTemp>();
+
+    public List<EnemiesTemp> targetList = new List<EnemiesTemp>();
+
 
     public void Awake()
     {
@@ -258,9 +261,9 @@ public int atqPoints { get; private set; }
 
             if (isInside)
             {
-                if (!targets.Contains(enemy))
+                if (!inRangeEnemies.Contains(enemy))
                 {
-                    targets.Add(enemy);
+                    inRangeEnemies.Add(enemy);
 
                     //enemy.startTime = Time.time;
                 }
@@ -268,11 +271,11 @@ public int atqPoints { get; private set; }
             else
             {
                 enemy.attackingTurret.Remove(this);
-                targets.Remove(enemy);
+                inRangeEnemies.Remove(enemy);
             }
         }
 
-        if (targets.Count <= 0)
+        if (inRangeEnemies.Count <= 0)
             return;
 
         #region Normal Attack
@@ -292,7 +295,11 @@ public int atqPoints { get; private set; }
         fireCountDown -= Time.deltaTime / 2;*/
         #endregion
 
-        currentTarget = targets[0];
+        //List of enemies usefull when nbrOfTarget > 1
+        targetList.Clear();
+
+        //Default enemy
+        currentTarget = ChooseTargetClosestToTruck();
 
         switch (kindOfTurret)
         {
@@ -306,30 +313,30 @@ public int atqPoints { get; private set; }
             case KindOfTurret.SniperTower:
                 {
                     //Search for the target with the highest maxHealth
-                    foreach (var target in targets)
+                    foreach (EnemiesTemp enemy in inRangeEnemies)
                     {
-                        if (target.startingHealth > currentTarget.startingHealth)
+                        if (enemy.startingHealth > currentTarget.startingHealth)
                         {
-                            currentTarget = target;
+                            currentTarget = enemy;
                         }
                     }
                     break;
                 }
             case KindOfTurret.Furnace:
                 {
-                    SortListClosestToTruckAndDoesntBurn(targets);
+                    SortListClosestToTruckAndDoesntBurn(inRangeEnemies);
 
                     bool allTargetAreBurning = false;
 
-                    foreach (var target in targets)
+                    foreach (EnemiesTemp enemy in inRangeEnemies)
                     {
-                        if (target.isBurning)
+                        if (enemy.isBurning)
                         {
                             allTargetAreBurning = true;
                         }
                         else
                         {
-                            target.isBurning = false;
+                            enemy.isBurning = false;
                             break;
                         }
                     }
@@ -339,6 +346,29 @@ public int atqPoints { get; private set; }
                         currentTarget = ChooseTargetClosestToTruck();
                     }
                     //Else focus target[0]
+                    break;
+                }
+            case KindOfTurret.Immobilizer:
+                {
+                    for (int i = 0; i < 4; i++)
+                    {
+                        EnemiesTemp stock = inRangeEnemies[0];
+
+                        for (int j = 0; j < inRangeEnemies.Count; j++)
+                        {
+                            if (targetList.Contains(inRangeEnemies[j]) || stock == inRangeEnemies[j])
+                            {
+                                continue;
+                            }
+                            if (stock.currentHealth < inRangeEnemies[j].currentHealth)
+                            {
+                                stock = inRangeEnemies[j];
+                            }
+                        }
+
+                        targetList.Add(stock);
+                    }
+
                     break;
                 }
             case KindOfTurret.Zap:
@@ -353,18 +383,22 @@ public int atqPoints { get; private set; }
                 break;
         }
 
-        #region RayToTarget
-        Vector3 rayToTarget = currentTarget.transform.position - origin;
-        Debug.DrawLine(origin, origin + rayToTarget, Color.red);
-        #endregion
 
-        if (fireCountDown <= 0f)
+        foreach (var target in targetList)
+        {
+            #region RayToTarget
+            Vector3 rayToTarget = currentTarget.transform.position - origin;
+            Debug.DrawLine(origin, origin + rayToTarget, Color.red);
+            #endregion
+        }
+
+        /*if (fireCountDown <= 0f)
         {
             Shoot(currentTarget);
             fireCountDown = 1 / fireRate;
         }
 
-        fireCountDown -= Time.deltaTime;
+        fireCountDown -= Time.deltaTime;*/
 
     }
 
@@ -395,6 +429,8 @@ public int atqPoints { get; private set; }
 
         float damage = atqPoints + atqPtsBonus;
 
+        Debug.Log("atqPoints" + atqPoints + "/" + "atqPtsBonus" + atqPtsBonus);
+
         if (isAtqCap)
         {
              damage = Mathf.Clamp(atqPoints + atqPtsBonus, 0, maxAtqPoints);
@@ -409,7 +445,7 @@ public int atqPoints { get; private set; }
         }
 
         if (enemy == null)
-            targets.Remove(enemy);
+            inRangeEnemies.Remove(enemy);
     }
 
     public virtual void TurretPassive(EnemiesTemp enemy = null)
@@ -436,7 +472,7 @@ public int atqPoints { get; private set; }
                 {
                     // Enemies that suffer 5 attacks are burned burned enemies suffer 1 point of damage
 
-                    foreach (var target in targets)
+                    foreach (var target in inRangeEnemies)
                     {
                         Vector3 vectorToTarget = currentTarget.transform.position - this.transform.position;
 
@@ -521,6 +557,13 @@ public int atqPoints { get; private set; }
                     // the enemies are pushed back 2 squares
                     int pushHowFar = (int)maxPassiveParameters;
                     
+                    break;
+                }
+            case KindOfTurret.Immobilizer: 
+                {
+                    // inflicts 8% of missing hp per attack
+                    atqPtsBonus = (enemy.startingHealth - enemy.currentHealth) * (maxPassiveParameters / 100);
+
                     break;
                 }
             case KindOfTurret.Zap: 
@@ -621,6 +664,25 @@ public int atqPoints { get; private set; }
         currentLevel += Mathf.Clamp(1, 0, maxLevel - currentLevel);
     }
 
+    public void TakeDamage(int damage)
+    {
+        currentHP -= damage;
+        if (currentHP <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        /*Pathfinding.Instance.GetGrid().GetXY(transform.position, out int x, out int y);
+        Pathfinding.Instance.GetNode(x, y).isTurret = null;
+        Pathfinding.Instance.GetNode(x, y).isUsed = false;
+        Pathfinding.Instance.mapHasChanged = true;
+        Destroy(this.gameObject.transform.parent.gameObject);
+        gameManager.allTurret.Remove(this);*/
+    }
+
     #region Util Function
     public bool IsPointInsideCone(Vector3 point, Vector3 coneOrigin, Vector3 coneDirection, int maxAngle, float maxDistance)
     {
@@ -645,9 +707,9 @@ public int atqPoints { get; private set; }
     public EnemiesTemp ChooseTargetClosestToTruck()
     {
         // Choose the target closest to get to the truck
-        EnemiesTemp currentTarget = targets[0];
+        EnemiesTemp currentTarget = inRangeEnemies[0];
 
-        foreach (var target in targets)
+        foreach (var target in inRangeEnemies)
         {
             if (target == currentTarget)
                 continue;
