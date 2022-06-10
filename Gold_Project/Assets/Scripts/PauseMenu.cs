@@ -8,7 +8,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuScreen;
     public void OpenPauseMenu()
     {
-        if (TutoTrigger.instance.isFinished)
+        if (PlayerPrefs.GetInt("tuto", 0) == 1)
         {
             pauseMenuScreen.SetActive(true);
             musicBg.Pause();

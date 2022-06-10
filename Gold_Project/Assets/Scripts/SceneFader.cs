@@ -35,7 +35,6 @@ public class SceneFader : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "Level 1" && PlayerPrefs.GetInt("tuto",0)==0)
         {
-            GoToGame.tutoDone = true;
             TutoTrigger.instance.TriggerTuto();
         }
         gameManager.SetActive(true);
@@ -70,11 +69,6 @@ public class SceneFader : MonoBehaviour
             img.color = new Color(0f, 0f, 0f, a);
             yield return 0;
         }
-
-        /*if (SceneManager.GetActiveScene().name != "MainMenu" || SceneManager.GetActiveScene().name != "Title" || SceneManager.GetActiveScene().name != "Logo")
-        {
-            GameManager.Instance.enemies.Clear();
-        }*/
 
         SceneManager.LoadScene(scene);
     }

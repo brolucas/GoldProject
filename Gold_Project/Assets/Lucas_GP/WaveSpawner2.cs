@@ -35,6 +35,7 @@ public class WaveSpawner2 : MonoBehaviour
     [SerializeField]
     private GameObject[] listEvent;
     private bool notDone = false;
+    private int currentLevel = 1;
 
     private void Start()
     {
@@ -66,6 +67,10 @@ public class WaveSpawner2 : MonoBehaviour
             if (enemyAlive <= 0)
             {
                 wave_Victory_Screen.SetActive(true);
+                if (currentLevel == 3)
+                {
+                    AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_finishing_world_2);
+                }
                 if (!notDone)
                 {
                     GoToGame.levelIndex++;

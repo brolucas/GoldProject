@@ -89,7 +89,7 @@ public class Shop : MonoBehaviour
 
     public void PurchaseTurret(Button thisButton)
     {
-        if (TutoTrigger.instance.isFinished)
+        if (PlayerPrefs.GetInt("tuto", 0) == 1)
         {
             KindOfTurret kindOfTurret = buttonToEnum[thisButton];
 
