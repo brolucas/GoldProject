@@ -16,7 +16,7 @@ MonoBehaviour:
   - label: Basic
     kindOfTurret: 1
     healthPoints: 100
-    range: 2
+    range: 1
     nbrOfTarget: 1
     turretPrice: 100
     targetType: 1
@@ -28,7 +28,7 @@ MonoBehaviour:
     maxPassiveParameters: 5
     capPassive: 0
     inGameDesign: {fileID: 21300000, guid: 102e56d1b9dc1fc42823ff7c635ab7ae, type: 3}
-    UIDesign: {fileID: 21300000, guid: 35aacb281b7d286409d18cfbc39fd70f, type: 3}
+    UIDesign: {fileID: 21300000, guid: 102e56d1b9dc1fc42823ff7c635ab7ae, type: 3}
     description: 'Name : Basic
 
 
@@ -37,104 +37,42 @@ MonoBehaviour:
       HP : 100
 
       Range :
-      2
+      1
 
       Damage : 25
 
       Fire rate : 2/s
 
       Target : Terreste'
-  - label: Sniper Tower
-    kindOfTurret: 4
-    healthPoints: 175
+  - label: Mortar
+    kindOfTurret: 2
+    healthPoints: 125
     range: 3
     nbrOfTarget: 1
-    turretPrice: 175
+    turretPrice: 125
     targetType: 1
-    atqPoints: 50
-    fireRate: 1
-    maxAtqPoints: 180
+    atqPoints: 150
+    fireRate: 0.25
+    maxAtqPoints: 140
     activeAtqCap: 0
-    basePassiveParameters: 10
-    maxPassiveParameters: 2
+    basePassiveParameters: 0.5
+    maxPassiveParameters: 8
     capPassive: 0
-    inGameDesign: {fileID: 21300000, guid: 3f074810cce335a4081ac124519ed72c, type: 3}
-    UIDesign: {fileID: 21300000, guid: ac8ebf5ba57ed8546ac15a922f8ef4ee, type: 3}
-    description: 'Name : Sniper Tower
+    inGameDesign: {fileID: 21300000, guid: 84d3d6edceaa4d14b8a7e0bde7d4b251, type: 3}
+    UIDesign: {fileID: 21300000, guid: 84d3d6edceaa4d14b8a7e0bde7d4b251, type: 3}
+    description: 'Name : Mortar
 
 
-      Cost : 175
+      Cost : 125
 
-      HP : 175
+      HP : 125
 
-      Range
-      : 3
+      Range :
+      3
 
-      Damage : 50
+      Damage : 150
 
-      Fire rate : 1/s
-
-      Target : Terreste'
-  - label: Furnace
-    kindOfTurret: 6
-    healthPoints: 200
-    range: 1.5
-    nbrOfTarget: 1
-    turretPrice: 200
-    targetType: 1
-    atqPoints: 5
-    fireRate: 10
-    maxAtqPoints: 50
-    activeAtqCap: 0
-    basePassiveParameters: 1
-    maxPassiveParameters: 1
-    capPassive: 5
-    inGameDesign: {fileID: 21300000, guid: 6b81feb4b4f26c34d8dce23b981c4550, type: 3}
-    UIDesign: {fileID: 21300000, guid: 6b81feb4b4f26c34d8dce23b981c4550, type: 3}
-    description: 'Name : Furnace
-
-
-      Cost : 200
-
-      HP : 200
-
-      Range
-      : 1,5
-
-      Damage : 5
-
-      Fire rate : 10/s
-
-      Target : Terreste'
-  - label: Zap
-    kindOfTurret: 10
-    healthPoints: 350
-    range: 1
-    nbrOfTarget: 1
-    turretPrice: 400
-    targetType: 1
-    atqPoints: 10
-    fireRate: 1
-    maxAtqPoints: 180
-    activeAtqCap: 0
-    basePassiveParameters: 10
-    maxPassiveParameters: 2
-    capPassive: 50
-    inGameDesign: {fileID: 21300000, guid: 672e33a98d9bb9040ab4474f1b42ab96, type: 3}
-    UIDesign: {fileID: 21300000, guid: 672e33a98d9bb9040ab4474f1b42ab96, type: 3}
-    description: 'Name : Zap
-
-
-      Cost : 400
-
-      HP : 350
-
-      Range : 1
-
-      Damage
-      : 10
-
-      Fire rate : 1/s
+      Fire rate : 0,25/s
 
       Target : Terreste'
   - label: Discord
@@ -168,10 +106,165 @@ MonoBehaviour:
       Fire rate : 0,75/s
 
       Target : Both'
+  - label: Sniper Tower
+    kindOfTurret: 4
+    healthPoints: 175
+    range: 2
+    nbrOfTarget: 1
+    turretPrice: 175
+    targetType: 1
+    atqPoints: 50
+    fireRate: 1
+    maxAtqPoints: 180
+    activeAtqCap: 0
+    basePassiveParameters: 10
+    maxPassiveParameters: 2
+    capPassive: 0
+    inGameDesign: {fileID: 21300000, guid: c975020d9cec8684db3b85d83beb9e46, type: 3}
+    UIDesign: {fileID: 21300000, guid: c975020d9cec8684db3b85d83beb9e46, type: 3}
+    description: 'Name : Sniper Tower
+
+
+      Cost : 175
+
+      HP : 175
+
+      Range
+      : 2
+
+      Damage : 50
+
+      Fire rate : 1/s
+
+      Target : Terreste'
+  - label: Anti-Aerial
+    kindOfTurret: 5
+    healthPoints: 150
+    range: 1.25
+    nbrOfTarget: 1
+    turretPrice: 150
+    targetType: 2
+    atqPoints: 100
+    fireRate: 1.25
+    maxAtqPoints: 180
+    activeAtqCap: 0
+    basePassiveParameters: 0
+    maxPassiveParameters: 1
+    capPassive: 0
+    inGameDesign: {fileID: 21300000, guid: 672e33a98d9bb9040ab4474f1b42ab96, type: 3}
+    UIDesign: {fileID: 21300000, guid: 672e33a98d9bb9040ab4474f1b42ab96, type: 3}
+    description: 'Name : Anti-Aerial
+
+
+      Cost : 150
+
+      HP : 150
+
+      Range
+      : 1,25
+
+      Damage : 100
+
+      Fire rate : 1,25/s
+
+      Target : Aerial'
+  - label: Furnace
+    kindOfTurret: 6
+    healthPoints: 200
+    range: 0.75
+    nbrOfTarget: 1
+    turretPrice: 200
+    targetType: 1
+    atqPoints: 5
+    fireRate: 10
+    maxAtqPoints: 50
+    activeAtqCap: 0
+    basePassiveParameters: 1
+    maxPassiveParameters: 1
+    capPassive: 5
+    inGameDesign: {fileID: 21300000, guid: 0fbb3222d3fcf25478780977b5e439bd, type: 3}
+    UIDesign: {fileID: 21300000, guid: 0fbb3222d3fcf25478780977b5e439bd, type: 3}
+    description: 'Name : Furnace
+
+
+      Cost : 200
+
+      HP : 200
+
+      Range
+      : 0,75
+
+      Damage : 5
+
+      Fire rate : 10/s
+
+      Target : Terreste'
+  - label: Channelizer
+    kindOfTurret: 7
+    healthPoints: 225
+    range: 1
+    nbrOfTarget: 1
+    turretPrice: 250
+    targetType: 1
+    atqPoints: 50
+    fireRate: 0.75
+    maxAtqPoints: 180
+    activeAtqCap: 0
+    basePassiveParameters: 5
+    maxPassiveParameters: 8
+    capPassive: 0
+    inGameDesign: {fileID: 21300000, guid: 672e33a98d9bb9040ab4474f1b42ab96, type: 3}
+    UIDesign: {fileID: 21300000, guid: 672e33a98d9bb9040ab4474f1b42ab96, type: 3}
+    description: 'Name : Channelizer
+
+
+      Cost : 250
+
+      HP : 225
+
+      Range
+      : 1
+
+      Damage : 50
+
+      Fire rate : 0,75/s
+
+      Target : Terreste'
+  - label: Generator
+    kindOfTurret: 8
+    healthPoints: 200
+    range: 2
+    nbrOfTarget: 1
+    turretPrice: 300
+    targetType: 1
+    atqPoints: 25
+    fireRate: 0.5
+    maxAtqPoints: 180
+    activeAtqCap: 0
+    basePassiveParameters: 20
+    maxPassiveParameters: 15
+    capPassive: 0
+    inGameDesign: {fileID: 21300000, guid: 672e33a98d9bb9040ab4474f1b42ab96, type: 3}
+    UIDesign: {fileID: 21300000, guid: 672e33a98d9bb9040ab4474f1b42ab96, type: 3}
+    description: 'Name : Generator
+
+
+      Cost : 300
+
+      HP : 200
+
+      Range
+      : 2
+
+      Damage : 25
+
+      Fire rate : 0,5/s
+
+      Target : Terreste'
   - label: Immobilizer
     kindOfTurret: 9
     healthPoints: 300
-    range: 2
+    range: 1.5
     nbrOfTarget: 4
     turretPrice: 350
     targetType: 3
@@ -192,40 +285,102 @@ MonoBehaviour:
       HP : 300
 
       Range
-      : 2
+      : 10
 
       Damage : 30
 
       Fire rate : 0,5/s
 
       Target : Both'
-  - label: Mortar
-    kindOfTurret: 2
-    healthPoints: 125
-    range: 3
-    nbrOfTarget: 1
-    turretPrice: 125
+  - label: Zap
+    kindOfTurret: 10
+    healthPoints: 350
+    range: 1
+    nbrOfTarget: 0
+    turretPrice: 400
     targetType: 1
-    atqPoints: 150
-    fireRate: 0.25
-    maxAtqPoints: 140
+    atqPoints: 10
+    fireRate: 1
+    maxAtqPoints: 50
     activeAtqCap: 0
-    basePassiveParameters: 0.5
-    maxPassiveParameters: 8
-    capPassive: 0
-    inGameDesign: {fileID: 21300000, guid: 0833b296c24f3fc4bb5bf648b561e9a6, type: 3}
-    UIDesign: {fileID: 21300000, guid: 0f16975b29d62f845a1d41af56e2b00b, type: 3}
-    description: 'Name : Mortar
+    basePassiveParameters: 10
+    maxPassiveParameters: 2
+    capPassive: 50
+    inGameDesign: {fileID: 21300000, guid: 672e33a98d9bb9040ab4474f1b42ab96, type: 3}
+    UIDesign: {fileID: 21300000, guid: 672e33a98d9bb9040ab4474f1b42ab96, type: 3}
+    description: 'Name : Zap
 
 
-      Cost : 125
+      Cost : 400
 
-      HP : 125
+      HP : 350
+
+      Range : 1
+
+      Damage
+      : 10
+
+      Fire rate : 1/s
+
+      Target : Terreste'
+  - label: Teleporter
+    kindOfTurret: 11
+    healthPoints: 400
+    range: 1.5
+    nbrOfTarget: 1
+    turretPrice: 500
+    targetType: 3
+    atqPoints: 1
+    fireRate: 3
+    maxAtqPoints: 1536
+    activeAtqCap: 0
+    basePassiveParameters: 10
+    maxPassiveParameters: 10
+    capPassive: 50
+    inGameDesign: {fileID: 21300000, guid: 672e33a98d9bb9040ab4474f1b42ab96, type: 3}
+    UIDesign: {fileID: 21300000, guid: 672e33a98d9bb9040ab4474f1b42ab96, type: 3}
+    description: 'Name : Teleporter
+
+
+      Cost : 500
+
+      HP : 400
+
+      Range
+      : 1,5
+
+      Damage : 1
+
+      Fire rate : 3/s
+
+      Target : Both'
+  - label: Viktor
+    kindOfTurret: 12
+    healthPoints: 350
+    range: 1.5
+    nbrOfTarget: 1
+    turretPrice: 600
+    targetType: 1
+    atqPoints: 250
+    fireRate: 0.25
+    maxAtqPoints: 1536
+    activeAtqCap: 0
+    basePassiveParameters: 0
+    maxPassiveParameters: 1
+    capPassive: 1
+    inGameDesign: {fileID: 21300000, guid: 672e33a98d9bb9040ab4474f1b42ab96, type: 3}
+    UIDesign: {fileID: 21300000, guid: 672e33a98d9bb9040ab4474f1b42ab96, type: 3}
+    description: 'Name : Viktor
+
+
+      Cost : 600
+
+      HP : 350
 
       Range :
-      3
+      1,5
 
-      Damage : 150
+      Damage : 250
 
       Fire rate : 0,25/s
 
