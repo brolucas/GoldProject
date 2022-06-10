@@ -5,7 +5,6 @@ using UnityEngine.SocialPlatforms;
 
 public class AchivementsFinishing : MonoBehaviour
 {
-
     public static AchivementsFinishing instance;
 
     private void Awake()
@@ -21,8 +20,9 @@ public class AchivementsFinishing : MonoBehaviour
 
     public void Achievement(bool succes, string achievementCode)
     {
-        Social.ReportProgress(achievementCode, 100.0f, (success) => {
-            Social.ShowAchievementsUI();
+        Social.ReportProgress(achievementCode, 100.0d, (success) => {
+            //Social.ShowAchievementsUI();
+            Debug.Log("Achievements finish tuto !");
         });
     }
 }

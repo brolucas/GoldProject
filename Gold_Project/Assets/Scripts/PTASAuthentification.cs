@@ -8,6 +8,7 @@ public class PTASAuthentification : MonoBehaviour
     void Start()
     {
         PlayGamesPlatform.Instance.Authenticate(ProcessAuthentification);
+        PlayGamesPlatform.Activate();
     }
 
     internal void ProcessAuthentification(SignInStatus status)
