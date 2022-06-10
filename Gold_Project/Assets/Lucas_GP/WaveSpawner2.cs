@@ -35,6 +35,7 @@ public class WaveSpawner2 : MonoBehaviour
     [SerializeField]
     private GameObject[] listEvent;
     private bool notDone = false;
+    private int currentLevel = 1;
 
     private void Start()
     {
@@ -66,6 +67,10 @@ public class WaveSpawner2 : MonoBehaviour
             if (enemyAlive <= 0)
             {
                 wave_Victory_Screen.SetActive(true);
+                if (currentLevel == 3)
+                {
+                    AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_finishing_world_2);
+                }
                 if (!notDone)
                 {
                     GoToGame.levelIndex++;
@@ -177,12 +182,17 @@ public class WaveSpawner2 : MonoBehaviour
 
 
                 Pathfinding.Instance.GetGrid().GetXY(temp, out int x, out int y);
-                Pathfinding.Instance.GetNode(x, y).SetIsWalkable(false);
-                Pathfinding.Instance.GetNode(x+1, y).SetIsWalkable(false);
-                Pathfinding.Instance.GetNode(x, y+1).SetIsWalkable(false);
-                Pathfinding.Instance.GetNode(x+1, y+1).SetIsWalkable(false);
+                Pathfinding.Instance.GetNode(x, y).isEvent = listEvent[0];
+                Pathfinding.Instance.GetNode(x + 1, y).isEvent = listEvent[0];
+                Pathfinding.Instance.GetNode(x, y + 1).isEvent = listEvent[0];
+                Pathfinding.Instance.GetNode(x + 1, y + 1).isEvent = listEvent[0];
+                Pathfinding.Instance.GetNode(x, y).isUsed = true;
+                Pathfinding.Instance.GetNode(x + 1, y).isUsed = true;
+                Pathfinding.Instance.GetNode(x, y + 1).isUsed = true;
+                Pathfinding.Instance.GetNode(x + 1, y + 1).isUsed = true;
+                Pathfinding.Instance.mapHasChanged = true;
 
-                
+
                 Vector3 position = Pathfinding.Instance.GetGrid().GetWorldPosition(x, y);
                 position = new Vector3(position.x + Pathfinding.Instance.GetGrid().cellSize / 2, position.y + Pathfinding.Instance.GetGrid().cellSize / 2);
 

@@ -89,25 +89,32 @@ public class Shop : MonoBehaviour
 
     public void PurchaseTurret(Button thisButton)
     {
-        KindOfTurret kindOfTurret = buttonToEnum[thisButton];
+        if (PlayerPrefs.GetInt("tuto", 0) == 1)
+        {
+            KindOfTurret kindOfTurret = buttonToEnum[thisButton];
 
-        TurretData turretData = gameManager.turretDatabase.turrets.Find(data => data.kindOfTurret == kindOfTurret);
+            TurretData turretData = gameManager.turretDatabase.turrets.Find(data => data.kindOfTurret == kindOfTurret);
 
-        infoTurretText.text = ("Price : " + turretData.turretPrice + "\n" +
-                               "Range : " + turretData.range + "\n" +
-                               "Life Points : " + turretData.healthPoints + "\n" +
-                               "Damage : " + turretData.atqPoints +"\n"+
-                               "Target : " + turretData.targetType);
+            infoTurretText.text = ("Price : " + turretData.turretPrice + "\n" +
+                                   "Range : " + turretData.range + "\n" +
+                                   "Life Points : " + turretData.healthPoints + "\n" +
+                                   "Damage : " + turretData.atqPoints + "\n" +
+                                   "Target : " + turretData.targetType);
 
-        BuildManager.Instance.SetTurretToBuild(kindOfTurret);
+            BuildManager.Instance.SetTurretToBuild(kindOfTurret);
+        }
     }
     
     public void SellTurret()
     {
         GameObject turret = selectedTurretInGame;
+        Pathfinding.Instance.GetGrid().GetXY(turret.transform.position, out int x, out int y);
+        Pathfinding.Instance.GetNode(x, y).isTurret = null;
+        Pathfinding.Instance.GetNode(x, y).isUsed = false;
+        Pathfinding.Instance.mapHasChanged = true;
 
         GameManager.Instance.truck.gold += selectedTurretInGame.GetComponent<Turret>().turretPrice / 2;
-
+        GameManager.Instance.allTurret.Remove(turret.GetComponent<Turret>());
         selectedTurretInGame = null;
 
         Destroy(turret.transform.parent.gameObject);
