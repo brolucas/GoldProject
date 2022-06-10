@@ -22,7 +22,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6774791142897126946
 Transform:
   m_ObjectHideFlags: 0
@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f154f23115a4f254ea0111bab1bd77c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicBg: {fileID: 0}
   pauseMenuScreen: {fileID: 0}
 --- !u!114 &6774791142897126945
 MonoBehaviour:
@@ -76,12 +77,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1efe4d337a7f36459bf4eec69b4bc14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HUDLeft: {fileID: 0}
-  HUDRight: {fileID: 0}
-  switchHUDSide: {fileID: 6774791142897126959}
-  gameOverScreen: {fileID: 0}
-  levelName: "T\xE9o"
-  TurretlevelName: "K\xE9vin"
 --- !u!114 &6774791142897126959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,27 +107,147 @@ MonoBehaviour:
   waves:
   - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
+    Wave_nb_Runner: 5
+    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Manchot_nbr: 0
+    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
+      type: 3}
+    Wave_Count_Kamikaze: 0
+    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
+      type: 3}
+    Wave_Count_CRS: 0
+    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Volant: 0
+    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Boss: 0
+    _event: 0
+    Wave_Rate: 2
+  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_nb_Runner: 2
+    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Manchot_nbr: 1
+    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
+      type: 3}
+    Wave_Count_Kamikaze: 0
+    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
+      type: 3}
+    Wave_Count_CRS: 0
+    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Volant: 0
+    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Boss: 0
+    _event: 0
+    Wave_Rate: 2
+  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_nb_Runner: 5
+    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Manchot_nbr: 0
+    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
+      type: 3}
+    Wave_Count_Kamikaze: 0
+    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
+      type: 3}
+    Wave_Count_CRS: 0
+    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Volant: 0
+    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Boss: 0
+    _event: 0
+    Wave_Rate: 2
+  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_nb_Runner: 2
+    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Manchot_nbr: 1
+    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
+      type: 3}
+    Wave_Count_Kamikaze: 0
+    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
+      type: 3}
+    Wave_Count_CRS: 0
+    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Volant: 0
+    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Boss: 0
+    _event: 0
+    Wave_Rate: 2
+  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_nb_Runner: 2
+    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Manchot_nbr: 1
+    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
+      type: 3}
+    Wave_Count_Kamikaze: 1
+    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
+      type: 3}
+    Wave_Count_CRS: 0
+    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Volant: 0
+    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Boss: 0
+    _event: 0
+    Wave_Rate: 2
+  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
     Wave_nb_Runner: 4
     Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
       type: 3}
-    Wave_Manchot_nbr: 4
+    Wave_Manchot_nbr: 0
     Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
       type: 3}
-    Wave_Count_Kamikaze: 3
+    Wave_Count_Kamikaze: 1
     Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
       type: 3}
-    Wave_Count_CRS: 3
+    Wave_Count_CRS: 0
     Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
       type: 3}
-    Wave_Count_Volant: 2
+    Wave_Count_Volant: 0
     Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
       type: 3}
-    Wave_Count_Boss: 1
+    Wave_Count_Boss: 0
     _event: 0
     Wave_Rate: 2
   - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
-    Wave_nb_Runner: 0
+    Wave_nb_Runner: 3
+    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Manchot_nbr: 2
+    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
+      type: 3}
+    Wave_Count_Kamikaze: 0
+    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
+      type: 3}
+    Wave_Count_CRS: 0
+    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Volant: 0
+    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Boss: 0
+    _event: 0
+    Wave_Rate: 2
+  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_nb_Runner: 8
     Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
       type: 3}
     Wave_Manchot_nbr: 0
@@ -152,10 +267,10 @@ MonoBehaviour:
     Wave_Rate: 2
   - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
-    Wave_nb_Runner: 0
+    Wave_nb_Runner: 8
     Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
       type: 3}
-    Wave_Manchot_nbr: 0
+    Wave_Manchot_nbr: 3
     Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
       type: 3}
     Wave_Count_Kamikaze: 0
@@ -172,13 +287,13 @@ MonoBehaviour:
     Wave_Rate: 2
   - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
-    Wave_nb_Runner: 0
+    Wave_nb_Runner: 7
     Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
       type: 3}
-    Wave_Manchot_nbr: 0
+    Wave_Manchot_nbr: 2
     Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
       type: 3}
-    Wave_Count_Kamikaze: 0
+    Wave_Count_Kamikaze: 2
     Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
       type: 3}
     Wave_Count_CRS: 0
@@ -190,129 +305,13 @@ MonoBehaviour:
     Wave_Count_Boss: 0
     _event: 0
     Wave_Rate: 2
-  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
-      type: 3}
-    Wave_nb_Runner: 0
-    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
-      type: 3}
-    Wave_Manchot_nbr: 0
-    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
-      type: 3}
-    Wave_Count_Kamikaze: 0
-    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
-      type: 3}
-    Wave_Count_CRS: 0
-    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
-      type: 3}
-    Wave_Count_Volant: 0
-    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
-      type: 3}
-    Wave_Count_Boss: 0
-    _event: 0
-    Wave_Rate: 2
-  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
-      type: 3}
-    Wave_nb_Runner: 0
-    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
-      type: 3}
-    Wave_Manchot_nbr: 0
-    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
-      type: 3}
-    Wave_Count_Kamikaze: 0
-    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
-      type: 3}
-    Wave_Count_CRS: 0
-    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
-      type: 3}
-    Wave_Count_Volant: 0
-    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
-      type: 3}
-    Wave_Count_Boss: 0
-    _event: 0
-    Wave_Rate: 2
-  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
-      type: 3}
-    Wave_nb_Runner: 0
-    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
-      type: 3}
-    Wave_Manchot_nbr: 0
-    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
-      type: 3}
-    Wave_Count_Kamikaze: 0
-    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
-      type: 3}
-    Wave_Count_CRS: 0
-    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
-      type: 3}
-    Wave_Count_Volant: 0
-    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
-      type: 3}
-    Wave_Count_Boss: 0
-    _event: 0
-    Wave_Rate: 2
-  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
-      type: 3}
-    Wave_nb_Runner: 0
-    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
-      type: 3}
-    Wave_Manchot_nbr: 0
-    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
-      type: 3}
-    Wave_Count_Kamikaze: 0
-    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
-      type: 3}
-    Wave_Count_CRS: 0
-    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
-      type: 3}
-    Wave_Count_Volant: 0
-    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
-      type: 3}
-    Wave_Count_Boss: 0
-    _event: 0
-    Wave_Rate: 2
-  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
-      type: 3}
-    Wave_nb_Runner: 0
-    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
-      type: 3}
-    Wave_Manchot_nbr: 0
-    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
-      type: 3}
-    Wave_Count_Kamikaze: 0
-    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
-      type: 3}
-    Wave_Count_CRS: 0
-    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
-      type: 3}
-    Wave_Count_Volant: 0
-    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
-      type: 3}
-    Wave_Count_Boss: 0
-    _event: 0
-    Wave_Rate: 2
-  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
-      type: 3}
-    Wave_nb_Runner: 0
-    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
-      type: 3}
-    Wave_Manchot_nbr: 0
-    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
-      type: 3}
-    Wave_Count_Kamikaze: 0
-    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
-      type: 3}
-    Wave_Count_CRS: 0
-    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
-      type: 3}
-    Wave_Count_Volant: 0
-    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
-      type: 3}
-    Wave_Count_Boss: 0
-    _event: 0
-    Wave_Rate: 2
-  spawnPoint: {fileID: 0}
+  spawnPoint:
+  - {fileID: 0}
+  spawnPoint2: {fileID: 0}
   timeBetweenWave: 5
+  countdown: 2
   wave_Text: {fileID: 0}
+  wave_Victory_Screen: {fileID: 0}
   listEvent:
   - {fileID: 882767662396786120, guid: 707146e6082b4904f89b0cec1ab23845, type: 3}
   - {fileID: 882767662396786120, guid: 04c6390c8f2a79d409c78b43d3dbfada, type: 3}
@@ -336,10 +335,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddcabb5b20172ba47a57bc17679406c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sniperTurret: {fileID: 1159671648371618135, guid: 7262708fb1470ec4e9de4518414f052e,
+  truck: {fileID: 0}
+  turretPrefab: {fileID: 1159671648371618135, guid: 7262708fb1470ec4e9de4518414f052e,
     type: 3}
-  turretToBuild: {fileID: 1159671648371618135, guid: 7262708fb1470ec4e9de4518414f052e,
-    type: 3}
+  shop: {fileID: 0}
+  turretToBuild: 0
 --- !u!114 &6774791141816150509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,10 +352,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81994cd44fb5078478e7bc9456b66220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 2488951184649618190, guid: 54169df03662d4e4daf3dfd18e565e01, type: 3}
-  - {fileID: 2488951184649618190, guid: 54169df03662d4e4daf3dfd18e565e01, type: 3}
-  - {fileID: 2488951184649618190, guid: 54169df03662d4e4daf3dfd18e565e01, type: 3}
+  enemies: []
   allTurret: []
   rangeSprite: {fileID: 4973951708042549589, guid: 843828b30fd82ff4088d2962f24999e7,
     type: 3}
+  turretDatabase: {fileID: 11400000, guid: aeead099ddab7d94fbfbec987f614a22, type: 2}
+  truck: {fileID: 0}
+  dataManager: {fileID: 1276064566901145631, guid: 5d468dcf44b9d3b46afae9a1fcf3181b,
+    type: 3}
+  deckData: {fileID: 1276064566901145630, guid: 5d468dcf44b9d3b46afae9a1fcf3181b,
+    type: 3}
+  deck: {fileID: 0}
+  baricades: []

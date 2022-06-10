@@ -9,6 +9,7 @@ public class SceneFader : MonoBehaviour
     public Image img;
     public Text levelName;
     public AnimationCurve curve;
+    public GameObject gameManager;
 
     private void Start()
     {
@@ -25,17 +26,35 @@ public class SceneFader : MonoBehaviour
             float a = curve.Evaluate(t);
             img.color = new Color(0f, 0f, 0f, a);
             yield return 0;
-
         }
+        if (SceneManager.GetActiveScene().name == "Logo")
+        {
+            string scene = "Title";
+            StartCoroutine(FadeOut(scene));
+        }
+
+        if (SceneManager.GetActiveScene().name == "Level 1" && PlayerPrefs.GetInt("tuto",0)==0)
+        {
+            TutoTrigger.instance.TriggerTuto();
+        }
+        gameManager.SetActive(true);
     }
 
     public void FadeTo(string scene)
     {
+        Time.timeScale = 1;
         StartCoroutine(FadeOut(scene));
     } 
 
     public void FadeToGame(Text levelName)
     {
+        if (DataManager.Instance.deckData.deckTurret.Contains(KindOfTurret.DefaultDoNotUseIt))
+        {
+            Debug.LogWarning("You need to have 4 turrets in the Deck !!");
+            return;
+
+        }
+
         StartCoroutine(FadeOut(levelName.text));
     }
 
@@ -49,10 +68,8 @@ public class SceneFader : MonoBehaviour
             float a = curve.Evaluate(t);
             img.color = new Color(0f, 0f, 0f, a);
             yield return 0;
-
         }
 
         SceneManager.LoadScene(scene);
     }
-    
 }

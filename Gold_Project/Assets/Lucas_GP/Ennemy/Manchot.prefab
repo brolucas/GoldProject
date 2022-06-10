@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 255277567047928808}
   - component: {fileID: 6709396344107502454}
   - component: {fileID: 2488951184649618190}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Manchot
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -148,11 +148,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 275
   currentHealth: 0
-  speed: 2
+  baseSpeed: 3
+  currentSpeed: 3
+  damage: 35
   isFlying: 0
   goldValue: 5
+  getTouch: 0
+  getZapped: 0
+  isConfuse: 0
+  ConfuseCombo: 0
   isBurning: 0
   nbrOfAtqSuffed: 0
+  timeToDie: 0
+  tookDamage: 0
   damagePerSeconds: 0
   attackingTurret: []
   distanceToNextTarget: 0
@@ -166,6 +174,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6898869339770346148}
     m_Modifications:
+    - target: {fileID: 911092913464225912, guid: 5fdacb50bae8ba34982a64afb4a4d219,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1609683988638260188, guid: 5fdacb50bae8ba34982a64afb4a4d219,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -200,6 +213,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978519302339831905, guid: 5fdacb50bae8ba34982a64afb4a4d219,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4206551651262593906, guid: 5fdacb50bae8ba34982a64afb4a4d219,
         type: 3}
@@ -270,6 +288,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Manchot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622110712094711520, guid: 5fdacb50bae8ba34982a64afb4a4d219,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7956760607584847214, guid: 5fdacb50bae8ba34982a64afb4a4d219,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8054173529544522468, guid: 5fdacb50bae8ba34982a64afb4a4d219,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612486292850095024, guid: 5fdacb50bae8ba34982a64afb4a4d219,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fdacb50bae8ba34982a64afb4a4d219, type: 3}

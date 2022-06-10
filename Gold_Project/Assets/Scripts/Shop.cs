@@ -3,16 +3,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
-{
-    [SerializeField]
-    private TurretDatabase turretDatabase;
-
-    private BuildManager buildManager;
+{ 
     private GameManager gameManager;
+    private DataManager dataManager;
 
     public Text infoTurretText;
-
-    public List<KindOfTurret> deck = new List<KindOfTurret>();
 
     public List<Button> deckButtons = new List<Button>();
 
@@ -22,11 +17,9 @@ public class Shop : MonoBehaviour
 
     public void Awake()
     {
-        if (turretDatabase == null)
+        if (gameManager == null)
         {
-            TurretDatabase turretDatabaseNew = (TurretDatabase)ScriptableObject.CreateInstance(typeof(TurretDatabase));
-
-            turretDatabase = turretDatabaseNew;
+            gameManager = FindObjectOfType<GameManager>();
         }
 
         selectedTurretInGame = null;
@@ -34,18 +27,18 @@ public class Shop : MonoBehaviour
 
     private void Start()
     {
-        buildManager = BuildManager.Instance;
         gameManager = GameManager.Instance;
+        dataManager = DataManager.Instance;
 
         for (int i = 0; i < deckButtons.Count; i++)
         {
-            buttonToEnum.Add(deckButtons[i], deck[i]);
+            buttonToEnum.Add(deckButtons[i], dataManager.deckData.deckTurret[i]);
 
-            TurretData turretData = turretDatabase.turrets.Find(data => data.kindOfTurret == deck[i]);
+            TurretData turretData = gameManager.GetStatsKindOfTurret(dataManager.deckData.deckTurret[i]);
 
             if (turretData == null)
             {
-                Debug.LogError("There is a turret in the deck that doesn't have a DataBase yet !!");
+                Debug.LogWarning("There is a turret in the deck that doesn't have a DataBase yet !!");
                 continue;
             }
 
@@ -96,25 +89,32 @@ public class Shop : MonoBehaviour
 
     public void PurchaseTurret(Button thisButton)
     {
-        KindOfTurret kindOfTurret = buttonToEnum[thisButton];
+        if (PlayerPrefs.GetInt("tuto", 0) == 1)
+        {
+            KindOfTurret kindOfTurret = buttonToEnum[thisButton];
 
-        TurretData turretData = turretDatabase.turrets.Find(data => data.kindOfTurret == kindOfTurret);
+            TurretData turretData = gameManager.turretDatabase.turrets.Find(data => data.kindOfTurret == kindOfTurret);
 
-        infoTurretText.text = ("Price : " + turretData.turretPrice + "\n" +
-                               "Range : " + turretData.range + "\n" +
-                               "Life Points : " + turretData.healthPoints + "\n" +
-                               "Damage : " + turretData.atqPoints +"\n"+
-                               "Target : " + turretData.targetType);
+            infoTurretText.text = ("Price : " + turretData.turretPrice + "\n" +
+                                   "Range : " + turretData.range + "\n" +
+                                   "Life Points : " + turretData.healthPoints + "\n" +
+                                   "Damage : " + turretData.atqPoints + "\n" +
+                                   "Target : " + turretData.targetType);
 
-        buildManager.SetTurretToBuild(kindOfTurret);
+            BuildManager.Instance.SetTurretToBuild(kindOfTurret);
+        }
     }
     
     public void SellTurret()
     {
         GameObject turret = selectedTurretInGame;
+        Pathfinding.Instance.GetGrid().GetXY(turret.transform.position, out int x, out int y);
+        Pathfinding.Instance.GetNode(x, y).isTurret = null;
+        Pathfinding.Instance.GetNode(x, y).isUsed = false;
+        Pathfinding.Instance.mapHasChanged = true;
 
         GameManager.Instance.truck.gold += selectedTurretInGame.GetComponent<Turret>().turretPrice / 2;
-
+        GameManager.Instance.allTurret.Remove(turret.GetComponent<Turret>());
         selectedTurretInGame = null;
 
         Destroy(turret.transform.parent.gameObject);

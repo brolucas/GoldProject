@@ -9,6 +9,7 @@ public class Pathfinding:MonoBehaviour
 
 	public static Pathfinding Instance { get; private set; }
 	public Transform endPoint;
+	public bool mapHasChanged;
 
 	private Grid<PathNode> grid;
 	private List<PathNode> openList;
@@ -19,9 +20,11 @@ public class Pathfinding:MonoBehaviour
 		Instance = this;
 		grid = new Grid<PathNode>(width, height, cellSize, new Vector3(transf.position.x, transf.position.y), (Grid<PathNode> g, int x, int y) => new PathNode(g, x, y));
 		endPoint = end;
+		mapHasChanged = false;
 		foreach(Decor decor in levelData.decors)
         {
 			GetNode(decor.x, decor.y).SetIsWalkable(false);
+			GetNode(decor.x, decor.y).isDecor = decor;
 			Vector3 position = grid.GetWorldPosition(decor.x, decor.y);
 			position = new Vector3(position.x + cellSize / 2, position.y + cellSize / 2);
 			GameObject newDecor = Instantiate(decorPrefab, position, Quaternion.identity);
@@ -87,13 +90,18 @@ public class Pathfinding:MonoBehaviour
 			foreach(PathNode neighbourNode in GetNeighbourList(currentNode))
 			{
 				if (closedList.Contains(neighbourNode)) continue;
-				if (!neighbourNode.isWalkable)
+				if(!neighbourNode.isWalkable || neighbourNode.isEvent != null)
 				{
 					closedList.Add(neighbourNode);
+						
 					continue;
 				}
+
 				int tentativeGCost = currentNode.gCost + CalculateDistanceCost(currentNode, neighbourNode);
-				if(tentativeGCost < neighbourNode.gCost)
+				if (neighbourNode.isBarricade) tentativeGCost += 150;
+				if (neighbourNode.isTurret) tentativeGCost += 300;
+
+				if (tentativeGCost < neighbourNode.gCost)
 				{
 					neighbourNode.cameFromNode = currentNode;
 					neighbourNode.gCost = tentativeGCost;

@@ -8,7 +8,6 @@ public class PathfindingTest : MonoBehaviour
 	private Pathfinding pathfinding;
 	public GameObject spawn, end;
 	public float cellSize;
-	BuildManager buildManager;
 	public GameObject decorPrefab;
 	public LevelDataBase levelDataBase;
 	public LevelLabel levelLabel;
@@ -17,7 +16,6 @@ public class PathfindingTest : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		buildManager = BuildManager.Instance;
 		levelData = levelDataBase.levels.Find(LevelData => LevelData.levelLabel == levelLabel);
 		pathfinding = new Pathfinding(13, 7, cellSize, this.transform, end.transform, decorPrefab, levelData);
 
@@ -40,11 +38,12 @@ public class PathfindingTest : MonoBehaviour
 			pathfinding.GetNode(x, y).SetIsWalkable(!pathfinding.GetNode(x, y).isWalkable);
 		}*/
 
-		if (buildManager.GetTurretToBuild() == null)
-			return;
 
 		if (Input.GetMouseButtonDown(0))
 		{
+			if (BuildManager.Instance.GetTurretToBuild() == null)
+				return;
+
 			pathfinding.GetGrid().SetTurret(Camera.main.ScreenToWorldPoint(Input.mousePosition));
 		}
 	}
