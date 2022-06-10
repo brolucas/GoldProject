@@ -167,20 +167,6 @@ public class EnemiesTemp : MonoBehaviour
 	{
 		isBurning = true;
 
-		if (isMaxLevelPassiveActive == false)
-		{
-			foreach (var turret in attackingTurret)
-			{
-				if (turret.kindOfTurret == KindOfTurret.Furnace)
-				{
-					if (turret.currentLevel >= turret.maxLevel)
-					{
-						isMaxLevelPassiveActive = true;
-					}
-				}
-			}
-		}
-
 		while (duration > 0)
 		{
 			TakeDamage(damage);
@@ -195,6 +181,8 @@ public class EnemiesTemp : MonoBehaviour
 			yield return new WaitForSeconds(1.0f);
 			duration--;
 		}
+
+		nbrOfAtqSuffed = 0;
 
 		isBurning = false;
 	}
@@ -215,7 +203,6 @@ public class EnemiesTemp : MonoBehaviour
 
 	public void OnDestroy()
 	{
-		// Just in case take it off if optimization 
 		// If the target isn't clear off the turrets will bug
 		foreach (var turret in GameManager.Instance.allTurret)
 		{
