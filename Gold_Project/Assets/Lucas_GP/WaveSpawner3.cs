@@ -36,6 +36,8 @@ public class WaveSpawner3 : MonoBehaviour
     private GameObject[] listEvent;
     private bool notDone = false;
 
+    private int currentLevel = 1;
+
     private void Start()
     {
         System.Random alea = new System.Random();
@@ -66,6 +68,10 @@ public class WaveSpawner3 : MonoBehaviour
             if (enemyAlive <= 0)
             {
                 wave_Victory_Screen.SetActive(true);
+                if (currentLevel == 3)
+                {
+                    AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_finishing_world_3);
+                }
                 if (!notDone)
                 {
                     GoToGame.levelIndex++;
