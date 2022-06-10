@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 255277567047928808}
   - component: {fileID: 6709396344107502454}
   - component: {fileID: 2488951184649618190}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Volant
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -147,9 +147,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 250
   currentHealth: 0
-  speed: 5
+  baseSpeed: 3
+  currentSpeed: 3
   isFlying: 0
   goldValue: 5
+  getTouch: 0
+  getZapped: 0
+  isConfuse: 0
+  ConfuseCombo: 0
   isBurning: 0
+  nbrOfAtqSuffed: 0
+  timeToDie: 0
+  tookDamage: 0
   damagePerSeconds: 0
   attackingTurret: []
+  distanceToNextTarget: 0
+  currentPathIndex: 0
+  pathVectorList: []
+  endPoint: {fileID: 0}

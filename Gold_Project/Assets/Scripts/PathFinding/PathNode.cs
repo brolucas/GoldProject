@@ -8,6 +8,10 @@ public class PathNode
     public int x;
     public int y;
 
+    public bool isUsed;
+    public GameObject isTurret, isBarricade, isEvent;
+    public Decor isDecor;
+
     public int gCost;
     public int hCost;
     public int fCost;
@@ -20,6 +24,11 @@ public class PathNode
         this.grid = grid;
         this.x = x;
         this.y = y;
+        isUsed = false;
+        isTurret = null;
+        isBarricade = null;
+        isDecor = null;
+        isEvent = null;
         isWalkable = true;
 
     }

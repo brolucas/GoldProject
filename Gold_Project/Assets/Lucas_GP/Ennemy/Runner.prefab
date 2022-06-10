@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 255277567047928808}
   - component: {fileID: 6709396344107502454}
   - component: {fileID: 2488951184649618190}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Runner
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -148,11 +148,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 50
   currentHealth: 0
-  speed: 3
+  baseSpeed: 3
+  currentSpeed: 3
   isFlying: 0
   goldValue: 3
+  getTouch: 0
+  getZapped: 0
+  isConfuse: 0
+  ConfuseCombo: 0
   isBurning: 0
   nbrOfAtqSuffed: 0
+  timeToDie: 0
+  tookDamage: 0
   damagePerSeconds: 0
   attackingTurret: []
   distanceToNextTarget: 0
@@ -166,10 +173,60 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6898869339770346148}
     m_Modifications:
+    - target: {fileID: 297655658566291310, guid: d07f9a96bf097054987fb2563ed354a6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 522639367550186205, guid: d07f9a96bf097054987fb2563ed354a6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1196963528899057777, guid: d07f9a96bf097054987fb2563ed354a6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485103247219167611, guid: d07f9a96bf097054987fb2563ed354a6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2425983562347022892, guid: d07f9a96bf097054987fb2563ed354a6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542142873709074905, guid: d07f9a96bf097054987fb2563ed354a6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4249935177006738917, guid: d07f9a96bf097054987fb2563ed354a6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4722779726108118210, guid: d07f9a96bf097054987fb2563ed354a6,
         type: 3}
       propertyPath: m_Name
       value: Naruto
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722779726108118210, guid: d07f9a96bf097054987fb2563ed354a6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592793457373828390, guid: d07f9a96bf097054987fb2563ed354a6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7286946373514748016, guid: d07f9a96bf097054987fb2563ed354a6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7501537313164047335, guid: d07f9a96bf097054987fb2563ed354a6,
         type: 3}
@@ -235,6 +292,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8130596045059439202, guid: d07f9a96bf097054987fb2563ed354a6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8921833279787722354, guid: d07f9a96bf097054987fb2563ed354a6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d07f9a96bf097054987fb2563ed354a6, type: 3}
