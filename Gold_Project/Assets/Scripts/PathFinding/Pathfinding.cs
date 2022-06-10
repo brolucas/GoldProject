@@ -90,7 +90,7 @@ public class Pathfinding:MonoBehaviour
 			foreach(PathNode neighbourNode in GetNeighbourList(currentNode))
 			{
 				if (closedList.Contains(neighbourNode)) continue;
-				if(!neighbourNode.isWalkable || neighbourNode.isEvent != null)
+				if(!neighbourNode.isWalkable)
 				{
 					closedList.Add(neighbourNode);
 						

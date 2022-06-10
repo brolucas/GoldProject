@@ -150,7 +150,6 @@ MonoBehaviour:
   currentHealth: 0
   baseSpeed: 3
   currentSpeed: 3
-  damage: 75
   isFlying: 1
   goldValue: 15
   getTouch: 0

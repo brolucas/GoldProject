@@ -106,12 +106,12 @@ public class Shop : MonoBehaviour
     {
         GameObject turret = selectedTurretInGame;
         Pathfinding.Instance.GetGrid().GetXY(turret.transform.position, out int x, out int y);
-        Pathfinding.Instance.GetNode(x, y).isTurret = null;
+        Pathfinding.Instance.GetNode(x, y).isTurret = turret;
         Pathfinding.Instance.GetNode(x, y).isUsed = false;
         Pathfinding.Instance.mapHasChanged = true;
 
         GameManager.Instance.truck.gold += selectedTurretInGame.GetComponent<Turret>().turretPrice / 2;
-        GameManager.Instance.allTurret.Remove(turret.GetComponent<Turret>());
+
         selectedTurretInGame = null;
 
         Destroy(turret.transform.parent.gameObject);
