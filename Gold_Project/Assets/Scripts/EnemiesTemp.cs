@@ -77,7 +77,7 @@ public class EnemiesTemp : MonoBehaviour
                 {
 					if (node.isTurret != null)
                     {
-						//node.isTurret.GetComponentInChildren<Turret>().TakeDamage(damage);
+						node.isTurret.GetComponentInChildren<Turret>().TakeDamage(damage);
                     }
 					else
 					{
@@ -206,7 +206,7 @@ public class EnemiesTemp : MonoBehaviour
 		// If the target isn't clear off the turrets will bug
 		foreach (var turret in GameManager.Instance.allTurret)
 		{
-			turret.targets.Remove(this);
+			turret.inRangeEnemies.Remove(this);
 		}
 	}
 
@@ -216,7 +216,7 @@ public class EnemiesTemp : MonoBehaviour
 		{
 			Turret turretAttacking = turret.GetComponent<Turret>();
 
-			turretAttacking.targets.Remove(this);
+			turretAttacking.inRangeEnemies.Remove(this);
 		}
 
 		attackingTurret.Clear();

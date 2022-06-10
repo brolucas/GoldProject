@@ -675,12 +675,12 @@ public int atqPoints { get; private set; }
 
     public void Die()
     {
-        /*Pathfinding.Instance.GetGrid().GetXY(transform.position, out int x, out int y);
+        Pathfinding.Instance.GetGrid().GetXY(transform.position, out int x, out int y);
         Pathfinding.Instance.GetNode(x, y).isTurret = null;
         Pathfinding.Instance.GetNode(x, y).isUsed = false;
         Pathfinding.Instance.mapHasChanged = true;
         Destroy(this.gameObject.transform.parent.gameObject);
-        gameManager.allTurret.Remove(this);*/
+        gameManager.allTurret.Remove(this);
     }
 
     #region Util Function
