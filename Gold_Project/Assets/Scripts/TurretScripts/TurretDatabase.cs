@@ -14,6 +14,7 @@ public enum TargetType
 public enum KindOfTurret
 {
     // -- /!\ Do not Add a new Type above another add it below the last one PLS /!\ -- //
+    // -- /!\ If you need to delete one replace every one in the ScriptableObject /!\ -- //
     DefaultDoNotUseIt,
     Basic,
     Mortar,
@@ -22,7 +23,7 @@ public enum KindOfTurret
     Anti_Aerial,
     Furnace,
     Channelizer,
-    Central,
+    Generator,
     Immobilizer,
     Zap,
     Teleporter,

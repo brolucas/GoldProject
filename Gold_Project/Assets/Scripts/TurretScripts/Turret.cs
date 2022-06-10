@@ -20,7 +20,7 @@ public class Turret : MonoBehaviour
     public SpriteRenderer spriteRenderer;
 
     [Range(1, 180)]
-    private int fireAngle = 20;
+    private int fireAngle = 12;
 
     private bool doOnce = false;
 
@@ -210,8 +210,7 @@ public int atqPoints { get; private set; }
         switch (kindOfTurret)
         {
             case KindOfTurret.Anti_Aerial:
-            case KindOfTurret.Central:
-            case KindOfTurret.Furnace:
+            case KindOfTurret.Generator:
             case KindOfTurret.Viktor:
                 if (currentLevel >= maxLevel)
                     PassiveLevelmax(currentTarget);
@@ -339,6 +338,7 @@ public int atqPoints { get; private set; }
                     {
                         currentTarget = ChooseTargetClosestToTruck();
                     }
+                    //Else focus target[0]
                     break;
                 }
             case KindOfTurret.Zap:
@@ -377,6 +377,7 @@ public int atqPoints { get; private set; }
             case KindOfTurret.Mortar:
             case KindOfTurret.Discord:
             case KindOfTurret.SniperTower:
+            case KindOfTurret.Furnace:
             case KindOfTurret.Channelizer:
             case KindOfTurret.Immobilizer:
             case KindOfTurret.Zap:
@@ -419,7 +420,7 @@ public int atqPoints { get; private set; }
                 {
                     // inflicts % of the target's max hp per attack
 
-                    float damageBonusBaseOnHP = basePassiveParameters / 100;
+                    float damageBonusBaseOnHP = basePassiveParameters / 100; //10
 
                     if (!isAtqCap)
                     {
@@ -443,13 +444,13 @@ public int atqPoints { get; private set; }
 
                         if (isInsideCone)
                         {
-                            target.nbrOfAtqSuffed += Mathf.Clamp(1, 0, 5);
+                            target.nbrOfAtqSuffed++;
+                            target.nbrOfAtqSuffed = Mathf.Clamp(target.nbrOfAtqSuffed, 0, 5);
 
                             if (target.nbrOfAtqSuffed >= capPassive/*5*/)
                             {
-                                float burnDuration = 105.0f;
+                                float burnDuration = 5.0f;
                                 float damage = basePassiveParameters/*1*/;
-                                float damageBasedOnMaxHealth = maxPassiveParameters;
 
                                 if (!target.isBurning)
                                 {
@@ -520,28 +521,6 @@ public int atqPoints { get; private set; }
                     // the enemies are pushed back 2 squares
                     int pushHowFar = (int)maxPassiveParameters;
                     
-                    break;
-                }
-            case KindOfTurret.Furnace: 
-                {
-                    if (doOnce)
-                        return;
-
-                    float burnDuration = 105.0f;
-                    float damage = basePassiveParameters/*1*/;
-                    float damageBasedOnMaxHealth = maxPassiveParameters;
-
-                    foreach (var enemies in gameManager.enemies)
-                    {
-                        if (enemies.isBurning)
-                        {
-                            // Peut causer des problemes 2 Co routine en meme temps
-                            enemies.StartCoroutine(enemies.Burn(burnDuration, basePassiveParameters, true, maxPassiveParameters/*1*/));
-                        }
-                    }
-
-                    doOnce = true;
-
                     break;
                 }
             case KindOfTurret.Zap: 
