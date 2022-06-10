@@ -642,25 +642,6 @@ public int atqPoints { get; private set; }
         currentLevel += Mathf.Clamp(1, 0, maxLevel - currentLevel);
     }
 
-    public void TakeDamage(int damage)
-    {
-        currentHP -= damage;
-        if(currentHP <= 0)
-        {
-            Die();
-        }
-    }
-
-    public void Die()
-    {
-        Pathfinding.Instance.GetGrid().GetXY(transform.position, out int x, out int y);
-        Pathfinding.Instance.GetNode(x, y).isTurret = null;
-        Pathfinding.Instance.GetNode(x, y).isUsed = false;
-        Pathfinding.Instance.mapHasChanged = true;
-        Destroy(this.gameObject.transform.parent.gameObject);
-        gameManager.allTurret.Remove(this);
-    }
-
     #region Util Function
     public bool IsPointInsideCone(Vector3 point, Vector3 coneOrigin, Vector3 coneDirection, int maxAngle, float maxDistance)
     {
