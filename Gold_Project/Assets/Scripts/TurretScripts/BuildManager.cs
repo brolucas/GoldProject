@@ -86,7 +86,8 @@ public class BuildManager : MonoBehaviour
 
             GameObject newTurret = Instantiate(turretPrefab, position, Quaternion.identity);
             Pathfinding.Instance.GetGrid().GetXY(position, out int x, out int y);
-            Pathfinding.Instance.GetNode(x, y).SetIsWalkable(false);
+            Pathfinding.Instance.GetNode(x, y).isTurret = newTurret;
+            Pathfinding.Instance.GetNode(x, y).isUsed = true;
 
             if (cellSize > 0)
             {
