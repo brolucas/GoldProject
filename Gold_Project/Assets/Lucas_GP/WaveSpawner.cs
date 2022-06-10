@@ -36,6 +36,8 @@ public class WaveSpawner : MonoBehaviour
 
 	private bool notDone = false;
 
+	public int levelToUnlock = 2;
+
 
 	private void Start()
 	{
@@ -67,19 +69,12 @@ public class WaveSpawner : MonoBehaviour
 			if (enemyAlive <= 0)
 			{
 				wave_Victory_Screen.SetActive(true);
-				if (!notDone)
-				{
-					GoToGame.levelIndex++;
-					notDone = true;
-					if (GoToGame.levelIndex >= 10)
-					{
-						SceneManager.LoadScene("Credits");
-						GoToGame.levelIndex = 1;
-					}
-				}
-				//Time.timeScale = 0;
+                if (levelToUnlock > PlayerPrefs.GetInt("levelReached",1))
+                {
+					PlayerPrefs.SetInt("levelReached", levelToUnlock);
+                }
+				
 			}
-			//this.enabled = false;
 		}   
 		
 		
