@@ -77,7 +77,7 @@ public class EnemiesTemp : MonoBehaviour
                 {
 					if (node.isTurret != null)
                     {
-						node.isTurret.GetComponentInChildren<Turret>().takeDamage(damage);
+						node.isTurret.GetComponentInChildren<Turret>().TakeDamage(damage);
                     }
 					else
 					{
