@@ -8,9 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 9_Sphere
-  m_Shader: {fileID: 4800000, guid: 6eb86e4931b506a408fd1477edec61ea, type: 3}
-  m_ShaderKeywords: RIM_ON SHAKEUV_ON SHAPE1CONTRAST_ON SHAPE1DISTORT_ON SHAPE2DISTORT_ON
-    SHAPE2_ON
+  m_Shader: {fileID: 0}
+  m_ShaderKeywords: RIM_ON SHAPE1CONTRAST_ON SHAPE1DISTORT_ON SHAPE2DISTORT_ON SHAPE2_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -241,3 +240,4 @@ Material:
     - _Shape2Color: {r: 1, g: 1, b: 1, a: 1}
     - _Shape3Color: {r: 1, g: 1, b: 1, a: 1}
     - _ShapeColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
