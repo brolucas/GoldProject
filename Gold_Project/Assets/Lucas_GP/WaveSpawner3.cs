@@ -188,6 +188,7 @@ public class WaveSpawner3 : MonoBehaviour
                 Pathfinding.Instance.GetNode(x + 1, y + 1).isUsed = true;
                 Pathfinding.Instance.GetNode(x, y + 2).isUsed = true;
                 Pathfinding.Instance.GetNode(x + 2, y + 2).isUsed = true;
+                Pathfinding.Instance.mapHasChanged = true;
 
                 Vector3 position = Pathfinding.Instance.GetGrid().GetWorldPosition(x, y);
                 position = new Vector3(position.x + Pathfinding.Instance.GetGrid().cellSize / 2, position.y + Pathfinding.Instance.GetGrid().cellSize / 2);
