@@ -6,16 +6,10 @@ public class TurretParticleSript : MonoBehaviour
 {
     [SerializeField] private ParticleSystem particules;
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+    [ContextMenu("Particles")]
+    public void particlesTurret()
     {
         Instantiate(particules, transform.position, transform.rotation);
     }
-
-   
+    
 }
