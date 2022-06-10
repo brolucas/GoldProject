@@ -51,6 +51,7 @@ public class TutoManager : MonoBehaviour
         Debug.Log("Sentences.Count = " + sentences.Count);
         if (sentences.Count == 0)
         {
+            TutoTrigger.instance.isFinished = true;
             EndTuto();
             return;
         }
@@ -63,6 +64,7 @@ public class TutoManager : MonoBehaviour
     {
         if (sprites.Count == 0)
         {
+            TutoTrigger.instance.isFinished = true;
             EndTuto();
             return;
         }

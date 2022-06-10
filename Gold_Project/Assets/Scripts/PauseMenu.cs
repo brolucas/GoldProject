@@ -7,8 +7,11 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuScreen;
     public void OpenPauseMenu()
     {
-        pauseMenuScreen.SetActive(true);
-        Time.timeScale = 0;
+        if (TutoTrigger.instance.isFinished)
+        {
+            pauseMenuScreen.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 
     public void ClosePauseMenu()
