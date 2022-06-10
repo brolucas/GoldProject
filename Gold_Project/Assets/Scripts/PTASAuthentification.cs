@@ -5,17 +5,9 @@ using UnityEngine.SocialPlatforms;
 
 public class PTASAuthentification : MonoBehaviour
 {
-    public static PlayGamesPlatform platform;
-
     void Start()
     {
-        if (platform == null)
-        {
-            PlayGamesPlatform.Instance.Authenticate(ProcessAuthentification);
-            PlayGamesPlatform.DebugLogEnabled = true;
-
-            platform = PlayGamesPlatform.Activate();
-        }
+        PlayGamesPlatform.Instance.Authenticate(ProcessAuthentification);
     }
 
     internal void ProcessAuthentification(SignInStatus status)

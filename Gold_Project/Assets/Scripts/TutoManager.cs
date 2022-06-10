@@ -77,6 +77,8 @@ public class TutoManager : MonoBehaviour
     void EndTuto()
     {
         Time.timeScale = 1;
+        AchivementsFinishing.instance.Achievement(true, "CgkIiorxr7YfEAIQAg");
         TutoTrigger.instance.tutoPanel.SetActive(false);
+
     }
 }

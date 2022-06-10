@@ -24,7 +24,21 @@
 
 public static class GPGSIds
 {
-        public const string achievement_finish_level_1 = "CgkIiorxr7YfEAIQAQ"; // <GPGSID>
+        public const string achievement_starman = "CgkIiorxr7YfEAIQBw"; // <GPGSID>
+        public const string achievement_its_over_200k = "CgkIiorxr7YfEAIQCQ"; // <GPGSID>
+        public const string achievement_finishing_tutorial = "CgkIiorxr7YfEAIQAg"; // <GPGSID>
+        public const string achievement_finishing_world_1 = "CgkIiorxr7YfEAIQAQ"; // <GPGSID>
+        public const string achievement_where_are_you = "CgkIiorxr7YfEAIQDA"; // <GPGSID>
+        public const string achievement_rich_has_cresus = "CgkIiorxr7YfEAIQDg"; // <GPGSID>
+        public const string achievement_finishing_world_2 = "CgkIiorxr7YfEAIQAw"; // <GPGSID>
+        public const string achievement_finishing_world_3 = "CgkIiorxr7YfEAIQBA"; // <GPGSID>
+        public const string achievement_dangerous_lifestyle = "CgkIiorxr7YfEAIQBQ"; // <GPGSID>
+        public const string achievement_fast_has_litghning = "CgkIiorxr7YfEAIQDQ"; // <GPGSID>
+        public const string achievement_barbarian_rage = "CgkIiorxr7YfEAIQDw"; // <GPGSID>
+        public const string achievement_hot_hot_hot = "CgkIiorxr7YfEAIQCg"; // <GPGSID>
+        public const string achievement_freeze = "CgkIiorxr7YfEAIQCw"; // <GPGSID>
+        public const string achievement_better_simple = "CgkIiorxr7YfEAIQBg"; // <GPGSID>
+        public const string achievement_overpowered = "CgkIiorxr7YfEAIQCA"; // <GPGSID>
 
 }
 
