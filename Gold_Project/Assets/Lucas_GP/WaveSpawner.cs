@@ -83,7 +83,7 @@ public class WaveSpawner : MonoBehaviour
 	IEnumerator SpawnWave()
 	{
 		Wave wave = waves[wave_Index];
-
+		enemyAlive = wave.Wave_Count_Boss + wave.Wave_Count_CRS + wave.Wave_Count_Kamikaze + wave.Wave_Count_Volant + wave.Wave_nb_Runner + wave.Wave_Manchot_nbr;
 		Debug.Log("Apparition d'une vague");
 
 		if (wave._event)
@@ -157,7 +157,7 @@ public class WaveSpawner : MonoBehaviour
 		System.Random alea = new System.Random();
 		int Alea = alea.Next(0,spawnPoint.Capacity);
 		Instantiate(ennemy, spawnPoint[Alea].position, spawnPoint[Alea].rotation);
-		enemyAlive++;
+		
 	}
 	public void SpawnEvent()
 	{
