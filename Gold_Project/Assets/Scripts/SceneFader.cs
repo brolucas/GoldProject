@@ -33,7 +33,7 @@ public class SceneFader : MonoBehaviour
             StartCoroutine(FadeOut(scene));
         }
 
-        if (SceneManager.GetActiveScene().name == "Level 1" && !GoToGame.tutoDone)
+        if (SceneManager.GetActiveScene().name == "Level 1" && PlayerPrefs.GetInt("tuto",0)==0)
         {
             GoToGame.tutoDone = true;
             TutoTrigger.instance.TriggerTuto();

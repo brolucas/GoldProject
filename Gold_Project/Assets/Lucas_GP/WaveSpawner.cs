@@ -36,6 +36,8 @@ public class WaveSpawner : MonoBehaviour
 
 	private bool notDone = false;
 
+	public int levelToUnlock = 2;
+
 
 	private void Start()
 	{
@@ -67,19 +69,12 @@ public class WaveSpawner : MonoBehaviour
 			if (enemyAlive <= 0)
 			{
 				wave_Victory_Screen.SetActive(true);
-				if (!notDone)
-				{
-					GoToGame.levelIndex++;
-					notDone = true;
-					if (GoToGame.levelIndex >= 10)
-					{
-						SceneManager.LoadScene("Credits");
-						GoToGame.levelIndex = 1;
-					}
-				}
-				//Time.timeScale = 0;
+                if (levelToUnlock > PlayerPrefs.GetInt("levelReached",1))
+                {
+					PlayerPrefs.SetInt("levelReached", levelToUnlock);
+                }
+				
 			}
-			//this.enabled = false;
 		}   
 		
 		
@@ -88,7 +83,7 @@ public class WaveSpawner : MonoBehaviour
 	IEnumerator SpawnWave()
 	{
 		Wave wave = waves[wave_Index];
-
+		enemyAlive = wave.Wave_Count_Boss + wave.Wave_Count_CRS + wave.Wave_Count_Kamikaze + wave.Wave_Count_Volant + wave.Wave_nb_Runner + wave.Wave_Manchot_nbr;
 		Debug.Log("Apparition d'une vague");
 
 		if (wave._event)
@@ -162,7 +157,7 @@ public class WaveSpawner : MonoBehaviour
 		System.Random alea = new System.Random();
 		int Alea = alea.Next(0,spawnPoint.Capacity);
 		Instantiate(ennemy, spawnPoint[Alea].position, spawnPoint[Alea].rotation);
-		enemyAlive++;
+		
 	}
 	public void SpawnEvent()
 	{
