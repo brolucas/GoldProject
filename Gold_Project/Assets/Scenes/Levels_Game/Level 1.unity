@@ -7961,7 +7961,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   infoTurretText: {fileID: 1135758702}
-  deck: 01000000020000000400000006000000
   deckButtons:
   - {fileID: 1318916625}
   - {fileID: 149775297}
@@ -9334,8 +9333,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -45, y: -45}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: -48, y: -45}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2072399656
 MonoBehaviour:
@@ -9413,7 +9412,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a813d110d03f84d4ba38565eea8a0a07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd44940227e25554e9ef1ce8aa6e0b81, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -10101,6 +10100,7 @@ MonoBehaviour:
     sentences:
     - Message 1
     - Message 2
+  isFinished: 0
   tutoPanel: {fileID: 317843784410188565}
 --- !u!4 &317843783791865025
 Transform:
@@ -10429,6 +10429,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6774791142897126947, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: musicBg
+      value: 
+      objectReference: {fileID: 1321529589}
     - target: {fileID: 6774791142897126947, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
       propertyPath: pauseMenuScreen
