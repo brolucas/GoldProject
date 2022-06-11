@@ -392,13 +392,13 @@ public int atqPoints { get; private set; }
             #endregion
         }
 
-        /*if (fireCountDown <= 0f)
+        if (fireCountDown <= 0f)
         {
             Shoot(currentTarget);
             fireCountDown = 1 / fireRate;
         }
 
-        fireCountDown -= Time.deltaTime;*/
+        fireCountDown -= Time.deltaTime;
 
     }
 
