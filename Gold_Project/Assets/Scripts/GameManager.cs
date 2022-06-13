@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public truck truck;
 
     public DataManager dataManager;
-    public DeckData deckData;
+    //public DeckData deckData;
     public Deck deck;
 
     private Shop shop;
@@ -46,11 +46,12 @@ public class GameManager : MonoBehaviour
         instance = this;
 
         dataManager = DataManager.Instance;
-        if (deckData == null)
+        /*if (deckData == null)
         {
             deckData = dataManager.deckData;
-        }
-        
+        }*/
+        //PlayerPrefs.DeleteAll();
+
         currentScene = SceneManager.GetActiveScene();
 
         enemies.Clear();
@@ -72,17 +73,23 @@ public class GameManager : MonoBehaviour
         {
             GetComponent<TimerController>().enabled = false;
             GetComponent<WaveSpawner>().enabled = false;
+            
+            for(int i = 0; i < deck.deckButton.Count; i++)
+            {
+                dataManager.deckData.deckTurret[i] = KindOfTurret.DefaultDoNotUseIt;
+            }
 
             // For each slot add a type to it
             for (int i = 0; i < deck.deckButton.Count; i++)
             {
-                deck.buttonToEnumDeck.Add(deck.deckButton[i], deckData.deckTurret[i]);
-
-                Debug.Log("Main Menu");
+                deck.buttonToEnumDeck.Add(deck.deckButton[i], dataManager.deckData.deckTurret[i]);
             }
 
+
             deck = GetComponent<Deck>();
+
         }
+
     }
     public void Update()
     {
@@ -106,8 +113,8 @@ public class GameManager : MonoBehaviour
                 //Change value in the dictionnary
                 deck.buttonToEnumDeck[deck.deckButton[i]] = kindOfTurret;
 
-                //Change value in the DECK in deckData
-                deckData.deckTurret[i] = kindOfTurret;
+                //Change value in the DECK in dataManager.deckData
+                dataManager.deckData.deckTurret[i] = kindOfTurret;
 
                 deck.deckButton[i].GetComponent<Image>().sprite = GetStatsKindOfTurret(kindOfTurret).UIDesign;
                 break;
@@ -117,11 +124,11 @@ public class GameManager : MonoBehaviour
 
     public void RemoveTurretFromDeck(KindOfTurret kindOfTurret, Button slotButton)
     {
-        for (int i = 0; i < deckData.deckTurret.Count; i++)
+        for (int i = 0; i < dataManager.deckData.deckTurret.Count; i++)
         {
-            if (deckData.deckTurret[i] == kindOfTurret)
+            if (dataManager.deckData.deckTurret[i] == kindOfTurret)
             {
-                deckData.deckTurret[i] = KindOfTurret.DefaultDoNotUseIt;
+                dataManager.deckData.deckTurret[i] = KindOfTurret.DefaultDoNotUseIt;
                 break;
             }
         }

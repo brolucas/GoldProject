@@ -86,7 +86,7 @@ public class Deck : MonoBehaviour
         description.text = turretData.description;
         turretImageUI.sprite = turretData.UIDesign;
 
-        if (gameManager.deckData.deckTurret.Contains(kindOfTurret))
+        if (gameManager.dataManager.deckData.deckTurret.Contains(kindOfTurret))
         {
             addDeckImage.color = Color.red;
             addDeckImage.GetComponentInChildren<Text>().text = "Already in Deck";
@@ -102,10 +102,10 @@ public class Deck : MonoBehaviour
 
     public void AddToDeck()
     {
-        if (!gameManager.deckData.deckTurret.Contains(KindOfTurret.DefaultDoNotUseIt))
+        if (!gameManager.dataManager.deckData.deckTurret.Contains(KindOfTurret.DefaultDoNotUseIt))
             return;
 
-        if (gameManager.deckData.deckTurret.Contains(turretSelected))
+        if (gameManager.dataManager.deckData.deckTurret.Contains(turretSelected))
             //You can't add more than 4 turrets 
             // Already in the deck 
             return;
@@ -117,7 +117,7 @@ public class Deck : MonoBehaviour
 
     public void RemoveFromDeck()
     {
-        if (!gameManager.deckData.deckTurret.Contains(turretSelected))
+        if (!gameManager.dataManager.deckData.deckTurret.Contains(turretSelected))
         {
             Debug.Log("You can't remove this turret because it is not in the deck");
             return;
