@@ -10,7 +10,7 @@ public class SceneFader : MonoBehaviour
     public Text levelName;
     public AnimationCurve curve;
     public GameObject gameManager;
-
+    
     private void Start()
     {
         StartCoroutine(FadeIn());
@@ -62,7 +62,6 @@ public class SceneFader : MonoBehaviour
         {
             Debug.LogWarning("You need to have 4 turrets in the Deck !!");
             return;
-
         }
 
         StartCoroutine(FadeOut(levelName.text));
