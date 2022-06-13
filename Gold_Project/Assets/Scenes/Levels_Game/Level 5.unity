@@ -3067,6 +3067,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3252618971970743903, guid: 24f19e5fd88d80946be2dd914af5555d,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1254031487}
     - target: {fileID: 9183064884766861578, guid: 24f19e5fd88d80946be2dd914af5555d,
         type: 3}
       propertyPath: m_Name
@@ -4036,6 +4041,16 @@ PrefabInstance:
       objectReference: {fileID: 1133751321}
     - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
+      propertyPath: currentLevel
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: levelToUnlock
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
       propertyPath: waves.Array.size
       value: 10
       objectReference: {fileID: 0}
@@ -4187,7 +4202,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1254031484}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1254031487}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 042171af6143025499a3d349c1b55248, type: 3}
@@ -4199,19 +4214,25 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1254031484}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1254031487}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1efe4d337a7f36459bf4eec69b4bc14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1254031487 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6774791142897126948, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1254031484}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1254031488 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6774791142897126947, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
     type: 3}
   m_PrefabInstance: {fileID: 1254031484}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1254031487}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f154f23115a4f254ea0111bab1bd77c3, type: 3}
