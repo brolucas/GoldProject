@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
@@ -14,6 +15,7 @@ public class Shop : MonoBehaviour
     public Dictionary<Button, KindOfTurret> buttonToEnum = new Dictionary<Button, KindOfTurret>();
 
     public GameObject selectedTurretInGame;
+    public Deck deck;
 
     public void Awake()
     {
@@ -30,6 +32,14 @@ public class Shop : MonoBehaviour
         gameManager = GameManager.Instance;
         dataManager = DataManager.Instance;
 
+        if (SceneManager.GetActiveScene().name == "Level Tuto")
+        {
+            dataManager.deckData.deckTurret[0] = KindOfTurret.Basic;
+            dataManager.deckData.deckTurret[1] = KindOfTurret.Mortar;
+            dataManager.deckData.deckTurret[2] = KindOfTurret.Discord;
+            dataManager.deckData.deckTurret[3] = KindOfTurret.SniperTower;
+            
+        }
         for (int i = 0; i < deckButtons.Count; i++)
         {
             buttonToEnum.Add(deckButtons[i], dataManager.deckData.deckTurret[i]);
@@ -44,6 +54,7 @@ public class Shop : MonoBehaviour
 
             deckButtons[i].GetComponent<Image>().sprite = turretData.UIDesign;
         }
+        
     }
 
     public void DisplayCurrentTurretStats()
@@ -89,8 +100,10 @@ public class Shop : MonoBehaviour
 
     public void PurchaseTurret(Button thisButton)
     {
+        Debug.Log("<COLOR=Green>Turret Selcted</COLOR>");
         if (PlayerPrefs.GetInt("tuto", 0) == 1)
         {
+            Debug.Log("<COLOR=Blue>Turret Selcted</COLOR>");
             KindOfTurret kindOfTurret = buttonToEnum[thisButton];
 
             TurretData turretData = gameManager.turretDatabase.turrets.Find(data => data.kindOfTurret == kindOfTurret);

@@ -5720,6 +5720,7 @@ MonoBehaviour:
   - {fileID: 2127543450}
   - {fileID: 1416727752}
   selectedTurretInGame: {fileID: 0}
+  deck: {fileID: 0}
 --- !u!1 &1810562847
 GameObject:
   m_ObjectHideFlags: 0
@@ -8020,6 +8021,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774791142897126948, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}

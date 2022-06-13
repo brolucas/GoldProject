@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
         {
             deckData = dataManager.deckData;
         }*/
+        //PlayerPrefs.DeleteAll();
 
         currentScene = SceneManager.GetActiveScene();
 
@@ -75,8 +76,7 @@ public class GameManager : MonoBehaviour
             
             for(int i = 0; i < deck.deckButton.Count; i++)
             {
-                DataManager.Instance.deckData.deckTurret[i] = KindOfTurret.DefaultDoNotUseIt;
-                Debug.Log("<COLOR=Green>Test</COLOR>");
+                dataManager.deckData.deckTurret[i] = KindOfTurret.DefaultDoNotUseIt;
             }
 
             // For each slot add a type to it
@@ -87,7 +87,6 @@ public class GameManager : MonoBehaviour
 
 
             deck = GetComponent<Deck>();
-            Debug.Log("<COLOR=Red>MainMenu</COLOR>");
 
         }
 
