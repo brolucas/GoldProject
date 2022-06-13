@@ -55,9 +55,9 @@ MonoBehaviour:
     fireRate: 0.25
     maxAtqPoints: 140
     activeAtqCap: 0
-    basePassiveParameters: 0.5
+    basePassiveParameters: 50
     maxPassiveParameters: 8
-    capPassive: 0
+    capPassive: 2
     inGameDesign: {fileID: 21300000, guid: 0833b296c24f3fc4bb5bf648b561e9a6, type: 3}
     UIDesign: {fileID: 21300000, guid: 0f16975b29d62f845a1d41af56e2b00b, type: 3}
     description: 'Name : Mortar
