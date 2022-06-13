@@ -24,6 +24,8 @@ public class Turret : MonoBehaviour
 
     private bool doOnce = false;
 
+    private bool hasGeneratorBuffActived;
+
     #region Turret Stats
 
     public string label { get; private set; }
@@ -45,7 +47,9 @@ public class Turret : MonoBehaviour
 //Attack Stats
 public int atqPoints { get; private set; }
     public float atqPtsBonus { get; set; }
+    public float baseFireRate;
     public float fireRate { get; private set; }
+    private float fireRateBonus;
     public int maxAtqPoints { get; private set; }
     protected bool isAtqCap;
 
@@ -69,7 +73,6 @@ public int atqPoints { get; private set; }
     public List<EnemiesTemp> inRangeEnemies = new List<EnemiesTemp>();
 
     public List<EnemiesTemp> targetList = new List<EnemiesTemp>();
-
 
     public void Awake()
     {
@@ -177,7 +180,9 @@ public int atqPoints { get; private set; }
 
         atqPoints = turretData.atqPoints;
         atqPtsBonus = 0;
+        baseFireRate = turretData.fireRate;
         fireRate = turretData.fireRate;
+        fireRateBonus = 0;
         maxAtqPoints = turretData.maxAtqPoints;
         isAtqCap = turretData.activeAtqCap;
 
@@ -220,12 +225,14 @@ public int atqPoints { get; private set; }
 
         ChooseTarget(origin);
 
-        // Passive ON all the time
+        // Max Level Passive and Passive that are turn ON all the time
         switch (kindOfTurret)
         {
+            case KindOfTurret.Basic:
             case KindOfTurret.Anti_Aerial:
             case KindOfTurret.Generator:
             case KindOfTurret.Viktor:
+            case KindOfTurret.SniperTower:
                 if (currentLevel >= maxLevel)
                     PassiveLevelmax(currentTarget);
                 break;
@@ -235,17 +242,6 @@ public int atqPoints { get; private set; }
             default:
                 break;
         }
-
-        float rage = (localScale.x + (3 * 2) * localScale.x) / 2;
-
-        rage = (localScale.x - ((3 / 2)/ localScale.x)) *2;
-
-        Debug.Log(rage);
-    }
-
-    private void OnDrawGizmos()
-    {
-        //Handles.DrawWireDisc(transform.position, transform.forward, range);
     }
 
     public void ChooseTarget(Vector3 origin)
@@ -435,7 +431,7 @@ public int atqPoints { get; private set; }
             {
                 Shoot(target);
             }
-            fireCountDown = 1 / fireRate;
+            fireCountDown = 1 / (fireRate + fireRateBonus);
         }
 
         fireCountDown -= Time.deltaTime;
@@ -447,16 +443,20 @@ public int atqPoints { get; private set; }
         // Passive ON when shooting
         switch (kindOfTurret)
         {
+            //don't need Level max passive here
+            case KindOfTurret.Generator:
+                {
+                    TurretPassive(enemy);
+                    break;
+                }
             case KindOfTurret.Basic:
             case KindOfTurret.Mortar: 
             case KindOfTurret.Discord:
-            case KindOfTurret.SniperTower:
             case KindOfTurret.Furnace:
             case KindOfTurret.Channelizer:
             case KindOfTurret.Immobilizer:
             case KindOfTurret.Zap:
             case KindOfTurret.Teleporter:
-            //case KindOfTurret.Viktor: not sure
                 {
                     TurretPassive(enemy);
                     if (currentLevel >= maxLevel)
@@ -492,6 +492,22 @@ public int atqPoints { get; private set; }
     {
         switch (kindOfTurret)
         {
+            case KindOfTurret.Basic:
+                {
+                    if (doOnce)
+                    {
+                        fireRate -= baseFireRate;
+
+                        doOnce = false;
+                    }
+                    else
+                    {
+                        fireRate += baseFireRate;
+
+                        doOnce = true;
+                    }
+                    break;
+                }
             case KindOfTurret.Mortar:
                 {
                     // Enemies 1-2 range away from the target suffer a 50% slowdown
@@ -597,6 +613,11 @@ public int atqPoints { get; private set; }
                     StartCoroutine(IncreaseAttackSpeed(enemy));
                     break;
                 }
+            case KindOfTurret.Generator:
+                {
+                    gameManager.truck.gold += (int)(atqPoints * basePassiveParameters /*50*/ / 100);
+                    break;
+                }
 
             default:
                 
@@ -611,18 +632,19 @@ public int atqPoints { get; private set; }
 
         switch (kindOfTurret)
         {
-            case KindOfTurret.Basic:
+            case KindOfTurret.SniperTower:
                 {
-                    //
+                    if (!doOnce)
+                    {
+                        range = RangeConvertion(range, false);
 
+                        range++;
 
-                    break;
-                }
-            case KindOfTurret.SniperTower: // TO DO
-                {
-                    // the enemies are pushed back 2 squares
-                    int pushHowFar = (int)maxPassiveParameters;
-                    
+                        range = RangeConvertion(range, true);
+
+                        doOnce = true;
+                    }
+
                     break;
                 }
             case KindOfTurret.Immobilizer: 
@@ -637,6 +659,31 @@ public int atqPoints { get; private set; }
                     // 
 
 
+                    break;
+                }
+            case KindOfTurret.Generator:
+                {
+                    foreach (var turretAround in gameManager.allTurret)
+                    {
+                        Vector2 objPos = turretAround.transform.position;
+
+                        float distance = Vector2.Distance(objPos, this.transform.position);
+
+                        //Range of the explosion that is going to slow enemies inside 
+                        int buffRange = 1;
+
+                        isInside = distance < RangeConvertion(buffRange, true);
+
+                        if (isInside)
+                        {
+                            if (!turretAround.hasGeneratorBuffActived)
+                            {
+                                turretAround.atqPtsBonus += 15;
+                                turretAround.fireRateBonus += turretAround.baseFireRate * maxPassiveParameters / 100;
+                                turretAround.hasGeneratorBuffActived = true;
+                            }
+                        }
+                    }
                     break;
                 }
             default:
@@ -661,7 +708,6 @@ public int atqPoints { get; private set; }
             StartCoroutine(ConfusionTimer(target));
         }
     }*/
-
 
     private IEnumerator IncreaseAttackSpeed(EnemiesTemp target)
     {
@@ -741,6 +787,23 @@ public int atqPoints { get; private set; }
         Pathfinding.Instance.mapHasChanged = true;
         Destroy(this.gameObject.transform.parent.gameObject);
         gameManager.allTurret.Remove(this);
+    }
+
+    private void OnDestroy()
+    {
+        if (kindOfTurret == KindOfTurret.Generator)
+        {
+            foreach (var turretAround in gameManager.allTurret)
+            {
+                if (turretAround.hasGeneratorBuffActived)
+                {
+                    turretAround.atqPtsBonus -= 15;
+                    turretAround.fireRateBonus -= 0.15f;
+                    turretAround.fireRateBonus = Mathf.Clamp(turretAround.fireRateBonus, 0, 10);
+                    turretAround.hasGeneratorBuffActived = false;
+                }
+            }
+        }
     }
 
     #region Util Function
