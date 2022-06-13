@@ -37,13 +37,23 @@ public class SceneFader : MonoBehaviour
         {
             TutoTrigger.instance.TriggerTuto();
         }
+
+        
         gameManager.SetActive(true);
     }
 
     public void FadeTo(string scene)
     {
         Time.timeScale = 1;
-        StartCoroutine(FadeOut(scene));
+        if (SceneManager.GetActiveScene().name == "Title" && PlayerPrefs.GetInt("firstTime", 0) == 0)
+        {
+            StartCoroutine(FadeOut("Level 1"));
+        }
+        else
+        {
+
+            StartCoroutine(FadeOut(scene));
+        }
     } 
 
     public void FadeToGame(Text levelName)

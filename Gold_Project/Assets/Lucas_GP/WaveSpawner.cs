@@ -70,6 +70,10 @@ public class WaveSpawner : MonoBehaviour
 			if (enemyAlive <= 0)
 			{
 				wave_Victory_Screen.SetActive(true);
+                if (SceneManager.GetActiveScene().name == "Level 1")
+                {
+                    PlayerPrefs.SetInt("firstTime", 1);
+                }
                 if (currentLevel == 3)
                 {
                     AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_finishing_world_1);
