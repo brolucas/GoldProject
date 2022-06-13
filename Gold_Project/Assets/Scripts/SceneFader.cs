@@ -10,7 +10,7 @@ public class SceneFader : MonoBehaviour
     public Text levelName;
     public AnimationCurve curve;
     public GameObject gameManager;
-
+    
     private void Start()
     {
         StartCoroutine(FadeIn());
@@ -33,17 +33,26 @@ public class SceneFader : MonoBehaviour
             StartCoroutine(FadeOut(scene));
         }
 
-        if (SceneManager.GetActiveScene().name == "Level 1" && PlayerPrefs.GetInt("tuto",0)==0)
+        if (SceneManager.GetActiveScene().name == "Level Tuto" && PlayerPrefs.GetInt("tuto",0)==0)
         {
             TutoTrigger.instance.TriggerTuto();
         }
+
+        
         gameManager.SetActive(true);
     }
 
     public void FadeTo(string scene)
     {
         Time.timeScale = 1;
-        StartCoroutine(FadeOut(scene));
+        if (SceneManager.GetActiveScene().name == "Title" && PlayerPrefs.GetInt("firstTime", 0) == 0)
+        {
+            StartCoroutine(FadeOut("Level Tuto"));
+        }
+        else
+        {
+            StartCoroutine(FadeOut(scene));
+        }
     } 
 
     public void FadeToGame(Text levelName)
@@ -52,7 +61,6 @@ public class SceneFader : MonoBehaviour
         {
             Debug.LogWarning("You need to have 4 turrets in the Deck !!");
             return;
-
         }
 
         StartCoroutine(FadeOut(levelName.text));
