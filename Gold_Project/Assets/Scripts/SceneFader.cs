@@ -47,7 +47,7 @@ public class SceneFader : MonoBehaviour
         Time.timeScale = 1;
         if (SceneManager.GetActiveScene().name == "Title" && PlayerPrefs.GetInt("firstTime", 0) == 0)
         {
-            StartCoroutine(FadeOut("Level 1"));
+            StartCoroutine(FadeOut("Level Tuto"));
         }
         else
         {
