@@ -782,7 +782,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 15.8, y: 1.77}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &199270528
 GameObject:
@@ -1615,7 +1615,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 15.78, y: 4.4}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &676824952
 GameObject:
@@ -3973,109 +3973,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1318916623}
   m_CullTransparentMesh: 1
---- !u!1 &1321529588 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8338232887661382528, guid: 28da6559888611048a67939a8e1952b7,
+--- !u!82 &1321529589 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1321529589, guid: 28da6559888611048a67939a8e1952b7,
     type: 3}
   m_PrefabInstance: {fileID: 1785985137}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &1321529589
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1321529588}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -6052986167302642451, guid: 05b54804a6114a44c9348e8fe04ac3d3,
-    type: 2}
-  m_audioClip: {fileID: 8300000, guid: 3873c70ba4db18449bbc6be4f954cfe2, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &1329993797
 GameObject:
   m_ObjectHideFlags: 0
@@ -5614,11 +5517,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1779229154}
     m_Modifications:
-    - target: {fileID: 278364341855091796, guid: 28da6559888611048a67939a8e1952b7,
-        type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2839210569179321154, guid: 28da6559888611048a67939a8e1952b7,
         type: 3}
       propertyPath: m_RootOrder
@@ -6364,7 +6262,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1785985137}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1321529588}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d34062036091a94fbefc1aea61ad44c, type: 3}
@@ -7559,9 +7457,26 @@ MonoBehaviour:
     tutoSprites:
     - {fileID: 21300000, guid: 8c4ee932c2c06d840a6d2a034d91b37d, type: 3}
     - {fileID: 21300000, guid: 8c4ee932c2c06d840a6d2a034d91b37d, type: 3}
+    - {fileID: 21300000, guid: 8c4ee932c2c06d840a6d2a034d91b37d, type: 3}
+    - {fileID: 21300000, guid: 8c4ee932c2c06d840a6d2a034d91b37d, type: 3}
+    - {fileID: 21300000, guid: 8c4ee932c2c06d840a6d2a034d91b37d, type: 3}
+    - {fileID: 21300000, guid: 8c4ee932c2c06d840a6d2a034d91b37d, type: 3}
     sentences:
-    - Message 1
-    - Message 2
+    - "-\u201COk soldat, les pingouins sont tr\xE8s proches et  on va avoir besoin
+      d\u2019un peu plus de temps avant d\u2019embarquer tous nos camarades!\u201D\r"
+    - "-\u201DIl va falloir que tu organises les d\xE9fenses du vaisseau pour retenir
+      l\u2019assaut ennemi!\u201D\r"
+    - "-\u201DTu as \xE0 ta disposition 4 tourelles diff\xE9rentes que tu vas pouvoir
+      placer sur le terrain pour retenir l\u2019ennemi : tu as acc\xE8s  \xE0 leur
+      port\xE9e, leurs d\xE9g\xE2ts, leur vie ainsi que leur prix.\u201D"
+    - "\r-\u201DSi tu as assez de gold, tu pourras m\xEAme am\xE9liorer tes tourelles.\u201D\r"
+    - "-\u201DPour ralentir leur progression, tu peux aussi utiliser des barricades
+      pour d\xE9vier leur chemin. Attention, elles ne sont pas forc\xE9ment tr\xE8s
+      r\xE9sistantes mais te feront gagner du temps!\u201D\r\n"
+    - "\r-\u201DAttention, pour faire tout cela, tu auras besoin d\u2019argent! Fais
+      bien attention \xE0 ce que tu poss\xE8des afin de construire la meilleure formation
+      de d\xE9fense. Tu pourras obtenir de l\u2019argent en tuant nos ennemis : pas
+      de prisonniers!\r\n"
   isFinished: 0
   tutoPanel: {fileID: 317843784410188565}
 --- !u!4 &317843783791865025
