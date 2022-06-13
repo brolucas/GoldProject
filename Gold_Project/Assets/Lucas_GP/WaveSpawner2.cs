@@ -35,8 +35,9 @@ public class WaveSpawner2 : MonoBehaviour
     [SerializeField]
     private GameObject[] listEvent;
     private bool notDone = false;
-    private int currentLevel = 1;
 
+    public int levelToUnlock = 2;
+    public int currentLevel = 1;
     private void Start()
     {
         System.Random alea = new System.Random();
@@ -62,24 +63,18 @@ public class WaveSpawner2 : MonoBehaviour
             return;
         }
          countdown -= Time.deltaTime;
-        if (lastWave)
+        if (lastWave && SceneManager.GetActiveScene().name != "MainMenu")
         {
             if (enemyAlive <= 0)
             {
                 wave_Victory_Screen.SetActive(true);
-                if (currentLevel == 3)
+                if (currentLevel == 6)
                 {
                     AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_finishing_world_2);
                 }
-                if (!notDone)
+                if (levelToUnlock > PlayerPrefs.GetInt("levelReached",1))
                 {
-                    GoToGame.levelIndex++;
-                    notDone = true;
-                    if (GoToGame.levelIndex >= 10)
-                    {
-                        SceneManager.LoadScene("Credits");
-                        GoToGame.levelIndex = 1;
-                    }
+                    PlayerPrefs.SetInt("levelReached", levelToUnlock);
                 }
             }
             //this.enabled = false;

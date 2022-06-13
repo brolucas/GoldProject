@@ -36,7 +36,9 @@ public class WaveSpawner3 : MonoBehaviour
     private GameObject[] listEvent;
     private bool notDone = false;
 
-    private int currentLevel = 1;
+
+    public int levelToUnlock = 2;
+    public int currentLevel = 1;
 
     private void Start()
     {
@@ -68,19 +70,13 @@ public class WaveSpawner3 : MonoBehaviour
             if (enemyAlive <= 0)
             {
                 wave_Victory_Screen.SetActive(true);
-                if (currentLevel == 3)
+                if (currentLevel == 9)
                 {
                     AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_finishing_world_3);
                 }
-                if (!notDone)
+                if (levelToUnlock > PlayerPrefs.GetInt("levelReached", 1))
                 {
-                    GoToGame.levelIndex++;
-                    notDone = true;
-                    if (GoToGame.levelIndex >= 10)
-                    {
-                        SceneManager.LoadScene("Credits");
-                        GoToGame.levelIndex = 1;
-                    }
+                    PlayerPrefs.SetInt("levelReached", levelToUnlock);
                 }
             }
             //this.enabled = false;

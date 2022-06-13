@@ -3247,6 +3247,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3252618971970743903, guid: 24f19e5fd88d80946be2dd914af5555d,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 837691460}
     - target: {fileID: 9183064884766861578, guid: 24f19e5fd88d80946be2dd914af5555d,
         type: 3}
       propertyPath: m_Name
@@ -4214,6 +4219,16 @@ PrefabInstance:
       propertyPath: spawnPoint2
       value: 
       objectReference: {fileID: 1133751321}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: currentLevel
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: levelToUnlock
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
       propertyPath: waves.Array.size
