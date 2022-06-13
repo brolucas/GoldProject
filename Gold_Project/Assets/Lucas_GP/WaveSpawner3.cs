@@ -88,6 +88,7 @@ public class WaveSpawner3 : MonoBehaviour
     IEnumerator SpawnWave()
     {
         Wave wave = waves[wave_Index];
+        enemyAlive = wave.Wave_Count_Boss + wave.Wave_Count_CRS + wave.Wave_Count_Kamikaze + wave.Wave_Count_Volant + wave.Wave_nb_Runner + wave.Wave_Manchot_nbr;
 
         Debug.Log("Apparition d'une vague");
 
@@ -160,9 +161,9 @@ public class WaveSpawner3 : MonoBehaviour
     void SpawnEnnemy(GameObject ennemy)
     {
         System.Random alea = new System.Random();
-        int Alea = alea.Next(0,spawnPoint.Capacity);
-        Instantiate(ennemy, spawnPoint[Alea].position, spawnPoint[Alea].rotation);
-        enemyAlive++;
+        int Alea = alea.Next(0, spawnPoint.Capacity);
+        GameObject enemy = Instantiate(ennemy, spawnPoint[Alea].position, spawnPoint[Alea].rotation);
+        enemy.name = ennemy.name + (GameManager.Instance.enemies.Count + 1);
     }
     public void SpawnEvent()
     {

@@ -161,8 +161,9 @@ public class WaveSpawner : MonoBehaviour
 	{
 		System.Random alea = new System.Random();
 		int Alea = alea.Next(0,spawnPoint.Capacity);
-		Instantiate(ennemy, spawnPoint[Alea].position, spawnPoint[Alea].rotation);
-		
+		GameObject enemy = Instantiate(ennemy, spawnPoint[Alea].position, spawnPoint[Alea].rotation);
+		enemy.name = ennemy.name + (GameManager.Instance.enemies.Count + 1);
+
 	}
 	public void SpawnEvent()
 	{
