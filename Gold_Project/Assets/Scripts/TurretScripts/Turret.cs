@@ -229,9 +229,7 @@ public int atqPoints { get; private set; }
         switch (kindOfTurret)
         {
             case KindOfTurret.Basic:
-            case KindOfTurret.Anti_Aerial:
             case KindOfTurret.Generator:
-            case KindOfTurret.Viktor:
             case KindOfTurret.SniperTower:
                 if (currentLevel >= maxLevel)
                     PassiveLevelmax(currentTarget);

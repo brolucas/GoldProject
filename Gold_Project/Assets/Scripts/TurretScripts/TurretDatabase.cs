@@ -20,14 +20,12 @@ public enum KindOfTurret
     Mortar,
     Discord,
     SniperTower,
-    Anti_Aerial,
     Furnace,
     Channelizer,
     Generator,
     Immobilizer,
     Zap,
     Teleporter,
-    Viktor,
     // ex : NewType,
 };
 
