@@ -88,15 +88,15 @@ public class Deck : MonoBehaviour
 
         if (gameManager.dataManager.deckData.deckTurret.Contains(kindOfTurret))
         {
-            addDeckImage.color = Color.red;
+            //addDeckImage.color = Color.red;
             addDeckImage.GetComponentInChildren<Text>().text = "Already in Deck";
-            addDeckImage.GetComponentInChildren<Text>().color = Color.white;
+            addDeckImage.GetComponentInChildren<Text>().color = Color.red;
         }
         else
         {
-            addDeckImage.color = Color.white;
+            //addDeckImage.color = Color.white;
             addDeckImage.GetComponentInChildren<Text>().text = "Add to Deck";
-            addDeckImage.GetComponentInChildren<Text>().color = Color.black;
+            addDeckImage.GetComponentInChildren<Text>().color = Color.white;
         }
     }
 
