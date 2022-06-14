@@ -626,6 +626,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 78658367}
     m_Modifications:
+    - target: {fileID: 4024543309036788544, guid: 94fd7488e036eed4f9580f115fd3e984,
+        type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4024543309036788545, guid: 94fd7488e036eed4f9580f115fd3e984,
         type: 3}
       propertyPath: m_Pivot.x
@@ -664,12 +669,12 @@ PrefabInstance:
     - target: {fileID: 4024543309036788545, guid: 94fd7488e036eed4f9580f115fd3e984,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 713.6008
+      value: 640
       objectReference: {fileID: 0}
     - target: {fileID: 4024543309036788545, guid: 94fd7488e036eed4f9580f115fd3e984,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 490.0338
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 4024543309036788545, guid: 94fd7488e036eed4f9580f115fd3e984,
         type: 3}
@@ -709,12 +714,12 @@ PrefabInstance:
     - target: {fileID: 4024543309036788545, guid: 94fd7488e036eed4f9580f115fd3e984,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -294
+      value: -320
       objectReference: {fileID: 0}
     - target: {fileID: 4024543309036788545, guid: 94fd7488e036eed4f9580f115fd3e984,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 176.6134
+      value: 175
       objectReference: {fileID: 0}
     - target: {fileID: 4024543309036788545, guid: 94fd7488e036eed4f9580f115fd3e984,
         type: 3}
@@ -730,6 +735,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024543309036788547, guid: 94fd7488e036eed4f9580f115fd3e984,
+        type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4024543309036788550, guid: 94fd7488e036eed4f9580f115fd3e984,
         type: 3}
@@ -1260,11 +1270,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 78658367}
     m_Modifications:
-    - target: {fileID: 272750042737565444, guid: fb7e812fd74430e478358ad5af9af820,
-        type: 3}
-      propertyPath: nameTurretText
-      value: 
-      objectReference: {fileID: 644885548}
     - target: {fileID: 272750044490588324, guid: fb7e812fd74430e478358ad5af9af820,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1393,18 +1398,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 883bf40fddbf3004eb82c8e985f8ed6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &644885548 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 272750044571426217, guid: fb7e812fd74430e478358ad5af9af820,
-    type: 3}
-  m_PrefabInstance: {fileID: 644885545}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &656924372
