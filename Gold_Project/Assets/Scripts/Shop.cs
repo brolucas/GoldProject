@@ -9,6 +9,7 @@ public class Shop : MonoBehaviour
     private DataManager dataManager;
 
     public Text infoTurretText;
+    public Text nameTurretText;
 
     public List<Button> deckButtons = new List<Button>();
 
@@ -100,14 +101,14 @@ public class Shop : MonoBehaviour
 
     public void PurchaseTurret(Button thisButton)
     {
-        Debug.Log("<COLOR=Green>Turret Selcted</COLOR>");
+        //Debug.Log("<COLOR=Green>Turret Selcted</COLOR>");
         if (PlayerPrefs.GetInt("tuto", 0) == 1)
         {
-            Debug.Log("<COLOR=Blue>Turret Selcted</COLOR>");
+            //Debug.Log("<COLOR=Blue>Turret Selcted</COLOR>");
             KindOfTurret kindOfTurret = buttonToEnum[thisButton];
 
             TurretData turretData = gameManager.turretDatabase.turrets.Find(data => data.kindOfTurret == kindOfTurret);
-
+            nameTurretText.text = turretData.kindOfTurret.ToString();
             infoTurretText.text = ("Price : " + turretData.turretPrice + "\n" +
                                    "Range : " + turretData.range + "\n" +
                                    "Life Points : " + turretData.healthPoints + "\n" +

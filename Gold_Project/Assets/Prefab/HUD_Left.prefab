@@ -384,6 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   infoTurretText: {fileID: 272750043395916393}
+  nameTurretText: {fileID: 272750044571426217}
   deckButtons:
   - {fileID: 272750043314347286}
   - {fileID: 272750044355570886}
