@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BuildManager : MonoBehaviour
 {
-	public truck truck;
+	public Truck truck;
 
 	public GameObject turretPrefab;
 
