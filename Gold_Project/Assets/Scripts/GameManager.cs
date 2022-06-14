@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
         {
             deckData = dataManager.deckData;
         }*/
-        //PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
 
         currentScene = SceneManager.GetActiveScene();
 
