@@ -8,7 +8,8 @@ public class Shop : MonoBehaviour
 	private GameManager gameManager;
 	private DataManager dataManager;
 
-	public Text infoTurretText;
+    public Text infoTurretText;
+    public Text nameTurretText;
 
 	public List<Button> deckButtons = new List<Button>();
 	public List<Button> deckButtonsBarricade = new List<Button>();
@@ -31,10 +32,11 @@ public class Shop : MonoBehaviour
 		selectedTurretInGame = null;
 	}
 
-	private void Start()
-	{
-		gameManager = GameManager.Instance;
-		dataManager = DataManager.Instance;
+    private void Start()
+    {
+        deck = GetComponent<Deck>();
+        gameManager = GameManager.Instance;
+        dataManager = DataManager.Instance;
 
 		if (SceneManager.GetActiveScene().name == "Level Tuto")
 		{
@@ -104,21 +106,21 @@ public class Shop : MonoBehaviour
 		}
 	}
 
-	public void PurchaseTurret(Button thisButton)
-	{
-		Debug.Log("<COLOR=Green>Turret Selcted</COLOR>");
-		if (PlayerPrefs.GetInt("tuto", 0) == 1)
-		{
-			Debug.Log("<COLOR=Blue>Turret Selcted</COLOR>");
-			KindOfTurret kindOfTurret = buttonToEnum[thisButton];
+    public void PurchaseTurret(Button thisButton)
+    {
+        //Debug.Log("<COLOR=Green>Turret Selcted</COLOR>");
+        if (PlayerPrefs.GetInt("tuto", 0) == 1)
+        {
+            //Debug.Log("<COLOR=Blue>Turret Selcted</COLOR>");
+            KindOfTurret kindOfTurret = buttonToEnum[thisButton];
 
-			TurretData turretData = gameManager.turretDatabase.turrets.Find(data => data.kindOfTurret == kindOfTurret);
-
-			infoTurretText.text = ("Price : " + turretData.turretPrice + "\n" +
-								   "Range : " + turretData.range + "\n" +
-								   "Life Points : " + turretData.healthPoints + "\n" +
-								   "Damage : " + turretData.atqPoints + "\n" +
-								   "Target : " + turretData.targetType);
+            TurretData turretData = gameManager.turretDatabase.turrets.Find(data => data.kindOfTurret == kindOfTurret);
+            nameTurretText.text = turretData.kindOfTurret.ToString();
+            infoTurretText.text = ("Price : " + turretData.turretPrice + "\n" +
+                                   "Range : " + turretData.range + "\n" +
+                                   "Life Points : " + turretData.healthPoints + "\n" +
+                                   "Damage : " + turretData.atqPoints + "\n" +
+                                   "Target : " + turretData.targetType);
 
 			BuildManager.Instance.SetTurretToBuild(kindOfTurret);
 		}

@@ -24,6 +24,8 @@ public class Turret : MonoBehaviour
 
     private bool doOnce = false;
 
+    private bool hasGeneratorBuffActived;
+
     #region Turret Stats
 
     public string label { get; private set; }
@@ -45,7 +47,9 @@ public class Turret : MonoBehaviour
 //Attack Stats
 public int atqPoints { get; private set; }
     public float atqPtsBonus { get; set; }
+    public float baseFireRate;
     public float fireRate { get; private set; }
+    private float fireRateBonus;
     public int maxAtqPoints { get; private set; }
     protected bool isAtqCap;
 
@@ -69,7 +73,6 @@ public int atqPoints { get; private set; }
     public List<EnemiesTemp> inRangeEnemies = new List<EnemiesTemp>();
 
     public List<EnemiesTemp> targetList = new List<EnemiesTemp>();
-
 
     public void Awake()
     {
@@ -100,6 +103,17 @@ public int atqPoints { get; private set; }
         InitTurretData(BuildManager.Instance.turretToBuild);
 
         rangeSprite.transform.localScale = new Vector3(range * 2, range * 2, 0);//1.265
+
+        // Do this part of the code only for the Mortar turret
+        if (kindOfTurret != KindOfTurret.Mortar)
+            return;
+
+        GameObject unableRange = Instantiate(gameManager.rangeSprite, this.transform.position, this.transform.rotation, this.transform);
+
+        float newRange = RangeConvertion(1, true);
+
+        unableRange.transform.localScale = new Vector3(newRange * 2, newRange * 2, 0);//1.265
+        unableRange.GetComponent<SpriteRenderer>().color = new Color(0,0,0,0.17f);
     }
 
     public void Start()
@@ -158,7 +172,7 @@ public int atqPoints { get; private set; }
 
         maxHealthPoint = turretData.healthPoints;
         currentHP = turretData.healthPoints;
-        range = RangeConvertion(range, true);
+        range = RangeConvertion(turretData.range, true);
 
         nbrOfTarget = turretData.nbrOfTarget;
         targetType = turretData.targetType;
@@ -166,7 +180,9 @@ public int atqPoints { get; private set; }
 
         atqPoints = turretData.atqPoints;
         atqPtsBonus = 0;
+        baseFireRate = turretData.fireRate;
         fireRate = turretData.fireRate;
+        fireRateBonus = 0;
         maxAtqPoints = turretData.maxAtqPoints;
         isAtqCap = turretData.activeAtqCap;
 
@@ -209,12 +225,14 @@ public int atqPoints { get; private set; }
 
         ChooseTarget(origin);
 
-        // Passive ON all the time
+        // Max Level Passive and Passive that are turn ON all the time
         switch (kindOfTurret)
         {
+            case KindOfTurret.Basic:
             case KindOfTurret.Anti_Aerial:
             case KindOfTurret.Generator:
             case KindOfTurret.Viktor:
+            case KindOfTurret.SniperTower:
                 if (currentLevel >= maxLevel)
                     PassiveLevelmax(currentTarget);
                 break;
@@ -224,27 +242,18 @@ public int atqPoints { get; private set; }
             default:
                 break;
         }
-
-        float rage = (localScale.x + (3 * 2) * localScale.x) / 2;
-
-        rage = (localScale.x - ((3 / 2)/ localScale.x)) *2;
-
-        Debug.Log(rage);
     }
 
-    private void OnDrawGizmos()
-    {
-        //Handles.DrawWireDisc(transform.position, transform.forward, range);
-    }
-
-    public virtual void ChooseTarget(Vector3 origin)
+    public void ChooseTarget(Vector3 origin)
     {
         if (gameManager.enemies.Count <= 0)
         {
             currentTarget = null;
             return;
         }
-            
+        
+        // Check the distance between this turret and all enemy in game 
+        // Add the enemies in a list if they are in the range 
         foreach (var enemy in gameManager.enemies)
         {
             if (enemy == null)
@@ -257,20 +266,26 @@ public int atqPoints { get; private set; }
 
             float distance = Vector2.Distance(objPos, origin);
 
-            isInside = distance < range;
-
+            if (kindOfTurret == KindOfTurret.Mortar)
+            {
+                isInside = distance < range && distance > RangeConvertion(1, true);
+            }
+            else
+            {
+                isInside = distance < range;
+            }
+            
             if (isInside)
             {
                 if (!inRangeEnemies.Contains(enemy))
                 {
                     inRangeEnemies.Add(enemy);
-
-                    //enemy.startTime = Time.time;
                 }
             }
             else
             {
                 enemy.attackingTurret.Remove(this);
+                targetList.Remove(enemy);
                 inRangeEnemies.Remove(enemy);
             }
         }
@@ -278,34 +293,19 @@ public int atqPoints { get; private set; }
         if (inRangeEnemies.Count <= 0)
             return;
 
-        #region Normal Attack
-        /*//Attack the first target to enter the range until it die or goes out of range
-
-        Vector3 firstTarget = targets[0].transform.position - origin;
-
-        Debug.DrawLine(origin, origin + firstTarget, Color.red);
-
-        EnemiesTemp enemyScript = targets[0].GetComponent<EnemiesTemp>();
-
-        if (fireCountDown <= 0f)
-        {
-            Shoot(enemyScript);
-            fireCountDown = 1 / fireRate;
-        }
-        fireCountDown -= Time.deltaTime / 2;*/
-        #endregion
-
-        //List of enemies usefull when nbrOfTarget > 1
+        //targetList is usefull when nbrOfTarget > 1
         targetList.Clear();
+        
 
-        //Default enemy
+        //Default enemy in case it bug 
         currentTarget = ChooseTargetClosestToTruck();
 
         switch (kindOfTurret)
         {
-            case KindOfTurret.Basic:
+            case KindOfTurret.Mortar:
                 {
-                    //
+                    // Closest to Truck within 1 to 3 range 
+                    // function is a if else in the foreach (var enemy in gameManager.enemies) above
 
 
                     break;
@@ -324,10 +324,13 @@ public int atqPoints { get; private set; }
                 }
             case KindOfTurret.Furnace:
                 {
+                    // Sort the list of enemies in range in the order of the enemy closest to the Truck that does not burn.
                     SortListClosestToTruckAndDoesntBurn(inRangeEnemies);
 
                     bool allTargetAreBurning = false;
 
+                    //Find if all target are burning if yes focus the closest to the Truck
+                    // if not the first target in the sorted list above 
                     foreach (EnemiesTemp enemy in inRangeEnemies)
                     {
                         if (enemy.isBurning)
@@ -340,33 +343,57 @@ public int atqPoints { get; private set; }
                             break;
                         }
                     }
-
                     if (allTargetAreBurning)
                     {
                         currentTarget = ChooseTargetClosestToTruck();
+                    }
+                    else
+                    {
+                        currentTarget = inRangeEnemies[0];
                     }
                     //Else focus target[0]
                     break;
                 }
             case KindOfTurret.Immobilizer:
                 {
-                    for (int i = 0; i < 4; i++)
-                    {
-                        EnemiesTemp stock = inRangeEnemies[0];
+                    SortListClosestToTruck(inRangeEnemies);
 
-                        for (int j = 0; j < inRangeEnemies.Count; j++)
+                    int nbrOfTargetFocused = Mathf.Clamp(inRangeEnemies.Count, 1, nbrOfTarget);
+
+                    // Add to the target list the enemies with the highest % of missing health 
+                    for (int i = 0; i < nbrOfTargetFocused; i++)
+                    {
+                        EnemiesTemp enemy = null;
+
+                        if (inRangeEnemies.Count <= 0)
+                            return;
+
+                        foreach (var enemies in inRangeEnemies)
                         {
-                            if (targetList.Contains(inRangeEnemies[j]) || stock == inRangeEnemies[j])
+                            if (!targetList.Contains(enemies))
                             {
-                                continue;
-                            }
-                            if (stock.currentHealth < inRangeEnemies[j].currentHealth)
-                            {
-                                stock = inRangeEnemies[j];
+                                enemy = enemies;
+                                break;
                             }
                         }
 
-                        targetList.Add(stock);
+                        float enemyMissingHealth = (enemy.startingHealth - enemy.currentHealth) / enemy.startingHealth * 100;
+
+                        for (int j = 0; j < inRangeEnemies.Count; j++)
+                        {
+                            float missingHealth = (inRangeEnemies[j].startingHealth - inRangeEnemies[j].currentHealth) / inRangeEnemies[j].startingHealth * 100;
+
+                            if (targetList.Contains(inRangeEnemies[j]) || enemy == inRangeEnemies[j])
+                            {
+                                continue;
+                            }
+                            if (enemyMissingHealth < missingHealth)
+                            {
+                                enemy = inRangeEnemies[j];
+                            }
+                        }
+
+                        targetList.Add(enemy);
                     }
 
                     break;
@@ -383,44 +410,57 @@ public int atqPoints { get; private set; }
                 break;
         }
 
+        // Add the only target if it's one target turret and the line above didn't add one already
+        if (targetList.Count == 0)
+        {
+            targetList.Add(currentTarget);
+        }
 
+        // just a visual debug draw line only visible in the editor
         foreach (var target in targetList)
         {
             #region RayToTarget
-            Vector3 rayToTarget = currentTarget.transform.position - origin;
+            Vector3 rayToTarget = target.transform.position - origin;
             Debug.DrawLine(origin, origin + rayToTarget, Color.red);
             #endregion
         }
 
         if (fireCountDown <= 0f)
         {
-            Shoot(currentTarget);
-            fireCountDown = 1 / fireRate;
+            foreach (var target in targetList)
+            {
+                Shoot(target);
+            }
+            fireCountDown = 1 / (fireRate + fireRateBonus);
         }
 
         fireCountDown -= Time.deltaTime;
 
     }
 
-    public virtual void Shoot(EnemiesTemp enemy)
+    public void Shoot(EnemiesTemp enemy)
     {
         // Passive ON when shooting
         switch (kindOfTurret)
         {
+            //don't need Level max passive here
+            case KindOfTurret.Generator:
+                {
+                    TurretPassive(enemy);
+                    break;
+                }
             case KindOfTurret.Basic:
-            case KindOfTurret.Mortar:
+            case KindOfTurret.Mortar: 
             case KindOfTurret.Discord:
-            case KindOfTurret.SniperTower:
             case KindOfTurret.Furnace:
             case KindOfTurret.Channelizer:
             case KindOfTurret.Immobilizer:
             case KindOfTurret.Zap:
             case KindOfTurret.Teleporter:
-            //case KindOfTurret.Viktor: not sure
                 {
-                    TurretPassive(currentTarget);
+                    TurretPassive(enemy);
                     if (currentLevel >= maxLevel)
-                        PassiveLevelmax(currentTarget);
+                        PassiveLevelmax(enemy);
                 }
                 break;
             default:
@@ -448,10 +488,51 @@ public int atqPoints { get; private set; }
             inRangeEnemies.Remove(enemy);
     }
 
-    public virtual void TurretPassive(EnemiesTemp enemy = null)
+    public void TurretPassive(EnemiesTemp enemy = null)
     {
         switch (kindOfTurret)
         {
+            case KindOfTurret.Basic:
+                {
+                    if (doOnce)
+                    {
+                        fireRate -= baseFireRate;
+
+                        doOnce = false;
+                    }
+                    else
+                    {
+                        fireRate += baseFireRate;
+
+                        doOnce = true;
+                    }
+                    break;
+                }
+            case KindOfTurret.Mortar:
+                {
+                    // Enemies 1-2 range away from the target suffer a 50% slowdown
+
+                    foreach (var enemyAround in gameManager.enemies)
+                    {
+                        Vector2 objPos = enemyAround.transform.position;
+
+                        float distance = Vector2.Distance(objPos, enemy.transform.position);
+
+                        //Range of the explosion that is going to slow enemies inside 
+                        int rangeOfExplosion = 1;
+
+                        if (currentLevel >= maxLevel)
+                            rangeOfExplosion = 2;
+
+                        isInside = distance < RangeConvertion(rangeOfExplosion, true);
+        
+                        if (isInside)
+                        {
+                            enemyAround.StartCoroutine(enemyAround.HandleSlowingDebuff(1, basePassiveParameters/*50*/));
+                        }
+                    }
+                    break;
+                }
             case KindOfTurret.SniperTower:
                 {
                     // inflicts % of the target's max hp per attack
@@ -524,12 +605,17 @@ public int atqPoints { get; private set; }
                 }
             case KindOfTurret.Immobilizer:
                 {
-                    StartCoroutine(StopSpeedTimer(enemy));
+                    StartCoroutine(enemy.StopSpeedTimer());
                     break;
                 }
             case KindOfTurret.Zap:
                 {
                     StartCoroutine(IncreaseAttackSpeed(enemy));
+                    break;
+                }
+            case KindOfTurret.Generator:
+                {
+                    gameManager.truck.gold += (int)(atqPoints * basePassiveParameters /*50*/ / 100);
                     break;
                 }
 
@@ -539,24 +625,26 @@ public int atqPoints { get; private set; }
         }
     }
 
-    public virtual void PassiveLevelmax(EnemiesTemp enemy)
+    public void PassiveLevelmax(EnemiesTemp enemy)
     {
-        //Debug.LogError("PassiveLevelmax");
+        //case KindOfTurret.Mortar: in Normal Passive
+        //case KindOfTurret.Furnace: in Normal Passive
 
         switch (kindOfTurret)
         {
-            case KindOfTurret.Basic:
+            case KindOfTurret.SniperTower:
                 {
-                    //
+                    if (!doOnce)
+                    {
+                        range = RangeConvertion(range, false);
 
+                        range++;
 
-                    break;
-                }
-            case KindOfTurret.SniperTower: // TO DO
-                {
-                    // the enemies are pushed back 2 squares
-                    int pushHowFar = (int)maxPassiveParameters;
-                    
+                        range = RangeConvertion(range, true);
+
+                        doOnce = true;
+                    }
+
                     break;
                 }
             case KindOfTurret.Immobilizer: 
@@ -571,6 +659,31 @@ public int atqPoints { get; private set; }
                     // 
 
 
+                    break;
+                }
+            case KindOfTurret.Generator:
+                {
+                    foreach (var turretAround in gameManager.allTurret)
+                    {
+                        Vector2 objPos = turretAround.transform.position;
+
+                        float distance = Vector2.Distance(objPos, this.transform.position);
+
+                        //Range of the explosion that is going to slow enemies inside 
+                        int buffRange = 1;
+
+                        isInside = distance < RangeConvertion(buffRange, true);
+
+                        if (isInside)
+                        {
+                            if (!turretAround.hasGeneratorBuffActived)
+                            {
+                                turretAround.atqPtsBonus += 15;
+                                turretAround.fireRateBonus += turretAround.baseFireRate * maxPassiveParameters / 100;
+                                turretAround.hasGeneratorBuffActived = true;
+                            }
+                        }
+                    }
                     break;
                 }
             default:
@@ -595,13 +708,6 @@ public int atqPoints { get; private set; }
             StartCoroutine(ConfusionTimer(target));
         }
     }*/
-
-    private IEnumerator StopSpeedTimer(EnemiesTemp target)
-    {
-        target.currentSpeed = 0;
-        yield return new WaitForSeconds(0.5f);
-        target.currentSpeed = target.baseSpeed;
-    }
 
     private IEnumerator IncreaseAttackSpeed(EnemiesTemp target)
     {
@@ -683,6 +789,23 @@ public int atqPoints { get; private set; }
         gameManager.allTurret.Remove(this);
     }
 
+    private void OnDestroy()
+    {
+        if (kindOfTurret == KindOfTurret.Generator)
+        {
+            foreach (var turretAround in gameManager.allTurret)
+            {
+                if (turretAround.hasGeneratorBuffActived)
+                {
+                    turretAround.atqPtsBonus -= 15;
+                    turretAround.fireRateBonus -= 0.15f;
+                    turretAround.fireRateBonus = Mathf.Clamp(turretAround.fireRateBonus, 0, 10);
+                    turretAround.hasGeneratorBuffActived = false;
+                }
+            }
+        }
+    }
+
     #region Util Function
     public bool IsPointInsideCone(Vector3 point, Vector3 coneOrigin, Vector3 coneDirection, int maxAngle, float maxDistance)
     {
@@ -706,7 +829,7 @@ public int atqPoints { get; private set; }
 
     public EnemiesTemp ChooseTargetClosestToTruck()
     {
-        // Choose the target closest to get to the truck
+        // Choose the target closest to get to the Truck
         EnemiesTemp currentTarget = inRangeEnemies[0];
 
         foreach (var target in inRangeEnemies)
@@ -796,17 +919,19 @@ public int atqPoints { get; private set; }
         }
     }
 
-    private  void SortListClosestToTruck(List<EnemiesTemp> list, int index = 1, bool hasSwap = false)
+    private void SortListClosestToTruck(List<EnemiesTemp> list, int index = 1, bool hasSwap = false)
     {
-
+        // Check the list 0 > end 
         for (int i = 0; i < list.Count - index; i++)
         {
+            // handle when it's easy and pathVectorList.Count is strictly superior
             if (list[i].pathVectorList.Count > list[i + 1].pathVectorList.Count)
             {
                 Swap<EnemiesTemp>(list, i, i + 1);
 
                 hasSwap = true;
             }
+            // handle pathVectorList.Count equality with a check distance to next target
             else if (list[i].pathVectorList.Count == list[i + 1].pathVectorList.Count
             && list[i].distanceToNextTarget > list[i + 1].distanceToNextTarget)
             {
@@ -816,6 +941,7 @@ public int atqPoints { get; private set; }
             }
         }
 
+        // Check the list end > 0
         for (int i = list.Count - index - 1; i > 0; --i)
         {
             if (list[i].pathVectorList.Count < list[i - 1].pathVectorList.Count)
@@ -833,6 +959,7 @@ public int atqPoints { get; private set; }
             }
         }
 
+        // re call the method if has swap until it does not swap anymore
         if (hasSwap)
         {
             SortListClosestToTruck(list, ++index);
@@ -843,7 +970,7 @@ public int atqPoints { get; private set; }
     {
         if (rangeToInGameRange)
         {
-            range = (localScale.x + (turretData.range * 2) * localScale.x) / 2;
+            range = (localScale.x + (range * 2) * localScale.x) / 2;
         }
         else // in Game Range to Range in the LD
         {

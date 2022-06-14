@@ -7,8 +7,8 @@ public class EnemiesTemp : MonoBehaviour
 	[Header("Enemy Stats")]
 	public float startingHealth = 2500.0f;
 	public float currentHealth = 0.0f;
-	public int baseSpeed = 3;
-	public int currentSpeed = 3;
+	public float baseSpeed = 3;
+	public float currentSpeed = 3;
 	public int damage;
 	public float fireRate;
 
@@ -35,6 +35,7 @@ public class EnemiesTemp : MonoBehaviour
 
 	public float damagePerSeconds = 0.0f;
 
+	// allows to remove this enemy from the target list when he dies 
 	public List<Turret> attackingTurret = new List<Turret>();
 
 	public float distanceToNextTarget;
@@ -130,7 +131,7 @@ public class EnemiesTemp : MonoBehaviour
 
 		if (currentHealth <= 0)
 		{
-			//Let this here bc should give us gold when hit the truck
+			//Let this here bc should give us gold when hit the Truck
 			GameManager.Instance.truck.gold += this.goldValue;
 			StartCoroutine(Die());
 		}
@@ -187,6 +188,13 @@ public class EnemiesTemp : MonoBehaviour
 		isBurning = false;
 	}
 
+	public IEnumerator StopSpeedTimer()
+	{
+		currentSpeed = 0;
+		yield return new WaitForSeconds(0.5f);
+		currentSpeed = baseSpeed;
+	}
+
 	public IEnumerator DamagePerSeconds()
 	{
 		while (currentHealth > 0)
@@ -210,13 +218,35 @@ public class EnemiesTemp : MonoBehaviour
 		}
 	}
 
+	public IEnumerator HandleSlowingDebuff(int duration, float newDebuffPercent)
+    {
+		float currentDebuffPercent = (baseSpeed - currentSpeed) / baseSpeed * 100;//ex 0% or 55%
+
+		// currentSpeed != 0 bc we don't want to cancel the immobilize effect
+		if (newDebuffPercent > currentDebuffPercent && currentSpeed != 0)
+        {
+			currentSpeed = baseSpeed;
+		}
+        else
+        {
+			yield break;
+        }
+
+		float speedDebuff = baseSpeed * newDebuffPercent / 100;
+
+		currentSpeed -= speedDebuff;
+
+		yield return new WaitForSeconds(duration);
+
+		currentSpeed += speedDebuff;
+	}
+
 	public IEnumerator Die()
 	{
 		foreach (var turret in attackingTurret)
 		{
-			Turret turretAttacking = turret.GetComponent<Turret>();
-
-			turretAttacking.inRangeEnemies.Remove(this);
+			turret.targetList.Remove(this);
+			turret.inRangeEnemies.Remove(this);
 		}
 
 		attackingTurret.Clear();
