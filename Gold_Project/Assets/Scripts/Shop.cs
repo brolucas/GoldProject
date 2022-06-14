@@ -30,6 +30,7 @@ public class Shop : MonoBehaviour
 
     private void Start()
     {
+        deck = GetComponent<Deck>();
         gameManager = GameManager.Instance;
         dataManager = DataManager.Instance;
 
