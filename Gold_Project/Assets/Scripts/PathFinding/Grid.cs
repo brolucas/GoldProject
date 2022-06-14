@@ -58,7 +58,7 @@ public class Grid<TGridObject> : MonoBehaviour
 	{
 		if (x >= 0 && y >= 0 && x < width && y < height)
 		{
-			cellArray[x, y].isTurret = !cellArray[x, y].isTurret;
+			cellArray[x, y].isTurret = true;
 
 			if (BuildManager.Instance.GetTurretToBuild() == null)
 				Debug.LogError("turret to build is null");
@@ -72,11 +72,25 @@ public class Grid<TGridObject> : MonoBehaviour
 	}
 	public void SetTurret(Vector3 worldPosition)
     {
-		int x, y;
-		GetXY(worldPosition, out x, out y);
-		Debug.Log(x + ", " + y);
-		SetTurret(x, y);
+        GetXY(worldPosition, out int x, out int y);
+        SetTurret(x, y);
     }
+	public void SetBarricade(Vector3 worldPosition)
+	{
+        GetXY(worldPosition, out int x, out int y);
+
+        if (x >= 0 && y >= 0 && x < width && y < height)
+		{
+			cellArray[x, y].isBarricade = true;
+
+			if (BuildManager.Instance.GetBarricadeToBuild() == null)
+				Debug.LogError("barricade to build is null");
+
+			Vector3 position = GetWorldPosition(x, y);
+
+			BuildManager.Instance.CreateBarricade(new Vector3(position.x + cellSize / 2, position.y + cellSize / 2));
+		}
+	}
 	public int GetWidth()
 	{
 		return width;

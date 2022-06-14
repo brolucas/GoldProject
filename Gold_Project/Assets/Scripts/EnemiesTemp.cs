@@ -66,7 +66,7 @@ public class EnemiesTemp : MonoBehaviour
 		{
 			HandleMovement();
         }
-		if (pathVectorList.Count > 1)
+		if (pathVectorList.Count > 0)
 		{
 			Pathfinding.Instance.GetGrid().GetXY(pathVectorList[0], out int x, out int y);
 			PathNode node = Pathfinding.Instance.GetNode(x, y);
@@ -79,9 +79,9 @@ public class EnemiesTemp : MonoBehaviour
                     {
 						node.isTurret.GetComponentInChildren<Turret>().TakeDamage(damage);
                     }
-					else
+					else if(node.isBarricade != null)
 					{
-						//node.isBarricade.takeDamage();
+						node.isBarricade.GetComponent<Baricade>().takeDamage(damage);
 					}
 					fireRate = 1;
                 }

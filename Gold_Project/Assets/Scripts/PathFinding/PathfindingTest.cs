@@ -41,10 +41,10 @@ public class PathfindingTest : MonoBehaviour
 
 		if (Input.GetMouseButtonDown(0))
 		{
-			if (BuildManager.Instance.GetTurretToBuild() == null)
-				return;
-
-			pathfinding.GetGrid().SetTurret(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+			if (BuildManager.Instance.GetTurretToBuild() != null)
+				pathfinding.GetGrid().SetTurret(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+			if(BuildManager.Instance.GetBarricadeToBuild() != null)
+				pathfinding.GetGrid().SetBarricade(Camera.main.ScreenToWorldPoint(Input.mousePosition));
 		}
 	}
 }

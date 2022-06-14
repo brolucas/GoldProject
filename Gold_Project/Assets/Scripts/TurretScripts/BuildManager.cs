@@ -4,101 +4,134 @@ using UnityEngine;
 
 public class BuildManager : MonoBehaviour
 {
-    public truck truck;
+	public truck truck;
 
-    public GameObject turretPrefab;
+	public GameObject turretPrefab;
 
-    public Shop shop;
+	public Shop shop;
 
-    public KindOfTurret turretToBuild;
+	public KindOfTurret turretToBuild;
 
-    private Deck deck;
+	private Deck deck;
 
-    #region Singleton
-    private static BuildManager instance = null;
+	#region Singleton
+	private static BuildManager instance = null;
 
-    // Game Instance Singleton
-    public static BuildManager Instance
-    {
-        get
-        {
-            if (instance == null)
-                instance = FindObjectOfType<BuildManager>();
+	public GameObject barricadeToBuild;
 
-                return instance;
-        }
-    }
+	// Game Instance Singleton
+	public static BuildManager Instance
+	{
+		get
+		{
+			if (instance == null)
+				instance = FindObjectOfType<BuildManager>();
 
-    private void Awake()
-    {
-        // if the singleton hasn't been initialized yet
-        if (instance != null)
-        {
-            Destroy(this.gameObject);
-        }
+				return instance;
+		}
+	}
 
-        instance = this;
+	private void Awake()
+	{
+		// if the singleton hasn't been initialized yet
+		if (instance != null)
+		{
+			Destroy(this.gameObject);
+		}
 
-        Debug.Log(instance);
+		instance = this;
 
-    }
-    #endregion
+		Debug.Log(instance);
 
-    public void Start()
-    {
-        if (turretPrefab == null)
-        {
-            turretPrefab = (GameObject)Resources.Load("Assets/Prefab/TurretPrefab.prefab", typeof(GameObject));
-        }
+	}
+	#endregion
 
-        // == empty
-        turretToBuild = KindOfTurret.DefaultDoNotUseIt;
+	public void Start()
+	{
+		if (turretPrefab == null)
+		{
+			turretPrefab = (GameObject)Resources.Load("Assets/Prefab/TurretPrefab.prefab", typeof(GameObject));
+		}
 
-        deck = GetComponent<Deck>();
+		// == empty
+		turretToBuild = KindOfTurret.DefaultDoNotUseIt;
 
-        shop = FindObjectOfType<Shop>();
-    }
+		deck = GetComponent<Deck>();
 
-    public GameObject GetTurretToBuild()
-    {
-        return turretPrefab;
-    }
+		shop = FindObjectOfType<Shop>();
+	}
 
-    public void SetTurretToBuild(KindOfTurret kindOfTurretSelected)
-    {
-        turretToBuild = kindOfTurretSelected;
-    }
+	public GameObject GetTurretToBuild()
+	{
+		return turretPrefab;
+	}
 
-    public void CreateTurret(Vector3 position, float cellSize = 0)
-    {
-        if (turretToBuild == KindOfTurret.DefaultDoNotUseIt)
-            return;
+	public void SetTurretToBuild(KindOfTurret kindOfTurretSelected)
+	{
+		turretToBuild = kindOfTurretSelected;
+		barricadeToBuild = null;
+	}
 
-        TurretData turretData = GameManager.Instance.GetStatsKindOfTurret(turretToBuild);
+	public void SetBarricadeToBuild(GameObject barricade)
+	{
+		barricadeToBuild = barricade;
+		turretToBuild = KindOfTurret.DefaultDoNotUseIt;
+	}
+	public GameObject GetBarricadeToBuild()
+	{
+		return barricadeToBuild;
+	}
 
-        if (truck.gold >= turretData.turretPrice)
-        {
-            if (turretToBuild == KindOfTurret.DefaultDoNotUseIt)
-            {
-                Debug.LogWarning("You are trying to create a turret but there is no turret selected !");
-                return;
-            }
+	public void CreateTurret(Vector3 position, float cellSize = 0)
+	{
+		if (turretToBuild == KindOfTurret.DefaultDoNotUseIt)
+			return;
 
-            GameObject newTurret = Instantiate(turretPrefab, position, Quaternion.identity);
-            Pathfinding.Instance.GetGrid().GetXY(position, out int x, out int y);
-            Pathfinding.Instance.GetNode(x, y).isTurret = newTurret;
-            Pathfinding.Instance.GetNode(x, y).isUsed = true;
-            Pathfinding.Instance.mapHasChanged = true;
+		TurretData turretData = GameManager.Instance.GetStatsKindOfTurret(turretToBuild);
 
-            if (cellSize > 0)
-            {
-                newTurret.transform.GetChild(1).localScale = new Vector3(cellSize, cellSize, cellSize);
-            }
+		Pathfinding.Instance.GetGrid().GetXY(position, out int x, out int y);
 
-            turretToBuild = KindOfTurret.DefaultDoNotUseIt;
+		if (truck.gold >= turretData.turretPrice && !Pathfinding.Instance.GetNode(x,y).isUsed) 
+		{
+			if (turretToBuild == KindOfTurret.DefaultDoNotUseIt)
+			{
+				Debug.LogWarning("You are trying to create a turret but there is no turret selected !");
+				return;
+			}
 
-            truck.gold -= turretData.turretPrice;
-        }
+			GameObject newTurret = Instantiate(turretPrefab, position, Quaternion.identity);
+			Pathfinding.Instance.GetNode(x, y).isTurret = newTurret;
+			Pathfinding.Instance.GetNode(x, y).isUsed = true;
+			Pathfinding.Instance.mapHasChanged = true;
 
-    }
+			if (cellSize > 0)
+			{
+				newTurret.transform.GetChild(1).localScale = new Vector3(cellSize, cellSize, cellSize);
+			}
+
+			turretToBuild = KindOfTurret.DefaultDoNotUseIt;
+
+			truck.gold -= turretData.turretPrice;
+		}
+
+	}
+
+	public void CreateBarricade(Vector3 position)
+	{
+		if (barricadeToBuild == null) return;
+
+		Pathfinding.Instance.GetGrid().GetXY(position, out int x, out int y);
+		if (truck.gold >= barricadeToBuild.GetComponent<Baricade>().price && !Pathfinding.Instance.GetNode(x, y).isUsed) 
+		{
+
+			GameObject newBarricade = Instantiate(barricadeToBuild, position, Quaternion.identity);
+			Pathfinding.Instance.GetNode(x, y).isBarricade = newBarricade;
+			Pathfinding.Instance.GetNode(x, y).isUsed = true;
+			Pathfinding.Instance.mapHasChanged = true;
+
+			barricadeToBuild = null;
+
+			truck.gold -= newBarricade.GetComponent<Baricade>().price;
+		}
+	}
 }

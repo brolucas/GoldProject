@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public List<EnemiesTemp> enemies = new List<EnemiesTemp>();
 
     public List<Turret> allTurret = new List<Turret>();
+    public List<Baricade> allBarricade = new List<Baricade>();
 
     private static GameManager instance = null;
 
