@@ -28,7 +28,7 @@ public class Pathfinding:MonoBehaviour
 			Vector3 position = grid.GetWorldPosition(decor.x, decor.y);
 			position = new Vector3(position.x + cellSize / 2, position.y + cellSize / 2);
 			GameObject newDecor = Instantiate(decorPrefab, position, Quaternion.identity);
-			newDecor.GetComponent<SpriteRenderer>().sprite = decor.image;
+			//newDecor.GetComponent<SpriteRenderer>().sprite = decor.image;    // J'ai commenté pour avoir
 		}
 	}
 

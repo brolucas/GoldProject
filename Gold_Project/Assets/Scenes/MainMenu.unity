@@ -1951,6 +1951,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TurretInfoContent
       objectReference: {fileID: 0}
+    - target: {fileID: 2507219181109948834, guid: c0b096748c4920b4aa21e8c58bb43148,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3666407034808295812, guid: c0b096748c4920b4aa21e8c58bb43148,
         type: 3}
       propertyPath: m_Pivot.x

@@ -304,7 +304,7 @@ public int atqPoints { get; private set; }
         {
             case KindOfTurret.Mortar:
                 {
-                    // Closest to truck within 1 to 3 range 
+                    // Closest to Truck within 1 to 3 range 
                     // function is a if else in the foreach (var enemy in gameManager.enemies) above
 
 
@@ -324,12 +324,12 @@ public int atqPoints { get; private set; }
                 }
             case KindOfTurret.Furnace:
                 {
-                    // Sort the list of enemies in range in the order of the enemy closest to the truck that does not burn.
+                    // Sort the list of enemies in range in the order of the enemy closest to the Truck that does not burn.
                     SortListClosestToTruckAndDoesntBurn(inRangeEnemies);
 
                     bool allTargetAreBurning = false;
 
-                    //Find if all target are burning if yes focus the closest to the truck
+                    //Find if all target are burning if yes focus the closest to the Truck
                     // if not the first target in the sorted list above 
                     foreach (EnemiesTemp enemy in inRangeEnemies)
                     {
@@ -829,7 +829,7 @@ public int atqPoints { get; private set; }
 
     public EnemiesTemp ChooseTargetClosestToTruck()
     {
-        // Choose the target closest to get to the truck
+        // Choose the target closest to get to the Truck
         EnemiesTemp currentTarget = inRangeEnemies[0];
 
         foreach (var target in inRangeEnemies)
