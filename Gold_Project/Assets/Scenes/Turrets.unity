@@ -2623,8 +2623,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1904042692}
   - component: {fileID: 1904042691}
-  - component: {fileID: 1904042690}
   - component: {fileID: 1904042689}
+  - component: {fileID: 1904042690}
   m_Layer: 0
   m_Name: SpliterLine
   m_TagString: Untagged
@@ -2650,6 +2650,7 @@ MonoBehaviour:
   target: {fileID: 1856968605}
   target2: {fileID: 1708336730}
   doubleTarget: 0
+  sparks: {fileID: 8051836658688540962, guid: 5c6b11b3db2e5f642a531a1485545f03, type: 3}
 --- !u!114 &1904042690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2659,13 +2660,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1904042688}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
+  m_Script: {fileID: 11500000, guid: 3c5dbbb1030d96d438905b0e01caa8d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shaderTypes: 0
-  normalStrength: 5
-  normalSmoothing: 1
-  computingNormal: 0
 --- !u!120 &1904042691
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -2685,7 +2682,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 78f508788dd8a0846909fc7b71d77728, type: 2}
+  - {fileID: 2100000, guid: e80f48b2bcc26de45bc36c0a9e69d7c4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2730,22 +2727,22 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 0.15566039, g: 1, b: 0.54151297, a: 1}
+      key1: {r: 0.3679245, g: 0, b: 0.26760787, a: 1}
+      key2: {r: 0.1662736, g: 0.95, b: 0.5278177, a: 0}
+      key3: {r: 0.1662736, g: 0.95, b: 0.5278177, a: 0}
+      key4: {r: 0, g: 1, b: 0.96346426, a: 0}
+      key5: {r: 0, g: 0.2091527, b: 1, a: 0}
+      key6: {r: 0.5416937, g: 0, b: 1, a: 0}
+      key7: {r: 1, g: 0, b: 0.7098484, a: 0}
       ctime0: 0
-      ctime1: 65535
-      ctime2: 0
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
+      ctime1: 32768
+      ctime2: 65535
+      ctime3: 65535
+      ctime4: 32768
+      ctime5: 40959
+      ctime6: 54741
+      ctime7: 65535
       atime0: 0
       atime1: 65535
       atime2: 0
@@ -2755,12 +2752,12 @@ LineRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_NumColorKeys: 2
+      m_NumColorKeys: 3
       m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 1
     shadowBias: 0.5
     generateLightingData: 0
   m_UseWorldSpace: 1
