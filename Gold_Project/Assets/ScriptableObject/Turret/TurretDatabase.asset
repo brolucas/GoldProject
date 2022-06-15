@@ -117,7 +117,7 @@ MonoBehaviour:
     fireRate: 1
     maxAtqPoints: 180
     activeAtqCap: 0
-    basePassiveParameters: 10
+    basePassiveParameters: 4
     maxPassiveParameters: 2
     capPassive: 0
     inGameDesign: {fileID: 21300000, guid: 3f074810cce335a4081ac124519ed72c, type: 3}
@@ -180,7 +180,7 @@ MonoBehaviour:
     maxAtqPoints: 180
     activeAtqCap: 0
     basePassiveParameters: 5
-    maxPassiveParameters: 8
+    maxPassiveParameters: 4
     capPassive: 0
     inGameDesign: {fileID: 21300000, guid: 672e33a98d9bb9040ab4474f1b42ab96, type: 3}
     UIDesign: {fileID: 21300000, guid: 672e33a98d9bb9040ab4474f1b42ab96, type: 3}

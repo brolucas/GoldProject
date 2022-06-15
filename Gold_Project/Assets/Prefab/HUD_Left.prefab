@@ -197,11 +197,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 272750042737565444}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: PurchaseTurret
-        m_Mode: 1
+        m_MethodName: PurchaseBarricade
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 272750042727121809}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -333,6 +333,11 @@ MonoBehaviour:
   - {fileID: 272750044355570886}
   - {fileID: 272750043049227165}
   - {fileID: 272750043760804815}
+  deckButtonsBarricade:
+  - {fileID: 272750042727121809}
+  - {fileID: 272750044807912865}
+  barr1: {fileID: 5684629981531033215, guid: 58233168561e0524db88722ec067edf8, type: 3}
+  barr2: {fileID: 5684629981531033215, guid: e75bf12d75386854d851aff9221a4ccc, type: 3}
   selectedTurretInGame: {fileID: 0}
   deck: {fileID: 0}
 --- !u!1 &272750043005322905
@@ -457,11 +462,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 272750042737565444}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: PurchaseTurret
-        m_Mode: 1
+        m_MethodName: PurchaseBarricade
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 272750043005322919}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2024,11 +2029,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 272750042737565444}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: PurchaseTurret
-        m_Mode: 1
+        m_MethodName: PurchaseBarricade
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 272750044440381322}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2434,11 +2439,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 272750042737565444}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: PurchaseTurret
-        m_Mode: 1
+        m_MethodName: PurchaseBarricade
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 272750044807912865}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
