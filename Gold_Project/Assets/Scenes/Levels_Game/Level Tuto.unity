@@ -3810,7 +3810,7 @@ GameObject:
   - component: {fileID: 1831456026}
   - component: {fileID: 1831456027}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Grillage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
