@@ -57,7 +57,7 @@ public class WaveSpawner : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		wave_Text.text = ("Wave : " + wave_Index.ToString() + " / 10");
+		wave_Text.text = ("Wave : " + wave_Index.ToString() + " / " + waves.Length.ToString());
 
 		if (enemyAlive > 0)
 		{

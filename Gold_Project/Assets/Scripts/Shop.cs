@@ -42,7 +42,7 @@ public class Shop : MonoBehaviour
 		{
 			dataManager.deckData.deckTurret[0] = KindOfTurret.Basic;
 			dataManager.deckData.deckTurret[1] = KindOfTurret.Mortar;
-			dataManager.deckData.deckTurret[2] = KindOfTurret.Discord;
+			dataManager.deckData.deckTurret[2] = KindOfTurret.Furnace;
 			dataManager.deckData.deckTurret[3] = KindOfTurret.SniperTower;
 			
 		}
