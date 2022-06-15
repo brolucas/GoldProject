@@ -215,6 +215,7 @@ public class EnemiesTemp : MonoBehaviour
 		foreach (var turret in GameManager.Instance.allTurret)
 		{
 			turret.inRangeEnemies.Remove(this);
+			turret.targetList.Remove(this);
 		}
 	}
 

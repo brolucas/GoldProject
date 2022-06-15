@@ -241,11 +241,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddcabb5b20172ba47a57bc17679406c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  truck: {fileID: 0}
   turretPrefab: {fileID: 1159671648371618135, guid: 7262708fb1470ec4e9de4518414f052e,
     type: 3}
   shop: {fileID: 0}
   turretToBuild: 0
+  barricadeToBuild: {fileID: 0}
 --- !u!114 &6774791141816150509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,10 +260,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   allTurret: []
+  allBarricade: []
   rangeSprite: {fileID: 4973951708042549589, guid: 843828b30fd82ff4088d2962f24999e7,
     type: 3}
   turretDatabase: {fileID: 11400000, guid: aeead099ddab7d94fbfbec987f614a22, type: 2}
-  truck: {fileID: 0}
+  truck: {fileID: 8262161137113511699, guid: 28da6559888611048a67939a8e1952b7, type: 3}
   dataManager: {fileID: 1276064566901145631, guid: 5d468dcf44b9d3b46afae9a1fcf3181b,
     type: 3}
   deck: {fileID: 0}
