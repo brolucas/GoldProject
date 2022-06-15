@@ -1057,7 +1057,7 @@ PrefabInstance:
     - target: {fileID: 9183064884766861578, guid: 24f19e5fd88d80946be2dd914af5555d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24f19e5fd88d80946be2dd914af5555d, type: 3}
@@ -4695,6 +4695,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 272750043049227164, guid: fb7e812fd74430e478358ad5af9af820,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 272750043049227166, guid: fb7e812fd74430e478358ad5af9af820,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -4733,6 +4738,11 @@ PrefabInstance:
     - target: {fileID: 272750043314347272, guid: fb7e812fd74430e478358ad5af9af820,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 272750043314347285, guid: fb7e812fd74430e478358ad5af9af820,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 272750043314347287, guid: fb7e812fd74430e478358ad5af9af820,
@@ -4800,9 +4810,19 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 272750043760804814, guid: fb7e812fd74430e478358ad5af9af820,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 272750044355570872, guid: fb7e812fd74430e478358ad5af9af820,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 272750044355570885, guid: fb7e812fd74430e478358ad5af9af820,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 272750044355570887, guid: fb7e812fd74430e478358ad5af9af820,
@@ -5973,6 +5993,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: VictoryScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 5220904858836473460, guid: 6d51f7d519f756d4496c11e08671447c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5220904858836473467, guid: 6d51f7d519f756d4496c11e08671447c,
         type: 3}
       propertyPath: m_Pivot.x
@@ -6204,6 +6229,11 @@ PrefabInstance:
       objectReference: {fileID: 198222613}
     - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
+      propertyPath: waves.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
       propertyPath: wave_Victory_Star1
       value: 
       objectReference: {fileID: 1338938908}
@@ -6227,6 +6257,41 @@ PrefabInstance:
       propertyPath: spawnPoint.Array.data[0]
       value: 
       objectReference: {fileID: 656924373}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: waves.Array.data[0].Wave_nb_Runner
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: waves.Array.data[1].Wave_nb_Runner
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: waves.Array.data[2].Wave_Count_CRS
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: waves.Array.data[2].Wave_nb_Runner
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: waves.Array.data[3].Wave_Count_CRS
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: waves.Array.data[1].Wave_Manchot_nbr
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: waves.Array.data[3].Wave_Manchot_nbr
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6774791142897126959, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
       propertyPath: leftHUD

@@ -20,8 +20,8 @@ MonoBehaviour:
     nbrOfTarget: 1
     turretPrice: 100
     targetType: 1
-    atqPoints: 25
-    fireRate: 2
+    atqPoints: 50
+    fireRate: 1.5
     maxAtqPoints: 50
     activeAtqCap: 0
     basePassiveParameters: 100
