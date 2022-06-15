@@ -22,6 +22,9 @@ public class Turret : MonoBehaviour
     [Range(1, 180)]
     private int fireAngle = 12;
 
+    private float discordStack = 0;
+    private EnemiesTemp previousTarget = null;
+
     private bool doOnce = false;
 
     private bool hasGeneratorBuffActived;
@@ -465,9 +468,15 @@ public int atqPoints { get; private set; }
                 break;
         }
 
-        float damage = atqPoints + atqPtsBonus;
+        #region Discord Bonus Damage 
+        float bonusDiscordDamage = atqPoints * 5 / 100 * discordStack;
+        if (currentLevel >= maxLevel)
+            bonusDiscordDamage += 5 * discordStack;
+        #endregion
 
-        Debug.Log("atqPoints" + atqPoints + "/" + "atqPtsBonus" + atqPtsBonus);
+        float damage = atqPoints + atqPtsBonus + bonusDiscordDamage;
+
+        Debug.Log("atqPoints" + atqPoints + "/" + "atqPtsBonus" + atqPtsBonus + "/" + "bonusDiscordDamage" + bonusDiscordDamage);
 
         if (isAtqCap)
         {
@@ -594,6 +603,27 @@ public int atqPoints { get; private set; }
                 }
             case KindOfTurret.Discord:
                 {
+                    if (currentTarget == null)
+                    {
+                        Debug.LogWarning("currentTarget == null so turret discord will not work as planned");
+                        return;
+                    }
+                    
+                    if (previousTarget == null)
+                        previousTarget = currentTarget;
+                    
+                    if (previousTarget == currentTarget)
+                    {
+                        discordStack++;
+                        discordStack = Mathf.Clamp(discordStack, 0, 10);
+                    }
+                    else
+                    {
+                        //atqPtsBonus -= atqPoints * discordAtqBonus;
+                        discordStack = 0;
+                        previousTarget = currentTarget;
+                    }
+
                    /* if (enemy.ConfuseCombo <= 10)
                     {
                         enemy.ConfuseCombo += Mathf.Clamp(1,0,10);
@@ -627,6 +657,7 @@ public int atqPoints { get; private set; }
     {
         //case KindOfTurret.Mortar: in Normal Passive
         //case KindOfTurret.Furnace: in Normal Passive
+        //case KindOfTurret.Discord: in Shoot 
 
         switch (kindOfTurret)
         {
