@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BuildManager : MonoBehaviour
 {
-	public Truck truck;
-
 	public GameObject turretPrefab;
 
 	public Shop shop;
@@ -91,7 +89,7 @@ public class BuildManager : MonoBehaviour
 
 		Pathfinding.Instance.GetGrid().GetXY(position, out int x, out int y);
 
-		if (truck.gold >= turretData.turretPrice && !Pathfinding.Instance.GetNode(x,y).isUsed) 
+		if (GameManager.Instance.truck.gold >= turretData.turretPrice && !Pathfinding.Instance.GetNode(x,y).isUsed) 
 		{
 			if (turretToBuild == KindOfTurret.DefaultDoNotUseIt)
 			{
@@ -111,7 +109,7 @@ public class BuildManager : MonoBehaviour
 
 			turretToBuild = KindOfTurret.DefaultDoNotUseIt;
 
-			truck.gold -= turretData.turretPrice;
+			GameManager.Instance.truck.gold -= turretData.turretPrice;
 		}
 
 	}
@@ -121,7 +119,7 @@ public class BuildManager : MonoBehaviour
 		if (barricadeToBuild == null) return;
 
 		Pathfinding.Instance.GetGrid().GetXY(position, out int x, out int y);
-		if (truck.gold >= barricadeToBuild.GetComponent<Baricade>().price && !Pathfinding.Instance.GetNode(x, y).isUsed) 
+		if (GameManager.Instance.truck.gold >= barricadeToBuild.GetComponent<Baricade>().price && !Pathfinding.Instance.GetNode(x, y).isUsed) 
 		{
 
 			GameObject newBarricade = Instantiate(barricadeToBuild, position, Quaternion.identity);
@@ -131,7 +129,7 @@ public class BuildManager : MonoBehaviour
 
 			barricadeToBuild = null;
 
-			truck.gold -= newBarricade.GetComponent<Baricade>().price;
+			GameManager.Instance.truck.gold -= newBarricade.GetComponent<Baricade>().price;
 		}
 	}
 }
