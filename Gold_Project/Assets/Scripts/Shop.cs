@@ -60,6 +60,8 @@ public class Shop : MonoBehaviour
 
 			deckButtons[i].GetComponent<Image>().sprite = turretData.UIDesign;
 		}
+
+		//Out of range ici je crois 
 		buttonToBarricade.Add(deckButtonsBarricade[0], barr1);
 		buttonToBarricade.Add(deckButtonsBarricade[1], barr2);
 

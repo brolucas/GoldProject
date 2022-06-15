@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     public TurretDatabase turretDatabase;
 
-    public Truck truck;
+    public truck truck;
 
     public DataManager dataManager;
     //public DeckData deckData;

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class Truck : MonoBehaviour
+public class truck : MonoBehaviour
 {
     public int Truck_Hp= 5;
 

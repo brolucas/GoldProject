@@ -42,11 +42,11 @@ public class WaveSpawner : MonoBehaviour
 	public int levelToUnlock = 2;
     public int currentLevel = 1;
 
-    public Truck truck;
+    public truck truck;
 
 	private void Start()
     {
-        truck = GetComponent<Truck>();
+        truck = GetComponent<truck>();
 		System.Random alea = new System.Random();
 		int eventAlea = alea.Next(3, 5);
 		waves[eventAlea]._event = true;
