@@ -2389,6 +2389,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1178009204}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1178009209 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5220904859842818465, guid: 6d51f7d519f756d4496c11e08671447c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1178009204}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1249794408
 GameObject:
   m_ObjectHideFlags: 0
@@ -5150,7 +5156,7 @@ PrefabInstance:
         type: 3}
       propertyPath: wave_Victory_Star3
       value: 
-      objectReference: {fileID: 94301852}
+      objectReference: {fileID: 1178009209}
     - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
       propertyPath: wave_Victory_Screen
