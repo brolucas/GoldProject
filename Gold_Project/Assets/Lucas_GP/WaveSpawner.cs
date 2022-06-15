@@ -30,6 +30,9 @@ public class WaveSpawner : MonoBehaviour
 	private bool lastWave = false;
 
 	public GameObject wave_Victory_Screen;
+	public GameObject wave_Victory_Star1;
+	public GameObject wave_Victory_Star2;
+	public GameObject wave_Victory_Star3;
 
 	[SerializeField]
 	private GameObject[] listEvent;
@@ -39,9 +42,11 @@ public class WaveSpawner : MonoBehaviour
 	public int levelToUnlock = 2;
     public int currentLevel = 1;
 
+    public truck truck;
 
 	private void Start()
-	{
+    {
+        truck = GetComponent<truck>();
 		System.Random alea = new System.Random();
 		int eventAlea = alea.Next(3, 5);
 		waves[eventAlea]._event = true;
@@ -52,7 +57,7 @@ public class WaveSpawner : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		wave_Text.text = ("Wave : " + wave_Index.ToString() + " / 10");
+		wave_Text.text = ("Wave : " + wave_Index.ToString() + " / " + waves.Length.ToString());
 
 		if (enemyAlive > 0)
 		{
@@ -70,7 +75,19 @@ public class WaveSpawner : MonoBehaviour
 			if (enemyAlive <= 0)
 			{
 				wave_Victory_Screen.SetActive(true);
-                if (SceneManager.GetActiveScene().name == "Level 1")
+                if (truck.Truck_Hp >= 1)
+                {
+                    wave_Victory_Star1.SetActive(true);
+                    if (truck.Truck_Hp >= 3)
+                    {
+                        wave_Victory_Star2.SetActive(true);
+                        if (truck.Truck_Hp >= 5)
+                        {
+                            wave_Victory_Star3.SetActive(true);
+                        }
+                    }
+                }
+                if (SceneManager.GetActiveScene().name == "Level Tuto")
                 {
                     PlayerPrefs.SetInt("firstTime", 1);
                 }

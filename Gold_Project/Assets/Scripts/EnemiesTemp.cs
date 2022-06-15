@@ -67,7 +67,7 @@ public class EnemiesTemp : MonoBehaviour
 		{
 			HandleMovement();
         }
-		if (pathVectorList.Count > 1)
+		if (pathVectorList.Count > 0)
 		{
 			Pathfinding.Instance.GetGrid().GetXY(pathVectorList[0], out int x, out int y);
 			PathNode node = Pathfinding.Instance.GetNode(x, y);
@@ -80,9 +80,9 @@ public class EnemiesTemp : MonoBehaviour
                     {
 						node.isTurret.GetComponentInChildren<Turret>().TakeDamage(damage);
                     }
-					else
+					else if(node.isBarricade != null)
 					{
-						//node.isBarricade.takeDamage();
+						node.isBarricade.GetComponent<Baricade>().takeDamage(damage);
 					}
 					fireRate = 1;
                 }
@@ -131,7 +131,7 @@ public class EnemiesTemp : MonoBehaviour
 
 		if (currentHealth <= 0)
 		{
-			//Let this here bc should give us gold when hit the truck
+			//Let this here bc should give us gold when hit the Truck
 			GameManager.Instance.truck.gold += this.goldValue;
 			StartCoroutine(Die());
 		}
@@ -215,6 +215,7 @@ public class EnemiesTemp : MonoBehaviour
 		foreach (var turret in GameManager.Instance.allTurret)
 		{
 			turret.inRangeEnemies.Remove(this);
+			turret.targetList.Remove(this);
 		}
 	}
 

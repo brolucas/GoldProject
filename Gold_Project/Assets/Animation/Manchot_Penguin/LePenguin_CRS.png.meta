@@ -1,0 +1,372 @@
+fileFormatVersion: 2
+guid: 3b699a2daed74fd4693f063f2ba2e63f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1377452614620926028
+    second: LePenguin_CRS_0
+  - first:
+      213: 1646875159355450341
+    second: LePenguin_CRS_1
+  - first:
+      213: 6447928038951097233
+    second: LePenguin_CRS_2
+  - first:
+      213: 766609538677941294
+    second: LePenguin_CRS_3
+  - first:
+      213: -3649034206955324066
+    second: LePenguin_CRS_4
+  - first:
+      213: 465333230071466458
+    second: LePenguin_CRS_5
+  - first:
+      213: 2859525765982556064
+    second: LePenguin_CRS_6
+  - first:
+      213: -1012538046494988786
+    second: LePenguin_CRS_7
+  - first:
+      213: 5099380221264450791
+    second: LePenguin_CRS_8
+  - first:
+      213: -380043220464482591
+    second: LePenguin_CRS_9
+  - first:
+      213: 6424207045789024286
+    second: LePenguin_CRS_10
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: LePenguin_CRS_0
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 465
+        width: 81
+        height: 55
+      alignment: 9
+      pivot: {x: 0.53466666, y: 0.19367288}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c40d96ddad1bd1310800000000000000
+      internalID: 1377452614620926028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LePenguin_CRS_1
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 471
+        width: 56
+        height: 68
+      alignment: 9
+      pivot: {x: 0.61700004, y: 0.34858793}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e3ebce5b30ead610800000000000000
+      internalID: 1646875159355450341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LePenguin_CRS_2
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 334
+        width: 244
+        height: 240
+      alignment: 9
+      pivot: {x: 0.4961638, y: 0.31280008}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19316fa8364ab7950800000000000000
+      internalID: 6447928038951097233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LePenguin_CRS_3
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 471
+        width: 56
+        height: 68
+      alignment: 9
+      pivot: {x: 0.34957123, y: 0.38988227}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e242352505b83aa00800000000000000
+      internalID: 766609538677941294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LePenguin_CRS_4
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 465
+        width: 81
+        height: 55
+      alignment: 9
+      pivot: {x: 0.4075551, y: 0.1766546}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5dbd21e8b60c5dc0800000000000000
+      internalID: -3649034206955324066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LePenguin_CRS_5
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 368
+        width: 56
+        height: 68
+      alignment: 9
+      pivot: {x: 0.63371414, y: 0.5963521}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad948987b12357600800000000000000
+      internalID: 465333230071466458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LePenguin_CRS_6
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 369
+        width: 56
+        height: 68
+      alignment: 9
+      pivot: {x: 0.34957123, y: 0.6514112}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0af8773a8831fa720800000000000000
+      internalID: 2859525765982556064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LePenguin_CRS_7
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 178
+        width: 91
+        height: 241
+      alignment: 9
+      pivot: {x: 0.12971513, y: 0.12327006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e062919e20eb2f1f0800000000000000
+      internalID: -1012538046494988786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LePenguin_CRS_8
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 157
+        width: 269
+        height: 178
+      alignment: 9
+      pivot: {x: 0.22511561, y: 0.11613516}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e4de172b43a4c640800000000000000
+      internalID: 5099380221264450791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LePenguin_CRS_9
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 78
+        width: 267
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e64bec54b0d9baf0800000000000000
+      internalID: -380043220464482591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LePenguin_CRS_10
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 12
+        width: 25
+        height: 46
+      alignment: 9
+      pivot: {x: 0.38767946, y: 0.8866071}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1001df654e572950800000000000000
+      internalID: 6424207045789024286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

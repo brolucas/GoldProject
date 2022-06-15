@@ -9,7 +9,6 @@ public class SceneFader : MonoBehaviour
     public Image img;
     public Text levelName;
     public AnimationCurve curve;
-    public GameObject gameManager;
     
     private void Start()
     {
@@ -35,11 +34,9 @@ public class SceneFader : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "Level Tuto" && PlayerPrefs.GetInt("tuto",0)==0)
         {
+            Debug.Log("<COLOR=Blue>Launch Tuto</COLOR>");
             TutoTrigger.instance.TriggerTuto();
         }
-
-        
-        gameManager.SetActive(true);
     }
 
     public void FadeTo(string scene)

@@ -148,12 +148,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 50
   currentHealth: 0
-  baseSpeed: 3
-  currentSpeed: 3
+  baseSpeed: 1.5
+  currentSpeed: 1.5
   damage: 10
   fireRate: 0
   isFlying: 0
-  goldValue: 3
+  goldValue: 10
   getTouch: 0
   getZapped: 0
   isConfuse: 0
