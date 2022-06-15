@@ -12,15 +12,20 @@ Texture2D:
     Hash: 00000000000000000000000000000000
   m_ForcedFallbackFormat: 4
   m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
   serializedVersion: 2
   m_Width: 64
   m_Height: 1
   m_CompleteImageSize: 256
+  m_MipsStripped: 0
   m_TextureFormat: 4
   m_MipCount: 1
   m_IsReadable: 1
+  m_IsPreProcessed: 0
+  m_IgnoreMasterTextureLimit: 0
   m_StreamingMipmaps: 0
   m_StreamingMipmapsPriority: 0
+  m_VTOnly: 0
   m_AlphaIsTransparency: 0
   m_ImageCount: 1
   m_TextureDimension: 2
@@ -34,9 +39,11 @@ Texture2D:
     m_WrapW: 1
   m_LightmapFormat: 0
   m_ColorSpace: 0
+  m_PlatformBlob: 
   image data: 256
   _typelessdata: 230b3cff240c3fff260c41ff270d44ff290d46ff2a0e49ff2c0e4bff2d0f4eff2f0f50ff301053ff321055ff331158ff35115aff36125dff38125fff391362ff3b1364ff3c1467ff3e1469ff3f156cff41166eff421671ff441773ff451776ff471878ff48187bff49197dff4b1980ff4c1a82ff4f1b85ff531c86ff571e88ff5b1f89ff5f218bff62238cff66248eff6a268fff6e2791ff722992ff762b94ff7a2c95ff7e2e97ff822f98ff86319aff89339bff8d349dff91369fff9537a0ff9939a2ff9d3ba3ffa13ca5ffa53ea6ffa93fa8ffad41a9ffb143abffb444acffb846aeffbc47afffc049b1ffc44ab2ffc84cb4ffcc4eb5ffd04fb7ffd451b8ff
   m_StreamData:
+    serializedVersion: 2
     offset: 0
     size: 0
     path: 
@@ -281,3 +288,4 @@ Material:
     - _Shape2Color: {r: 1, g: 1, b: 1, a: 1}
     - _Shape3Color: {r: 1, g: 1, b: 1, a: 1}
     - _ShapeColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []

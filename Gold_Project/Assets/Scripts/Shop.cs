@@ -52,7 +52,7 @@ public class Shop : MonoBehaviour
 
 			TurretData turretData = gameManager.GetStatsKindOfTurret(dataManager.deckData.deckTurret[i]);
 
-			if (turretData == null)
+			if (turretData.kindOfTurret == KindOfTurret.DefaultDoNotUseIt)
 			{
 				Debug.LogWarning("There is a turret in the deck that doesn't have a DataBase yet !!");
 				continue;
