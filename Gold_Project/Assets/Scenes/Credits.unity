@@ -549,8 +549,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7583552773784154108}
-  - component: {fileID: 5312754561113275398}
   - component: {fileID: 5312754561113275399}
+  - component: {fileID: 5312754561113275398}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -568,7 +568,7 @@ Animator:
   m_GameObject: {fileID: 5312754561113275397}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 889df000e5b465a40b8c314980916f6c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0647234fb2b34e54a9f0790d4b9439f7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

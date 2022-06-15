@@ -1408,7 +1408,7 @@ GameObject:
   m_Layer: 5
   m_Name: SpawnPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1428,7 +1428,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.512, y: 4.4}
+  m_AnchoredPosition: {x: 15.84, y: 4.37}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &625416210
@@ -2626,7 +2626,7 @@ GameObject:
   m_Layer: 5
   m_Name: SpawnPoint (1)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2646,7 +2646,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.51, y: 0.39}
+  m_AnchoredPosition: {x: 14.608, y: 0.6099998}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1158876241
@@ -2958,6 +2958,11 @@ PrefabInstance:
       objectReference: {fileID: 1921584664}
     - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
       propertyPath: wave_Text
       value: 
       objectReference: {fileID: 364400197}
@@ -3141,44 +3146,265 @@ PrefabInstance:
       propertyPath: rightHUD
       value: 
       objectReference: {fileID: 1648599372}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fcb83c3b66d220949b0a9acbc2a0e49c, type: 3}
---- !u!114 &1254031485 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1254031484}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 042171af6143025499a3d349c1b55248, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1254031486 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6774791142897126944, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
     type: 3}
   m_PrefabInstance: {fileID: 1254031484}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1254031487}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1efe4d337a7f36459bf4eec69b4bc14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1254031487 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6774791142897126948, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1254031484}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1254031488 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6774791142897126947, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
     type: 3}
   m_PrefabInstance: {fileID: 1254031484}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1254031487}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f154f23115a4f254ea0111bab1bd77c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1254031489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254031487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4216503e2490f4090479c4b50781bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves:
+  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_nb_Runner: 0
+    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Manchot_nbr: 0
+    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
+      type: 3}
+    Wave_Count_Kamikaze: 0
+    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
+      type: 3}
+    Wave_Count_CRS: 3
+    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Volant: 0
+    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Boss: 0
+    _event: 0
+    Wave_Rate: 0
+  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_nb_Runner: 0
+    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Manchot_nbr: 0
+    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
+      type: 3}
+    Wave_Count_Kamikaze: 0
+    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
+      type: 3}
+    Wave_Count_CRS: 5
+    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Volant: 0
+    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Boss: 0
+    _event: 0
+    Wave_Rate: 0
+  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_nb_Runner: 5
+    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Manchot_nbr: 0
+    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
+      type: 3}
+    Wave_Count_Kamikaze: 5
+    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
+      type: 3}
+    Wave_Count_CRS: 5
+    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Volant: 0
+    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Boss: 0
+    _event: 0
+    Wave_Rate: 0
+  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_nb_Runner: 0
+    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Manchot_nbr: 0
+    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
+      type: 3}
+    Wave_Count_Kamikaze: 0
+    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
+      type: 3}
+    Wave_Count_CRS: 10
+    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Volant: 0
+    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Boss: 0
+    _event: 0
+    Wave_Rate: 0
+  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_nb_Runner: 10
+    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Manchot_nbr: 1
+    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
+      type: 3}
+    Wave_Count_Kamikaze: 0
+    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
+      type: 3}
+    Wave_Count_CRS: 0
+    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Volant: 0
+    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Boss: 0
+    _event: 0
+    Wave_Rate: 0
+  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_nb_Runner: 0
+    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Manchot_nbr: 2
+    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
+      type: 3}
+    Wave_Count_Kamikaze: 0
+    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
+      type: 3}
+    Wave_Count_CRS: 2
+    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Volant: 0
+    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Boss: 0
+    _event: 0
+    Wave_Rate: 0
+  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_nb_Runner: 15
+    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Manchot_nbr: 0
+    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
+      type: 3}
+    Wave_Count_Kamikaze: 5
+    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
+      type: 3}
+    Wave_Count_CRS: 2
+    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Volant: 0
+    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Boss: 0
+    _event: 0
+    Wave_Rate: 0
+  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_nb_Runner: 10
+    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Manchot_nbr: 0
+    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
+      type: 3}
+    Wave_Count_Kamikaze: 10
+    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
+      type: 3}
+    Wave_Count_CRS: 10
+    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Volant: 0
+    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Boss: 0
+    _event: 0
+    Wave_Rate: 0
+  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_nb_Runner: 0
+    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Manchot_nbr: 3
+    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
+      type: 3}
+    Wave_Count_Kamikaze: 0
+    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
+      type: 3}
+    Wave_Count_CRS: 0
+    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Volant: 0
+    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Boss: 1
+    _event: 0
+    Wave_Rate: 0
+  - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
+      type: 3}
+    Wave_nb_Runner: 0
+    Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
+      type: 3}
+    Wave_Manchot_nbr: 0
+    Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
+      type: 3}
+    Wave_Count_Kamikaze: 0
+    Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
+      type: 3}
+    Wave_Count_CRS: 0
+    Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
+      type: 3}
+    Wave_Count_Volant: 0
+    Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
+      type: 3}
+    Wave_Count_Boss: 1
+    _event: 0
+    Wave_Rate: 0
+  spawnPoint:
+  - {fileID: 622780982}
+  spawnPoint2: {fileID: 1133751321}
+  timeBetweenWave: 5
+  wave_Text: {fileID: 364400197}
+  wave_Victory_Screen: {fileID: 1784926043}
+  listEvent:
+  - {fileID: 882767662396786120, guid: 841b4b4c0a1bb694ba67c7454a78d425, type: 3}
+  - {fileID: 882767662396786120, guid: 0c431959c2e7cc747a7343f9afdff2d8, type: 3}
+  - {fileID: 882767662396786120, guid: 36f16ec9c541de240b3626d23cd4cdbd, type: 3}
+  - {fileID: 882767662396786120, guid: 2c9fc33b5264c754baa9e8d869f26e80, type: 3}
+  levelToUnlock: 7
+  currentLevel: 6
 --- !u!1 &1293719127
 GameObject:
   m_ObjectHideFlags: 0
@@ -4469,7 +4695,7 @@ PrefabInstance:
     - target: {fileID: 2839210569179321154, guid: 28da6559888611048a67939a8e1952b7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.81
+      value: 0.62
       objectReference: {fileID: 0}
     - target: {fileID: 2839210569179321154, guid: 28da6559888611048a67939a8e1952b7,
         type: 3}
@@ -4520,7 +4746,7 @@ PrefabInstance:
         type: 3}
       propertyPath: WS
       value: 
-      objectReference: {fileID: 1254031485}
+      objectReference: {fileID: 0}
     - target: {fileID: 8262161137113511699, guid: 28da6559888611048a67939a8e1952b7,
         type: 3}
       propertyPath: Truck_Coins_Text

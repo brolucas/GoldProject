@@ -179,18 +179,21 @@ public class WaveSpawner3 : MonoBehaviour
 
 
                 Pathfinding.Instance.GetGrid().GetXY(temp, out int x, out int y);
+
                 Pathfinding.Instance.GetNode(x, y).isEvent = listEvent[0];
                 Pathfinding.Instance.GetNode(x + 1, y).isEvent = listEvent[0];
                 Pathfinding.Instance.GetNode(x, y + 1).isEvent = listEvent[0];
                 Pathfinding.Instance.GetNode(x + 1, y + 1).isEvent = listEvent[0];
                 Pathfinding.Instance.GetNode(x, y + 2).isEvent = listEvent[0];
                 Pathfinding.Instance.GetNode(x + 2, y + 2).isEvent = listEvent[0];
+
                 Pathfinding.Instance.GetNode(x, y).isUsed = true;
                 Pathfinding.Instance.GetNode(x + 1, y).isUsed = true;
                 Pathfinding.Instance.GetNode(x, y + 1).isUsed = true;
                 Pathfinding.Instance.GetNode(x + 1, y + 1).isUsed = true;
                 Pathfinding.Instance.GetNode(x, y + 2).isUsed = true;
                 Pathfinding.Instance.GetNode(x + 2, y + 2).isUsed = true;
+
                 Pathfinding.Instance.mapHasChanged = true;
 
                 Vector3 position = Pathfinding.Instance.GetGrid().GetWorldPosition(x, y);
@@ -213,11 +216,11 @@ public class WaveSpawner3 : MonoBehaviour
 
 
                 GameObject istevent = Instantiate(listEvent[0], position, Quaternion.identity);
-                GameObject istevent1 = Instantiate(listEvent[0], position1, Quaternion.identity);
-                GameObject istevent2 = Instantiate(listEvent[0], position2, Quaternion.identity);
-                GameObject istevent3 = Instantiate(listEvent[0], position3, Quaternion.identity);
-                GameObject istevent4 = Instantiate(listEvent[0], position2, Quaternion.identity);
-                GameObject istevent5 = Instantiate(listEvent[0], position3, Quaternion.identity);
+                GameObject istevent1 = Instantiate(listEvent[1], position1, Quaternion.identity);
+                GameObject istevent2 = Instantiate(listEvent[2], position2, Quaternion.identity);
+                GameObject istevent3 = Instantiate(listEvent[3], position3, Quaternion.identity);
+                GameObject istevent4 = Instantiate(listEvent[4], position2, Quaternion.identity);
+                GameObject istevent5 = Instantiate(listEvent[5], position3, Quaternion.identity);
 
                 //istevent.transform.GetChild(1).localScale = new Vector3(0, 0, 0);
                 break;

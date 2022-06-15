@@ -46,7 +46,8 @@ public class WaveSpawner : MonoBehaviour
 
 	private void Start()
     {
-        truck = GetComponent<truck>();
+        //truck = GetComponent<truck>();
+
 		System.Random alea = new System.Random();
 		int eventAlea = alea.Next(3, 5);
 		waves[eventAlea]._event = true;
@@ -212,7 +213,7 @@ public class WaveSpawner : MonoBehaviour
 				position1 = new Vector3(position1.x + Pathfinding.Instance.GetGrid().cellSize / 2, position1.y + Pathfinding.Instance.GetGrid().cellSize / 2);
 				
 				GameObject istevent = Instantiate(listEvent[0], position, Quaternion.identity);
-				GameObject istevent1 = Instantiate(listEvent[0], position1, Quaternion.identity);
+				GameObject istevent1 = Instantiate(listEvent[1], position1, Quaternion.identity);
 
 				// istevent.transform.GetChild(1).localScale = new Vector3(0, 0, 0);
 				break;

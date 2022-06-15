@@ -14,7 +14,6 @@ public class truck : MonoBehaviour
     public float gold = 200;
 
     public GameObject Truck_Game_Over_Screen;
-    public WaveSpawner WS;
 
     private void Start()
     {

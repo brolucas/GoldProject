@@ -203,9 +203,9 @@ public class WaveSpawner2 : MonoBehaviour
                 position3 = new Vector3(position1.x + Pathfinding.Instance.GetGrid().cellSize / 2, position1.y + Pathfinding.Instance.GetGrid().cellSize / 2);
 
                 GameObject istevent = Instantiate(listEvent[0], position, Quaternion.identity);
-                GameObject istevent1 = Instantiate(listEvent[0], position1, Quaternion.identity);
-                GameObject istevent2 = Instantiate(listEvent[0], position2, Quaternion.identity);
-                GameObject istevent3 = Instantiate(listEvent[0], position3, Quaternion.identity);
+                GameObject istevent1 = Instantiate(listEvent[1], position1, Quaternion.identity);
+                GameObject istevent2 = Instantiate(listEvent[2], position2, Quaternion.identity);
+                GameObject istevent3 = Instantiate(listEvent[3], position3, Quaternion.identity);
 
                 // istevent.transform.GetChild(1).localScale = new Vector3(0, 0, 0);
                 break;

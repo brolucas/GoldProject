@@ -28,8 +28,9 @@ public class SceneFader : MonoBehaviour
         }
         if (SceneManager.GetActiveScene().name == "Logo")
         {
-            string scene = "Title";
-            StartCoroutine(FadeOut(scene));
+            yield return 0;
+            //string scene = "Title";
+            //StartCoroutine(FadeOut(scene));
         }
 
         if (SceneManager.GetActiveScene().name == "Level Tuto" && PlayerPrefs.GetInt("tuto",0)==0)
