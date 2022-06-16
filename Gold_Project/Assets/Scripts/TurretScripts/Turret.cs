@@ -44,6 +44,8 @@ public class Turret : MonoBehaviour
 
     private bool hasGeneratorBuffActived;
 
+    private float rotZ;
+
     #region Turret Stats
 
     public string label { get; private set; }
@@ -518,6 +520,16 @@ private void OnMouseDown()
             targetList.Add(currentTarget);
         }
 
+        GameObject bullet = null;
+
+        if (kindOfTurret == KindOfTurret.Spliter)
+        {
+            bullet = Instantiate(particleShoot, this.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
+        }
+
+        Vector3 difference = currentTarget.transform.position - transform.position;
+        rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+
         switch (kindOfTurret)
         {
             case KindOfTurret.Basic:
@@ -527,9 +539,6 @@ private void OnMouseDown()
             case KindOfTurret.Channelizer:
             case KindOfTurret.Generator:
                 {
-                    Vector3 difference = currentTarget.transform.position - transform.position;
-                    float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-
                     barrelGO.transform.localRotation = Quaternion.Euler(0, 0, rotZ);
 
                     break;
@@ -551,6 +560,9 @@ private void OnMouseDown()
         {
             foreach (var target in targetList)
             {
+                difference = target.transform.position - transform.position;
+                rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+
                 Shoot(target);
             }
             fireCountDown = 1 / (fireRate + fireRateBonus);
@@ -617,12 +629,34 @@ private void OnMouseDown()
              damage = Mathf.Clamp(atqPoints + atqPtsBonusPassive, 0, maxAtqPoints);
         }
 
-        Vector3 difference = currentTarget.transform.position - transform.position;
-        float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-
-        GameObject bullet = Instantiate(particleShoot, this.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
-
-        //Instantiate(particleShoot, this.transform.position, particleShoot.transform.rotation, this.transform);
+        switch (kindOfTurret)
+        {
+            // if com don't change it 
+            case KindOfTurret.Basic:
+            case KindOfTurret.SniperTower:
+            case KindOfTurret.Furnace:
+            case KindOfTurret.Immobilizer:
+            case KindOfTurret.Zap:
+            //case KindOfTurret.Spliter:
+                {
+                    GameObject bullet = Instantiate(particleShoot, this.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
+                    break;
+                }
+            case KindOfTurret.Mortar:
+                {
+                    GameObject bullet = Instantiate(particleShoot, enemy.transform.position, transform.rotation, this.transform);
+                    break;
+                }
+            case KindOfTurret.Channelizer:
+            case KindOfTurret.Generator:
+            case KindOfTurret.Discord:
+                {
+                    GameObject bullet = Instantiate(particleShoot, transform.position, Quaternion.Euler(0, 0, (90 + rotZ)));
+                    break;
+                }
+            default:
+                break;
+        }
 
         enemy.TakeDamage(damage);
 
