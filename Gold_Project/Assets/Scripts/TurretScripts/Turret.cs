@@ -31,6 +31,7 @@ public class Turret : MonoBehaviour
     private GameObject barrelGO;
     [SerializeField]
     private Transform particleSpawnPoint;
+    private GameObject bullet = null;
 
     [Header("Other")]
 
@@ -242,19 +243,19 @@ public class Turret : MonoBehaviour
     #endregion
 }
 
-/*private void OnMouseDrag()
-{
-    if (!canBeMoved)
-        return;
+    /*private void OnMouseDrag()
+    {
+        if (!canBeMoved)
+            return;
 
-    this.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    this.transform.position = new Vector3(
-        Camera.main.ScreenToWorldPoint(Input.mousePosition).x,
-        Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 
-        0);
-}*/
+        this.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        this.transform.position = new Vector3(
+            Camera.main.ScreenToWorldPoint(Input.mousePosition).x,
+            Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 
+            0);
+    }*/
 
-private void OnMouseDown()
+    private void OnMouseDown()
     {
         BuildManager.Instance.shop.selectedItemInGame = this.gameObject;
 
@@ -512,19 +513,29 @@ private void OnMouseDown()
                 break;
         }
 
-        
 
         // Add the only target if it's one target turret and the line above didn't add one already
         if (targetList.Count == 0)
         {
             targetList.Add(currentTarget);
-        }
 
-        GameObject bullet = null;
+            
+        }
 
         if (kindOfTurret == KindOfTurret.Spliter)
         {
-            bullet = Instantiate(particleShoot, this.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
+            if (inRangeEnemies.Count > 0)
+            {
+                if (bullet == null)
+                {
+                    bullet = Instantiate(particleShoot, this.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
+                }
+            }
+            else
+            {
+                Destroy(bullet, 1.0f);
+                bullet = null;
+            }
         }
 
         Vector3 difference = currentTarget.transform.position - transform.position;
