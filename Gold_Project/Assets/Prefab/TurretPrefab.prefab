@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 6938318747608328363}
   - component: {fileID: 8361211437968794041}
   - component: {fileID: 7850981457700695382}
+  - component: {fileID: 3301078256168051863}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -317,3 +318,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &3301078256168051863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4514120256336626238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8238f768310a2a41a60b770d35a4ab5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObjects:
+  - {fileID: 3444266104375053252, guid: 23bc6e1b086f94d459817f92f3f61661, type: 3}
+  - {fileID: 7776459519603759252, guid: 5823a9f204d49db4bb851046a43219fc, type: 3}
+  - {fileID: 1382776781976421390, guid: d48039db4e8c72f46b766b31aa6fa252, type: 3}
+  - {fileID: 1275317458183045221, guid: 8547417f562273143923233f5b2b1e55, type: 3}
+  - {fileID: 3686809602617453658, guid: ce3f8ecbd441fed4ebcf8a04afbfef41, type: 3}
+  - {fileID: 2992326245966823016, guid: 9979b2cdce0d8db40b76ac4b9dd14f11, type: 3}
+  - {fileID: 7396587289371829361, guid: 5a55293a41468ba48bb1eb74bd0c3f16, type: 3}

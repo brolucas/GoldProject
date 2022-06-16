@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class ParticuleManager : MonoBehaviour
 {
-    List<ParticleSystem> particles = new List<ParticleSystem>();
+    public List<GameObject> ShootParticle = new List<GameObject>();
 
-    List<GameObject> gameObjects = new List<GameObject>();
+    public Dictionary<KindOfTurret, GameObject> KotToParticules = new Dictionary<KindOfTurret, GameObject>();
+
+
 }
