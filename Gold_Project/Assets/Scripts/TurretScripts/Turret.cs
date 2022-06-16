@@ -22,6 +22,9 @@ public class Turret : MonoBehaviour
     [Range(1, 180)]
     private int fireAngle = 12;
 
+    private int atqBonusStack = 0;
+    private EnemiesTemp previousTarget = null;
+
     private bool doOnce = false;
 
     private bool hasGeneratorBuffActived;
@@ -45,8 +48,10 @@ public class Turret : MonoBehaviour
     public bool isMaxLevel { get; private set; } = false;
 
 //Attack Stats
-public int atqPoints { get; private set; }
-    public float atqPtsBonus { get; set; }
+    public int atqPoints { get; private set; }
+    public float atqPointsBuffGenerator { get; private set; }
+    public float atqPtsBonusPassive { get; set; }
+    
     public float baseFireRate;
     public float fireRate { get; private set; }
     private float fireRateBonus;
@@ -64,9 +69,11 @@ public int atqPoints { get; private set; }
     #endregion
 
     private bool isInside;
-    private EnemiesTemp currentTarget = null;
+    public EnemiesTemp currentTarget { get; set; } = null;
+    public EnemiesTemp secondCurrentTarget { get; set; } = null;
 
     public float fireCountDown { get; protected set; } = 0.0f;
+    public float countDown { get; protected set; } = 0.0f;
 
     public bool canBeMoved = false;
 
@@ -179,7 +186,7 @@ public int atqPoints { get; private set; }
         turretPrice = turretData.turretPrice;
 
         atqPoints = turretData.atqPoints;
-        atqPtsBonus = 0;
+        atqPtsBonusPassive = 0;
         baseFireRate = turretData.fireRate;
         fireRate = turretData.fireRate;
         fireRateBonus = 0;
@@ -223,7 +230,7 @@ public int atqPoints { get; private set; }
 
         Vector3 origin = transform.position;
 
-        ChooseTarget(origin);
+        ChooseTarget(origin);   
 
         // Max Level Passive and Passive that are turn ON all the time
         switch (kindOfTurret)
@@ -235,7 +242,8 @@ public int atqPoints { get; private set; }
                     PassiveLevelmax(currentTarget);
                 break;
             case KindOfTurret.Channelizer:
-                TurretPassive(currentTarget = null);
+                if (inRangeEnemies.Count <= 0)
+                    TurretPassive(currentTarget = null);
                 break;
             default:
                 break;
@@ -293,10 +301,28 @@ public int atqPoints { get; private set; }
 
         //targetList is usefull when nbrOfTarget > 1
         targetList.Clear();
-        
 
-        //Default enemy in case it bug 
-        currentTarget = ChooseTargetClosestToTruck();
+        if (kindOfTurret == KindOfTurret.Spliter)
+        {
+            // currentTarget
+
+            if (currentTarget == null)
+            {
+                currentTarget = ChooseTargetFarestToTruck();
+                targetList.Add(currentTarget);
+            }
+
+            if (!inRangeEnemies.Contains(currentTarget))
+            {
+                currentTarget = ChooseTargetFarestToTruck();
+                targetList.Add(currentTarget);
+            }
+        }
+        else
+        {
+            //Default enemy in case it bug 
+            currentTarget = ChooseTargetClosestToTruck();
+        }
 
         switch (kindOfTurret)
         {
@@ -396,6 +422,33 @@ public int atqPoints { get; private set; }
 
                     break;
                 }
+            case KindOfTurret.Spliter:
+                {
+                    if (currentLevel >= maxLevel)
+                    {
+                        if (inRangeEnemies.Count < 2)
+                            break;
+
+                        // secondCurrentTarget
+
+                        //First time || Each time the target die or goes out of range
+                        if (secondCurrentTarget == null || !inRangeEnemies.Contains(secondCurrentTarget))
+                        {
+                            ChooseSecondTarget();
+                        }
+
+                        targetList.Add(currentTarget);
+
+                        while (secondCurrentTarget == currentTarget)
+                        {
+                            ChooseSecondTarget();
+                        }
+
+                        targetList.Add(secondCurrentTarget);
+                    }
+
+                    break;
+                }
             case KindOfTurret.Zap:
                 {
                     // 
@@ -407,6 +460,8 @@ public int atqPoints { get; private set; }
 
                 break;
         }
+
+        
 
         // Add the only target if it's one target turret and the line above didn't add one already
         if (targetList.Count == 0)
@@ -448,13 +503,14 @@ public int atqPoints { get; private set; }
                     break;
                 }
             case KindOfTurret.Basic:
+            case KindOfTurret.SniperTower:
             case KindOfTurret.Mortar: 
             case KindOfTurret.Discord:
             case KindOfTurret.Furnace:
             case KindOfTurret.Channelizer:
             case KindOfTurret.Immobilizer:
             case KindOfTurret.Zap:
-            case KindOfTurret.Teleporter:
+            case KindOfTurret.Spliter:
                 {
                     TurretPassive(enemy);
                     if (currentLevel >= maxLevel)
@@ -465,16 +521,40 @@ public int atqPoints { get; private set; }
                 break;
         }
 
-        float damage = atqPoints + atqPtsBonus;
+        //Need to be in the shoot not in the passive but it's a passive
+        if (kindOfTurret == KindOfTurret.Channelizer)
+        {
+            if (currentLevel >= maxLevel)
+            {
+                float damageBaseOnCurrentHealth = enemy.currentHealth * maxPassiveParameters /*4*/ / 100;
 
-        Debug.Log("atqPoints" + atqPoints + "/" + "atqPtsBonus" + atqPtsBonus);
+                atqPtsBonusPassive = (atqPoints * atqBonusStack) + damageBaseOnCurrentHealth;
+            }
+            else // not level max
+            {
+                atqPtsBonusPassive = atqPoints * atqBonusStack;
+            }
+        }
+
+        float damage = atqPoints + atqPtsBonusPassive + atqPointsBuffGenerator;
+
+        Debug.Log(
+            "atqPoints : " + atqPoints + " / " +
+            "atqPtsBonusPassive : " + atqPtsBonusPassive + " / " + 
+            "atqPointsBuffGenerator : " + atqPointsBuffGenerator);
 
         if (isAtqCap)
         {
-             damage = Mathf.Clamp(atqPoints + atqPtsBonus, 0, maxAtqPoints);
+             damage = Mathf.Clamp(atqPoints + atqPtsBonusPassive, 0, maxAtqPoints);
         }
 
         enemy.TakeDamage(damage);
+
+        if (kindOfTurret == KindOfTurret.Channelizer)
+        {
+            atqBonusStack = 0;
+            atqPtsBonusPassive = 0;
+        }
 
         //Add this turret to the attacking turret of the ennemy
         if (!enemy.attackingTurret.Contains(this))
@@ -539,11 +619,12 @@ public int atqPoints { get; private set; }
 
                     if (!isAtqCap)
                     {
-                        atqPtsBonus = enemy.startingHealth * damageBonusBaseOnHP; // no cap so may be 9999
+                        atqPtsBonusPassive = enemy.startingHealth * damageBonusBaseOnHP; // no cap so may be 9999
                     }
                     else
                     {
-                        atqPtsBonus = Mathf.Clamp(enemy.startingHealth * damageBonusBaseOnHP, 0, maxAtqPoints - atqPoints);
+                        atqPtsBonusPassive = enemy.startingHealth * damageBonusBaseOnHP;
+                        atqPtsBonusPassive = Mathf.Clamp(atqPtsBonusPassive, 0, maxAtqPoints);
                     }
                     break;
                 }
@@ -594,11 +675,65 @@ public int atqPoints { get; private set; }
                 }
             case KindOfTurret.Discord:
                 {
-                   /* if (enemy.ConfuseCombo <= 10)
+                    if (currentTarget == null)
                     {
-                        enemy.ConfuseCombo += Mathf.Clamp(1,0,10);
+                        Debug.LogWarning("currentTarget == null so turret discord will not work as planned");
+                        return;
                     }
-                    StartCoroutine(ConfusionTimer(enemy));*/
+
+                    #region check if it's the same target
+                    if (previousTarget == null)
+                        previousTarget = currentTarget;
+                    
+                    if (previousTarget == currentTarget)
+                    {
+                        atqBonusStack++;
+                        atqBonusStack = Mathf.Clamp(atqBonusStack, 0, 10);
+                    }
+                    else
+                    {
+                        //atqPtsBonus -= atqPoints * discordAtqBonus;
+                        atqBonusStack = 0;
+                        previousTarget = currentTarget;
+                    }
+                    #endregion
+
+                    // the turret increases its damage by 5% per hit on the same target. Cumulative 10 times
+                    atqPtsBonusPassive = atqPoints * 5 / 100 * atqBonusStack;
+
+                    //Enemies take 5 damage on impact per discord stack effect(max: 10)
+                    if (currentLevel >= maxLevel)
+                        atqPtsBonusPassive += 5 * atqBonusStack;
+
+                    break;
+                }
+            case KindOfTurret.Spliter:
+                {
+                    if (currentTarget == null)
+                    {
+                        Debug.LogWarning("currentTarget == null so turret discord will not work as planned");
+                        return;
+                    }
+
+                    #region check if it's the same target
+                    if (previousTarget == null)
+                        previousTarget = currentTarget;
+
+                    if (previousTarget == currentTarget)
+                    {
+                        atqBonusStack++;
+                        atqBonusStack = Mathf.Clamp(atqBonusStack, 0, 10);
+                    }
+                    else
+                    {
+                        atqBonusStack = 0;
+                        previousTarget = currentTarget;
+                    }
+                    #endregion
+
+                    // Doubles its damage each time the target is identical to the previous one. Cumulative 10 times
+                    atqPtsBonusPassive = DoubleAtq(atqBonusStack); 
+
                     break;
                 }
             case KindOfTurret.Immobilizer:
@@ -616,6 +751,35 @@ public int atqPoints { get; private set; }
                     gameManager.truck.gold += (int)(atqPoints * basePassiveParameters /*50*/ / 100);
                     break;
                 }
+            case KindOfTurret.Channelizer:
+                {
+                    // enter this when shoot "Link to Shoot"
+                    if (inRangeEnemies.Count > 0)
+                    {
+                        return;
+                    }
+
+                    //enter this when doesn't shoot "Link to Update"
+                    if (countDown <= 0f)
+                    {
+                        if (atqBonusStack < 5)
+                        {
+                            atqBonusStack++;
+                        }
+                        else if (atqBonusStack > 5)
+                        {
+                            atqBonusStack = Mathf.Clamp(atqBonusStack, 0, 5);
+                        }
+
+                        countDown = 1 / (fireRate + fireRateBonus);
+                    }
+
+                    countDown -= Time.deltaTime;
+
+                    // -- There is a part of this passive in the Shoot Method -- //
+
+                    break;
+                }
 
             default:
                 
@@ -627,6 +791,7 @@ public int atqPoints { get; private set; }
     {
         //case KindOfTurret.Mortar: in Normal Passive
         //case KindOfTurret.Furnace: in Normal Passive
+        //case KindOfTurret.Discord: in Shoot 
 
         switch (kindOfTurret)
         {
@@ -648,7 +813,7 @@ public int atqPoints { get; private set; }
             case KindOfTurret.Immobilizer: 
                 {
                     // inflicts 8% of missing hp per attack
-                    atqPtsBonus = (enemy.startingHealth - enemy.currentHealth) * (maxPassiveParameters / 100);
+                    atqPtsBonusPassive = (enemy.startingHealth - enemy.currentHealth) * (maxPassiveParameters / 100);
 
                     break;
                 }
@@ -676,7 +841,7 @@ public int atqPoints { get; private set; }
                         {
                             if (!turretAround.hasGeneratorBuffActived)
                             {
-                                turretAround.atqPtsBonus += 15;
+                                turretAround.atqPointsBuffGenerator += 15;
                                 turretAround.fireRateBonus += turretAround.baseFireRate * maxPassiveParameters / 100;
                                 turretAround.hasGeneratorBuffActived = true;
                             }
@@ -684,45 +849,19 @@ public int atqPoints { get; private set; }
                     }
                     break;
                 }
+            case KindOfTurret.Spliter:
+                {
+                    if (!doOnce)
+                    {
+                        nbrOfTarget = 2;
+                        doOnce = true;
+                    }
+                    break;
+                }
             default:
 
                 break;
         }
-    }
-
-    /*private IEnumerator ConfusionTimer(EnemiesTemp target)
-    {
-        target.isConfuse = true;
-        yield return new WaitForSeconds(1.0f); // A check
-        //Check si il se refait toucher 
-        if (!target.getTouch)
-        {
-            target.ConfuseCombo = 0;
-            target.isConfuse = false;
-            target.getTouch = false;
-        }
-        else
-        {
-            StartCoroutine(ConfusionTimer(target));
-        }
-    }*/
-
-    private IEnumerator IncreaseAttackSpeed(EnemiesTemp target)
-    {
-        if (this.fireRate < 6)
-        {
-            this.fireRate += 0.1f;
-        }
-        yield return new WaitForSeconds(1f);
-        if (target.getTouch)
-        {
-            StartCoroutine(IncreaseAttackSpeed(target));
-        }
-        else
-        {
-            this.fireRate = 1f;
-        }
-
     }
 
     public void Upgrade()
@@ -795,13 +934,52 @@ public int atqPoints { get; private set; }
             {
                 if (turretAround.hasGeneratorBuffActived)
                 {
-                    turretAround.atqPtsBonus -= 15;
+                    turretAround.atqPointsBuffGenerator -= 15;
                     turretAround.fireRateBonus -= 0.15f;
                     turretAround.fireRateBonus = Mathf.Clamp(turretAround.fireRateBonus, 0, 10);
                     turretAround.hasGeneratorBuffActived = false;
                 }
             }
         }
+    }
+
+    public float DoubleAtq(int howManyTime)
+    {
+        float atqBonus = atqPoints;
+
+        for (int i = 0; i < howManyTime; i++)
+        {
+            atqBonus *= 2;
+        }
+
+        return atqBonus;
+    }
+
+    public void ChooseSecondTarget()
+    {
+        inRangeEnemies.Remove(currentTarget);
+
+        secondCurrentTarget = ChooseTargetFarestToTruck();
+
+        inRangeEnemies.Add(currentTarget);
+    }
+
+    private IEnumerator IncreaseAttackSpeed(EnemiesTemp target)
+    {
+        if (this.fireRate < 6)
+        {
+            this.fireRate += 0.1f;
+        }
+        yield return new WaitForSeconds(1f);
+        if (target.getTouch)
+        {
+            StartCoroutine(IncreaseAttackSpeed(target));
+        }
+        else
+        {
+            this.fireRate = 1f;
+        }
+
     }
 
     #region Util Function
@@ -841,6 +1019,30 @@ public int atqPoints { get; private set; }
             }
             else if (currentTarget.pathVectorList.Count == target.pathVectorList.Count
                 && currentTarget.distanceToNextTarget > target.distanceToNextTarget)
+            {
+                currentTarget = target;
+            }
+        }
+
+        return currentTarget;
+    }
+
+    public EnemiesTemp ChooseTargetFarestToTruck(EnemiesTemp firstTarget = null)
+{
+        // Choose the target closest to get to the Truck
+        EnemiesTemp currentTarget = inRangeEnemies[0];
+
+        foreach (var target in inRangeEnemies)
+        {
+            if (target == currentTarget || target == firstTarget)
+                continue;
+
+            if (currentTarget.pathVectorList.Count < target.pathVectorList.Count)
+            {
+                currentTarget = target;
+            }
+            else if (currentTarget.pathVectorList.Count == target.pathVectorList.Count
+                && currentTarget.distanceToNextTarget < target.distanceToNextTarget)
             {
                 currentTarget = target;
             }
