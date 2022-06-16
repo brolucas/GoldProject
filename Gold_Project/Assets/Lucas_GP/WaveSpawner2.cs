@@ -189,11 +189,10 @@ public class WaveSpawner2 : MonoBehaviour
     public void SpawnEvent()
     {
         System.Random alea = new System.Random();
-        //int noevent = alea.Next(0,3);
-        int noevent = 0;
+        int noevent = alea.Next(0,2);
 
-        int x1 = alea.Next(1, 8);
-        int y1 = alea.Next(1, 6);
+        int x1 = alea.Next(3, 10);
+        int y1 = alea.Next(2, 5);
         Vector3 temp = new Vector3(x1, y1, 0);
 
         switch (noevent)
@@ -307,9 +306,7 @@ public class WaveSpawner2 : MonoBehaviour
                 Debug.Log("Event Launched !" + listEvent[2].ToString());
                 spawnPoint.Add(spawnPoint2);
                 break;
-            case 3:
-                Debug.Log("Event Launched !" + listEvent[3].ToString());
-                break;
+            
 
         }
         

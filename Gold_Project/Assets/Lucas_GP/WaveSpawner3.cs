@@ -188,9 +188,9 @@ public class WaveSpawner3 : MonoBehaviour
     public void SpawnEvent()
     {
         System.Random alea = new System.Random();
-        int noevent = alea.Next(0,3);
-        int x1 = alea.Next(1, 11);
-        int y1 = alea.Next(0, 6);
+        int noevent = alea.Next(0,2);
+        int x1 = alea.Next(3, 10);
+        int y1 = alea.Next(3, 5);
         Vector3 temp = new Vector3(x1, y1, 0);
 
         switch (noevent)
@@ -342,8 +342,7 @@ public class WaveSpawner3 : MonoBehaviour
             case 2:
                 spawnPoint.Add(spawnPoint2);
                 break;
-            case 3:
-                break;
+            
 
         }
         
