@@ -207,6 +207,44 @@ public class WaveSpawner2 : MonoBehaviour
                 Pathfinding.Instance.GetNode(x + 1, y).isEvent = listEvent[1];
                 Pathfinding.Instance.GetNode(x, y - 1).isEvent = listEvent[2];
                 Pathfinding.Instance.GetNode(x + 1, y - 1).isEvent = listEvent[3];
+
+                if (Pathfinding.Instance.GetNode(x, y).isTurret != null)
+                {
+                    Destroy(Pathfinding.Instance.GetNode(x, y).isTurret);
+                }
+                if (Pathfinding.Instance.GetNode(x + 1, y).isTurret != null)
+                {
+                    Destroy(Pathfinding.Instance.GetNode(x + 1, y).isTurret);
+                }
+                if (Pathfinding.Instance.GetNode(x, y-1).isTurret != null)
+                {
+                    Destroy(Pathfinding.Instance.GetNode(x, y-1).isTurret);
+                }
+
+                if (Pathfinding.Instance.GetNode(x + 1, y-1).isTurret != null)
+                {
+                    Destroy(Pathfinding.Instance.GetNode(x + 1, y-1).isTurret);
+                }
+
+
+                if (Pathfinding.Instance.GetNode(x, y).isBarricade != null)
+                {
+                    Destroy(Pathfinding.Instance.GetNode(x, y).isBarricade);
+                }
+                if (Pathfinding.Instance.GetNode(x + 1, y).isBarricade != null)
+                {
+                    Destroy(Pathfinding.Instance.GetNode(x + 1, y).isBarricade);
+                }
+                if (Pathfinding.Instance.GetNode(x, y - 1).isBarricade != null)
+                {
+                    Destroy(Pathfinding.Instance.GetNode(x, y - 1).isBarricade);
+                }
+
+                if (Pathfinding.Instance.GetNode(x + 1, y - 1).isBarricade != null)
+                {
+                    Destroy(Pathfinding.Instance.GetNode(x + 1, y - 1).isBarricade);
+                }
+
                 Pathfinding.Instance.GetNode(x, y).isUsed = true;
                 Pathfinding.Instance.GetNode(x + 1, y).isUsed = true;
                 Pathfinding.Instance.GetNode(x, y - 1).isUsed = true;

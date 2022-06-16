@@ -153,7 +153,7 @@ MonoBehaviour:
   damage: 100
   fireRate: 0
   isFlying: 0
-  goldValue: 10
+  goldValue: 20
   getTouch: 0
   getZapped: 0
   isConfuse: 0
