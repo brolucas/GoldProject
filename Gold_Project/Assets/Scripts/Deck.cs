@@ -45,6 +45,48 @@ public class Deck : MonoBehaviour
 
             inventoryButton[i].GetComponent<Image>().sprite = gameManager.turretDatabase.turrets[i].UIDesign;
         }
+        int temp = PlayerPrefs.GetInt("levelReached");
+        int turretCountTemp;
+        switch (temp)
+        {
+            case 2:
+                turretCountTemp = 5;
+                break;
+            case 3:
+                turretCountTemp = 6;
+                break;
+            case 4:
+                turretCountTemp = 7;
+                break;
+            case 5:
+                turretCountTemp = 8;
+                break;
+            case 6:
+                turretCountTemp = 9;
+                break;
+            case 7:
+                turretCountTemp = 10;
+                break;
+            case 8:
+                turretCountTemp = 10;
+                break;
+            case 9:
+                turretCountTemp = 10;
+                break;
+            default:
+                turretCountTemp = 4;
+                break;
+
+        }
+          for (int i = 0; i < gameManager.turretDatabase.turrets.Count; i++)
+          {
+
+              inventoryButton[i].interactable = false;
+          }
+        for (int i = 0; i < turretCountTemp; i++)
+        {
+            inventoryButton[i].interactable = true;
+        }
 
         TurretDeckAddRemove.SetActive(false);
     }
