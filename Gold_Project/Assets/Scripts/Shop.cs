@@ -12,7 +12,7 @@ public class Shop : MonoBehaviour
     public Text nameTurretText;
 
 	public List<Button> deckButtons = new List<Button>();
-	public List<Button> deckButtonsBarricade = new List<Button>();
+	public Button button1, button2;
 
 	public Dictionary<Button, KindOfTurret> buttonToEnum = new Dictionary<Button, KindOfTurret>();
 	public Dictionary<Button, GameObject> buttonToBarricade = new Dictionary<Button, GameObject>();
@@ -61,9 +61,9 @@ public class Shop : MonoBehaviour
 			deckButtons[i].GetComponent<Image>().sprite = turretData.UIDesign;
 		}
 
-		//Out of range ici je crois 
-		buttonToBarricade.Add(deckButtonsBarricade[0], barr1);
-		buttonToBarricade.Add(deckButtonsBarricade[1], barr2);
+
+		buttonToBarricade.Add(button1, barr1);
+		buttonToBarricade.Add(button2, barr2);
 
 	}
 

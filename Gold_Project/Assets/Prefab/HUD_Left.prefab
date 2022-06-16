@@ -333,9 +333,8 @@ MonoBehaviour:
   - {fileID: 272750044355570886}
   - {fileID: 272750043049227165}
   - {fileID: 272750043760804815}
-  deckButtonsBarricade:
-  - {fileID: 272750042727121809}
-  - {fileID: 272750044807912865}
+  button1: {fileID: 272750044440381322}
+  button2: {fileID: 272750043005322919}
   barr1: {fileID: 5684629981531033215, guid: 58233168561e0524db88722ec067edf8, type: 3}
   barr2: {fileID: 5684629981531033215, guid: e75bf12d75386854d851aff9221a4ccc, type: 3}
   selectedTurretInGame: {fileID: 0}
