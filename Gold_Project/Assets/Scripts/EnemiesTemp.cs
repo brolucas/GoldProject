@@ -46,6 +46,9 @@ public class EnemiesTemp : MonoBehaviour
 	[Header("Pathfinding variables")]
 	private bool hasArrived;
 	private bool canMove;
+	public bool isKamikaze;
+	private GameObject turretTarget;
+	private System.Random alea;
 
 	public void Start()
 	{
@@ -55,10 +58,11 @@ public class EnemiesTemp : MonoBehaviour
 		currentHealth = startingHealth;
 
 		StartCoroutine(DamagePerSeconds());
-		//this.GetComponent<Rigidbody2D>().AddForce(new Vector2(500 * speed * Time.deltaTime, 0));
 
 		hasArrived = false;
 		canMove = true;
+		turretTarget = null;
+		alea = new System.Random();
 	}
 
 	public void Update()
@@ -85,6 +89,7 @@ public class EnemiesTemp : MonoBehaviour
 						node.isBarricade.GetComponent<Baricade>().takeDamage(damage);
 					}
 					fireRate = 1;
+					if (isKamikaze) TakeDamage(10000);
                 }
 
 			}
@@ -92,8 +97,37 @@ public class EnemiesTemp : MonoBehaviour
 			{
 				canMove = true;
 			}
+
+            if (isKamikaze)
+            {
+                if (turretTarget == null)
+                {
+					List<GameObject> possibleTarget = new List<GameObject>();
+					foreach(Vector3 pos in pathVectorList)
+					{
+						Pathfinding.Instance.GetGrid().GetXY(pos, out int currentX, out int currentY);
+
+						foreach(PathNode possibleNode in Pathfinding.Instance.GetNeighbourList(Pathfinding.Instance.GetNode(currentX, currentY)))
+						{
+							if(possibleNode.isTurret != null && !possibleTarget.Contains(possibleNode.isTurret))
+							{
+								possibleTarget.Add(possibleNode.isTurret);
+							}
+						}
+					}
+					if(possibleTarget.Count > 0)
+					{
+						int eventAlea = alea.Next(possibleTarget.Count-1);
+						turretTarget = possibleTarget[eventAlea];
+					}
+                }
+                else
+                {
+					SetTargetPosition(turretTarget.transform.position);
+				}
+            }
 		}
-		if (pathVectorList != null && (hasArrived || Pathfinding.Instance.mapHasChanged))
+		if (pathVectorList != null && !turretTarget && (hasArrived || Pathfinding.Instance.mapHasChanged))
 		{
 			SetTargetPosition(endPoint.position);
 			Pathfinding.Instance.mapHasChanged = false;
