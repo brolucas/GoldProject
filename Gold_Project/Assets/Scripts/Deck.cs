@@ -84,7 +84,7 @@ public class Deck : MonoBehaviour
         TurretData turretData = gameManager.GetStatsKindOfTurret(kindOfTurret);
 
         description.text = turretData.description;
-        turretImageUI.sprite = turretData.UIDesign;
+        turretImageUI.sprite = turretData.UIDesign; // ici
 
         if (gameManager.dataManager.deckData.deckTurret.Contains(kindOfTurret))
         {
