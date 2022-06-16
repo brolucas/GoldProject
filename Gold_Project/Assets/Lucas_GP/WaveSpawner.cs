@@ -89,7 +89,11 @@ public class WaveSpawner : MonoBehaviour
                         }
                     }
                 }
-                if (SceneManager.GetActiveScene().name == "Level Tuto")
+                if (levelToUnlock > PlayerPrefs.GetInt("levelReached", 1))
+                {
+                    PlayerPrefs.SetInt("levelReached", levelToUnlock);
+                }
+				if (SceneManager.GetActiveScene().name == "Level Tuto")
                 {
                     PlayerPrefs.SetInt("firstTime", 1);
                 }
@@ -97,12 +101,10 @@ public class WaveSpawner : MonoBehaviour
                 {
                     AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_finishing_world_1);
                 }
-				if (levelToUnlock > PlayerPrefs.GetInt("levelReached",1))
-                {
-					PlayerPrefs.SetInt("levelReached", levelToUnlock);
-                }
 				
-			}
+                this.enabled = false;
+
+            }
 		}   
 		
 		

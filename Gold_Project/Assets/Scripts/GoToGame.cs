@@ -22,7 +22,7 @@ public class GoToGame : MonoBehaviour
         sceneFader.FadeTo("MainMenu");
         Time.timeScale = 1;
         levelIndex++;
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
     }
 
     

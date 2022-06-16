@@ -2092,6 +2092,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5220904859355785597, guid: 6d51f7d519f756d4496c11e08671447c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5220904859355785597, guid: 6d51f7d519f756d4496c11e08671447c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1254031486}
+    - target: {fileID: 5220904859355785597, guid: 6d51f7d519f756d4496c11e08671447c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToMainMenuVictory
+      objectReference: {fileID: 0}
+    - target: {fileID: 5220904859355785597, guid: 6d51f7d519f756d4496c11e08671447c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GoToGame, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d51f7d519f756d4496c11e08671447c, type: 3}
 --- !u!1 &1023458532 stripped
@@ -3005,7 +3025,7 @@ MonoBehaviour:
       type: 3}
     Wave_Count_Boss: 0
     _event: 0
-    Wave_Rate: 0
+    Wave_Rate: 2
   - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
     Wave_nb_Runner: 6
@@ -3025,7 +3045,7 @@ MonoBehaviour:
       type: 3}
     Wave_Count_Boss: 0
     _event: 0
-    Wave_Rate: 0
+    Wave_Rate: 2
   - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
     Wave_nb_Runner: 0
@@ -3045,7 +3065,7 @@ MonoBehaviour:
       type: 3}
     Wave_Count_Boss: 0
     _event: 0
-    Wave_Rate: 0
+    Wave_Rate: 2
   - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
     Wave_nb_Runner: 0
@@ -3065,7 +3085,7 @@ MonoBehaviour:
       type: 3}
     Wave_Count_Boss: 0
     _event: 0
-    Wave_Rate: 0
+    Wave_Rate: 2
   - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
     Wave_nb_Runner: 10
@@ -3085,7 +3105,7 @@ MonoBehaviour:
       type: 3}
     Wave_Count_Boss: 0
     _event: 0
-    Wave_Rate: 0
+    Wave_Rate: 2
   - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
     Wave_nb_Runner: 0
@@ -3105,7 +3125,7 @@ MonoBehaviour:
       type: 3}
     Wave_Count_Boss: 0
     _event: 0
-    Wave_Rate: 0
+    Wave_Rate: 2
   - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
     Wave_nb_Runner: 0
@@ -3125,7 +3145,7 @@ MonoBehaviour:
       type: 3}
     Wave_Count_Boss: 0
     _event: 0
-    Wave_Rate: 0
+    Wave_Rate: 2
   - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
     Wave_nb_Runner: 15
@@ -3145,7 +3165,7 @@ MonoBehaviour:
       type: 3}
     Wave_Count_Boss: 0
     _event: 0
-    Wave_Rate: 0
+    Wave_Rate: 2
   - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
     Wave_nb_Runner: 0
@@ -3165,7 +3185,7 @@ MonoBehaviour:
       type: 3}
     Wave_Count_Boss: 0
     _event: 0
-    Wave_Rate: 0
+    Wave_Rate: 2
   - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
     Wave_nb_Runner: 0
@@ -3185,16 +3205,16 @@ MonoBehaviour:
       type: 3}
     Wave_Count_Boss: 0
     _event: 0
-    Wave_Rate: 0
+    Wave_Rate: 2
   spawnPoint:
   - {fileID: 622780982}
   spawnPoint2: {fileID: 1133751321}
   timeBetweenWave: 5
   wave_Text: {fileID: 1898476678}
   wave_Victory_Screen: {fileID: 1023458536}
-  wave_Victory_Star1: {fileID: 0}
-  wave_Victory_Star2: {fileID: 0}
-  wave_Victory_Star3: {fileID: 0}
+  wave_Victory_Star1: {fileID: 1023458535}
+  wave_Victory_Star2: {fileID: 1023458534}
+  wave_Victory_Star3: {fileID: 1023458532}
   listEvent:
   - {fileID: 882767662396786120, guid: 841b4b4c0a1bb694ba67c7454a78d425, type: 3}
   - {fileID: 882767662396786120, guid: 0c431959c2e7cc747a7343f9afdff2d8, type: 3}

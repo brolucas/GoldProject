@@ -3258,7 +3258,7 @@ MonoBehaviour:
       type: 3}
     Wave_Count_Boss: 0
     _event: 0
-    Wave_Rate: 0
+    Wave_Rate: 2
   - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
     Wave_nb_Runner: 0
@@ -3278,7 +3278,7 @@ MonoBehaviour:
       type: 3}
     Wave_Count_Boss: 0
     _event: 0
-    Wave_Rate: 0
+    Wave_Rate: 2
   - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
     Wave_nb_Runner: 5
@@ -3298,7 +3298,7 @@ MonoBehaviour:
       type: 3}
     Wave_Count_Boss: 0
     _event: 0
-    Wave_Rate: 0
+    Wave_Rate: 2
   - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
     Wave_nb_Runner: 0
@@ -3318,7 +3318,7 @@ MonoBehaviour:
       type: 3}
     Wave_Count_Boss: 0
     _event: 0
-    Wave_Rate: 0
+    Wave_Rate: 2
   - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
     Wave_nb_Runner: 10
@@ -3338,7 +3338,7 @@ MonoBehaviour:
       type: 3}
     Wave_Count_Boss: 0
     _event: 0
-    Wave_Rate: 0
+    Wave_Rate: 2
   - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
     Wave_nb_Runner: 0
@@ -3358,7 +3358,7 @@ MonoBehaviour:
       type: 3}
     Wave_Count_Boss: 0
     _event: 0
-    Wave_Rate: 0
+    Wave_Rate: 2
   - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
     Wave_nb_Runner: 15
@@ -3378,7 +3378,7 @@ MonoBehaviour:
       type: 3}
     Wave_Count_Boss: 0
     _event: 0
-    Wave_Rate: 0
+    Wave_Rate: 2
   - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
     Wave_nb_Runner: 10
@@ -3398,7 +3398,7 @@ MonoBehaviour:
       type: 3}
     Wave_Count_Boss: 0
     _event: 0
-    Wave_Rate: 0
+    Wave_Rate: 2
   - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
     Wave_nb_Runner: 0
@@ -3418,7 +3418,7 @@ MonoBehaviour:
       type: 3}
     Wave_Count_Boss: 1
     _event: 0
-    Wave_Rate: 0
+    Wave_Rate: 2
   - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
     Wave_nb_Runner: 0
@@ -3438,7 +3438,7 @@ MonoBehaviour:
       type: 3}
     Wave_Count_Boss: 1
     _event: 0
-    Wave_Rate: 0
+    Wave_Rate: 2
   spawnPoint:
   - {fileID: 622780982}
   spawnPoint2: {fileID: 1133751321}
