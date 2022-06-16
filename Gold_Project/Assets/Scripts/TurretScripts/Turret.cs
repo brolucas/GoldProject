@@ -256,7 +256,7 @@ public class Turret : MonoBehaviour
 
 private void OnMouseDown()
     {
-        BuildManager.Instance.shop.selectedTurretInGame = this.gameObject;
+        BuildManager.Instance.shop.selectedItemInGame = this.gameObject;
 
         BuildManager.Instance.shop.DisplayCurrentTurretStats();
 

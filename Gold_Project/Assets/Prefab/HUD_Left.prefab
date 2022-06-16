@@ -337,7 +337,7 @@ MonoBehaviour:
   button2: {fileID: 272750043005322919}
   barr1: {fileID: 5684629981531033215, guid: 58233168561e0524db88722ec067edf8, type: 3}
   barr2: {fileID: 5684629981531033215, guid: e75bf12d75386854d851aff9221a4ccc, type: 3}
-  selectedTurretInGame: {fileID: 0}
+  selectedItemInGame: {fileID: 0}
   deck: {fileID: 0}
 --- !u!1 &272750043005322905
 GameObject:
@@ -725,7 +725,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 272750042737565444}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: SellTurret
+        m_MethodName: Sell
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
