@@ -65,6 +65,7 @@ public class TurretData
 
     [Header("Design")]
     public Sprite inGameDesign;
+    public Sprite barrel;
     public Sprite UIDesign;
 
     [TextArea(5, 20)]

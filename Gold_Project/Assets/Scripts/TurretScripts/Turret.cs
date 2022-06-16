@@ -26,6 +26,10 @@ public class Turret : MonoBehaviour
     public AnimationCurve curve;
 
     public SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private GameObject barrelSprite;
+    [SerializeField]
+    private Transform particleSpawnPoint;
 
     [Range(1, 180)]
     private int fireAngle = 12;
@@ -163,7 +167,7 @@ public class Turret : MonoBehaviour
 
         particleShoot = particuleManager.KotToParticules[kindOfTurret];
 
-        Instantiate(particleShoot, this.transform.position, this.transform.rotation, this.transform);
+        Instantiate(particleShoot, this.transform.position, particleShoot.transform.rotation, this.transform);
     }
 
     public void InitTurretData(KindOfTurret type)
