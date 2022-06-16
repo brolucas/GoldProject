@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 255277567047928808}
   - component: {fileID: 6709396344107502454}
   - component: {fileID: 2488951184649618190}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CRS
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373ee22e8fe23fa4bb65d9b1af348171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 200
+  startingHealth: 400
   currentHealth: 0
   baseSpeed: 0.75
   currentSpeed: 0.75
@@ -175,6 +175,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6898869339770346148}
     m_Modifications:
+    - target: {fileID: 1571789414635757416, guid: d7040fdb927e45e4da6227e45210bb02,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1994368455429807981, guid: d7040fdb927e45e4da6227e45210bb02,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3132548834055857061, guid: d7040fdb927e45e4da6227e45210bb02,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3771128677551372020, guid: d7040fdb927e45e4da6227e45210bb02,
         type: 3}
       propertyPath: m_RootOrder
@@ -245,6 +260,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: CRS
       objectReference: {fileID: 0}
+    - target: {fileID: 4195574765683773540, guid: d7040fdb927e45e4da6227e45210bb02,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4366850082341925700, guid: d7040fdb927e45e4da6227e45210bb02,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390452024726136574, guid: d7040fdb927e45e4da6227e45210bb02,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5770740235327610805, guid: d7040fdb927e45e4da6227e45210bb02,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5831476753725349349, guid: d7040fdb927e45e4da6227e45210bb02,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6463700199178592778, guid: d7040fdb927e45e4da6227e45210bb02,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8088555298427965850, guid: d7040fdb927e45e4da6227e45210bb02,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -284,6 +329,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8272666680811828190, guid: d7040fdb927e45e4da6227e45210bb02,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8784783405382668339, guid: d7040fdb927e45e4da6227e45210bb02,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8853948669988379545, guid: d7040fdb927e45e4da6227e45210bb02,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7040fdb927e45e4da6227e45210bb02, type: 3}

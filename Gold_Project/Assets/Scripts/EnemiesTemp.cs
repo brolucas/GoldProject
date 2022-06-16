@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemiesTemp : MonoBehaviour
 {
@@ -130,7 +131,8 @@ public class EnemiesTemp : MonoBehaviour
 		getTouch = false;
 
 		if (currentHealth <= 0)
-		{
+        {
+            
 			//Let this here bc should give us gold when hit the Truck
 			GameManager.Instance.truck.gold += this.goldValue;
 			StartCoroutine(Die());
@@ -244,6 +246,7 @@ public class EnemiesTemp : MonoBehaviour
 
 	public IEnumerator Die()
 	{
+
 		foreach (var turret in attackingTurret)
 		{
 			turret.targetList.Remove(this);
@@ -253,11 +256,26 @@ public class EnemiesTemp : MonoBehaviour
 		attackingTurret.Clear();
 		GameManager.Instance.enemies.Remove(this);
 
-		WaveSpawner.enemyAlive--;
 
 		//Wait until this enemy have been erased from all list before destroying it
 		yield return new WaitUntil(() => !GameManager.Instance.enemies.Contains(this));
-		
+        if (SceneManager.GetActiveScene().name == "Level 1" || SceneManager.GetActiveScene().name == "Level 2" || SceneManager.GetActiveScene().name == "Level 3")
+        {
+            WaveSpawner.enemyAlive--;
+
+        }
+
+        if (SceneManager.GetActiveScene().name == "Level 4" || SceneManager.GetActiveScene().name == "Level 5" || SceneManager.GetActiveScene().name == "Level 6")
+        {
+            WaveSpawner2.enemyAlive--;
+
+        }
+        if (SceneManager.GetActiveScene().name == "Level 7" || SceneManager.GetActiveScene().name == "Level 8" || SceneManager.GetActiveScene().name == "Level 9")
+        {
+            WaveSpawner3.enemyAlive--;
+
+        }
+
 		Destroy(gameObject);
 	}
 

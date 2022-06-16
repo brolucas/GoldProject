@@ -23,6 +23,6 @@ public class Wave{
     public int Wave_Count_Boss;
 
     public bool _event;
-    public float Wave_Rate;
+    public float Wave_Rate = 2;
 
 }
