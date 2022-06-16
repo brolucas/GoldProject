@@ -3400,7 +3400,7 @@ MonoBehaviour:
     Wave_Count_Volant: 0
     Wave_Boss: {fileID: 3507957338615616271, guid: 4f4e7eb42b6895c4ba529f8fc2625531,
       type: 3}
-    Wave_Count_Boss: 1
+    Wave_Count_Boss: 3
     _event: 0
     Wave_Rate: 2
   spawnPoint:
