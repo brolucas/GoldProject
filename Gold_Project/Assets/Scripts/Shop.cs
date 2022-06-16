@@ -169,10 +169,14 @@ public class Shop : MonoBehaviour
 
 	public void Upgrade()
 	{
-		Turret turret = selectedTurretInGame.GetComponent<Turret>();
+        if (BuildManager.Instance.turretToBuild == KindOfTurret.DefaultDoNotUseIt)
+        {
+			Turret turret = selectedTurretInGame.GetComponent<Turret>();
 
-		turret.Upgrade();
+            turret.Upgrade();
 
-		DisplayCurrentTurretStats();
+            DisplayCurrentTurretStats();
+		}
+		
 	}
 }

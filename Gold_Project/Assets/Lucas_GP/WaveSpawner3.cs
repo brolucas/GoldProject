@@ -260,6 +260,9 @@ public class WaveSpawner3 : MonoBehaviour
                 {
                     Destroy(Pathfinding.Instance.GetNode(x + 1, y - 2).isBarricade);
                 }
+
+
+
                 Pathfinding.Instance.GetNode(x, y).isUsed = true;
                 Pathfinding.Instance.GetNode(x + 1, y).isUsed = true;
                 Pathfinding.Instance.GetNode(x, y -1).isUsed = true;
