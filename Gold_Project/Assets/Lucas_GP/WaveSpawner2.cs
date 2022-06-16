@@ -245,6 +245,25 @@ public class WaveSpawner2 : MonoBehaviour
                     Destroy(Pathfinding.Instance.GetNode(x + 1, y - 1).isBarricade);
                 }
 
+
+                if (Pathfinding.Instance.GetNode(x, y).isDecor != null)
+                {
+                    Destroy(Pathfinding.Instance.GetNode(x, y).isDecor);
+                }
+                if (Pathfinding.Instance.GetNode(x + 1, y).isDecor != null)
+                {
+                    Destroy(Pathfinding.Instance.GetNode(x + 1, y).isDecor);
+                }
+                if (Pathfinding.Instance.GetNode(x, y - 1).isDecor != null)
+                {
+                    Destroy(Pathfinding.Instance.GetNode(x, y - 1).isDecor);
+                }
+
+                if (Pathfinding.Instance.GetNode(x + 1, y - 1).isDecor != null)
+                {
+                    Destroy(Pathfinding.Instance.GetNode(x + 1, y - 1).isDecor);
+                }
+
                 Pathfinding.Instance.GetNode(x, y).isUsed = true;
                 Pathfinding.Instance.GetNode(x + 1, y).isUsed = true;
                 Pathfinding.Instance.GetNode(x, y - 1).isUsed = true;
