@@ -15,7 +15,11 @@ public class Turret : MonoBehaviour
     private GameManager gameManager;
 
     private GameObject rangeSprite;
+    private GameObject unableRange;
+    private SpriteRenderer rangeSpriteSR;
+    private SpriteRenderer unableRangeSR;
     private Vector3 localScale;
+    public AnimationCurve curve;
 
     public SpriteRenderer spriteRenderer;
 
@@ -111,16 +115,25 @@ public class Turret : MonoBehaviour
 
         rangeSprite.transform.localScale = new Vector3(range * 2, range * 2, 0);//1.265
 
+        rangeSpriteSR = rangeSprite.GetComponent<SpriteRenderer>();
+
+        StartCoroutine(FadeAttackRange(rangeSpriteSR));
+
+        #region Mortar Range Handle 
         // Do this part of the code only for the Mortar turret
-        if (kindOfTurret != KindOfTurret.Mortar)
-            return;
+        if (kindOfTurret == KindOfTurret.Mortar)
+        {
+            unableRange = Instantiate(gameManager.rangeSprite, this.transform.position, this.transform.rotation, this.transform);
 
-        GameObject unableRange = Instantiate(gameManager.rangeSprite, this.transform.position, this.transform.rotation, this.transform);
+            float newRange = RangeConvertion(1, true);
 
-        float newRange = RangeConvertion(1, true);
+            unableRange.transform.localScale = new Vector3(newRange * 2, newRange * 2, 0);//1.265
+            unableRangeSR = unableRange.GetComponent<SpriteRenderer>();
+            unableRangeSR.color = new Color(0, 0, 0, 0.17f);
 
-        unableRange.transform.localScale = new Vector3(newRange * 2, newRange * 2, 0);//1.265
-        unableRange.GetComponent<SpriteRenderer>().color = new Color(0,0,0,0.17f);
+            StartCoroutine(FadeAttackRange(unableRangeSR));
+        }
+        #endregion
     }
 
     public void Start()
@@ -221,6 +234,17 @@ public class Turret : MonoBehaviour
         BuildManager.Instance.shop.selectedTurretInGame = this.gameObject;
 
         BuildManager.Instance.shop.DisplayCurrentTurretStats();
+
+        rangeSpriteSR.color = new Color(rangeSpriteSR.color.r, rangeSpriteSR.color.g, rangeSpriteSR.color.b, 0.0588235294f);
+
+        StartCoroutine(FadeAttackRange(rangeSpriteSR, 5.0f));
+
+        if (kindOfTurret == KindOfTurret.Mortar)
+        {
+            unableRangeSR.color = new Color(unableRangeSR.color.r, unableRangeSR.color.g, unableRangeSR.color.b, 0.17f);
+
+            StartCoroutine(FadeAttackRange(unableRangeSR, 5.0f));
+        }
     }
 
     private void Update()
@@ -249,6 +273,8 @@ public class Turret : MonoBehaviour
                 break;
         }
     }
+
+    #region Turret Attack Method
 
     public void ChooseTarget(Vector3 origin)
     {
@@ -864,6 +890,8 @@ public class Turret : MonoBehaviour
         }
     }
 
+    #endregion
+
     public void Upgrade()
     {
         if (isMaxLevel == true)
@@ -980,6 +1008,21 @@ public class Turret : MonoBehaviour
             this.fireRate = 1f;
         }
 
+    }
+
+    private IEnumerator FadeAttackRange(SpriteRenderer rangeSpriteSRFade, float howMuchTimeToFade = 1.5f)
+    {
+        yield return new WaitForSeconds(howMuchTimeToFade);
+
+        float t = 1f;
+
+        while (t > 0)
+        {
+            t -= Time.deltaTime;
+            float a = curve.Evaluate(t * 0.15f);
+            rangeSpriteSRFade.color = new Color(rangeSpriteSRFade.color.r, rangeSpriteSRFade.color.g, rangeSpriteSRFade.color.b, a);
+            yield return 0;
+        }
     }
 
     #region Util Function
