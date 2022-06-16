@@ -87,7 +87,7 @@ public class Deck : MonoBehaviour
         {
             inventoryButton[i].interactable = true;
         }
-
+        
         TurretDeckAddRemove.SetActive(false);
     }
 
@@ -126,7 +126,7 @@ public class Deck : MonoBehaviour
         TurretData turretData = gameManager.GetStatsKindOfTurret(kindOfTurret);
 
         description.text = turretData.description;
-        turretImageUI.sprite = turretData.UIDesign; // ici
+        turretImageUI.sprite = turretData.UIDesign;
 
         if (gameManager.dataManager.deckData.deckTurret.Contains(kindOfTurret))
         {
@@ -170,6 +170,7 @@ public class Deck : MonoBehaviour
         buttonToEnumDeck[selectedDeckSlotButton] = KindOfTurret.DefaultDoNotUseIt;
 
         selectedDeckSlotButton.GetComponent<Image>().sprite = null;
+        selectedDeckSlotButton.GetComponent<Image>().color = new Color(1, 1, 1, 0);
 
         TurretDeckAddRemove.SetActive(false);
     }
