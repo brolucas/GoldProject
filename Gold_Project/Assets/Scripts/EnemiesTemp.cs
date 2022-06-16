@@ -293,7 +293,7 @@ public class EnemiesTemp : MonoBehaviour
 
 		//Wait until this enemy have been erased from all list before destroying it
 		yield return new WaitUntil(() => !GameManager.Instance.enemies.Contains(this));
-        if (SceneManager.GetActiveScene().name == "Level 1" || SceneManager.GetActiveScene().name == "Level 2" || SceneManager.GetActiveScene().name == "Level 3")
+        if (SceneManager.GetActiveScene().name == "Level Tuto" || SceneManager.GetActiveScene().name == "Level 1" || SceneManager.GetActiveScene().name == "Level 2" || SceneManager.GetActiveScene().name == "Level 3")
         {
             WaveSpawner.enemyAlive--;
 
