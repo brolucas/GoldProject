@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class PathFeedBack : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public List<Vector3> path;
+    [SerializeField] EnemiesTemp lastEnemy;
+    [SerializeField] GameObject linePath;
+    LineRenderer line;
+
     void Start()
     {
-        
+        GameObject linePathLevel = Instantiate(linePath, transform.position, transform.rotation);
+        //c est plus simple mwouahaha
+        line = linePathLevel.GetComponent<LineRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        lastEnemy = GetComponent<GameManager>().enemies[GetComponent<GameManager>().enemies.Count-1];
+        path = lastEnemy.GetComponent<EnemiesTemp>().pathVectorList;
+        line.numPositions = path.Count;
+        //pa le choix
+        for (int i = 0; i < path.Count; i++)
+        {
+            line.SetPosition(i, path[i]);
+        }
     }
 }
