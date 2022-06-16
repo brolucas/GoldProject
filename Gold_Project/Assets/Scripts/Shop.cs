@@ -78,6 +78,7 @@ public class Shop : MonoBehaviour
 		switch (turret.currentLevel)
 		{
 			case 1:
+                nameTurretText.text = turret.kindOfTurret.ToString();
 				upgradeCost = 50;
 				infoTurretText.text = ("Level : " + turret.currentLevel + "/" + turret.maxLevel + "\n" +
 							   "Upgrade cost : " + (turret.turretPrice + upgradeCost) + "\n" +
@@ -87,6 +88,7 @@ public class Shop : MonoBehaviour
 							   "Target : " + turret.targetType);
 				break;
 			case 2:
+                nameTurretText.text = turret.kindOfTurret.ToString();
 				upgradeCost = 75;
 				infoTurretText.text = ("Level : " + turret.currentLevel + "/" + turret.maxLevel + "\n" +
 							   "Upgrade cost : " + (turret.turretPrice + upgradeCost) + "\n" +
@@ -96,6 +98,7 @@ public class Shop : MonoBehaviour
 							   "Target : " + turret.targetType);
 				break;
 			case 3:
+                nameTurretText.text = turret.kindOfTurret.ToString();
 				infoTurretText.text = ("Max Level" + "\n" +
 							   "No more upgrade" + "\n" +
 							   "Range : " + range + "\n" +
