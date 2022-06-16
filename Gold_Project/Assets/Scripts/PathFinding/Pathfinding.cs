@@ -117,7 +117,7 @@ public class Pathfinding:MonoBehaviour
 		return null;
 	}
 
-	private List<PathNode> GetNeighbourList(PathNode currentNode)
+	public List<PathNode> GetNeighbourList(PathNode currentNode)
 	{
 		List<PathNode> neighbourList = new List<PathNode>();
 
