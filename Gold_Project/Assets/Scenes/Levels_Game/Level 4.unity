@@ -3161,16 +3161,16 @@ MonoBehaviour:
     Wave_Rate: 2
   - Wave_Runner: {fileID: 3507957338615616271, guid: 81d686dbc43f8b241ae267581b10f5a2,
       type: 3}
-    Wave_nb_Runner: 8
+    Wave_nb_Runner: 20
     Wave_Manchot: {fileID: 3507957338615616271, guid: a7f7498f1b2f5594d96f6d8f2756e028,
       type: 3}
     Wave_Manchot_nbr: 0
     Wave_Kamikaze: {fileID: 3507957338615616271, guid: 2c5a42258157d5b4bba185ca11063737,
       type: 3}
-    Wave_Count_Kamikaze: 8
+    Wave_Count_Kamikaze: 10
     Wave_CRS: {fileID: 3507957338615616271, guid: 01cb632181ccaf542b6c09060d34b308,
       type: 3}
-    Wave_Count_CRS: 16
+    Wave_Count_CRS: 15
     Wave_Volant: {fileID: 3507957338615616271, guid: 54169df03662d4e4daf3dfd18e565e01,
       type: 3}
     Wave_Count_Volant: 0
