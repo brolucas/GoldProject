@@ -14,6 +14,10 @@ public class Turret : MonoBehaviour
     [SerializeField]
     private GameManager gameManager;
 
+    [SerializeField]
+    private ParticuleManager particuleManager;
+    private GameObject particleShoot;
+
     private GameObject rangeSprite;
     private GameObject unableRange;
     private SpriteRenderer rangeSpriteSR;
@@ -21,7 +25,14 @@ public class Turret : MonoBehaviour
     private Vector3 localScale;
     public AnimationCurve curve;
 
+    [Header("Sprite")]
     public SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private GameObject barrelGO;
+    [SerializeField]
+    private Transform particleSpawnPoint;
+
+    [Header("Other")]
 
     [Range(1, 180)]
     private int fireAngle = 12;
@@ -104,6 +115,11 @@ public class Turret : MonoBehaviour
             gameManager = FindObjectOfType<GameManager>();
         }
 
+        if (particuleManager == null)
+        {
+            particuleManager = GetComponent<ParticuleManager>();
+        }
+
         #region Show the range of the turret
         rangeSprite = Instantiate(gameManager.rangeSprite, this.transform.position, this.transform.rotation, this.transform);
 
@@ -111,7 +127,9 @@ public class Turret : MonoBehaviour
         
         #endregion
 
+
         InitTurretData(BuildManager.Instance.turretToBuild);
+
 
         rangeSprite.transform.localScale = new Vector3(range * 2, range * 2, 0);//1.265
 
@@ -149,6 +167,8 @@ public class Turret : MonoBehaviour
         gameManager.allTurret.Add(this);
 
         spriteRenderer.sprite = inGameDesign;
+
+        particleShoot = particuleManager.KotToParticules[kindOfTurret];
     }
 
     public void InitTurretData(KindOfTurret type)
@@ -209,27 +229,30 @@ public class Turret : MonoBehaviour
         inGameDesign = turretData.inGameDesign;
         UIDesign = turretData.UIDesign;
 
+        barrelGO.GetComponent<SpriteRenderer>().sprite = turretData.barrel;
+
         basePassiveParameters = turretData.basePassiveParameters;
         maxPassiveParameters = turretData.maxPassiveParameters;
         capPassive = turretData.capPassive;
 
         currentLevel = 1;
-        #endregion
-    }
 
-    /*private void OnMouseDrag()
-    {
-        if (!canBeMoved)
-            return;
+    #endregion
+}
 
-        this.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        this.transform.position = new Vector3(
-            Camera.main.ScreenToWorldPoint(Input.mousePosition).x,
-            Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 
-            0);
-    }*/
+/*private void OnMouseDrag()
+{
+    if (!canBeMoved)
+        return;
 
-    private void OnMouseDown()
+    this.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    this.transform.position = new Vector3(
+        Camera.main.ScreenToWorldPoint(Input.mousePosition).x,
+        Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 
+        0);
+}*/
+
+private void OnMouseDown()
     {
         BuildManager.Instance.shop.selectedTurretInGame = this.gameObject;
 
@@ -495,6 +518,26 @@ public class Turret : MonoBehaviour
             targetList.Add(currentTarget);
         }
 
+        switch (kindOfTurret)
+        {
+            case KindOfTurret.Basic:
+            case KindOfTurret.Discord:
+            case KindOfTurret.SniperTower:
+            case KindOfTurret.Furnace:
+            case KindOfTurret.Channelizer:
+            case KindOfTurret.Generator:
+                {
+                    Vector3 difference = currentTarget.transform.position - transform.position;
+                    float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+
+                    barrelGO.transform.localRotation = Quaternion.Euler(0, 0, rotZ);
+
+                    break;
+                }
+            default:
+                break;
+        }
+
         // just a visual debug draw line only visible in the editor
         foreach (var target in targetList)
         {
@@ -573,6 +616,13 @@ public class Turret : MonoBehaviour
         {
              damage = Mathf.Clamp(atqPoints + atqPtsBonusPassive, 0, maxAtqPoints);
         }
+
+        Vector3 difference = currentTarget.transform.position - transform.position;
+        float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+
+        GameObject bullet = Instantiate(particleShoot, this.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
+
+        //Instantiate(particleShoot, this.transform.position, particleShoot.transform.rotation, this.transform);
 
         enemy.TakeDamage(damage);
 

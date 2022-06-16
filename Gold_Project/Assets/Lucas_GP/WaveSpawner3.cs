@@ -31,6 +31,9 @@ public class WaveSpawner3 : MonoBehaviour
     private bool lastWave = false;
 
     public GameObject wave_Victory_Screen;
+    public GameObject wave_Victory_Star1;
+    public GameObject wave_Victory_Star2;
+    public GameObject wave_Victory_Star3;
 
     [SerializeField]
     private GameObject[] listEvent;
@@ -39,6 +42,8 @@ public class WaveSpawner3 : MonoBehaviour
 
     public int levelToUnlock = 2;
     public int currentLevel = 1;
+
+    public truck truck;
 
     private void Start()
     {
@@ -65,21 +70,37 @@ public class WaveSpawner3 : MonoBehaviour
             return;
         }
          countdown -= Time.deltaTime;
-        if (lastWave)
+        if (lastWave && SceneManager.GetActiveScene().name != "MainMenu")
         {
             if (enemyAlive <= 0)
             {
                 wave_Victory_Screen.SetActive(true);
+                //Time.timeScale = 0;
+                if (truck.Truck_Hp >= 1)
+                {
+                    wave_Victory_Star1.SetActive(true);
+                    if (truck.Truck_Hp >= 3)
+                    {
+                        wave_Victory_Star2.SetActive(true);
+                        if (truck.Truck_Hp >= 5)
+                        {
+                            wave_Victory_Star3.SetActive(true);
+                        }
+                    }
+                }
+                if (levelToUnlock > PlayerPrefs.GetInt("levelReached"))
+                {
+                    PlayerPrefs.SetInt("levelReached", levelToUnlock);
+                }
                 if (currentLevel == 9)
                 {
                     AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_finishing_world_3);
                 }
-                if (levelToUnlock > PlayerPrefs.GetInt("levelReached", 1))
-                {
-                    PlayerPrefs.SetInt("levelReached", levelToUnlock);
-                }
+
+                
+                this.enabled = false;
+
             }
-            //this.enabled = false;
         }   
         
         
@@ -153,7 +174,6 @@ public class WaveSpawner3 : MonoBehaviour
         else
         {
             wave_Index++;
-
         }
 
     }
@@ -179,18 +199,21 @@ public class WaveSpawner3 : MonoBehaviour
 
 
                 Pathfinding.Instance.GetGrid().GetXY(temp, out int x, out int y);
+
                 Pathfinding.Instance.GetNode(x, y).isEvent = listEvent[0];
-                Pathfinding.Instance.GetNode(x + 1, y).isEvent = listEvent[0];
-                Pathfinding.Instance.GetNode(x, y + 1).isEvent = listEvent[0];
-                Pathfinding.Instance.GetNode(x + 1, y + 1).isEvent = listEvent[0];
-                Pathfinding.Instance.GetNode(x, y + 2).isEvent = listEvent[0];
-                Pathfinding.Instance.GetNode(x + 2, y + 2).isEvent = listEvent[0];
+                Pathfinding.Instance.GetNode(x + 1, y).isEvent = listEvent[1];
+                Pathfinding.Instance.GetNode(x, y - 1).isEvent = listEvent[2];
+                Pathfinding.Instance.GetNode(x + 1, y - 1).isEvent = listEvent[3];
+                Pathfinding.Instance.GetNode(x, y - 2).isEvent = listEvent[4];
+                Pathfinding.Instance.GetNode(x + 1, y - 2).isEvent = listEvent[5];
+
                 Pathfinding.Instance.GetNode(x, y).isUsed = true;
                 Pathfinding.Instance.GetNode(x + 1, y).isUsed = true;
-                Pathfinding.Instance.GetNode(x, y + 1).isUsed = true;
-                Pathfinding.Instance.GetNode(x + 1, y + 1).isUsed = true;
-                Pathfinding.Instance.GetNode(x, y + 2).isUsed = true;
-                Pathfinding.Instance.GetNode(x + 2, y + 2).isUsed = true;
+                Pathfinding.Instance.GetNode(x, y -1).isUsed = true;
+                Pathfinding.Instance.GetNode(x + 1, y - 1).isUsed = true;
+                Pathfinding.Instance.GetNode(x, y - 2).isUsed = true;
+                Pathfinding.Instance.GetNode(x + 1, y - 2).isUsed = true;
+
                 Pathfinding.Instance.mapHasChanged = true;
 
                 Vector3 position = Pathfinding.Instance.GetGrid().GetWorldPosition(x, y);
@@ -199,25 +222,25 @@ public class WaveSpawner3 : MonoBehaviour
                 Vector3 position1 = Pathfinding.Instance.GetGrid().GetWorldPosition(x + 1, y);
                 position1 = new Vector3(position1.x + Pathfinding.Instance.GetGrid().cellSize / 2, position1.y + Pathfinding.Instance.GetGrid().cellSize / 2);
 
-                Vector3 position2 = Pathfinding.Instance.GetGrid().GetWorldPosition(x, y + 1);
-                position2 = new Vector3(position.x + Pathfinding.Instance.GetGrid().cellSize / 2, position.y + Pathfinding.Instance.GetGrid().cellSize / 2);
+                Vector3 position2 = Pathfinding.Instance.GetGrid().GetWorldPosition(x, y - 1);
+                position2 = new Vector3(position2.x + Pathfinding.Instance.GetGrid().cellSize / 2, position2.y + Pathfinding.Instance.GetGrid().cellSize / 2);
 
-                Vector3 position3 = Pathfinding.Instance.GetGrid().GetWorldPosition(x + 1, y + 1);
-                position3 = new Vector3(position1.x + Pathfinding.Instance.GetGrid().cellSize / 2, position1.y + Pathfinding.Instance.GetGrid().cellSize / 2);
+                Vector3 position3 = Pathfinding.Instance.GetGrid().GetWorldPosition(x + 1, y - 1);
+                position3 = new Vector3(position3.x + Pathfinding.Instance.GetGrid().cellSize / 2, position3.y + Pathfinding.Instance.GetGrid().cellSize / 2);
 
-                Vector3 position4 = Pathfinding.Instance.GetGrid().GetWorldPosition(x, y + 2);
-                position2 = new Vector3(position.x + Pathfinding.Instance.GetGrid().cellSize / 2, position.y + Pathfinding.Instance.GetGrid().cellSize / 2);
+                Vector3 position4 = Pathfinding.Instance.GetGrid().GetWorldPosition(x, y - 2);
+                position2 = new Vector3(position4.x + Pathfinding.Instance.GetGrid().cellSize / 2, position4.y + Pathfinding.Instance.GetGrid().cellSize / 2);
 
-                Vector3 position5 = Pathfinding.Instance.GetGrid().GetWorldPosition(x + 2, y + 2);
-                position3 = new Vector3(position1.x + Pathfinding.Instance.GetGrid().cellSize / 2, position1.y + Pathfinding.Instance.GetGrid().cellSize / 2);
+                Vector3 position5 = Pathfinding.Instance.GetGrid().GetWorldPosition(x + 1, y - 2);
+                position3 = new Vector3(position5.x + Pathfinding.Instance.GetGrid().cellSize / 2, position5.y + Pathfinding.Instance.GetGrid().cellSize / 2);
 
 
                 GameObject istevent = Instantiate(listEvent[0], position, Quaternion.identity);
-                GameObject istevent1 = Instantiate(listEvent[0], position1, Quaternion.identity);
-                GameObject istevent2 = Instantiate(listEvent[0], position2, Quaternion.identity);
-                GameObject istevent3 = Instantiate(listEvent[0], position3, Quaternion.identity);
-                GameObject istevent4 = Instantiate(listEvent[0], position2, Quaternion.identity);
-                GameObject istevent5 = Instantiate(listEvent[0], position3, Quaternion.identity);
+                GameObject istevent1 = Instantiate(listEvent[1], position1, Quaternion.identity);
+                GameObject istevent2 = Instantiate(listEvent[2], position2, Quaternion.identity);
+                GameObject istevent3 = Instantiate(listEvent[3], position3, Quaternion.identity);
+                GameObject istevent4 = Instantiate(listEvent[4], position2, Quaternion.identity);
+                GameObject istevent5 = Instantiate(listEvent[5], position3, Quaternion.identity);
 
                 //istevent.transform.GetChild(1).localScale = new Vector3(0, 0, 0);
                 break;

@@ -87,10 +87,21 @@ public class GameManager : MonoBehaviour
             }
 
 
-            deck = GetComponent<Deck>();
+        }
+    }
+
+    private void Start()
+    {
+        deck = GetComponent<Deck>();
+
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            for (int i = 0; i < deck.deckButton.Count; i++)
+            {
+                deck.deckButton[i].GetComponent<Image>().color = new Color(1, 1, 1, 0);
+            }
 
         }
-
     }
     public void Update()
     {
@@ -117,6 +128,7 @@ public class GameManager : MonoBehaviour
                 //Change value in the DECK in dataManager.deckData
                 dataManager.deckData.deckTurret[i] = kindOfTurret;
 
+                deck.deckButton[i].GetComponent<Image>().color = new Color(1, 1, 1, 1);
                 deck.deckButton[i].GetComponent<Image>().sprite = GetStatsKindOfTurret(kindOfTurret).UIDesign;
                 break;
             }
