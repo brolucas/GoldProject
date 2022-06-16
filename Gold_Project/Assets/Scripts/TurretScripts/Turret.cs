@@ -25,11 +25,14 @@ public class Turret : MonoBehaviour
     private Vector3 localScale;
     public AnimationCurve curve;
 
+    [Header("Sprite")]
     public SpriteRenderer spriteRenderer;
     [SerializeField]
-    private GameObject barrelSprite;
+    private GameObject barrelGO;
     [SerializeField]
     private Transform particleSpawnPoint;
+
+    [Header("Other")]
 
     [Range(1, 180)]
     private int fireAngle = 12;
@@ -166,8 +169,6 @@ public class Turret : MonoBehaviour
         spriteRenderer.sprite = inGameDesign;
 
         particleShoot = particuleManager.KotToParticules[kindOfTurret];
-
-        Instantiate(particleShoot, this.transform.position, particleShoot.transform.rotation, this.transform);
     }
 
     public void InitTurretData(KindOfTurret type)
@@ -227,6 +228,8 @@ public class Turret : MonoBehaviour
 
         inGameDesign = turretData.inGameDesign;
         UIDesign = turretData.UIDesign;
+
+        barrelGO.GetComponent<SpriteRenderer>().sprite = turretData.barrel;
 
         basePassiveParameters = turretData.basePassiveParameters;
         maxPassiveParameters = turretData.maxPassiveParameters;
@@ -515,6 +518,26 @@ private void OnMouseDown()
             targetList.Add(currentTarget);
         }
 
+        switch (kindOfTurret)
+        {
+            case KindOfTurret.Basic:
+            case KindOfTurret.Discord:
+            case KindOfTurret.SniperTower:
+            case KindOfTurret.Furnace:
+            case KindOfTurret.Channelizer:
+            case KindOfTurret.Generator:
+                {
+                    Vector3 difference = currentTarget.transform.position - transform.position;
+                    float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+
+                    barrelGO.transform.localRotation = Quaternion.Euler(0, 0, rotZ);
+
+                    break;
+                }
+            default:
+                break;
+        }
+
         // just a visual debug draw line only visible in the editor
         foreach (var target in targetList)
         {
@@ -593,6 +616,13 @@ private void OnMouseDown()
         {
              damage = Mathf.Clamp(atqPoints + atqPtsBonusPassive, 0, maxAtqPoints);
         }
+
+        Vector3 difference = currentTarget.transform.position - transform.position;
+        float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+
+        GameObject bullet = Instantiate(particleShoot, this.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
+
+        //Instantiate(particleShoot, this.transform.position, particleShoot.transform.rotation, this.transform);
 
         enemy.TakeDamage(damage);
 

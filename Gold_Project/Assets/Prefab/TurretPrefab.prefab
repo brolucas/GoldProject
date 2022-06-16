@@ -287,7 +287,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   spriteRenderer: {fileID: 3706267214484825225}
-  barrelSprite: {fileID: 6447180605734425163}
+  barrelGO: {fileID: 6447180605734425163}
   particleSpawnPoint: {fileID: 5786172248719315382}
   currentHP: 0
   range: 0
