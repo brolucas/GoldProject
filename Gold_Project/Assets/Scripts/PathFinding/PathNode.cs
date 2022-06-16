@@ -9,8 +9,7 @@ public class PathNode
     public int y;
 
     public bool isUsed;
-    public GameObject isTurret, isBarricade, isEvent;
-    public Decor isDecor;
+    public GameObject isTurret, isBarricade, isEvent, isDecor;
 
     public int gCost;
     public int hCost;
