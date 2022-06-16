@@ -4597,7 +4597,7 @@ PrefabInstance:
     - target: {fileID: 8262161137113511699, guid: 28da6559888611048a67939a8e1952b7,
         type: 3}
       propertyPath: gold
-      value: 350
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 8262161137113511699, guid: 28da6559888611048a67939a8e1952b7,
         type: 3}

@@ -4616,6 +4616,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8262161137113511699, guid: 28da6559888611048a67939a8e1952b7,
         type: 3}
+      propertyPath: gold
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 8262161137113511699, guid: 28da6559888611048a67939a8e1952b7,
+        type: 3}
       propertyPath: Truck_Coins_Text
       value: 
       objectReference: {fileID: 2140508398}
