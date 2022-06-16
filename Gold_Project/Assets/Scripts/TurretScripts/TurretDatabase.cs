@@ -25,7 +25,7 @@ public enum KindOfTurret
     Generator,
     Immobilizer,
     Zap,
-    Teleporter,
+    Spliter,
     // ex : NewType,
 };
 

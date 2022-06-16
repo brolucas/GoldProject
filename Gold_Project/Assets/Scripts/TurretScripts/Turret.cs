@@ -22,7 +22,7 @@ public class Turret : MonoBehaviour
     [Range(1, 180)]
     private int fireAngle = 12;
 
-    private float atqBonusStack = 0;
+    private int atqBonusStack = 0;
     private EnemiesTemp previousTarget = null;
 
     private bool doOnce = false;
@@ -69,7 +69,8 @@ public class Turret : MonoBehaviour
     #endregion
 
     private bool isInside;
-    private EnemiesTemp currentTarget = null;
+    public EnemiesTemp currentTarget { get; set; } = null;
+    public EnemiesTemp secondCurrentTarget { get; set; } = null;
 
     public float fireCountDown { get; protected set; } = 0.0f;
     public float countDown { get; protected set; } = 0.0f;
@@ -229,7 +230,7 @@ public class Turret : MonoBehaviour
 
         Vector3 origin = transform.position;
 
-        ChooseTarget(origin);
+        ChooseTarget(origin);   
 
         // Max Level Passive and Passive that are turn ON all the time
         switch (kindOfTurret)
@@ -300,10 +301,28 @@ public class Turret : MonoBehaviour
 
         //targetList is usefull when nbrOfTarget > 1
         targetList.Clear();
-        
 
-        //Default enemy in case it bug 
-        currentTarget = ChooseTargetClosestToTruck();
+        if (kindOfTurret == KindOfTurret.Spliter)
+        {
+            // currentTarget
+
+            if (currentTarget == null)
+            {
+                currentTarget = ChooseTargetFarestToTruck();
+                targetList.Add(currentTarget);
+            }
+
+            if (!inRangeEnemies.Contains(currentTarget))
+            {
+                currentTarget = ChooseTargetFarestToTruck();
+                targetList.Add(currentTarget);
+            }
+        }
+        else
+        {
+            //Default enemy in case it bug 
+            currentTarget = ChooseTargetClosestToTruck();
+        }
 
         switch (kindOfTurret)
         {
@@ -403,6 +422,33 @@ public class Turret : MonoBehaviour
 
                     break;
                 }
+            case KindOfTurret.Spliter:
+                {
+                    if (currentLevel >= maxLevel)
+                    {
+                        if (inRangeEnemies.Count < 2)
+                            break;
+
+                        // secondCurrentTarget
+
+                        //First time || Each time the target die or goes out of range
+                        if (secondCurrentTarget == null || !inRangeEnemies.Contains(secondCurrentTarget))
+                        {
+                            ChooseSecondTarget();
+                        }
+
+                        targetList.Add(currentTarget);
+
+                        while (secondCurrentTarget == currentTarget)
+                        {
+                            ChooseSecondTarget();
+                        }
+
+                        targetList.Add(secondCurrentTarget);
+                    }
+
+                    break;
+                }
             case KindOfTurret.Zap:
                 {
                     // 
@@ -414,6 +460,8 @@ public class Turret : MonoBehaviour
 
                 break;
         }
+
+        
 
         // Add the only target if it's one target turret and the line above didn't add one already
         if (targetList.Count == 0)
@@ -462,7 +510,7 @@ public class Turret : MonoBehaviour
             case KindOfTurret.Channelizer:
             case KindOfTurret.Immobilizer:
             case KindOfTurret.Zap:
-            case KindOfTurret.Teleporter:
+            case KindOfTurret.Spliter:
                 {
                     TurretPassive(enemy);
                     if (currentLevel >= maxLevel)
@@ -659,6 +707,35 @@ public class Turret : MonoBehaviour
 
                     break;
                 }
+            case KindOfTurret.Spliter:
+                {
+                    if (currentTarget == null)
+                    {
+                        Debug.LogWarning("currentTarget == null so turret discord will not work as planned");
+                        return;
+                    }
+
+                    #region check if it's the same target
+                    if (previousTarget == null)
+                        previousTarget = currentTarget;
+
+                    if (previousTarget == currentTarget)
+                    {
+                        atqBonusStack++;
+                        atqBonusStack = Mathf.Clamp(atqBonusStack, 0, 10);
+                    }
+                    else
+                    {
+                        atqBonusStack = 0;
+                        previousTarget = currentTarget;
+                    }
+                    #endregion
+
+                    // Doubles its damage each time the target is identical to the previous one. Cumulative 10 times
+                    atqPtsBonusPassive = DoubleAtq(atqBonusStack); 
+
+                    break;
+                }
             case KindOfTurret.Immobilizer:
                 {
                     StartCoroutine(enemy.StopSpeedTimer());
@@ -772,45 +849,19 @@ public class Turret : MonoBehaviour
                     }
                     break;
                 }
+            case KindOfTurret.Spliter:
+                {
+                    if (!doOnce)
+                    {
+                        nbrOfTarget = 2;
+                        doOnce = true;
+                    }
+                    break;
+                }
             default:
 
                 break;
         }
-    }
-
-    /*private IEnumerator ConfusionTimer(EnemiesTemp target)
-    {
-        target.isConfuse = true;
-        yield return new WaitForSeconds(1.0f); // A check
-        //Check si il se refait toucher 
-        if (!target.getTouch)
-        {
-            target.ConfuseCombo = 0;
-            target.isConfuse = false;
-            target.getTouch = false;
-        }
-        else
-        {
-            StartCoroutine(ConfusionTimer(target));
-        }
-    }*/
-
-    private IEnumerator IncreaseAttackSpeed(EnemiesTemp target)
-    {
-        if (this.fireRate < 6)
-        {
-            this.fireRate += 0.1f;
-        }
-        yield return new WaitForSeconds(1f);
-        if (target.getTouch)
-        {
-            StartCoroutine(IncreaseAttackSpeed(target));
-        }
-        else
-        {
-            this.fireRate = 1f;
-        }
-
     }
 
     public void Upgrade()
@@ -892,6 +943,45 @@ public class Turret : MonoBehaviour
         }
     }
 
+    public float DoubleAtq(int howManyTime)
+    {
+        float atqBonus = atqPoints;
+
+        for (int i = 0; i < howManyTime; i++)
+        {
+            atqBonus *= 2;
+        }
+
+        return atqBonus;
+    }
+
+    public void ChooseSecondTarget()
+    {
+        inRangeEnemies.Remove(currentTarget);
+
+        secondCurrentTarget = ChooseTargetFarestToTruck();
+
+        inRangeEnemies.Add(currentTarget);
+    }
+
+    private IEnumerator IncreaseAttackSpeed(EnemiesTemp target)
+    {
+        if (this.fireRate < 6)
+        {
+            this.fireRate += 0.1f;
+        }
+        yield return new WaitForSeconds(1f);
+        if (target.getTouch)
+        {
+            StartCoroutine(IncreaseAttackSpeed(target));
+        }
+        else
+        {
+            this.fireRate = 1f;
+        }
+
+    }
+
     #region Util Function
     public bool IsPointInsideCone(Vector3 point, Vector3 coneOrigin, Vector3 coneDirection, int maxAngle, float maxDistance)
     {
@@ -929,6 +1019,30 @@ public class Turret : MonoBehaviour
             }
             else if (currentTarget.pathVectorList.Count == target.pathVectorList.Count
                 && currentTarget.distanceToNextTarget > target.distanceToNextTarget)
+            {
+                currentTarget = target;
+            }
+        }
+
+        return currentTarget;
+    }
+
+    public EnemiesTemp ChooseTargetFarestToTruck(EnemiesTemp firstTarget = null)
+{
+        // Choose the target closest to get to the Truck
+        EnemiesTemp currentTarget = inRangeEnemies[0];
+
+        foreach (var target in inRangeEnemies)
+        {
+            if (target == currentTarget || target == firstTarget)
+                continue;
+
+            if (currentTarget.pathVectorList.Count < target.pathVectorList.Count)
+            {
+                currentTarget = target;
+            }
+            else if (currentTarget.pathVectorList.Count == target.pathVectorList.Count
+                && currentTarget.distanceToNextTarget < target.distanceToNextTarget)
             {
                 currentTarget = target;
             }
