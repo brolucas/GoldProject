@@ -228,6 +228,16 @@ public class WaveSpawner : MonoBehaviour
                     Destroy(Pathfinding.Instance.GetNode(x + 1, y).isBarricade);
                 }
 
+                if (Pathfinding.Instance.GetNode(x, y).isDecor != null)
+                {
+                    Destroy(Pathfinding.Instance.GetNode(x, y).isDecor);
+                }
+
+                if (Pathfinding.Instance.GetNode(x + 1, y).isDecor != null)
+                {
+                    Destroy(Pathfinding.Instance.GetNode(x + 1, y).isDecor);
+                }
+
 				Pathfinding.Instance.mapHasChanged = true;
 				Vector3 position = Pathfinding.Instance.GetGrid().GetWorldPosition(x,y);
 				position = new Vector3(position.x + Pathfinding.Instance.GetGrid().cellSize / 2, position.y + Pathfinding.Instance.GetGrid().cellSize / 2);
