@@ -12,7 +12,7 @@ public class GeneratorProjectile : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(speed, 0);
+        rb.velocity = -transform.up * speed;
         StartCoroutine(Delais());
     }
 
