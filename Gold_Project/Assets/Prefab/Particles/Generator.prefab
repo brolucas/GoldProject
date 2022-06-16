@@ -879,7 +879,7 @@ GameObject:
   - component: {fileID: 6316467423046455281}
   - component: {fileID: -5182613219355065781}
   m_Layer: 0
-  m_Name: GeneratorProjectile
+  m_Name: Generator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

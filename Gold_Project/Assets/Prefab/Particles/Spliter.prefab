@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4264265630751667229}
   - component: {fileID: 4264265630751667230}
   m_Layer: 0
-  m_Name: SpliterLine
+  m_Name: Spliter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

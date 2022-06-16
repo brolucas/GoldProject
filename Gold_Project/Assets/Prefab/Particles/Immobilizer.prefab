@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 20945677855478920}
   - component: {fileID: 20945677855478927}
   m_Layer: 0
-  m_Name: BouleDeNeige
+  m_Name: Immobilizer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
