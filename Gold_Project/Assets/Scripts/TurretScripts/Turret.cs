@@ -14,6 +14,10 @@ public class Turret : MonoBehaviour
     [SerializeField]
     private GameManager gameManager;
 
+    [SerializeField]
+    private ParticuleManager particuleManager;
+    private GameObject particleShoot;
+
     private GameObject rangeSprite;
     private GameObject unableRange;
     private SpriteRenderer rangeSpriteSR;
@@ -104,6 +108,11 @@ public class Turret : MonoBehaviour
             gameManager = FindObjectOfType<GameManager>();
         }
 
+        if (particuleManager == null)
+        {
+            particuleManager = GetComponent<ParticuleManager>();
+        }
+
         #region Show the range of the turret
         rangeSprite = Instantiate(gameManager.rangeSprite, this.transform.position, this.transform.rotation, this.transform);
 
@@ -111,7 +120,9 @@ public class Turret : MonoBehaviour
         
         #endregion
 
+
         InitTurretData(BuildManager.Instance.turretToBuild);
+
 
         rangeSprite.transform.localScale = new Vector3(range * 2, range * 2, 0);//1.265
 
@@ -149,6 +160,10 @@ public class Turret : MonoBehaviour
         gameManager.allTurret.Add(this);
 
         spriteRenderer.sprite = inGameDesign;
+
+        particleShoot = particuleManager.KotToParticules[kindOfTurret];
+
+        Instantiate(particleShoot, this.transform.position, this.transform.rotation, this.transform);
     }
 
     public void InitTurretData(KindOfTurret type)
@@ -214,22 +229,23 @@ public class Turret : MonoBehaviour
         capPassive = turretData.capPassive;
 
         currentLevel = 1;
-        #endregion
-    }
 
-    /*private void OnMouseDrag()
-    {
-        if (!canBeMoved)
-            return;
+    #endregion
+}
 
-        this.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        this.transform.position = new Vector3(
-            Camera.main.ScreenToWorldPoint(Input.mousePosition).x,
-            Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 
-            0);
-    }*/
+/*private void OnMouseDrag()
+{
+    if (!canBeMoved)
+        return;
 
-    private void OnMouseDown()
+    this.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    this.transform.position = new Vector3(
+        Camera.main.ScreenToWorldPoint(Input.mousePosition).x,
+        Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 
+        0);
+}*/
+
+private void OnMouseDown()
     {
         BuildManager.Instance.shop.selectedTurretInGame = this.gameObject;
 

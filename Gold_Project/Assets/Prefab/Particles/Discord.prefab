@@ -24354,7 +24354,7 @@ GameObject:
   - component: {fileID: -8268911896347339890}
   - component: {fileID: 2340936852055070949}
   m_Layer: 0
-  m_Name: ProjectileDiscord
+  m_Name: Discord
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

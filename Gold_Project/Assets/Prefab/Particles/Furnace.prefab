@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1293423662360424422}
   - component: {fileID: 2307016936038754212}
   m_Layer: 0
-  m_Name: TuuretFire
+  m_Name: Furnace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

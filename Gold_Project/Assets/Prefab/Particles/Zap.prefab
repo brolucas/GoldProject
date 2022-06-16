@@ -9711,7 +9711,7 @@ GameObject:
   - component: {fileID: 7216940183456831188}
   - component: {fileID: 1121946795859544013}
   m_Layer: 0
-  m_Name: Zap Particle
+  m_Name: Zap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
