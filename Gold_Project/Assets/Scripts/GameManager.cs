@@ -93,6 +93,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         deck = GetComponent<Deck>();
+
         if (SceneManager.GetActiveScene().name == "MainMenu")
         {
             for (int i = 0; i < deck.deckButton.Count; i++)
