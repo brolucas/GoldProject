@@ -31,6 +31,9 @@ public class WaveSpawner3 : MonoBehaviour
     private bool lastWave = false;
 
     public GameObject wave_Victory_Screen;
+    public GameObject wave_Victory_Star1;
+    public GameObject wave_Victory_Star2;
+    public GameObject wave_Victory_Star3;
 
     [SerializeField]
     private GameObject[] listEvent;
@@ -39,6 +42,8 @@ public class WaveSpawner3 : MonoBehaviour
 
     public int levelToUnlock = 2;
     public int currentLevel = 1;
+
+    public truck truck;
 
     private void Start()
     {
@@ -70,6 +75,19 @@ public class WaveSpawner3 : MonoBehaviour
             if (enemyAlive <= 0)
             {
                 wave_Victory_Screen.SetActive(true);
+                Time.timeScale = 0;
+                if (truck.Truck_Hp >= 1)
+                {
+                    wave_Victory_Star1.SetActive(true);
+                    if (truck.Truck_Hp >= 3)
+                    {
+                        wave_Victory_Star2.SetActive(true);
+                        if (truck.Truck_Hp >= 5)
+                        {
+                            wave_Victory_Star3.SetActive(true);
+                        }
+                    }
+                }
                 if (currentLevel == 9)
                 {
                     AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_finishing_world_3);
@@ -153,7 +171,6 @@ public class WaveSpawner3 : MonoBehaviour
         else
         {
             wave_Index++;
-
         }
 
     }

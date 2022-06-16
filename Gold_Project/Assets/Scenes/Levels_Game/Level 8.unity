@@ -2318,6 +2318,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24f19e5fd88d80946be2dd914af5555d, type: 3}
+--- !u!114 &985444799 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3252618971970743903, guid: 24f19e5fd88d80946be2dd914af5555d,
+    type: 3}
+  m_PrefabInstance: {fileID: 985444798}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8218b8251f9c5845b25e0176ae951bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1036746773
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3032,6 +3044,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6774791142897126944, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
+      propertyPath: sceneFader
+      value: 
+      objectReference: {fileID: 985444799}
+    - target: {fileID: 6774791142897126944, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
       propertyPath: gameOverScreen
       value: 
       objectReference: {fileID: 625416210}
@@ -3387,6 +3404,9 @@ MonoBehaviour:
   timeBetweenWave: 5
   wave_Text: {fileID: 639747333}
   wave_Victory_Screen: {fileID: 270149725}
+  wave_Victory_Star1: {fileID: 270149724}
+  wave_Victory_Star2: {fileID: 270149723}
+  wave_Victory_Star3: {fileID: 270149721}
   listEvent:
   - {fileID: 882767662396786120, guid: 539bdea3b5feaaa42b1e67a2bddb5350, type: 3}
   - {fileID: 882767662396786120, guid: 89e53f269f7c4bb45b7b079d81bf7413, type: 3}
@@ -3396,6 +3416,7 @@ MonoBehaviour:
   - {fileID: 882767662396786120, guid: 43bebfe92927fdb48a013745ac4a923d, type: 3}
   levelToUnlock: 9
   currentLevel: 8
+  truck: {fileID: 0}
 --- !u!1 &1293719127
 GameObject:
   m_ObjectHideFlags: 0

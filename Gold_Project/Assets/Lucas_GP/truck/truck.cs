@@ -48,6 +48,7 @@ public class truck : MonoBehaviour
         {
             TakeDamage();
             StartCoroutine(collision.gameObject.GetComponent<EnemiesTemp>().Die());
+
         }
     }
 }

@@ -39,8 +39,8 @@ public class WaveSpawner : MonoBehaviour
 
 	private bool notDone = false;
 
-	public int levelToUnlock = 2;
-    public int currentLevel = 1;
+	public int levelToUnlock;
+    public int currentLevel; 
 
     public truck truck;
 
@@ -76,6 +76,7 @@ public class WaveSpawner : MonoBehaviour
 			if (enemyAlive <= 0)
 			{
 				wave_Victory_Screen.SetActive(true);
+                //Time.timeScale = 0;
                 if (truck.Truck_Hp >= 1)
                 {
                     wave_Victory_Star1.SetActive(true);
@@ -190,7 +191,7 @@ public class WaveSpawner : MonoBehaviour
 	public void SpawnEvent()
 	{
 		System.Random alea = new System.Random();
-		int noevent = alea.Next(0,3);
+		int noevent = alea.Next(0,2);
 		int x1 = alea.Next(1, 11);
 		int y1 = alea.Next(0, 6);
 		Vector3 temp = new Vector3(x1, y1, 0);
@@ -198,11 +199,10 @@ public class WaveSpawner : MonoBehaviour
 		switch (noevent)
 		{
 			case 0:
-				Debug.Log("Event Launched !" + listEvent[0].ToString());
 
 				Pathfinding.Instance.GetGrid().GetXY(temp, out int x, out int y);
 				Pathfinding.Instance.GetNode(x, y).isEvent = listEvent[0];
-				Pathfinding.Instance.GetNode(x + 1, y).isEvent = listEvent[0];
+				Pathfinding.Instance.GetNode(x + 1, y).isEvent = listEvent[1];
 				Pathfinding.Instance.GetNode(x, y).isUsed = true;
 				Pathfinding.Instance.GetNode(x + 1, y).isUsed = true;
 				Pathfinding.Instance.mapHasChanged = true;
@@ -219,7 +219,6 @@ public class WaveSpawner : MonoBehaviour
 				break;
 
 			case 1:
-				Debug.Log("Event Launched !" + listEvent[1].ToString());
 				
 				if (GameManager.Instance.baricades.Capacity != 0)
 				{
@@ -231,12 +230,9 @@ public class WaveSpawner : MonoBehaviour
 				}
 				break;
 			case 2:
-				Debug.Log("Event Launched !" + listEvent[2].ToString());
 				spawnPoint.Add(spawnPoint2);
 				break;
-			case 3:
-				Debug.Log("Event Launched !" + listEvent[3].ToString());
-				break;
+			
 		}
 		
 

@@ -87,13 +87,20 @@ public class GameManager : MonoBehaviour
             }
 
 
-            deck = GetComponent<Deck>();
+        }
+    }
+
+    private void Start()
+    {
+        deck = GetComponent<Deck>();
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
             for (int i = 0; i < deck.deckButton.Count; i++)
             {
                 deck.deckButton[i].GetComponent<Image>().color = new Color(1, 1, 1, 0);
             }
-        }
 
+        }
     }
     public void Update()
     {

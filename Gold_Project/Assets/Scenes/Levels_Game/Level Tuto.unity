@@ -6132,6 +6132,11 @@ PrefabInstance:
       propertyPath: truck
       value: 
       objectReference: {fileID: 1987987812}
+    - target: {fileID: 6774791142897126944, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: sceneFader
+      value: 
+      objectReference: {fileID: 1630386660}
     - target: {fileID: 6774791142897126945, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
       propertyPath: timerCounterLeft
