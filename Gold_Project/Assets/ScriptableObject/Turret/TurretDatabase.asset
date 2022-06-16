@@ -39,9 +39,9 @@ MonoBehaviour:
       Range :
       1
 
-      Damage : 25
+      Damage : 50
 
-      Fire rate : 2/s
+      Fire rate : 1,5/s
 
       Target : Terreste'
   - label: Mortar
@@ -117,7 +117,7 @@ MonoBehaviour:
     fireRate: 1
     maxAtqPoints: 180
     activeAtqCap: 0
-    basePassiveParameters: 10
+    basePassiveParameters: 4
     maxPassiveParameters: 2
     capPassive: 0
     inGameDesign: {fileID: 21300000, guid: 3f074810cce335a4081ac124519ed72c, type: 3}
@@ -180,7 +180,7 @@ MonoBehaviour:
     maxAtqPoints: 180
     activeAtqCap: 0
     basePassiveParameters: 5
-    maxPassiveParameters: 8
+    maxPassiveParameters: 4
     capPassive: 0
     inGameDesign: {fileID: 21300000, guid: 672e33a98d9bb9040ab4474f1b42ab96, type: 3}
     UIDesign: {fileID: 21300000, guid: 672e33a98d9bb9040ab4474f1b42ab96, type: 3}
@@ -292,7 +292,7 @@ MonoBehaviour:
       Fire rate : 1/s
 
       Target : Terreste'
-  - label: Teleporter
+  - label: Spliter
     kindOfTurret: 10
     healthPoints: 400
     range: 1.5
@@ -300,7 +300,7 @@ MonoBehaviour:
     turretPrice: 500
     targetType: 3
     atqPoints: 1
-    fireRate: 3
+    fireRate: 2.25
     maxAtqPoints: 1536
     activeAtqCap: 0
     basePassiveParameters: 10
@@ -308,7 +308,7 @@ MonoBehaviour:
     capPassive: 50
     inGameDesign: {fileID: 21300000, guid: 672e33a98d9bb9040ab4474f1b42ab96, type: 3}
     UIDesign: {fileID: 21300000, guid: 672e33a98d9bb9040ab4474f1b42ab96, type: 3}
-    description: 'Name : Teleporter
+    description: 'Name : Spliter
 
 
       Cost : 500
@@ -320,6 +320,6 @@ MonoBehaviour:
 
       Damage : 1
 
-      Fire rate : 3/s
+      Fire rate : 2,25/s
 
       Target : Both'
