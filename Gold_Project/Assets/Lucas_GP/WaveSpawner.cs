@@ -119,6 +119,16 @@ public class WaveSpawner : MonoBehaviour
 		enemyAlive = wave.Wave_Count_Boss + wave.Wave_Count_CRS + wave.Wave_Count_Kamikaze + wave.Wave_Count_Volant + wave.Wave_nb_Runner + wave.Wave_Manchot_nbr;
 		Debug.Log("Apparition d'une vague");
 
+		if (wave_Index == waves.Length - 1)
+		{
+			Debug.Log("LAST WAVES ! ");
+			lastWave = true;
+		}
+		else
+		{
+			wave_Index++;
+
+		}
 		if (wave._event)
 		{
 			SpawnEvent();
@@ -172,16 +182,7 @@ public class WaveSpawner : MonoBehaviour
 				yield return new WaitForSeconds(1f / wave.Wave_Rate);
 			}
 		}
-		if (wave_Index == waves.Length-1)
-		{
-			Debug.Log("LAST WAVES ! ");
-			lastWave = true;
-		}
-		else
-		{
-			wave_Index++;
-
-		}
+		
 
 	}
 

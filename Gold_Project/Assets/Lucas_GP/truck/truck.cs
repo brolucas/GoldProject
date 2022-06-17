@@ -11,14 +11,13 @@ public class truck : MonoBehaviour
     public Text Truck_Coins_Text;
     //public Text Truck_Waves_Text;
 
-    public float gold = 200;
+    public float gold;
 
     public GameObject Truck_Game_Over_Screen;
 
     private void Start()
     {
         Truck_Coins_Text.text = ("  : " + gold.ToString());
-        gold = 200;
     }
 
     // Update is called once per frame
