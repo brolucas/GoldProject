@@ -203,6 +203,8 @@ public class Shop : MonoBehaviour
             turret.Upgrade();
 
             DisplayCurrentTurretStats();
+
+			turret.anim.SetBool("upgrading", true);
 		}
 		
 	}

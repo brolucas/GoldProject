@@ -34,6 +34,7 @@ public class Turret : MonoBehaviour
     private GameObject bullet = null;
     private Vector3 difference;
     private float rotZ;
+    public Animator anim;
 
     [Header("Other")]
 
@@ -705,12 +706,18 @@ public class Turret : MonoBehaviour
         switch (kindOfTurret)
         {
             // if com don't change it 
+            //case KindOfTurret.Spliter:
             case KindOfTurret.Basic:
             case KindOfTurret.SniperTower:
-            case KindOfTurret.Furnace:
             case KindOfTurret.Immobilizer:
+                {
+                    bullet = Instantiate(particleShoot, particleSpawnPoint.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
+                    //bullet.GetComponent<rangeLifeTimeParticles>().target = targetList[0].transform;
+                    break;
+                }
+            case KindOfTurret.Furnace:
             case KindOfTurret.Zap:
-            //case KindOfTurret.Spliter:
+            
                 {
                     bullet = Instantiate(particleShoot, particleSpawnPoint.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
                     break;

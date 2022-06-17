@@ -140,6 +140,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2065994964280866195}
   - component: {fileID: 3706267214484825225}
+  - component: {fileID: 3485604021440131341}
+  - component: {fileID: 741736281468870905}
   m_Layer: 0
   m_Name: BasicTurret
   m_TagString: Untagged
@@ -181,7 +183,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c9eb964d9bee04b45b535c3d16bd41df, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -213,6 +215,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3485604021440131341
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801238400779575776}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 43f47eb763e9ae34db3d553a6507a8c5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &741736281468870905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801238400779575776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30edbd0fb86606a40abe714add58bb11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Particles: {fileID: 8886750127943142260, guid: 28de2183ca6fe4146afe3fae8141e883,
+    type: 3}
 --- !u!1 &4514120256336626238
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,6 +324,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 3706267214484825225}
   barrelGO: {fileID: 6447180605734425163}
   particleSpawnPoint: {fileID: 5786172248719315382}
+  anim: {fileID: 3485604021440131341}
   currentHP: 0
   range: 0
   currentLevel: 3
@@ -335,7 +371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShootParticle:
-  - {fileID: 3444266104375053252, guid: 23bc6e1b086f94d459817f92f3f61661, type: 3}
+  - {fileID: 6619302568652604270, guid: 23bc6e1b086f94d459817f92f3f61661, type: 3}
   - {fileID: 1275317458183045221, guid: 8547417f562273143923233f5b2b1e55, type: 3}
   - {fileID: 6318932003005104179, guid: d176ae6a9930e6b4fb841e71049b6446, type: 3}
   - {fileID: 7776459519603759252, guid: 5823a9f204d49db4bb851046a43219fc, type: 3}
