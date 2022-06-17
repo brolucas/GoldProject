@@ -267,6 +267,8 @@ public class WaveSpawner : MonoBehaviour
 				break;
 			case 2:
 				spawnPoint.Add(spawnPoint2);
+				Pathfinding.Instance.GetGrid().GetXY(spawnPoint2.position, out int spawnX, out int spawnY);
+				Pathfinding.Instance.GetNode(spawnX, spawnY).isUsed = true;
 				break;
 			
 		}
