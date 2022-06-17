@@ -51,6 +51,8 @@ public class EnemiesTemp : MonoBehaviour
 	private GameObject turretTarget;
 	private System.Random alea;
 
+	[SerializeField] private ParticleSystem part1, part2, part3;
+
 	public void Start()
 	{
 		endPoint = Pathfinding.Instance.endPoint;
@@ -310,6 +312,9 @@ public class EnemiesTemp : MonoBehaviour
 
         }
 
+		Instantiate(part1, transform.position, Quaternion.Euler(0, 0, 0));
+		Instantiate(part2, transform.position, Quaternion.Euler(0, 0, 0));
+		Instantiate(part3, transform.position, Quaternion.Euler(0, 0, 0));
 		Destroy(gameObject);
 	}
 
@@ -322,7 +327,9 @@ public class EnemiesTemp : MonoBehaviour
 			if (distanceToNextTarget > 0.1f)
 			{
 				Vector3 moveDir = (targetPosition - transform.position).normalized;
-				
+
+				float angle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg;
+				transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
 				//float distanceBefore = Vector3.Distance(transform.position, targetPosition);
 				transform.position = transform.position + moveDir * currentSpeed * Time.deltaTime;
