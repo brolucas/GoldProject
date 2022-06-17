@@ -19,6 +19,11 @@ public class PathfindingTest : MonoBehaviour
 		levelData = levelDataBase.levels.Find(LevelData => LevelData.levelLabel == levelLabel);
 		pathfinding = new Pathfinding(13, 7, cellSize, this.transform, end.transform, decorPrefab, levelData);
 
+		for(int i =0; i<7; i++)
+        {
+			pathfinding.GetNode(12, i).isUsed = true;
+        }
+
 		//enemy.endPoint = end.transform;
 	}
 
