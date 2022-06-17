@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHp: 20
-  hp: 0
+  hp: 20
   price: 40
 --- !u!61 &5686230263154147700
 BoxCollider2D:

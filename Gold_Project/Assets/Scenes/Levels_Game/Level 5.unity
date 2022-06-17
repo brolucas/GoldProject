@@ -1558,6 +1558,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameOverScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 1013023685014486467, guid: c51a85406f5cd2347b6acdedefabaa89,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 985444799}
+    - target: {fileID: 1013023685014486467, guid: c51a85406f5cd2347b6acdedefabaa89,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FadeTo
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c51a85406f5cd2347b6acdedefabaa89, type: 3}
 --- !u!1 &832461068 stripped

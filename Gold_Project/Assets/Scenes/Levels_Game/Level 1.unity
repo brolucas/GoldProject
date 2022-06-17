@@ -3433,11 +3433,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameOverScreen
       objectReference: {fileID: 0}
-    - target: {fileID: 1013023684539226781, guid: c51a85406f5cd2347b6acdedefabaa89,
+    - target: {fileID: 1013023685014486467, guid: c51a85406f5cd2347b6acdedefabaa89,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1630386660}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c51a85406f5cd2347b6acdedefabaa89, type: 3}
 --- !u!224 &1711401530 stripped
@@ -5190,7 +5190,7 @@ PrefabInstance:
     - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
       propertyPath: waves.Array.data[3].Wave_Count_Kamikaze
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
@@ -5200,12 +5200,12 @@ PrefabInstance:
     - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
       propertyPath: waves.Array.data[5].Wave_Count_Kamikaze
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
       propertyPath: waves.Array.data[6].Wave_Count_Kamikaze
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
@@ -5215,7 +5215,7 @@ PrefabInstance:
     - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
       propertyPath: waves.Array.data[8].Wave_Count_Kamikaze
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
