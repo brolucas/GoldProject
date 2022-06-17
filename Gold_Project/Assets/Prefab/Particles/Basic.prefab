@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3444266104375052857}
   - component: {fileID: 3444266104375053254}
   - component: {fileID: 8469096547581895670}
+  - component: {fileID: 7072757529580615285}
   m_Layer: 0
   m_Name: Basic
   m_TagString: Untagged
@@ -117,7 +118,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.25
+      scalar: 0.05
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -3862,10 +3863,7 @@ ParticleSystem:
     colliderQueryMode: 0
     radiusScale: 1
     primitives:
-    - {fileID: 1584382779761952291, guid: bbc46d7888f56d04a81b76833de154c2, type: 3}
-    - {fileID: 2279312379432567736, guid: 6e2a8f5891f72b342b07c866678fc75d, type: 3}
-    - {fileID: 4206551651262593906, guid: 5fdacb50bae8ba34982a64afb4a4d219, type: 3}
-    - {fileID: 7501537313164047335, guid: d07f9a96bf097054987fb2563ed354a6, type: 3}
+    - {fileID: 6898869339770346148, guid: 81d686dbc43f8b241ae267581b10f5a2, type: 3}
   SubModule:
     serializedVersion: 2
     enabled: 0
@@ -4899,4 +4897,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f6aebf9eb7bdef41a00b854f511b6ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 5
+  lifeTime: 1
+--- !u!114 &7072757529580615285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3444266104375053252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7155359e831a584e83d9a76d8da1316, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  rangeTarget: 0
+  lifeTime: 0
+  y: 5707.508
