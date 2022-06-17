@@ -20,7 +20,7 @@ public class PathFeedBack : MonoBehaviour
     {
         lastEnemy = GetComponent<GameManager>().enemies[GetComponent<GameManager>().enemies.Count-1];
         path = lastEnemy.GetComponent<EnemiesTemp>().pathVectorList;
-        line.numPositions = path.Count;
+        line.positionCount = path.Count;
         //pa le choix
         for (int i = 0; i < path.Count; i++)
         {
