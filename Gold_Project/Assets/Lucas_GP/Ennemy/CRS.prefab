@@ -168,6 +168,10 @@ MonoBehaviour:
   currentPathIndex: 0
   pathVectorList: []
   endPoint: {fileID: 0}
+  isKamikaze: 0
+  part1: {fileID: 6702079548424965487, guid: 5000d91626e97924f9bd4a1ec72dc9ad, type: 3}
+  part2: {fileID: 5110612013305950267, guid: 5b542012503b52d4c9902cf03b2e2e60, type: 3}
+  part3: {fileID: 5962223058080431632, guid: b8a81912874e5ea499d41763ae803d5b, type: 3}
 --- !u!1001 &4721548477495772615
 PrefabInstance:
   m_ObjectHideFlags: 0
