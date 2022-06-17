@@ -24,6 +24,6 @@ public class TurretUpgrade : MonoBehaviour
     public void UpgradeParticles()
     {
 
-        Instantiate(Particles, transform.parent.GetComponent<Transform>().position, Quaternion.identity);
+        Instantiate(Particles, transform.position, Quaternion.identity);
     }
 }

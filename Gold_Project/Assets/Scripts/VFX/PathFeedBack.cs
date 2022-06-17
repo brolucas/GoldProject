@@ -34,7 +34,7 @@ public class PathFeedBack : MonoBehaviour
         }
         else
         {
-            line.numPositions = path.Count;
+            line.positionCount = path.Count;
 
             for (int i = 0; i < path.Count; i++)
             {

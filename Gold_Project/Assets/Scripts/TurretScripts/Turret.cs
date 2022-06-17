@@ -41,7 +41,7 @@ public class Turret : MonoBehaviour
     private int fireAngle = 12;
 
     private int atqBonusStack = 0;
-    private EnemiesTemp previousTarget = null;
+    private int previousIDTarget = 0;
 
     private bool doOnce = false;
 
@@ -283,31 +283,66 @@ public class Turret : MonoBehaviour
 
         ChooseTarget(origin);
 
-        // Delay between shot
-        if (fireCountDown <= 0f)
-        {
-            if (nbrOfTarget == 1)
-            {
-                difference = targetList[0].transform.position - transform.position;
-                rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
 
-                Shoot(targetList[0]);
-            }
-            if (nbrOfTarget > 1)
+        if (targetList.Count > 0)
+        {
+            // Delay between shot
+            if (fireCountDown <= 0f)
             {
-                foreach (var target in targetList)
+                if (nbrOfTarget == 1)
                 {
-                    difference = target.transform.position - transform.position;
+                    difference = targetList[0].transform.position - transform.position;
                     rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
 
-                    Shoot(target);
+                    Shoot(targetList[0]);
+                }
+                if (nbrOfTarget > 1)
+                {
+                    foreach (var target in targetList)
+                    {
+                        difference = target.transform.position - transform.position;
+                        rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+
+                        Shoot(target);
+                    }
+                }
+
+                fireCountDown = 1 / (fireRate + fireRateBonus);
+            }
+
+            fireCountDown -= Time.deltaTime;
+
+            if (bullet != null)
+            {
+                // Follow the rotation target even after being instantiate 
+                switch (kindOfTurret)
+                {
+                    case KindOfTurret.Spliter:
+                        {
+                            bullet.GetComponent<SpliterRay>().posOrigin = this.transform.position;
+                            break;
+                        }
+                    case KindOfTurret.Basic:
+                    case KindOfTurret.SniperTower:
+                    case KindOfTurret.Furnace:
+                    case KindOfTurret.Immobilizer:
+                    case KindOfTurret.Zap:
+                        {
+                            bullet.transform.rotation = Quaternion.Euler(-rotZ, 90, 180);
+                            break;
+                        }
+                    case KindOfTurret.Channelizer:
+                    case KindOfTurret.Generator:
+                    case KindOfTurret.Discord:
+                        {
+                            bullet.transform.rotation = Quaternion.Euler(0, 0, 90 + rotZ);
+                            break;
+                        }
+                    default:
+                        break;
                 }
             }
-            
-            fireCountDown = 1 / (fireRate + fireRateBonus);
         }
-
-        fireCountDown -= Time.deltaTime;
 
         // Max Level Passive and Passive that are turn ON all the time
         switch (kindOfTurret)
@@ -322,30 +357,6 @@ public class Turret : MonoBehaviour
                 if (inRangeEnemies.Count <= 0)
                     TurretPassive(currentTarget = null);
                 break;
-            default:
-                break;
-        }
-
-        switch (kindOfTurret)
-        {
-            // if com don't change it 
-            case KindOfTurret.Basic:
-            case KindOfTurret.SniperTower:
-            case KindOfTurret.Furnace:
-            case KindOfTurret.Immobilizer:
-            case KindOfTurret.Zap:
-                //case KindOfTurret.Spliter:
-                {
-                    bullet.transform.rotation = Quaternion.Euler(-rotZ, 90, 180);
-                    break;
-                }
-            case KindOfTurret.Channelizer:
-            case KindOfTurret.Generator:
-            case KindOfTurret.Discord:
-                {
-                    bullet.transform.rotation = Quaternion.Euler(0, 0, 90 + rotZ);
-                    break;
-                }
             default:
                 break;
         }
@@ -405,7 +416,7 @@ public class Turret : MonoBehaviour
             {
                 if (bullet == null)
                 {
-                    bullet = Instantiate(particleShoot, this.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
+                    bullet = Instantiate(particleShoot, particleSpawnPoint.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
                 }
             }
             else
@@ -414,7 +425,10 @@ public class Turret : MonoBehaviour
                 bullet = null;
             }
 
-            bullet.GetComponent<LineRenderer>().SetPosition(1, this.transform.position);
+            if (bullet != null)
+            {
+                bullet.GetComponent<LineRenderer>().SetPosition(1, this.transform.position);
+            }
         }
 
         if (inRangeEnemies.Count <= 0)
@@ -698,7 +712,7 @@ public class Turret : MonoBehaviour
             case KindOfTurret.Zap:
             //case KindOfTurret.Spliter:
                 {
-                    bullet = Instantiate(particleShoot, this.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
+                    bullet = Instantiate(particleShoot, particleSpawnPoint.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
                     break;
                 }
             case KindOfTurret.Mortar:
@@ -710,7 +724,7 @@ public class Turret : MonoBehaviour
             case KindOfTurret.Generator:
             case KindOfTurret.Discord:
                 {
-                    bullet = Instantiate(particleShoot, transform.position, Quaternion.Euler(0, 0, (90 + rotZ)));
+                    bullet = Instantiate(particleShoot, particleSpawnPoint.transform.position, Quaternion.Euler(0, 0, (90 + rotZ)));
                     break;
                 }
             default:
@@ -850,20 +864,21 @@ public class Turret : MonoBehaviour
                         return;
                     }
 
+                    int currentIDTarget = -currentTarget.GetInstanceID();
+
                     #region check if it's the same target
-                    if (previousTarget == null)
-                        previousTarget = currentTarget;
-                    
-                    if (previousTarget == currentTarget)
+                    if (previousIDTarget == 0)
+                        previousIDTarget = currentIDTarget;
+
+                    if (previousIDTarget == currentIDTarget)
                     {
                         atqBonusStack++;
                         atqBonusStack = Mathf.Clamp(atqBonusStack, 0, 10);
                     }
                     else
                     {
-                        //atqPtsBonus -= atqPoints * discordAtqBonus;
                         atqBonusStack = 0;
-                        previousTarget = currentTarget;
+                        previousIDTarget = currentIDTarget;
                     }
                     #endregion
 
@@ -884,11 +899,13 @@ public class Turret : MonoBehaviour
                         return;
                     }
 
-                    #region check if it's the same target
-                    if (previousTarget == null)
-                        previousTarget = currentTarget;
+                    int currentIDTarget = -currentTarget.GetInstanceID();
 
-                    if (previousTarget == currentTarget)
+                    #region check if it's the same target
+                    if (previousIDTarget == 0)
+                        previousIDTarget = currentIDTarget;
+
+                    if (previousIDTarget == currentIDTarget)
                     {
                         atqBonusStack++;
                         atqBonusStack = Mathf.Clamp(atqBonusStack, 0, 10);
@@ -896,7 +913,7 @@ public class Turret : MonoBehaviour
                     else
                     {
                         atqBonusStack = 0;
-                        previousTarget = currentTarget;
+                        previousIDTarget = currentIDTarget;
                     }
                     #endregion
 

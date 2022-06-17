@@ -9775,6 +9775,8 @@ GameObject:
   - component: {fileID: 7776459519603759464}
   - component: {fileID: 7776459519603759465}
   - component: {fileID: 7776459519603759254}
+  - component: {fileID: 2173143380497383697}
+  - component: {fileID: 2941117470277678919}
   m_Layer: 0
   m_Name: SniperTower
   m_TagString: Untagged
@@ -14651,3 +14653,32 @@ MonoBehaviour:
   normalStrength: 5
   normalSmoothing: 1
   computingNormal: 0
+--- !u!114 &2173143380497383697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7776459519603759252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f6aebf9eb7bdef41a00b854f511b6ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 5
+--- !u!114 &2941117470277678919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7776459519603759252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7155359e831a584e83d9a76d8da1316, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  rangeTarget: 0
+  lifeTime: 0
+  y: 5707.508
