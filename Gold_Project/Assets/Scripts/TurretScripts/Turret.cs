@@ -31,6 +31,9 @@ public class Turret : MonoBehaviour
     private GameObject barrelGO;
     [SerializeField]
     private Transform particleSpawnPoint;
+    private GameObject bullet = null;
+    private Vector3 difference;
+    private float rotZ;
 
     [Header("Other")]
 
@@ -44,7 +47,6 @@ public class Turret : MonoBehaviour
 
     private bool hasGeneratorBuffActived;
 
-    private float rotZ;
 
     #region Turret Stats
 
@@ -242,19 +244,19 @@ public class Turret : MonoBehaviour
     #endregion
 }
 
-/*private void OnMouseDrag()
-{
-    if (!canBeMoved)
-        return;
+    /*private void OnMouseDrag()
+    {
+        if (!canBeMoved)
+            return;
 
-    this.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    this.transform.position = new Vector3(
-        Camera.main.ScreenToWorldPoint(Input.mousePosition).x,
-        Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 
-        0);
-}*/
+        this.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        this.transform.position = new Vector3(
+            Camera.main.ScreenToWorldPoint(Input.mousePosition).x,
+            Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 
+            0);
+    }*/
 
-private void OnMouseDown()
+    private void OnMouseDown()
     {
         BuildManager.Instance.shop.selectedItemInGame = this.gameObject;
 
@@ -279,7 +281,33 @@ private void OnMouseDown()
 
         Vector3 origin = transform.position;
 
-        ChooseTarget(origin);   
+        ChooseTarget(origin);
+
+        // Delay between shot
+        if (fireCountDown <= 0f)
+        {
+            if (nbrOfTarget == 1)
+            {
+                difference = targetList[0].transform.position - transform.position;
+                rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+
+                Shoot(targetList[0]);
+            }
+            if (nbrOfTarget > 1)
+            {
+                foreach (var target in targetList)
+                {
+                    difference = target.transform.position - transform.position;
+                    rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+
+                    Shoot(target);
+                }
+            }
+            
+            fireCountDown = 1 / (fireRate + fireRateBonus);
+        }
+
+        fireCountDown -= Time.deltaTime;
 
         // Max Level Passive and Passive that are turn ON all the time
         switch (kindOfTurret)
@@ -297,6 +325,8 @@ private void OnMouseDown()
             default:
                 break;
         }
+
+        bullet.transform.rotation = Quaternion.Euler(-rotZ, 90, 180);
     }
 
     #region Turret Attack Method
@@ -345,6 +375,24 @@ private void OnMouseDown()
                 targetList.Remove(enemy);
                 inRangeEnemies.Remove(enemy);
             }
+        }
+
+        if (kindOfTurret == KindOfTurret.Spliter)
+        {
+            if (inRangeEnemies.Count > 0)
+            {
+                if (bullet == null)
+                {
+                    bullet = Instantiate(particleShoot, this.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
+                }
+            }
+            else
+            {
+                Destroy(bullet);
+                bullet = null;
+            }
+
+            bullet.GetComponent<LineRenderer>().SetPosition(1, this.transform.position);
         }
 
         if (inRangeEnemies.Count <= 0)
@@ -512,7 +560,6 @@ private void OnMouseDown()
                 break;
         }
 
-        
 
         // Add the only target if it's one target turret and the line above didn't add one already
         if (targetList.Count == 0)
@@ -520,14 +567,7 @@ private void OnMouseDown()
             targetList.Add(currentTarget);
         }
 
-        GameObject bullet = null;
-
-        if (kindOfTurret == KindOfTurret.Spliter)
-        {
-            bullet = Instantiate(particleShoot, this.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
-        }
-
-        Vector3 difference = currentTarget.transform.position - transform.position;
+        difference = currentTarget.transform.position - transform.position;
         rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
 
         switch (kindOfTurret)
@@ -556,20 +596,17 @@ private void OnMouseDown()
             #endregion
         }
 
-        if (fireCountDown <= 0f)
+        if (kindOfTurret == KindOfTurret.Spliter)
         {
-            foreach (var target in targetList)
+            SpliterRay raySpliterRay = bullet.GetComponent<SpliterRay>();
+            raySpliterRay.target = currentTarget.transform;
+
+            if (currentLevel >= maxLevel)
             {
-                difference = target.transform.position - transform.position;
-                rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-
-                Shoot(target);
+                raySpliterRay.doubleTarget = true;
+                raySpliterRay.target2 = secondCurrentTarget.transform;
             }
-            fireCountDown = 1 / (fireRate + fireRateBonus);
         }
-
-        fireCountDown -= Time.deltaTime;
-
     }
 
     public void Shoot(EnemiesTemp enemy)
@@ -639,19 +676,19 @@ private void OnMouseDown()
             case KindOfTurret.Zap:
             //case KindOfTurret.Spliter:
                 {
-                    GameObject bullet = Instantiate(particleShoot, this.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
+                    bullet = Instantiate(particleShoot, this.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
                     break;
                 }
             case KindOfTurret.Mortar:
                 {
-                    GameObject bullet = Instantiate(particleShoot, enemy.transform.position, transform.rotation, this.transform);
+                    bullet = Instantiate(particleShoot, enemy.transform.position, transform.rotation, this.transform);
                     break;
                 }
             case KindOfTurret.Channelizer:
             case KindOfTurret.Generator:
             case KindOfTurret.Discord:
                 {
-                    GameObject bullet = Instantiate(particleShoot, transform.position, Quaternion.Euler(0, 0, (90 + rotZ)));
+                    bullet = Instantiate(particleShoot, transform.position, Quaternion.Euler(0, 0, (90 + rotZ)));
                     break;
                 }
             default:

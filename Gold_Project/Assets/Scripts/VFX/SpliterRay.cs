@@ -10,7 +10,7 @@ public class SpliterRay : MonoBehaviour
     private LineRenderer Line;
     public Transform target;
     public Transform target2;
-    [SerializeField] bool doubleTarget;
+    public bool doubleTarget;
 
     [SerializeField] ParticleSystem sparks;
 
@@ -26,7 +26,7 @@ public class SpliterRay : MonoBehaviour
         {
             positionTarget = target.position;
             Line.SetPosition(0, positionTarget);
-            Instantiate(sparks, new Vector3(positionTarget.x, positionTarget.y, positionTarget.z - 1), Quaternion.Euler(0, 0, 0));
+            Instantiate(sparks, new Vector3(positionTarget.x, positionTarget.y, positionTarget.z - 1), Quaternion.Euler(0, 0, 0), this.transform);
         }
         else
         {
@@ -38,7 +38,7 @@ public class SpliterRay : MonoBehaviour
         {
             positionTarget2 = target2.position;
             Line.SetPosition(2, positionTarget2);
-            Instantiate(sparks, new Vector3(positionTarget2.x, positionTarget2.y, positionTarget2.z - 1), Quaternion.Euler(0, 0, 0));
+            Instantiate(sparks, new Vector3(positionTarget2.x, positionTarget2.y, positionTarget2.z - 1), Quaternion.Euler(0, 0, 0), this.transform);
         }
         else
         {
