@@ -116,6 +116,15 @@ public class WaveSpawner3 : MonoBehaviour
 
         Debug.Log("Apparition d'une vague");
 
+        if (wave_Index == waves.Length - 1)
+        {
+            Debug.Log("LAST WAVES ! ");
+            lastWave = true;
+        }
+        else
+        {
+            wave_Index++;
+        }
         if (wave._event)
         {
             SpawnEvent();
@@ -169,15 +178,7 @@ public class WaveSpawner3 : MonoBehaviour
                 yield return new WaitForSeconds(1f / wave.Wave_Rate);
             }
         }
-        if (wave_Index == waves.Length-1)
-        {
-            Debug.Log("LAST WAVES ! ");
-            lastWave = true;
-        }
-        else
-        {
-            wave_Index++;
-        }
+        
 
     }
 

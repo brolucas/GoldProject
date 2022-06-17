@@ -146,10 +146,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373ee22e8fe23fa4bb65d9b1af348171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 200
+  startingHealth: 50
   currentHealth: 0
-  baseSpeed: 3
-  currentSpeed: 3
+  baseSpeed: 1.75
+  currentSpeed: 1.75
   damage: 5000
   fireRate: 0
   isFlying: 0

@@ -135,9 +135,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d34062036091a94fbefc1aea61ad44c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Truck_Hp: 10
+  Truck_Hp: 5
   Truck_Coins_Text: {fileID: 0}
-  gold: 2000
+  gold: 200
   Truck_Game_Over_Screen: {fileID: 0}
 --- !u!61 &4744797523149530650
 BoxCollider2D:
