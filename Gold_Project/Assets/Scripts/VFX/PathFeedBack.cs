@@ -8,6 +8,7 @@ public class PathFeedBack : MonoBehaviour
     [SerializeField] EnemiesTemp lastEnemy;
     [SerializeField] GameObject linePath;
     LineRenderer line;
+    public bool B;
 
     void Start()
     {
@@ -18,13 +19,39 @@ public class PathFeedBack : MonoBehaviour
 
     void Update()
     {
-        lastEnemy = GetComponent<GameManager>().enemies[GetComponent<GameManager>().enemies.Count-1];
-        path = lastEnemy.GetComponent<EnemiesTemp>().pathVectorList;
-        line.positionCount = path.Count;
-        //pa le choix
-        for (int i = 0; i < path.Count; i++)
+        if (GameManager.Instance.enemies.Count > 0)
         {
-            line.SetPosition(i, path[i]);
+            lastEnemy = GameManager.Instance.enemies[GameManager.Instance.enemies.Count-1];
+            path = lastEnemy.GetComponent<EnemiesTemp>().pathVectorList;
         }
+
+        if (GameManager.Instance.enemies.Count <= 0)
+        {
+            for (int i = 0; i < path.Count; i++)
+            {
+                line.SetPosition(i, new Vector3(0,0,0));
+            }
+        }
+        else
+        {
+            line.numPositions = path.Count;
+
+            for (int i = 0; i < path.Count; i++)
+            {
+                line.SetPosition(i, path[i]);
+            }
+
+        }
+        //pa le choix
+
+
     }
+
+    private void OnDisable()
+    {
+            Debug.LogWarning("OnDisable");
+
+    }
+
+  
 }
