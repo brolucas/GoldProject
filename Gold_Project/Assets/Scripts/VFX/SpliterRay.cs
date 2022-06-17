@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpliterRay : MonoBehaviour
 {
-    [SerializeField] Vector3 postionOrigine;
+    [SerializeField] public Vector3 posOrigin;
     public Vector3 positionTarget;
     public Vector3 positionTarget2;
     private LineRenderer Line;
@@ -16,13 +16,13 @@ public class SpliterRay : MonoBehaviour
 
     private void Start()
     {
-        postionOrigine = transform.position;
+        //posOrigin = Vector3.zero;
         Line = GetComponent<LineRenderer>();
-        Line.SetPosition(1, postionOrigine);
+        Line.SetPosition(1, posOrigin);
     }
     private void Update()
     {
-        if(positionTarget != null)
+        if(positionTarget != null && target != null)
         {
             positionTarget = target.position;
             Line.SetPosition(0, positionTarget);
@@ -30,11 +30,11 @@ public class SpliterRay : MonoBehaviour
         }
         else
         {
-            Line.SetPosition(1, postionOrigine);
+            Line.SetPosition(1, posOrigin);
         }
 
 
-        if (doubleTarget && positionTarget2 != null)
+        if (doubleTarget && positionTarget2 != null && target != null)
         {
             positionTarget2 = target2.position;
             Line.SetPosition(2, positionTarget2);
@@ -42,7 +42,7 @@ public class SpliterRay : MonoBehaviour
         }
         else
         {
-            Line.SetPosition(2, postionOrigine);
+            Line.SetPosition(2, posOrigin);
         }
     }
 }
