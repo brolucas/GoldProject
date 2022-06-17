@@ -348,6 +348,24 @@ public class Turret : MonoBehaviour
             }
         }
 
+        if (kindOfTurret == KindOfTurret.Spliter)
+        {
+            if (inRangeEnemies.Count > 0)
+            {
+                if (bullet == null)
+                {
+                    bullet = Instantiate(particleShoot, this.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
+                }
+            }
+            else
+            {
+                Destroy(bullet);
+                bullet = null;
+            }
+
+            bullet.GetComponent<LineRenderer>().SetPosition(1, this.transform.position);
+        }
+
         if (inRangeEnemies.Count <= 0)
             return;
 
@@ -518,24 +536,6 @@ public class Turret : MonoBehaviour
         if (targetList.Count == 0)
         {
             targetList.Add(currentTarget);
-
-            
-        }
-
-        if (kindOfTurret == KindOfTurret.Spliter)
-        {
-            if (inRangeEnemies.Count > 0)
-            {
-                if (bullet == null)
-                {
-                    bullet = Instantiate(particleShoot, this.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
-                }
-            }
-            else
-            {
-                Destroy(bullet, 1.0f);
-                bullet = null;
-            }
         }
 
         Vector3 difference = currentTarget.transform.position - transform.position;
@@ -565,6 +565,18 @@ public class Turret : MonoBehaviour
             Vector3 rayToTarget = target.transform.position - origin;
             Debug.DrawLine(origin, origin + rayToTarget, Color.red);
             #endregion
+        }
+
+        if (kindOfTurret == KindOfTurret.Spliter)
+        {
+            SpliterRay raySpliterRay = bullet.GetComponent<SpliterRay>();
+            raySpliterRay.target = currentTarget.transform;
+
+            if (currentLevel >= maxLevel)
+            {
+                raySpliterRay.doubleTarget = true;
+                raySpliterRay.target2 = secondCurrentTarget.transform;
+            }
         }
 
         if (fireCountDown <= 0f)
