@@ -32,6 +32,8 @@ public class Turret : MonoBehaviour
     [SerializeField]
     private Transform particleSpawnPoint;
     private GameObject bullet = null;
+    private Vector3 difference;
+    private float rotZ;
 
     [Header("Other")]
 
@@ -45,7 +47,6 @@ public class Turret : MonoBehaviour
 
     private bool hasGeneratorBuffActived;
 
-    private float rotZ;
 
     #region Turret Stats
 
@@ -280,7 +281,33 @@ public class Turret : MonoBehaviour
 
         Vector3 origin = transform.position;
 
-        ChooseTarget(origin);   
+        ChooseTarget(origin);
+
+        // Delay between shot
+        if (fireCountDown <= 0f)
+        {
+            if (nbrOfTarget == 1)
+            {
+                difference = targetList[0].transform.position - transform.position;
+                rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+
+                Shoot(targetList[0]);
+            }
+            if (nbrOfTarget > 1)
+            {
+                foreach (var target in targetList)
+                {
+                    difference = target.transform.position - transform.position;
+                    rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+
+                    Shoot(target);
+                }
+            }
+            
+            fireCountDown = 1 / (fireRate + fireRateBonus);
+        }
+
+        fireCountDown -= Time.deltaTime;
 
         // Max Level Passive and Passive that are turn ON all the time
         switch (kindOfTurret)
@@ -298,6 +325,8 @@ public class Turret : MonoBehaviour
             default:
                 break;
         }
+
+        bullet.transform.rotation = Quaternion.Euler(-rotZ, 90, 180);
     }
 
     #region Turret Attack Method
@@ -538,7 +567,7 @@ public class Turret : MonoBehaviour
             targetList.Add(currentTarget);
         }
 
-        Vector3 difference = currentTarget.transform.position - transform.position;
+        difference = currentTarget.transform.position - transform.position;
         rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
 
         switch (kindOfTurret)
@@ -578,21 +607,6 @@ public class Turret : MonoBehaviour
                 raySpliterRay.target2 = secondCurrentTarget.transform;
             }
         }
-
-        if (fireCountDown <= 0f)
-        {
-            foreach (var target in targetList)
-            {
-                difference = target.transform.position - transform.position;
-                rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-
-                Shoot(target);
-            }
-            fireCountDown = 1 / (fireRate + fireRateBonus);
-        }
-
-        fireCountDown -= Time.deltaTime;
-
     }
 
     public void Shoot(EnemiesTemp enemy)
@@ -662,19 +676,19 @@ public class Turret : MonoBehaviour
             case KindOfTurret.Zap:
             //case KindOfTurret.Spliter:
                 {
-                    GameObject bullet = Instantiate(particleShoot, this.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
+                    bullet = Instantiate(particleShoot, this.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
                     break;
                 }
             case KindOfTurret.Mortar:
                 {
-                    GameObject bullet = Instantiate(particleShoot, enemy.transform.position, transform.rotation, this.transform);
+                    bullet = Instantiate(particleShoot, enemy.transform.position, transform.rotation, this.transform);
                     break;
                 }
             case KindOfTurret.Channelizer:
             case KindOfTurret.Generator:
             case KindOfTurret.Discord:
                 {
-                    GameObject bullet = Instantiate(particleShoot, transform.position, Quaternion.Euler(0, 0, (90 + rotZ)));
+                    bullet = Instantiate(particleShoot, transform.position, Quaternion.Euler(0, 0, (90 + rotZ)));
                     break;
                 }
             default:
