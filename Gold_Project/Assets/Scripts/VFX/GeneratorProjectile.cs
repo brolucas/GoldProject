@@ -19,8 +19,16 @@ public class GeneratorProjectile : MonoBehaviour
     IEnumerator Delais()
     {
         yield return new WaitForSeconds(lifeTime);
-        Instantiate(particulesMort, transform.position, Quaternion.Euler(0, 0, 0));
-        Instantiate(particulesExplosion, transform.position, Quaternion.Euler(0, 0, 0));
+
+        if (particulesMort != null)
+        {
+            Instantiate(particulesMort, transform.position, Quaternion.Euler(0, 0, 0));
+        }
+        if (particulesMort != null)
+        {
+            Instantiate(particulesExplosion, transform.position, Quaternion.Euler(0, 0, 0));
+        }
+        
         Destroy(gameObject);
     }
 }
