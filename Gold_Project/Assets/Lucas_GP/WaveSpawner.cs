@@ -34,6 +34,8 @@ public class WaveSpawner : MonoBehaviour
 	public GameObject wave_Victory_Star2;
 	public GameObject wave_Victory_Star3;
 
+    public AudioSource musicBg;
+
 	[SerializeField]
 	private GameObject[] listEvent;
 
@@ -76,8 +78,9 @@ public class WaveSpawner : MonoBehaviour
 			if (enemyAlive <= 0)
 			{
 				wave_Victory_Screen.SetActive(true);
-                //Time.timeScale = 0;
-                if (truck.Truck_Hp >= 1)
+                musicBg.Pause();
+				//Time.timeScale = 0;
+				if (truck.Truck_Hp >= 1)
                 {
                     wave_Victory_Star1.SetActive(true);
                     if (truck.Truck_Hp >= 3)
