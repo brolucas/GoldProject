@@ -24389,10 +24389,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f8bbc7d38118fa428181217ee060b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 10
   particulesMort: {fileID: 0}
   particulesExplosion: {fileID: 0}
-  lifeTime: 5
+  lifeTime: 0.5
 --- !u!50 &2340936852055070949
 Rigidbody2D:
   serializedVersion: 4

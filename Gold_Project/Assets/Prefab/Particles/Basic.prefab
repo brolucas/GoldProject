@@ -3674,7 +3674,7 @@ ParticleSystem:
   CollisionModule:
     enabled: 0
     serializedVersion: 4
-    type: 1
+    type: 0
     collisionMode: 1
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -3863,6 +3863,13 @@ ParticleSystem:
     colliderQueryMode: 0
     radiusScale: 1
     primitives:
+<<<<<<< HEAD
+=======
+    - {fileID: 1584382779761952291, guid: bbc46d7888f56d04a81b76833de154c2, type: 3}
+    - {fileID: 2279312379432567736, guid: 6e2a8f5891f72b342b07c866678fc75d, type: 3}
+    - {fileID: 4206551651262593906, guid: 5fdacb50bae8ba34982a64afb4a4d219, type: 3}
+    - {fileID: 7501537313164047335, guid: d07f9a96bf097054987fb2563ed354a6, type: 3}
+>>>>>>> main
     - {fileID: 6898869339770346148, guid: 81d686dbc43f8b241ae267581b10f5a2, type: 3}
   SubModule:
     serializedVersion: 2
