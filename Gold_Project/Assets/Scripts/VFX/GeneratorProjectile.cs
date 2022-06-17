@@ -12,15 +12,23 @@ public class GeneratorProjectile : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(speed, 0);
+        rb.velocity = -transform.up * speed;
         StartCoroutine(Delais());
     }
 
     IEnumerator Delais()
     {
         yield return new WaitForSeconds(lifeTime);
-        Instantiate(particulesMort, transform.position, Quaternion.Euler(0, 0, 0));
-        Instantiate(particulesExplosion, transform.position, Quaternion.Euler(0, 0, 0));
+
+        if (particulesMort != null)
+        {
+            Instantiate(particulesMort, transform.position, Quaternion.Euler(0, 0, 0));
+        }
+        if (particulesMort != null)
+        {
+            Instantiate(particulesExplosion, transform.position, Quaternion.Euler(0, 0, 0));
+        }
+        
         Destroy(gameObject);
     }
 }

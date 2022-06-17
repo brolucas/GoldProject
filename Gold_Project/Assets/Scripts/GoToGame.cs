@@ -9,6 +9,7 @@ public class GoToGame : MonoBehaviour
     public static int levelIndex = 1;
     public static bool tutoDone = false;
 
+    public SceneFader sceneFader;
     public void BackToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
@@ -17,10 +18,11 @@ public class GoToGame : MonoBehaviour
 
     public void BackToMainMenuVictory()
     {
-        SceneManager.LoadScene("MainMenu");
+        //SceneManager.LoadScene("MainMenu");
+        sceneFader.FadeTo("MainMenu");
         Time.timeScale = 1;
         levelIndex++;
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
     }
 
     

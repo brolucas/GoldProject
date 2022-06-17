@@ -14,10 +14,11 @@ public class Baricade : MonoBehaviour
         GameManager.Instance.allBarricade.Add(this);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnMouseDown()
     {
-        
+        BuildManager.Instance.shop.selectedItemInGame = this.gameObject;
+
+        BuildManager.Instance.shop.DisplayCurrentBarricadeStats();
     }
     public void takeDamage(int nbr)
     {

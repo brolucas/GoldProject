@@ -12,14 +12,14 @@ public class Shop : MonoBehaviour
     public Text nameTurretText;
 
 	public List<Button> deckButtons = new List<Button>();
-	public List<Button> deckButtonsBarricade = new List<Button>();
+	public Button button1, button2;
 
 	public Dictionary<Button, KindOfTurret> buttonToEnum = new Dictionary<Button, KindOfTurret>();
 	public Dictionary<Button, GameObject> buttonToBarricade = new Dictionary<Button, GameObject>();
 
 
 	public GameObject barr1, barr2;
-	public GameObject selectedTurretInGame;
+	public GameObject selectedItemInGame;
 	public Deck deck;
 
 	public void Awake()
@@ -29,7 +29,7 @@ public class Shop : MonoBehaviour
 			gameManager = FindObjectOfType<GameManager>();
 		}
 
-		selectedTurretInGame = null;
+		selectedItemInGame = null;
 	}
 
     private void Start()
@@ -61,15 +61,20 @@ public class Shop : MonoBehaviour
 			deckButtons[i].GetComponent<Image>().sprite = turretData.UIDesign;
 		}
 
-		//Out of range ici je crois 
-		buttonToBarricade.Add(deckButtonsBarricade[0], barr1);
-		buttonToBarricade.Add(deckButtonsBarricade[1], barr2);
 
+		buttonToBarricade.Add(button1, barr1);
+		buttonToBarricade.Add(button2, barr2);
+
+	}
+
+	public void DisplayCurrentBarricadeStats()
+    {
+		infoTurretText.text = ("Remaining life : " + selectedItemInGame.GetComponent<Baricade>().hp + "\n");
 	}
 
 	public void DisplayCurrentTurretStats()
 	{
-		Turret turret = selectedTurretInGame.GetComponent<Turret>();
+		Turret turret = selectedItemInGame.GetComponent<Turret>();
 
 		int upgradeCost = 50;
 
@@ -78,6 +83,7 @@ public class Shop : MonoBehaviour
 		switch (turret.currentLevel)
 		{
 			case 1:
+                nameTurretText.text = turret.kindOfTurret.ToString();
 				upgradeCost = 50;
 				infoTurretText.text = ("Level : " + turret.currentLevel + "/" + turret.maxLevel + "\n" +
 							   "Upgrade cost : " + (turret.turretPrice + upgradeCost) + "\n" +
@@ -87,6 +93,7 @@ public class Shop : MonoBehaviour
 							   "Target : " + turret.targetType);
 				break;
 			case 2:
+                nameTurretText.text = turret.kindOfTurret.ToString();
 				upgradeCost = 75;
 				infoTurretText.text = ("Level : " + turret.currentLevel + "/" + turret.maxLevel + "\n" +
 							   "Upgrade cost : " + (turret.turretPrice + upgradeCost) + "\n" +
@@ -96,6 +103,7 @@ public class Shop : MonoBehaviour
 							   "Target : " + turret.targetType);
 				break;
 			case 3:
+                nameTurretText.text = turret.kindOfTurret.ToString();
 				infoTurretText.text = ("Max Level" + "\n" +
 							   "No more upgrade" + "\n" +
 							   "Range : " + range + "\n" +
@@ -142,19 +150,32 @@ public class Shop : MonoBehaviour
 		}
 	}
 	
+	public void Sell()
+    {
+		Pathfinding.Instance.GetGrid().GetXY(selectedItemInGame.transform.position, out int x, out int y);
+        if (Pathfinding.Instance.GetNode(x, y).isTurret != null)
+        {
+			Pathfinding.Instance.GetNode(x, y).isTurret = null;
+			Pathfinding.Instance.GetNode(x, y).isUsed = false;
+			Pathfinding.Instance.mapHasChanged = true;
+			SellTurret();
+		}
+		else if(Pathfinding.Instance.GetNode(x, y).isBarricade != null)
+        {
+			Pathfinding.Instance.GetNode(x, y).isBarricade = null;
+			Pathfinding.Instance.GetNode(x, y).isUsed = false;
+			Pathfinding.Instance.mapHasChanged = true;
+			SellBarricade();
+		}
+	}
+
 	public void SellTurret()
 	{
-		GameObject turret = selectedTurretInGame;
+		GameObject turret = selectedItemInGame;
 		Turret turretScript = turret.GetComponent<Turret>();
-
-		Pathfinding.Instance.GetGrid().GetXY(turret.transform.position, out int x, out int y);
-		Pathfinding.Instance.GetNode(x, y).isTurret = null;
-		Pathfinding.Instance.GetNode(x, y).isUsed = false;
-		Pathfinding.Instance.mapHasChanged = true;
 
 		GameManager.Instance.truck.gold += turretScript.turretPrice / 2;
 		GameManager.Instance.allTurret.Remove(turretScript);
-		selectedTurretInGame = null;
 
 		foreach (var enemy in GameManager.Instance.enemies)
 		{
@@ -162,14 +183,27 @@ public class Shop : MonoBehaviour
 		}
 
 		Destroy(turret.transform.parent.gameObject);
+		selectedItemInGame = null;
+	}
+
+	public void SellBarricade()
+    {
+		GameManager.Instance.truck.gold += selectedItemInGame.GetComponent<Baricade>().price / 2;
+		GameManager.Instance.allBarricade.Remove(selectedItemInGame.GetComponent<Baricade>());
+		Destroy(selectedItemInGame.gameObject);
+		selectedItemInGame = null;
 	}
 
 	public void Upgrade()
 	{
-		Turret turret = selectedTurretInGame.GetComponent<Turret>();
+        if (BuildManager.Instance.turretToBuild == KindOfTurret.DefaultDoNotUseIt)
+        {
+			Turret turret = selectedItemInGame.GetComponent<Turret>();
 
-		turret.Upgrade();
+            turret.Upgrade();
 
-		DisplayCurrentTurretStats();
+            DisplayCurrentTurretStats();
+		}
+		
 	}
 }

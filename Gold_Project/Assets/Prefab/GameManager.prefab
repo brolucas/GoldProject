@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6774791142897126958}
   - component: {fileID: 6774791141816150505}
   - component: {fileID: 6774791141816150509}
+  - component: {fileID: 6928753770161384798}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -77,6 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1efe4d337a7f36459bf4eec69b4bc14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneFader: {fileID: 0}
 --- !u!114 &6774791142897126959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,3 +271,19 @@ MonoBehaviour:
     type: 3}
   deck: {fileID: 0}
   baricades: []
+--- !u!114 &6928753770161384798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6774791142897126948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48bc9a94dfa73b14cb8c7f2bf28ecd5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path: []
+  lastEnemy: {fileID: 0}
+  linePath: {fileID: 8036869299180486604, guid: ee78f6c5ae8f2e148b40ac7fa53cff00,
+    type: 3}

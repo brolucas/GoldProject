@@ -24,10 +24,9 @@ public class Pathfinding:MonoBehaviour
 		foreach(Decor decor in levelData.decors)
         {
 			GetNode(decor.x, decor.y).SetIsWalkable(false);
-			GetNode(decor.x, decor.y).isDecor = decor;
 			Vector3 position = grid.GetWorldPosition(decor.x, decor.y);
 			position = new Vector3(position.x + cellSize / 2, position.y + cellSize / 2);
-			GameObject newDecor = Instantiate(decorPrefab, position, Quaternion.identity);
+			GetNode(decor.x, decor.y).isDecor = Instantiate(decorPrefab, position, Quaternion.identity);
 			//newDecor.GetComponent<SpriteRenderer>().sprite = decor.image;    // J'ai commenté pour avoir
 		}
 	}
@@ -117,7 +116,7 @@ public class Pathfinding:MonoBehaviour
 		return null;
 	}
 
-	private List<PathNode> GetNeighbourList(PathNode currentNode)
+	public List<PathNode> GetNeighbourList(PathNode currentNode)
 	{
 		List<PathNode> neighbourList = new List<PathNode>();
 

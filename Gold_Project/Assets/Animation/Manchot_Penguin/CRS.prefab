@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6712744600498091173}
   - component: {fileID: 1236276740112105591}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LePenguin_CRS_Foot_R02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 881645685208058369}
   - component: {fileID: 3212407026348931555}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LePenguin_CRS_Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4112173654058490760}
   - component: {fileID: 5989458207809945292}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LePenguin_CRS_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3771128677551372020}
-  m_Layer: 0
+  - component: {fileID: 6889924951481863384}
+  m_Layer: 3
   m_Name: CRS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,12 +275,31 @@ Transform:
   m_GameObject: {fileID: 4195574765683773540}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -39.836212, y: -0.9107885, z: -0.20704699}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 8088555298427965850}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &6889924951481863384
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4195574765683773540}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7c2d731fd6af76d42a79142baf25da81, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4366850082341925700
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,7 +310,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8088555298427965850}
   - component: {fileID: 3587375724007920728}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LePenguin_CRS_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -304,8 +324,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4366850082341925700}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.1272316, y: -0.8924268, z: 0.20704699}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4112173654058490760}
@@ -316,7 +336,7 @@ Transform:
   - {fileID: 707918321804708035}
   m_Father: {fileID: 3771128677551372020}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &3587375724007920728
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -379,7 +399,7 @@ GameObject:
   m_Component:
   - component: {fileID: 707918321804708035}
   - component: {fileID: 5308904382641786485}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LePenguin_CRS_Tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,7 +482,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3366972601080111741}
   - component: {fileID: 2449026622986497793}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LePenguin_CRS_Foot_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -544,7 +564,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5183314464951597325}
   - component: {fileID: 2219492077033627137}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LePenguin_CRS_Leg_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -629,7 +649,7 @@ GameObject:
   m_Component:
   - component: {fileID: 440047544008337424}
   - component: {fileID: 3204780747223807403}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LePenguin_CRS_Leg_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -714,7 +734,7 @@ GameObject:
   m_Component:
   - component: {fileID: 898650307078010364}
   - component: {fileID: 7761365062193764236}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LePenguin_CRS_Matraque
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -797,7 +817,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4887793414241550218}
   - component: {fileID: 1733162337589683148}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LePenguin_CRS_Foot_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -880,7 +900,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5017769146814806287}
   - component: {fileID: 3336476564300542529}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LePenguin_CRS_Foot_L02
   m_TagString: Untagged
   m_Icon: {fileID: 0}

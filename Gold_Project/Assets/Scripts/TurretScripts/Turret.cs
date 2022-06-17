@@ -14,10 +14,28 @@ public class Turret : MonoBehaviour
     [SerializeField]
     private GameManager gameManager;
 
-    private GameObject rangeSprite;
-    private Vector3 localScale;
+    [SerializeField]
+    private ParticuleManager particuleManager;
+    private GameObject particleShoot;
 
+    private GameObject rangeSprite;
+    private GameObject unableRange;
+    private SpriteRenderer rangeSpriteSR;
+    private SpriteRenderer unableRangeSR;
+    private Vector3 localScale;
+    public AnimationCurve curve;
+
+    [Header("Sprite")]
     public SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private GameObject barrelGO;
+    [SerializeField]
+    private Transform particleSpawnPoint;
+    private GameObject bullet = null;
+    private Vector3 difference;
+    private float rotZ;
+
+    [Header("Other")]
 
     [Range(1, 180)]
     private int fireAngle = 12;
@@ -28,6 +46,7 @@ public class Turret : MonoBehaviour
     private bool doOnce = false;
 
     private bool hasGeneratorBuffActived;
+
 
     #region Turret Stats
 
@@ -100,6 +119,11 @@ public class Turret : MonoBehaviour
             gameManager = FindObjectOfType<GameManager>();
         }
 
+        if (particuleManager == null)
+        {
+            particuleManager = GetComponent<ParticuleManager>();
+        }
+
         #region Show the range of the turret
         rangeSprite = Instantiate(gameManager.rangeSprite, this.transform.position, this.transform.rotation, this.transform);
 
@@ -107,20 +131,31 @@ public class Turret : MonoBehaviour
         
         #endregion
 
+
         InitTurretData(BuildManager.Instance.turretToBuild);
+
 
         rangeSprite.transform.localScale = new Vector3(range * 2, range * 2, 0);//1.265
 
+        rangeSpriteSR = rangeSprite.GetComponent<SpriteRenderer>();
+
+        StartCoroutine(FadeAttackRange(rangeSpriteSR));
+
+        #region Mortar Range Handle 
         // Do this part of the code only for the Mortar turret
-        if (kindOfTurret != KindOfTurret.Mortar)
-            return;
+        if (kindOfTurret == KindOfTurret.Mortar)
+        {
+            unableRange = Instantiate(gameManager.rangeSprite, this.transform.position, this.transform.rotation, this.transform);
 
-        GameObject unableRange = Instantiate(gameManager.rangeSprite, this.transform.position, this.transform.rotation, this.transform);
+            float newRange = RangeConvertion(1, true);
 
-        float newRange = RangeConvertion(1, true);
+            unableRange.transform.localScale = new Vector3(newRange * 2, newRange * 2, 0);//1.265
+            unableRangeSR = unableRange.GetComponent<SpriteRenderer>();
+            unableRangeSR.color = new Color(0, 0, 0, 0.17f);
 
-        unableRange.transform.localScale = new Vector3(newRange * 2, newRange * 2, 0);//1.265
-        unableRange.GetComponent<SpriteRenderer>().color = new Color(0,0,0,0.17f);
+            StartCoroutine(FadeAttackRange(unableRangeSR));
+        }
+        #endregion
     }
 
     public void Start()
@@ -136,6 +171,8 @@ public class Turret : MonoBehaviour
         gameManager.allTurret.Add(this);
 
         spriteRenderer.sprite = inGameDesign;
+
+        particleShoot = particuleManager.KotToParticules[kindOfTurret];
     }
 
     public void InitTurretData(KindOfTurret type)
@@ -196,13 +233,16 @@ public class Turret : MonoBehaviour
         inGameDesign = turretData.inGameDesign;
         UIDesign = turretData.UIDesign;
 
+        barrelGO.GetComponent<SpriteRenderer>().sprite = turretData.barrel;
+
         basePassiveParameters = turretData.basePassiveParameters;
         maxPassiveParameters = turretData.maxPassiveParameters;
         capPassive = turretData.capPassive;
 
         currentLevel = 1;
-        #endregion
-    }
+
+    #endregion
+}
 
     /*private void OnMouseDrag()
     {
@@ -218,9 +258,20 @@ public class Turret : MonoBehaviour
 
     private void OnMouseDown()
     {
-        BuildManager.Instance.shop.selectedTurretInGame = this.gameObject;
+        BuildManager.Instance.shop.selectedItemInGame = this.gameObject;
 
         BuildManager.Instance.shop.DisplayCurrentTurretStats();
+
+        rangeSpriteSR.color = new Color(rangeSpriteSR.color.r, rangeSpriteSR.color.g, rangeSpriteSR.color.b, 0.0588235294f);
+
+        StartCoroutine(FadeAttackRange(rangeSpriteSR, 5.0f));
+
+        if (kindOfTurret == KindOfTurret.Mortar)
+        {
+            unableRangeSR.color = new Color(unableRangeSR.color.r, unableRangeSR.color.g, unableRangeSR.color.b, 0.17f);
+
+            StartCoroutine(FadeAttackRange(unableRangeSR, 5.0f));
+        }
     }
 
     private void Update()
@@ -230,7 +281,33 @@ public class Turret : MonoBehaviour
 
         Vector3 origin = transform.position;
 
-        ChooseTarget(origin);   
+        ChooseTarget(origin);
+
+        // Delay between shot
+        if (fireCountDown <= 0f)
+        {
+            if (nbrOfTarget == 1)
+            {
+                difference = targetList[0].transform.position - transform.position;
+                rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+
+                Shoot(targetList[0]);
+            }
+            if (nbrOfTarget > 1)
+            {
+                foreach (var target in targetList)
+                {
+                    difference = target.transform.position - transform.position;
+                    rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+
+                    Shoot(target);
+                }
+            }
+            
+            fireCountDown = 1 / (fireRate + fireRateBonus);
+        }
+
+        fireCountDown -= Time.deltaTime;
 
         // Max Level Passive and Passive that are turn ON all the time
         switch (kindOfTurret)
@@ -248,7 +325,33 @@ public class Turret : MonoBehaviour
             default:
                 break;
         }
+
+        switch (kindOfTurret)
+        {
+            // if com don't change it 
+            case KindOfTurret.Basic:
+            case KindOfTurret.SniperTower:
+            case KindOfTurret.Furnace:
+            case KindOfTurret.Immobilizer:
+            case KindOfTurret.Zap:
+                //case KindOfTurret.Spliter:
+                {
+                    bullet.transform.rotation = Quaternion.Euler(-rotZ, 90, 180);
+                    break;
+                }
+            case KindOfTurret.Channelizer:
+            case KindOfTurret.Generator:
+            case KindOfTurret.Discord:
+                {
+                    bullet.transform.rotation = Quaternion.Euler(0, 0, 90 + rotZ);
+                    break;
+                }
+            default:
+                break;
+        }
     }
+
+    #region Turret Attack Method
 
     public void ChooseTarget(Vector3 origin)
     {
@@ -294,6 +397,24 @@ public class Turret : MonoBehaviour
                 targetList.Remove(enemy);
                 inRangeEnemies.Remove(enemy);
             }
+        }
+
+        if (kindOfTurret == KindOfTurret.Spliter)
+        {
+            if (inRangeEnemies.Count > 0)
+            {
+                if (bullet == null)
+                {
+                    bullet = Instantiate(particleShoot, this.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
+                }
+            }
+            else
+            {
+                Destroy(bullet);
+                bullet = null;
+            }
+
+            bullet.GetComponent<LineRenderer>().SetPosition(1, this.transform.position);
         }
 
         if (inRangeEnemies.Count <= 0)
@@ -461,12 +582,31 @@ public class Turret : MonoBehaviour
                 break;
         }
 
-        
 
         // Add the only target if it's one target turret and the line above didn't add one already
         if (targetList.Count == 0)
         {
             targetList.Add(currentTarget);
+        }
+
+        difference = currentTarget.transform.position - transform.position;
+        rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+
+        switch (kindOfTurret)
+        {
+            case KindOfTurret.Basic:
+            case KindOfTurret.Discord:
+            case KindOfTurret.SniperTower:
+            case KindOfTurret.Furnace:
+            case KindOfTurret.Channelizer:
+            case KindOfTurret.Generator:
+                {
+                    barrelGO.transform.localRotation = Quaternion.Euler(0, 0, rotZ);
+
+                    break;
+                }
+            default:
+                break;
         }
 
         // just a visual debug draw line only visible in the editor
@@ -478,17 +618,17 @@ public class Turret : MonoBehaviour
             #endregion
         }
 
-        if (fireCountDown <= 0f)
+        if (kindOfTurret == KindOfTurret.Spliter)
         {
-            foreach (var target in targetList)
+            SpliterRay raySpliterRay = bullet.GetComponent<SpliterRay>();
+            raySpliterRay.target = currentTarget.transform;
+
+            if (currentLevel >= maxLevel)
             {
-                Shoot(target);
+                raySpliterRay.doubleTarget = true;
+                raySpliterRay.target2 = secondCurrentTarget.transform;
             }
-            fireCountDown = 1 / (fireRate + fireRateBonus);
         }
-
-        fireCountDown -= Time.deltaTime;
-
     }
 
     public void Shoot(EnemiesTemp enemy)
@@ -546,6 +686,35 @@ public class Turret : MonoBehaviour
         if (isAtqCap)
         {
              damage = Mathf.Clamp(atqPoints + atqPtsBonusPassive, 0, maxAtqPoints);
+        }
+
+        switch (kindOfTurret)
+        {
+            // if com don't change it 
+            case KindOfTurret.Basic:
+            case KindOfTurret.SniperTower:
+            case KindOfTurret.Furnace:
+            case KindOfTurret.Immobilizer:
+            case KindOfTurret.Zap:
+            //case KindOfTurret.Spliter:
+                {
+                    bullet = Instantiate(particleShoot, this.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
+                    break;
+                }
+            case KindOfTurret.Mortar:
+                {
+                    bullet = Instantiate(particleShoot, enemy.transform.position, transform.rotation, this.transform);
+                    break;
+                }
+            case KindOfTurret.Channelizer:
+            case KindOfTurret.Generator:
+            case KindOfTurret.Discord:
+                {
+                    bullet = Instantiate(particleShoot, transform.position, Quaternion.Euler(0, 0, (90 + rotZ)));
+                    break;
+                }
+            default:
+                break;
         }
 
         enemy.TakeDamage(damage);
@@ -864,6 +1033,8 @@ public class Turret : MonoBehaviour
         }
     }
 
+    #endregion
+
     public void Upgrade()
     {
         if (isMaxLevel == true)
@@ -980,6 +1151,21 @@ public class Turret : MonoBehaviour
             this.fireRate = 1f;
         }
 
+    }
+
+    private IEnumerator FadeAttackRange(SpriteRenderer rangeSpriteSRFade, float howMuchTimeToFade = 1.5f)
+    {
+        yield return new WaitForSeconds(howMuchTimeToFade);
+
+        float t = 1f;
+
+        while (t > 0)
+        {
+            t -= Time.deltaTime;
+            float a = curve.Evaluate(t * 0.15f);
+            rangeSpriteSRFade.color = new Color(rangeSpriteSRFade.color.r, rangeSpriteSRFade.color.g, rangeSpriteSRFade.color.b, a);
+            yield return 0;
+        }
     }
 
     #region Util Function

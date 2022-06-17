@@ -333,12 +333,11 @@ MonoBehaviour:
   - {fileID: 272750044355570886}
   - {fileID: 272750043049227165}
   - {fileID: 272750043760804815}
-  deckButtonsBarricade:
-  - {fileID: 272750042727121809}
-  - {fileID: 272750044807912865}
+  button1: {fileID: 272750044440381322}
+  button2: {fileID: 272750043005322919}
   barr1: {fileID: 5684629981531033215, guid: 58233168561e0524db88722ec067edf8, type: 3}
   barr2: {fileID: 5684629981531033215, guid: e75bf12d75386854d851aff9221a4ccc, type: 3}
-  selectedTurretInGame: {fileID: 0}
+  selectedItemInGame: {fileID: 0}
   deck: {fileID: 0}
 --- !u!1 &272750043005322905
 GameObject:
@@ -368,7 +367,7 @@ RectTransform:
   m_GameObject: {fileID: 272750043005322905}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 272750042737557752}
   m_RootOrder: 5
@@ -406,7 +405,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 8590afe235b3d00439c6e8175b917fd1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -726,7 +725,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 272750042737565444}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: SellTurret
+        m_MethodName: Sell
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1935,7 +1934,7 @@ RectTransform:
   m_GameObject: {fileID: 272750044440381324}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 272750042737557752}
   m_RootOrder: 4
@@ -1973,7 +1972,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 727216e853122df45895b530244f5bf8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

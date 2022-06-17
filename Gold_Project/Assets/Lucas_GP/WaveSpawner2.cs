@@ -31,6 +31,11 @@ public class WaveSpawner2 : MonoBehaviour
     private bool lastWave = false;
 
     public GameObject wave_Victory_Screen;
+    public GameObject wave_Victory_Star1;
+    public GameObject wave_Victory_Star2;
+    public GameObject wave_Victory_Star3;
+
+    public AudioSource musicBg;
 
     [SerializeField]
     private GameObject[] listEvent;
@@ -38,6 +43,9 @@ public class WaveSpawner2 : MonoBehaviour
 
     public int levelToUnlock = 2;
     public int currentLevel = 1;
+
+    public truck truck;
+
     private void Start()
     {
         System.Random alea = new System.Random();
@@ -68,14 +76,31 @@ public class WaveSpawner2 : MonoBehaviour
             if (enemyAlive <= 0)
             {
                 wave_Victory_Screen.SetActive(true);
+                musicBg.Pause();
+                //Time.timeScale = 0;
+                if (truck.Truck_Hp >= 1)
+                {
+                    wave_Victory_Star1.SetActive(true);
+                    if (truck.Truck_Hp >= 3)
+                    {
+                        wave_Victory_Star2.SetActive(true);
+                        if (truck.Truck_Hp >= 5)
+                        {
+                            wave_Victory_Star3.SetActive(true);
+                        }
+                    }
+                }
+                if (levelToUnlock > PlayerPrefs.GetInt("levelReached"))
+                {
+                    PlayerPrefs.SetInt("levelReached", levelToUnlock);
+                }
                 if (currentLevel == 6)
                 {
                     AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_finishing_world_2);
                 }
-                if (levelToUnlock > PlayerPrefs.GetInt("levelReached",1))
-                {
-                    PlayerPrefs.SetInt("levelReached", levelToUnlock);
-                }
+                
+
+                this.enabled = false;
             }
             //this.enabled = false;
         }   
@@ -167,9 +192,10 @@ public class WaveSpawner2 : MonoBehaviour
     public void SpawnEvent()
     {
         System.Random alea = new System.Random();
-        int noevent = alea.Next(0,3);
-        int x1 = alea.Next(1, 11);
-        int y1 = alea.Next(0, 6);
+        int noevent = alea.Next(0,2);
+
+        int x1 = alea.Next(3, 10);
+        int y1 = alea.Next(2, 5);
         Vector3 temp = new Vector3(x1, y1, 0);
 
         switch (noevent)
@@ -180,13 +206,70 @@ public class WaveSpawner2 : MonoBehaviour
 
                 Pathfinding.Instance.GetGrid().GetXY(temp, out int x, out int y);
                 Pathfinding.Instance.GetNode(x, y).isEvent = listEvent[0];
-                Pathfinding.Instance.GetNode(x + 1, y).isEvent = listEvent[0];
-                Pathfinding.Instance.GetNode(x, y + 1).isEvent = listEvent[0];
-                Pathfinding.Instance.GetNode(x + 1, y + 1).isEvent = listEvent[0];
+                Pathfinding.Instance.GetNode(x + 1, y).isEvent = listEvent[1];
+                Pathfinding.Instance.GetNode(x, y - 1).isEvent = listEvent[2];
+                Pathfinding.Instance.GetNode(x + 1, y - 1).isEvent = listEvent[3];
+
+                if (Pathfinding.Instance.GetNode(x, y).isTurret != null)
+                {
+                    Destroy(Pathfinding.Instance.GetNode(x, y).isTurret);
+                }
+                if (Pathfinding.Instance.GetNode(x + 1, y).isTurret != null)
+                {
+                    Destroy(Pathfinding.Instance.GetNode(x + 1, y).isTurret);
+                }
+                if (Pathfinding.Instance.GetNode(x, y-1).isTurret != null)
+                {
+                    Destroy(Pathfinding.Instance.GetNode(x, y-1).isTurret);
+                }
+
+                if (Pathfinding.Instance.GetNode(x + 1, y-1).isTurret != null)
+                {
+                    Destroy(Pathfinding.Instance.GetNode(x + 1, y-1).isTurret);
+                }
+
+
+                if (Pathfinding.Instance.GetNode(x, y).isBarricade != null)
+                {
+                    Destroy(Pathfinding.Instance.GetNode(x, y).isBarricade);
+                }
+                if (Pathfinding.Instance.GetNode(x + 1, y).isBarricade != null)
+                {
+                    Destroy(Pathfinding.Instance.GetNode(x + 1, y).isBarricade);
+                }
+                if (Pathfinding.Instance.GetNode(x, y - 1).isBarricade != null)
+                {
+                    Destroy(Pathfinding.Instance.GetNode(x, y - 1).isBarricade);
+                }
+
+                if (Pathfinding.Instance.GetNode(x + 1, y - 1).isBarricade != null)
+                {
+                    Destroy(Pathfinding.Instance.GetNode(x + 1, y - 1).isBarricade);
+                }
+
+
+                if (Pathfinding.Instance.GetNode(x, y).isDecor != null)
+                {
+                    Destroy(Pathfinding.Instance.GetNode(x, y).isDecor);
+                }
+                if (Pathfinding.Instance.GetNode(x + 1, y).isDecor != null)
+                {
+                    Destroy(Pathfinding.Instance.GetNode(x + 1, y).isDecor);
+                }
+                if (Pathfinding.Instance.GetNode(x, y - 1).isDecor != null)
+                {
+                    Destroy(Pathfinding.Instance.GetNode(x, y - 1).isDecor);
+                }
+
+                if (Pathfinding.Instance.GetNode(x + 1, y - 1).isDecor != null)
+                {
+                    Destroy(Pathfinding.Instance.GetNode(x + 1, y - 1).isDecor);
+                }
+
                 Pathfinding.Instance.GetNode(x, y).isUsed = true;
                 Pathfinding.Instance.GetNode(x + 1, y).isUsed = true;
-                Pathfinding.Instance.GetNode(x, y + 1).isUsed = true;
-                Pathfinding.Instance.GetNode(x + 1, y + 1).isUsed = true;
+                Pathfinding.Instance.GetNode(x, y - 1).isUsed = true;
+                Pathfinding.Instance.GetNode(x + 1, y - 1).isUsed = true;
                 Pathfinding.Instance.mapHasChanged = true;
 
 
@@ -196,16 +279,16 @@ public class WaveSpawner2 : MonoBehaviour
                 Vector3 position1 = Pathfinding.Instance.GetGrid().GetWorldPosition(x + 1, y);
                 position1 = new Vector3(position1.x + Pathfinding.Instance.GetGrid().cellSize / 2, position1.y + Pathfinding.Instance.GetGrid().cellSize / 2);
 
-                Vector3 position2 = Pathfinding.Instance.GetGrid().GetWorldPosition(x, y+1);
-                position2 = new Vector3(position.x + Pathfinding.Instance.GetGrid().cellSize / 2, position.y + Pathfinding.Instance.GetGrid().cellSize / 2);
+                Vector3 position2 = Pathfinding.Instance.GetGrid().GetWorldPosition(x, y-1);
+                position2 = new Vector3(position2.x + Pathfinding.Instance.GetGrid().cellSize / 2, position2.y + Pathfinding.Instance.GetGrid().cellSize / 2);
 
-                Vector3 position3 = Pathfinding.Instance.GetGrid().GetWorldPosition(x + 1, y+1);
-                position3 = new Vector3(position1.x + Pathfinding.Instance.GetGrid().cellSize / 2, position1.y + Pathfinding.Instance.GetGrid().cellSize / 2);
+                Vector3 position3 = Pathfinding.Instance.GetGrid().GetWorldPosition(x + 1, y-1);
+                position3 = new Vector3(position3.x + Pathfinding.Instance.GetGrid().cellSize / 2, position3.y + Pathfinding.Instance.GetGrid().cellSize / 2);
 
                 GameObject istevent = Instantiate(listEvent[0], position, Quaternion.identity);
-                GameObject istevent1 = Instantiate(listEvent[0], position1, Quaternion.identity);
-                GameObject istevent2 = Instantiate(listEvent[0], position2, Quaternion.identity);
-                GameObject istevent3 = Instantiate(listEvent[0], position3, Quaternion.identity);
+                GameObject istevent1 = Instantiate(listEvent[1], position1, Quaternion.identity);
+                GameObject istevent2 = Instantiate(listEvent[2], position2, Quaternion.identity);
+                GameObject istevent3 = Instantiate(listEvent[3], position3, Quaternion.identity);
 
                 // istevent.transform.GetChild(1).localScale = new Vector3(0, 0, 0);
                 break;
@@ -226,9 +309,7 @@ public class WaveSpawner2 : MonoBehaviour
                 Debug.Log("Event Launched !" + listEvent[2].ToString());
                 spawnPoint.Add(spawnPoint2);
                 break;
-            case 3:
-                Debug.Log("Event Launched !" + listEvent[3].ToString());
-                break;
+            
 
         }
         
