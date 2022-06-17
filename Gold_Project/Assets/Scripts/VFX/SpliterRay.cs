@@ -16,7 +16,7 @@ public class SpliterRay : MonoBehaviour
 
     private void Start()
     {
-        //posOrigin = Vector3.zero;
+        //posOrigin = transform.position;
         Line = GetComponent<LineRenderer>();
         Line.SetPosition(1, posOrigin);
     }
