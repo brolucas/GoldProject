@@ -326,7 +326,29 @@ public class Turret : MonoBehaviour
                 break;
         }
 
-        bullet.transform.rotation = Quaternion.Euler(-rotZ, 90, 180);
+        switch (kindOfTurret)
+        {
+            // if com don't change it 
+            case KindOfTurret.Basic:
+            case KindOfTurret.SniperTower:
+            case KindOfTurret.Furnace:
+            case KindOfTurret.Immobilizer:
+            case KindOfTurret.Zap:
+                //case KindOfTurret.Spliter:
+                {
+                    bullet.transform.rotation = Quaternion.Euler(-rotZ, 90, 180);
+                    break;
+                }
+            case KindOfTurret.Channelizer:
+            case KindOfTurret.Generator:
+            case KindOfTurret.Discord:
+                {
+                    bullet.transform.rotation = Quaternion.Euler(0, 0, 90 + rotZ);
+                    break;
+                }
+            default:
+                break;
+        }
     }
 
     #region Turret Attack Method
