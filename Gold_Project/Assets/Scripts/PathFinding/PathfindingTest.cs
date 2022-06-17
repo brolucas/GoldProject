@@ -21,6 +21,8 @@ public class PathfindingTest : MonoBehaviour
 
 		pathfinding.GetGrid().GetXY(spawn.transform.position, out int spawnX, out int spawnY);
 		pathfinding.GetNode(spawnX, spawnY).isUsed = true;
+		pathfinding.GetGrid().GetXY(end.transform.position, out int endX, out int endY);
+		pathfinding.GetNode(endX, endY).isUsed = true;
 
 		//enemy.endPoint = end.transform;
 	}
