@@ -3223,6 +3223,7 @@ MonoBehaviour:
   wave_Victory_Star1: {fileID: 675779401}
   wave_Victory_Star2: {fileID: 675779400}
   wave_Victory_Star3: {fileID: 675779399}
+  musicBg: {fileID: 1921584665}
   listEvent:
   - {fileID: 882767662396786120, guid: 539bdea3b5feaaa42b1e67a2bddb5350, type: 3}
   - {fileID: 882767662396786120, guid: 89e53f269f7c4bb45b7b079d81bf7413, type: 3}

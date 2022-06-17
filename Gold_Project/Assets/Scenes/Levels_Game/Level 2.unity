@@ -2662,6 +2662,11 @@ PrefabInstance:
       objectReference: {fileID: 1921584664}
     - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
+      propertyPath: musicBg
+      value: 
+      objectReference: {fileID: 1921584665}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
       propertyPath: wave_Text
       value: 
       objectReference: {fileID: 1356776006}
