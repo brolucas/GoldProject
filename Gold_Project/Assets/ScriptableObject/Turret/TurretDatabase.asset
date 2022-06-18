@@ -45,6 +45,7 @@ MonoBehaviour:
       Fire rate : 1,5/s
 
       Target : Terreste'
+    descriptionPassive: 
   - label: Mortar
     kindOfTurret: 2
     healthPoints: 125
@@ -77,6 +78,7 @@ MonoBehaviour:
       Fire rate : 0,25/s
 
       Target : Terreste'
+    descriptionPassive: 
   - label: Discord
     kindOfTurret: 3
     healthPoints: 150
@@ -109,6 +111,7 @@ MonoBehaviour:
       Fire rate : 0,75/s
 
       Target : Both'
+    descriptionPassive: 
   - label: Sniper Tower
     kindOfTurret: 4
     healthPoints: 175
@@ -141,6 +144,7 @@ MonoBehaviour:
       Fire rate : 1/s
 
       Target : Terreste'
+    descriptionPassive: 
   - label: Furnace
     kindOfTurret: 5
     healthPoints: 200
@@ -173,6 +177,7 @@ MonoBehaviour:
       Fire rate : 10/s
 
       Target : Terreste'
+    descriptionPassive: 
   - label: Channelizer
     kindOfTurret: 6
     healthPoints: 225
@@ -205,6 +210,7 @@ MonoBehaviour:
       Fire rate : 0,75/s
 
       Target : Terreste'
+    descriptionPassive: 
   - label: Generator
     kindOfTurret: 7
     healthPoints: 200
@@ -237,12 +243,13 @@ MonoBehaviour:
       Fire rate : 0,5/s
 
       Target : Terreste'
+    descriptionPassive: 
   - label: Immobilizer
     kindOfTurret: 8
     healthPoints: 300
     range: 1.5
     nbrOfTarget: 4
-    turretPrice: 350
+    turretPrice: 225
     targetType: 3
     atqPoints: 30
     fireRate: 0.5
@@ -257,7 +264,7 @@ MonoBehaviour:
     description: 'Name : Immobilizer
 
 
-      Cost : 350
+      Cost : 225
 
       HP : 300
 
@@ -269,12 +276,13 @@ MonoBehaviour:
       Fire rate : 0,5/s
 
       Target : Both'
+    descriptionPassive: 
   - label: Zap
     kindOfTurret: 9
     healthPoints: 350
     range: 1
     nbrOfTarget: 0
-    turretPrice: 400
+    turretPrice: 275
     targetType: 1
     atqPoints: 10
     fireRate: 1
@@ -289,7 +297,7 @@ MonoBehaviour:
     description: 'Name : Zap
 
 
-      Cost : 400
+      Cost : 275
 
       HP : 350
 
@@ -301,12 +309,13 @@ MonoBehaviour:
       Fire rate : 1/s
 
       Target : Terreste'
+    descriptionPassive: 
   - label: Spliter
     kindOfTurret: 10
     healthPoints: 400
     range: 1.5
     nbrOfTarget: 1
-    turretPrice: 500
+    turretPrice: 350
     targetType: 3
     atqPoints: 1
     fireRate: 2.25
@@ -321,7 +330,7 @@ MonoBehaviour:
     description: 'Name : Spliter
 
 
-      Cost : 500
+      Cost : 350
 
       HP : 400
 
@@ -333,3 +342,4 @@ MonoBehaviour:
       Fire rate : 2,25/s
 
       Target : Both'
+    descriptionPassive: 

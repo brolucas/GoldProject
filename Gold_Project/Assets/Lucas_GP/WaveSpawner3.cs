@@ -201,15 +201,15 @@ public class WaveSpawner3 : MonoBehaviour
     {
         System.Random alea = new System.Random();
         int noevent = alea.Next(0,2);
-        int x1 = alea.Next(3, 10);
-        int y1 = alea.Next(3, 5);
-        Vector3 temp = new Vector3(x1, y1, 0);
+        
 
         switch (noevent)
         {
             case 0:
 
-
+                int x1 = alea.Next(3, 10);
+                int y1 = alea.Next(3, 5);
+                Vector3 temp = new Vector3(x1, y1, 0);
                 Pathfinding.Instance.GetGrid().GetXY(temp, out int x, out int y);
 
                 Pathfinding.Instance.GetNode(x, y).isEvent = listEvent[0];
