@@ -59,10 +59,10 @@ MonoBehaviour:
   - audioType: 0
     source: {fileID: 0}
     clipName: Effect
-    audioClip: {fileID: 8300000, guid: d61e4185195523f448a0425bb39bb958, type: 3}
+    audioClip: {fileID: 8300000, guid: 73934f3b4cc295e47b816b23bb758021, type: 3}
     isLoop: 0
     playOnAwake: 0
-    volume: 0.5
+    volume: 0.2
 --- !u!114 &2486971351757828078
 MonoBehaviour:
   m_ObjectHideFlags: 0

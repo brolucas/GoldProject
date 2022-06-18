@@ -45,7 +45,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 1671956047271717045, guid: 05b54804a6114a44c9348e8fe04ac3d3,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 1f54d9919e0644643a696144a384b48b, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -332,6 +332,7 @@ MonoBehaviour:
   canBeMoved: 1
   inRangeEnemies: []
   targetList: []
+  breakingSound: {fileID: 2332301973720742428}
 --- !u!61 &7850981457700695382
 BoxCollider2D:
   m_ObjectHideFlags: 0
