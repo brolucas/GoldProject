@@ -48,14 +48,21 @@ public class WaveSpawner : MonoBehaviour
 
 	private void Start()
     {
-        //truck = GetComponent<truck>();
-
 		System.Random alea = new System.Random();
-		int eventAlea = alea.Next(3, 5);
-		waves[eventAlea]._event = true;
-		eventAlea = alea.Next(7, 10);
-		waves[eventAlea]._event = true;
-		enemyAlive = 0;
+
+		//truck = GetComponent<truck>();
+		if (waves.Length >= 5)
+        {
+			int eventAlea = alea.Next(3, 5);
+			waves[eventAlea]._event = true;
+		}
+        if (waves.Length >= 10)
+        {
+			int eventAlea = alea.Next(7, 10);
+			waves[eventAlea]._event = true;
+		}
+			enemyAlive = 0;
+
 	}
 	// Update is called once per frame
 	void Update()
