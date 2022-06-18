@@ -54,6 +54,7 @@ public class WaveSpawner2 : MonoBehaviour
         eventAlea = alea.Next(7, 10);
         waves[eventAlea]._event = true;
         PlayerPrefs.SetInt("BarricadeUsed", 0);
+        PlayerPrefs.SetInt("TowerUpgraded", 0);
 
     }
     // Update is called once per frame
@@ -101,6 +102,7 @@ public class WaveSpawner2 : MonoBehaviour
                 }
                 
                 if (PlayerPrefs.GetInt("BarricadeUsed") == 0) AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_dangerous_lifestyle);
+                if (PlayerPrefs.GetInt("TowerUpgraded") == 0) AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_better_simple);
 
                 this.enabled = false;
             }

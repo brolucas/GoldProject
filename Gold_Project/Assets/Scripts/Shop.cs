@@ -205,6 +205,8 @@ public class Shop : MonoBehaviour
             DisplayCurrentTurretStats();
 
 			turret.anim.SetBool("upgrading", true);
+
+			PlayerPrefs.SetInt("TowerUpgraded", PlayerPrefs.GetInt("TowerUpgraded") + 1);
 		}
 		
 	}
