@@ -332,6 +332,7 @@ MonoBehaviour:
   canBeMoved: 1
   inRangeEnemies: []
   targetList: []
+  breakingSound: {fileID: 2332301973720742428}
 --- !u!61 &7850981457700695382
 BoxCollider2D:
   m_ObjectHideFlags: 0

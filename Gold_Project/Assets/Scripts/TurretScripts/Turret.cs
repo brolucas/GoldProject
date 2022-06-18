@@ -101,6 +101,8 @@ public class Turret : MonoBehaviour
 
     public List<EnemiesTemp> targetList = new List<EnemiesTemp>();
 
+    public AudioSource breakingSound;
+
     public void Awake()
     {
         if (turretDatabase == null)
@@ -1117,8 +1119,14 @@ public class Turret : MonoBehaviour
         Pathfinding.Instance.GetNode(x, y).isTurret = null;
         Pathfinding.Instance.GetNode(x, y).isUsed = false;
         Pathfinding.Instance.mapHasChanged = true;
+        StartCoroutine(BreakingAudio(breakingSound));
         Destroy(this.gameObject.transform.parent.gameObject);
         gameManager.allTurret.Remove(this);
+    }
+    private IEnumerator BreakingAudio(AudioSource breakingSound)
+    {
+        breakingSound.Play();
+        yield return new WaitForSeconds(2);
     }
 
     private void OnDestroy()
