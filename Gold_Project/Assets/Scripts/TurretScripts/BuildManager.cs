@@ -139,6 +139,7 @@ public class BuildManager : MonoBehaviour
 			barricadeToBuild = null;
 
 			GameManager.Instance.truck.gold -= newBarricade.GetComponent<Baricade>().price;
+			PlayerPrefs.SetInt("BarricadeUsed", PlayerPrefs.GetInt("BarricadeUsed") + 1);
 		}
 	}
 }

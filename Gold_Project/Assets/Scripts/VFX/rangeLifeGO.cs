@@ -9,10 +9,15 @@ public class rangeLifeGO : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Debug.Log("hi");
-            Destroy(gameObject);
-            
-            
+            StartCoroutine(Delais());
+
+
+
         }
     }
+        IEnumerator Delais()
+        {
+        yield return new WaitForSeconds(.075f);
+            Destroy(gameObject);
+        }
 }
