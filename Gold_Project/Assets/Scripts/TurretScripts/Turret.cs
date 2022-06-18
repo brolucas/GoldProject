@@ -48,7 +48,8 @@ public class Turret : MonoBehaviour
 
     private bool hasGeneratorBuffActived;
 
-
+    //hugo
+    float delais = 0.05f;
     #region Turret Stats
 
     public string label { get; private set; }
@@ -724,7 +725,10 @@ public class Turret : MonoBehaviour
                 }
             case KindOfTurret.Mortar:
                 {
-                    bullet = Instantiate(particleShoot, enemy.transform.position, transform.rotation, this.transform);
+                    bullet = Instantiate(particleShoot, particleSpawnPoint.transform.position, transform.rotation, this.transform);
+                    bullet.GetComponent<Mortar>().target = enemy.transform.position;
+                    delais = 0.8f;
+                    //.GetComponent<Mortar>().target = enemy.transform;
                     break;
                 }
             case KindOfTurret.Channelizer:
@@ -732,12 +736,12 @@ public class Turret : MonoBehaviour
             case KindOfTurret.Discord:
                 {
                     bullet = Instantiate(particleShoot, particleSpawnPoint.transform.position, Quaternion.Euler(0, 0, (90 + rotZ)));
+                    delais = .1f;
                     break;
                 }
             default:
                 break;
         }
-
         enemy.TakeDamage(damage);
 
         if (kindOfTurret == KindOfTurret.Channelizer)
@@ -755,7 +759,12 @@ public class Turret : MonoBehaviour
         if (enemy == null)
             inRangeEnemies.Remove(enemy);
     }
-
+    //delais avant dmg
+    IEnumerator DelaisShootDmg(float i, int  damage, EnemiesTemp enemy)
+    {
+        yield return new WaitForSeconds(i);
+        
+    }
     public void TurretPassive(EnemiesTemp enemy = null)
     {
         switch (kindOfTurret)

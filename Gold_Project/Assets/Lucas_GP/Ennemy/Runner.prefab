@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 255277567047928808}
   - component: {fileID: 6709396344107502454}
   - component: {fileID: 2488951184649618190}
+  - component: {fileID: 876401287682113853}
   m_Layer: 3
   m_Name: Runner
   m_TagString: Enemy
@@ -172,6 +173,25 @@ MonoBehaviour:
   part1: {fileID: 6702079548424965487, guid: 5000d91626e97924f9bd4a1ec72dc9ad, type: 3}
   part2: {fileID: 5110612013305950267, guid: 5b542012503b52d4c9902cf03b2e2e60, type: 3}
   part3: {fileID: 5962223058080431632, guid: b8a81912874e5ea499d41763ae803d5b, type: 3}
+--- !u!95 &876401287682113853
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3507957338615616271}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4e6c8c0060c265e49b11e14a3f813045, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &398305731513370684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -179,11 +199,56 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6898869339770346148}
     m_Modifications:
+    - target: {fileID: 689684802998146330, guid: d07f9a96bf097054987fb2563ed354a6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1322cecbcc8a15a4fbc789ad574145c8, type: 2}
+    - target: {fileID: 760766969978509086, guid: d07f9a96bf097054987fb2563ed354a6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1322cecbcc8a15a4fbc789ad574145c8, type: 2}
+    - target: {fileID: 2016549303815472390, guid: d07f9a96bf097054987fb2563ed354a6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1322cecbcc8a15a4fbc789ad574145c8, type: 2}
+    - target: {fileID: 2255061936736414792, guid: d07f9a96bf097054987fb2563ed354a6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1322cecbcc8a15a4fbc789ad574145c8, type: 2}
+    - target: {fileID: 2845777875650618831, guid: d07f9a96bf097054987fb2563ed354a6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1322cecbcc8a15a4fbc789ad574145c8, type: 2}
     - target: {fileID: 4722779726108118210, guid: d07f9a96bf097054987fb2563ed354a6,
         type: 3}
       propertyPath: m_Name
       value: Naruto
       objectReference: {fileID: 0}
+    - target: {fileID: 4812777219103906239, guid: d07f9a96bf097054987fb2563ed354a6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1322cecbcc8a15a4fbc789ad574145c8, type: 2}
+    - target: {fileID: 5241701446291917830, guid: d07f9a96bf097054987fb2563ed354a6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1322cecbcc8a15a4fbc789ad574145c8, type: 2}
+    - target: {fileID: 5615640037989480640, guid: d07f9a96bf097054987fb2563ed354a6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1322cecbcc8a15a4fbc789ad574145c8, type: 2}
+    - target: {fileID: 5741881253455093459, guid: d07f9a96bf097054987fb2563ed354a6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1322cecbcc8a15a4fbc789ad574145c8, type: 2}
     - target: {fileID: 7501537313164047335, guid: d07f9a96bf097054987fb2563ed354a6,
         type: 3}
       propertyPath: m_RootOrder
@@ -239,6 +304,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 8576858844491405405, guid: d07f9a96bf097054987fb2563ed354a6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1322cecbcc8a15a4fbc789ad574145c8, type: 2}
+    - target: {fileID: 9215755696973790286, guid: d07f9a96bf097054987fb2563ed354a6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1322cecbcc8a15a4fbc789ad574145c8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d07f9a96bf097054987fb2563ed354a6, type: 3}
 --- !u!4 &7898680989589732315 stripped

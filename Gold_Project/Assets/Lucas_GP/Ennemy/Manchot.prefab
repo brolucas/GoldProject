@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 255277567047928808}
   - component: {fileID: 6709396344107502454}
   - component: {fileID: 2488951184649618190}
+  - component: {fileID: 3970770198984310905}
   m_Layer: 3
   m_Name: Manchot
   m_TagString: Enemy
@@ -172,6 +173,25 @@ MonoBehaviour:
   part1: {fileID: 6702079548424965487, guid: 5000d91626e97924f9bd4a1ec72dc9ad, type: 3}
   part2: {fileID: 5110612013305950267, guid: 5b542012503b52d4c9902cf03b2e2e60, type: 3}
   part3: {fileID: 5962223058080431632, guid: b8a81912874e5ea499d41763ae803d5b, type: 3}
+--- !u!95 &3970770198984310905
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3507957338615616271}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7e19d79d77ca14845ae0ef7ce3485890, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1514806398554670542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -179,6 +199,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6898869339770346148}
     m_Modifications:
+    - target: {fileID: 434836974760874917, guid: 5fdacb50bae8ba34982a64afb4a4d219,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1322cecbcc8a15a4fbc789ad574145c8, type: 2}
     - target: {fileID: 911092913464225912, guid: 5fdacb50bae8ba34982a64afb4a4d219,
         type: 3}
       propertyPath: m_Layer
@@ -219,6 +244,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3005291094201647614, guid: 5fdacb50bae8ba34982a64afb4a4d219,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1322cecbcc8a15a4fbc789ad574145c8, type: 2}
     - target: {fileID: 3978519302339831905, guid: 5fdacb50bae8ba34982a64afb4a4d219,
         type: 3}
       propertyPath: m_Layer
@@ -289,6 +319,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 4658784575160137204, guid: 5fdacb50bae8ba34982a64afb4a4d219,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1322cecbcc8a15a4fbc789ad574145c8, type: 2}
+    - target: {fileID: 5531423659134180900, guid: 5fdacb50bae8ba34982a64afb4a4d219,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1322cecbcc8a15a4fbc789ad574145c8, type: 2}
+    - target: {fileID: 6166175139557068397, guid: 5fdacb50bae8ba34982a64afb4a4d219,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1322cecbcc8a15a4fbc789ad574145c8, type: 2}
     - target: {fileID: 6622110712094711520, guid: 5fdacb50bae8ba34982a64afb4a4d219,
         type: 3}
       propertyPath: m_Name
