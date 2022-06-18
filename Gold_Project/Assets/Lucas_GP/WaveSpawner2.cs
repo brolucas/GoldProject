@@ -53,6 +53,7 @@ public class WaveSpawner2 : MonoBehaviour
         waves[eventAlea]._event = true;
         eventAlea = alea.Next(7, 10);
         waves[eventAlea]._event = true;
+        PlayerPrefs.SetInt("BarricadeUsed", 0);
 
     }
     // Update is called once per frame
@@ -99,6 +100,7 @@ public class WaveSpawner2 : MonoBehaviour
                     AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_finishing_world_2);
                 }
                 
+                if (PlayerPrefs.GetInt("BarricadeUsed") == 0) AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_dangerous_lifestyle);
 
                 this.enabled = false;
             }
