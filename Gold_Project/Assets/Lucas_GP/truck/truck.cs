@@ -15,8 +15,12 @@ public class truck : MonoBehaviour
 
     public GameObject Truck_Game_Over_Screen;
 
+    //feedback visuel dammag
+    private Animator anim;
+
     private void Start()
     {
+        anim = GetComponent<Animator>();
         Truck_Coins_Text.text = ("  : " + gold.ToString());
     }
 
@@ -33,6 +37,8 @@ public class truck : MonoBehaviour
         {
             Loose();
         }
+        anim.SetBool("dmg", true);
+        StartCoroutine(DelaisDmg());
     }
     public void Loose()
     {
@@ -49,5 +55,10 @@ public class truck : MonoBehaviour
             StartCoroutine(collision.gameObject.GetComponent<EnemiesTemp>().Die());
 
         }
+    }
+    IEnumerator DelaisDmg()
+    {
+        yield return new WaitForSeconds(.1f);
+        anim.SetBool("dmg", false);
     }
 }

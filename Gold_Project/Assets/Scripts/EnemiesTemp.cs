@@ -51,6 +51,9 @@ public class EnemiesTemp : MonoBehaviour
 	private GameObject turretTarget;
 	private System.Random alea;
 
+	//feedback dammaged
+	private Animator anim;
+
 	[SerializeField] private ParticleSystem part1, part2, part3;
 
 	public void Start()
@@ -66,6 +69,8 @@ public class EnemiesTemp : MonoBehaviour
 		canMove = true;
 		turretTarget = null;
 		alea = new System.Random();
+
+		anim = GetComponent<Animator>();
 	}
 
 	public void Update()
@@ -173,6 +178,11 @@ public class EnemiesTemp : MonoBehaviour
 			GameManager.Instance.truck.gold += this.goldValue;
 			StartCoroutine(Die());
 		}
+		else
+        {
+			anim.SetBool("dmg", true);
+			StartCoroutine(AnimFeedbackDmg());
+        }
 	}
 
 	public void TimeToDie(float delta)
@@ -245,6 +255,12 @@ public class EnemiesTemp : MonoBehaviour
 
 			damagePerSeconds = baseHealth;
 		}
+	}
+	IEnumerator AnimFeedbackDmg()
+    {
+		yield return new WaitForSeconds(.1f);
+		anim.SetBool("dmg", false);
+			
 	}
 
 	public void OnDestroy()

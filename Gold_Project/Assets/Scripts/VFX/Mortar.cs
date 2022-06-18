@@ -8,6 +8,8 @@ public class Mortar : MonoBehaviour
     [SerializeField] float y;
     float x = 0;
     float max = 1;
+    public Vector3 target;
+
 
     void Update()
     {
@@ -18,6 +20,7 @@ public class Mortar : MonoBehaviour
             Instantiate(explosion, transform.position, Quaternion.Euler(90, 0, 0));
             Destroy(gameObject);
         }
+        transform.position = Vector3.MoveTowards(transform.position, target, .06f);
     }
 
     float courbe (float x)
