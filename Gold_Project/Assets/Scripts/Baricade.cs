@@ -7,6 +7,8 @@ public class Baricade : MonoBehaviour
     public int baseHp = 10;
     public int hp;
     public int price;
+
+    public AudioSource breakingSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,8 +32,15 @@ public class Baricade : MonoBehaviour
             Pathfinding.Instance.GetNode(x, y).isBarricade = null;
             Pathfinding.Instance.GetNode(x, y).isUsed = false;
             Pathfinding.Instance.mapHasChanged = true;
+            StartCoroutine(BreakingAudio(breakingSound));
             Destroy(this.gameObject);
             GameManager.Instance.baricades.Remove(this.gameObject);
         }
+    }
+
+    private IEnumerator BreakingAudio(AudioSource breakingSound)
+    {
+        breakingSound.Play();
+        yield return new WaitForSeconds(2);
     }
 }
