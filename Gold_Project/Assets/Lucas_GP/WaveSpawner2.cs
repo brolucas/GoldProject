@@ -49,10 +49,17 @@ public class WaveSpawner2 : MonoBehaviour
     private void Start()
     {
         System.Random alea = new System.Random();
-        int eventAlea = alea.Next(3, 5);
-        waves[eventAlea]._event = true;
-        eventAlea = alea.Next(7, 10);
-        waves[eventAlea]._event = true;
+        if (waves.Length >= 5)
+        {
+            int eventAlea = alea.Next(3, 5);
+            waves[eventAlea]._event = true;
+        }
+
+        if (waves.Length >= 10)
+        {
+            int eventAlea = alea.Next(7, 10);
+            waves[eventAlea]._event = true;
+        }
         PlayerPrefs.SetInt("BarricadeUsed", 0);
         PlayerPrefs.SetInt("TowerUpgraded", 0);
 
@@ -198,13 +205,14 @@ public class WaveSpawner2 : MonoBehaviour
         System.Random alea = new System.Random();
         int noevent = alea.Next(0,2);
 
-        int x1 = alea.Next(3, 10);
-        int y1 = alea.Next(2, 5);
-        Vector3 temp = new Vector3(x1, y1, 0);
+        
 
         switch (noevent)
         {
             case 0:
+                int x1 = alea.Next(3, 10);
+                int y1 = alea.Next(2, 5);
+                Vector3 temp = new Vector3(x1, y1, 0);
                 Debug.Log("Event Launched !" + listEvent[0].ToString());
 
 
