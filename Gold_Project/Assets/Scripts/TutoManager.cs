@@ -77,7 +77,7 @@ public class TutoManager : MonoBehaviour
     void EndTuto()
     {
         Time.timeScale = 1;
-        AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_finishing_tutorial);
+        AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_finishing_tutorial); // exemple achievement
         PlayerPrefs.SetInt("tuto", 1);
         PlayerPrefs.SetInt("firstTime", 1);
         TutoTrigger.instance.tutoPanel.SetActive(false);

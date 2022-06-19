@@ -12,6 +12,8 @@ public class BuildManager : MonoBehaviour
 
 	private Deck deck;
 
+    public AudioSource buildSound;
+
 	#region Singleton
 	private static BuildManager instance = null;
 
@@ -97,6 +99,7 @@ public class BuildManager : MonoBehaviour
 				return;
 			}
 
+            StartCoroutine(BuildSound(buildSound));
 			GameObject newTurret = Instantiate(turretPrefab, position, Quaternion.identity);
 			Pathfinding.Instance.GetNode(x, y).isTurret = newTurret;
 			Pathfinding.Instance.GetNode(x, y).isUsed = true;
@@ -114,14 +117,20 @@ public class BuildManager : MonoBehaviour
 
 	}
 
+    private IEnumerator BuildSound(AudioSource buildSound)
+    {
+		buildSound.Play();
+        yield return new WaitForSeconds(2);
+    }
+
 	public void CreateBarricade(Vector3 position)
 	{
 		if (barricadeToBuild == null) return;
 
 		Pathfinding.Instance.GetGrid().GetXY(position, out int x, out int y);
-		if (GameManager.Instance.truck.gold >= barricadeToBuild.GetComponent<Baricade>().price && !Pathfinding.Instance.GetNode(x, y).isUsed) 
-		{
-
+		if (GameManager.Instance.truck.gold >= barricadeToBuild.GetComponent<Baricade>().price && !Pathfinding.Instance.GetNode(x, y).isUsed)
+        {
+            StartCoroutine(BuildSound(buildSound));
 			GameObject newBarricade = Instantiate(barricadeToBuild, position, Quaternion.identity);
 			Pathfinding.Instance.GetNode(x, y).isBarricade = newBarricade;
 			Pathfinding.Instance.GetNode(x, y).isUsed = true;
@@ -130,6 +139,7 @@ public class BuildManager : MonoBehaviour
 			barricadeToBuild = null;
 
 			GameManager.Instance.truck.gold -= newBarricade.GetComponent<Baricade>().price;
+			PlayerPrefs.SetInt("BarricadeUsed", PlayerPrefs.GetInt("BarricadeUsed") + 1);
 		}
 	}
 }

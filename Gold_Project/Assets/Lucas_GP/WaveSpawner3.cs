@@ -50,19 +50,13 @@ public class WaveSpawner3 : MonoBehaviour
     private void Start()
     {
         System.Random alea = new System.Random();
+        int eventAlea = alea.Next(3, 5);
+        waves[eventAlea]._event = true;
+        eventAlea = alea.Next(7, 10);
+        waves[eventAlea]._event = true;
+        PlayerPrefs.SetInt("BarricadeUsed", 0);
+        PlayerPrefs.SetInt("TowerUpgraded", 0);
 
-        //truck = GetComponent<truck>();
-        if (waves.Length >= 5)
-        {
-            int eventAlea = alea.Next(3, 5);
-            waves[eventAlea]._event = true;
-        }
-        if (waves.Length >= 10)
-        {
-            int eventAlea = alea.Next(7, 10);
-            waves[eventAlea]._event = true;
-        }
-        enemyAlive = 0;
     }
     // Update is called once per frame
     void Update()
@@ -108,7 +102,9 @@ public class WaveSpawner3 : MonoBehaviour
                     AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_finishing_world_3);
                 }
 
-                
+                if (PlayerPrefs.GetInt("BarricadeUsed") == 0) AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_dangerous_lifestyle);
+                if (PlayerPrefs.GetInt("TowerUpgraded") == 0) AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_better_simple);
+
                 this.enabled = false;
 
             }
@@ -201,15 +197,15 @@ public class WaveSpawner3 : MonoBehaviour
     {
         System.Random alea = new System.Random();
         int noevent = alea.Next(0,2);
-        
+        int x1 = alea.Next(3, 10);
+        int y1 = alea.Next(3, 5);
+        Vector3 temp = new Vector3(x1, y1, 0);
 
         switch (noevent)
         {
             case 0:
 
-                int x1 = alea.Next(3, 10);
-                int y1 = alea.Next(3, 5);
-                Vector3 temp = new Vector3(x1, y1, 0);
+
                 Pathfinding.Instance.GetGrid().GetXY(temp, out int x, out int y);
 
                 Pathfinding.Instance.GetNode(x, y).isEvent = listEvent[0];
