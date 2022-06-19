@@ -77,6 +77,7 @@ public class Turret : MonoBehaviour
     private float fireRateBonus;
     public int maxAtqPoints { get; private set; }
     protected bool isAtqCap;
+    private float delayBeforeShoot;
 
     //Design
     public Sprite inGameDesign { get; private set; }
@@ -89,6 +90,7 @@ public class Turret : MonoBehaviour
     #endregion
 
     private bool isInside;
+    private bool isShooting;
     public EnemiesTemp currentTarget { get; set; } = null;
     public EnemiesTemp secondCurrentTarget { get; set; } = null;
 
@@ -100,6 +102,8 @@ public class Turret : MonoBehaviour
     public List<EnemiesTemp> inRangeEnemies = new List<EnemiesTemp>();
 
     public List<EnemiesTemp> targetList = new List<EnemiesTemp>();
+
+    public AudioSource shootingSound;
 
     public AudioSource breakingSound;
 
@@ -232,6 +236,7 @@ public class Turret : MonoBehaviour
         fireRateBonus = 0;
         maxAtqPoints = turretData.maxAtqPoints;
         isAtqCap = turretData.activeAtqCap;
+        delayBeforeShoot = turretData.delayBeforeShoot;
 
         inGameDesign = turretData.inGameDesign;
         UIDesign = turretData.UIDesign;
@@ -244,8 +249,24 @@ public class Turret : MonoBehaviour
 
         currentLevel = 1;
 
-    #endregion
-}
+        //Sound
+        shootingSound.clip = turretData.shootSound;
+
+        switch (kindOfTurret)
+        {
+            case KindOfTurret.Spliter:
+            case KindOfTurret.Furnace:
+            case KindOfTurret.Zap:
+                {
+                    shootingSound.loop = true;
+                }
+                break;
+            default:
+                break;
+        }
+
+        #endregion
+    }
 
     /*private void OnMouseDrag()
     {
@@ -297,7 +318,7 @@ public class Turret : MonoBehaviour
                     difference = targetList[0].transform.position - transform.position;
                     rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
 
-                    Shoot(targetList[0]);
+                    StartCoroutine(Shoot(targetList[0]));
                 }
                 if (nbrOfTarget > 1)
                 {
@@ -306,7 +327,7 @@ public class Turret : MonoBehaviour
                         difference = target.transform.position - transform.position;
                         rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
 
-                        Shoot(target);
+                        StartCoroutine(Shoot(target));
                     }
                 }
 
@@ -345,6 +366,35 @@ public class Turret : MonoBehaviour
                         break;
                 }
             }
+        }
+        else
+        {
+            isShooting = false;
+        }
+
+        switch (kindOfTurret)
+        {
+            case KindOfTurret.Spliter:
+            case KindOfTurret.Furnace:
+            case KindOfTurret.Zap:
+                {
+                    if (isShooting)
+                    {
+                        if (shootingSound.isPlaying == false)
+                        {
+                            shootingSound.Play();
+                            Debug.LogWarning("isShooting");
+                        }
+                    }
+                    else
+                    {
+                        shootingSound.Stop();
+                        Debug.LogWarning("is not Shooting");
+                    }
+                }
+                break;
+            default:
+                break;
         }
 
         // Max Level Passive and Passive that are turn ON all the time
@@ -648,8 +698,74 @@ public class Turret : MonoBehaviour
         }
     }
 
-    public void Shoot(EnemiesTemp enemy)
+    public IEnumerator Shoot(EnemiesTemp enemy)
     {
+        isShooting = true;
+
+        switch (kindOfTurret)
+        {
+            // if com don't change it 
+            //case KindOfTurret.Spliter:
+            case KindOfTurret.Basic:
+            case KindOfTurret.SniperTower:
+            case KindOfTurret.Immobilizer:
+                {
+                    bullet = Instantiate(particleShoot, particleSpawnPoint.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
+                    //bullet.GetComponent<rangeLifeTimeParticles>().target = targetList[0].transform;
+                    break;
+                }
+            case KindOfTurret.Furnace:
+            case KindOfTurret.Zap:
+
+                {
+                    bullet = Instantiate(particleShoot, particleSpawnPoint.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
+                    break;
+                }
+            case KindOfTurret.Mortar:
+                {
+                    bullet = Instantiate(particleShoot, enemy.transform.position, transform.rotation, this.transform);
+                    break;
+                }
+            case KindOfTurret.Channelizer:
+            case KindOfTurret.Generator:
+            case KindOfTurret.Discord:
+                {
+                    bullet = Instantiate(particleShoot, particleSpawnPoint.transform.position, Quaternion.Euler(0, 0, (90 + rotZ)));
+                    break;
+                }
+            default:
+                break;
+        }
+
+        if (delayBeforeShoot == 0)
+        {
+            //Wait for the bullet to hit
+            delayBeforeShoot = 0.10f;
+        }
+
+        yield return new WaitForSeconds(delayBeforeShoot);
+
+        switch (kindOfTurret)
+        {
+            //case KindOfTurret.Spliter:
+            //case KindOfTurret.Furnace:
+            //case KindOfTurret.Zap:
+            case KindOfTurret.Generator:
+            case KindOfTurret.Basic:
+            case KindOfTurret.SniperTower:
+            case KindOfTurret.Mortar:
+            case KindOfTurret.Discord:
+            case KindOfTurret.Channelizer:
+            case KindOfTurret.Immobilizer:
+                {
+                    shootingSound.pitch = Random.Range(1f, 1.10f);
+                    shootingSound.Play();
+                }
+                break;
+            default:
+                break;
+        }
+
         // Passive ON when shooting
         switch (kindOfTurret)
         {
@@ -703,41 +819,6 @@ public class Turret : MonoBehaviour
         if (isAtqCap)
         {
              damage = Mathf.Clamp(atqPoints + atqPtsBonusPassive, 0, maxAtqPoints);
-        }
-
-        switch (kindOfTurret)
-        {
-            // if com don't change it 
-            //case KindOfTurret.Spliter:
-            case KindOfTurret.Basic:
-            case KindOfTurret.SniperTower:
-            case KindOfTurret.Immobilizer:
-                {
-                    bullet = Instantiate(particleShoot, particleSpawnPoint.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
-                    //bullet.GetComponent<rangeLifeTimeParticles>().target = targetList[0].transform;
-                    break;
-                }
-            case KindOfTurret.Furnace:
-            case KindOfTurret.Zap:
-            
-                {
-                    bullet = Instantiate(particleShoot, particleSpawnPoint.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
-                    break;
-                }
-            case KindOfTurret.Mortar:
-                {
-                    bullet = Instantiate(particleShoot, enemy.transform.position, transform.rotation, this.transform);
-                    break;
-                }
-            case KindOfTurret.Channelizer:
-            case KindOfTurret.Generator:
-            case KindOfTurret.Discord:
-                {
-                    bullet = Instantiate(particleShoot, particleSpawnPoint.transform.position, Quaternion.Euler(0, 0, (90 + rotZ)));
-                    break;
-                }
-            default:
-                break;
         }
 
         enemy.TakeDamage(damage);
