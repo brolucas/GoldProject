@@ -382,7 +382,8 @@ public class Turret : MonoBehaviour
                     {
                         if (shootingSound.isPlaying == false)
                         {
-                            shootingSound.Play();
+                            //shootingSound.Play();
+                            shootingSound.PlayOneShot(shootingSound.clip);
                             Debug.LogWarning("isShooting");
                         }
                     }

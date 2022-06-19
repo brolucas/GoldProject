@@ -101,7 +101,7 @@ MonoBehaviour:
     inGameDesign: {fileID: 21300000, guid: 3f86696fad7cb1641a93ff5c46bb0c67, type: 3}
     barrel: {fileID: 21300000, guid: 264f7867db0477e4899934586a36e72d, type: 3}
     UIDesign: {fileID: 21300000, guid: e3d3393d21f99f145b199afc2a0084a9, type: 3}
-    shootSound: {fileID: 8300000, guid: b229eed16647f4b44822bed71321b28f, type: 3}
+    shootSound: {fileID: 8300000, guid: c1209e16975cec644a1cab28fdefdd60, type: 3}
     description: 'Name : Discord
 
 
@@ -171,7 +171,7 @@ MonoBehaviour:
     inGameDesign: {fileID: 21300000, guid: 744cc2f6ff4bfac43afc62faf4581209, type: 3}
     barrel: {fileID: 21300000, guid: 649fa9a3299cf794b82c4eade0ff0ed2, type: 3}
     UIDesign: {fileID: 21300000, guid: 8119b7a3c3fc769449d55861899b4cb1, type: 3}
-    shootSound: {fileID: 8300000, guid: 5b6b2fd67ecc49b469934c2677c07e85, type: 3}
+    shootSound: {fileID: 8300000, guid: fe48aa38bf7048947bb169d3bfb42401, type: 3}
     description: 'Name : Furnace
 
 
@@ -276,7 +276,7 @@ MonoBehaviour:
     inGameDesign: {fileID: 21300000, guid: 4db89b8381bc25d4a89f1e5fba90bac8, type: 3}
     barrel: {fileID: 21300000, guid: b852462f34efdcb43b418ff687e587bf, type: 3}
     UIDesign: {fileID: 21300000, guid: e8f42b4a6b69c1f44a360a75128825c2, type: 3}
-    shootSound: {fileID: 8300000, guid: cb62ce8db85bb3e48994c87a7d21f9b4, type: 3}
+    shootSound: {fileID: 8300000, guid: 688c442cd885dfd45a358506903aa214, type: 3}
     description: 'Name : Immobilizer
 
 
