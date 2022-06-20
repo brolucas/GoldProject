@@ -47,9 +47,9 @@ MonoBehaviour:
       Fire rate : 1,5/s
 
 '
+    targetDescription: Enemy closest to the truck.
     descriptionPassive: "Passive : Fires its bullets in bursts of two. \r\n\nLevel
-      3 : Firing permanently increases the attack speed of the turret to +100% of
-      atkSpeed."
+      3 : Each shot permanently increases the attack speed by 10% (up to +100%)."
   - label: Mortar
     kindOfTurret: 2
     healthPoints: 125
@@ -84,6 +84,7 @@ MonoBehaviour:
       Fire rate : 0,25/s
 
 '
+    targetDescription: Enemy closest to the truck between 1 and 3 of range.
     descriptionPassive: "Passive : Fires a shell dealing damage on 1 square around
       it and slows down the enemies hit by 50%. \r\n\nLevel 3 : The slowdown is applied
       on 2 squares around the impact."
@@ -121,6 +122,7 @@ MonoBehaviour:
       Fire rate : 0,75/s
 
 '
+    targetDescription: Enemy closest to the truck.
     descriptionPassive: 'Passive : Increases its damage by 5% per hit on the same
       target. Cumulative 10 times.
 
@@ -161,11 +163,12 @@ MonoBehaviour:
       Fire rate : 1/s
 
 '
+    targetDescription: The enemy with the most HP.
     descriptionPassive: 'Passive : Inflicts 4% of the target''s max hp per shot.
 
 
       Level
-      3 : +1 Range.'
+      3 : Gains +1 Range.'
   - label: Furnace
     kindOfTurret: 5
     healthPoints: 200
@@ -200,6 +203,8 @@ MonoBehaviour:
       Fire rate : 10/s
 
 '
+    targetDescription: Enemy closest to the truck that does not burn and affects
+      the surrounding enemies that are in the fire.
     descriptionPassive: 'Passive : Enemies that suffer 5 attacks are burned
 
       burned
@@ -242,6 +247,7 @@ MonoBehaviour:
       Fire rate : 0,75/s
 
 '
+    targetDescription: Enemy closest to the truck.
     descriptionPassive: 'Passive : Charge attacks if no target is in range (up to
       5) which are consumed on the first target.
 
@@ -282,6 +288,7 @@ MonoBehaviour:
       Fire rate : 0,5/s
 
 '
+    targetDescription: Enemy closest to the truck.
     descriptionPassive: 'Passive : Converts 50% of the damage inflicted as gold.
 
 
@@ -322,6 +329,7 @@ MonoBehaviour:
       Fire rate : 0,5/s
 
 '
+    targetDescription: Enemies with the most missing HP (4 targets).
     descriptionPassive: 'Passive : Attacks 4 targets and immobilizes them for 0.5s.
 
 
@@ -361,6 +369,7 @@ MonoBehaviour:
       Fire rate : 1/s
 
 '
+    targetDescription: Hits enemies in AoE around the turret.
     descriptionPassive: 'Passive : Gains 0,1 attack speed per enemy hit for 1s cumulative
       7 times.
 
@@ -401,6 +410,8 @@ MonoBehaviour:
       Fire rate : 2,25/s
 
 '
+    targetDescription: Attacks the farthest enemy from the truck, doesn't change
+      target as long as it is in range or dead.
     descriptionPassive: 'Passive : Doubles its damage each time the target is identical
       to the previous one (max : 10).
 

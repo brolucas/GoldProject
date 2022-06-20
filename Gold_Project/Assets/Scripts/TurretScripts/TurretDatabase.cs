@@ -74,6 +74,9 @@ public class TurretData
     [TextArea(5, 20)]
     public string description;
 
+    [TextArea(5, 15)]
+    public string targetDescription;
+
     [TextArea(5, 20)]
     public string descriptionPassive;
 }

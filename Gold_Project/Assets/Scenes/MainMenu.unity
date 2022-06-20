@@ -326,6 +326,7 @@ MonoBehaviour:
   turretImageUI: {fileID: 3613817657250697500}
   description: {fileID: 3613817657333569755}
   descriptionPassive: {fileID: 1669793325}
+  targetDescription: {fileID: 5132518629356746739}
   TurretDeckAddRemove: {fileID: 7345705311186486864}
 --- !u!114 &173509356 stripped
 MonoBehaviour:
@@ -1601,6 +1602,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0b096748c4920b4aa21e8c58bb43148, type: 3}
+--- !u!114 &5132518629356746739 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3366563986983247326, guid: c0b096748c4920b4aa21e8c58bb43148,
+    type: 3}
+  m_PrefabInstance: {fileID: 5132518629356746738}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7345705311186486864 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2507219181109948834, guid: c0b096748c4920b4aa21e8c58bb43148,
