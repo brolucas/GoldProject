@@ -89,8 +89,7 @@ public class Shop : MonoBehaviour
 							   "Upgrade cost : " + (turret.turretPrice + upgradeCost) + "\n" +
 							   "Range : " + range + "\n" +
 							   "HP : " + turret.maxHealthPoint + "/" + turret.currentHP + "\n" +
-							   "Damage : " + turret.atqPoints + "\n" +
-							   "Target : " + turret.targetType);
+							   "Damage : " + turret.atqPoints + "\n");
 				break;
 			case 2:
                 nameTurretText.text = turret.kindOfTurret.ToString();
@@ -99,8 +98,7 @@ public class Shop : MonoBehaviour
 							   "Upgrade cost : " + (turret.turretPrice + upgradeCost) + "\n" +
 							   "Range : " + range + "\n" +
 							   "HP : " + turret.maxHealthPoint + "/" + turret.currentHP + "\n" +
-							   "Damage : " + turret.atqPoints + "\n" +
-							   "Target : " + turret.targetType);
+							   "Damage : " + turret.atqPoints + "\n");
 				break;
 			case 3:
                 nameTurretText.text = turret.kindOfTurret.ToString();
@@ -108,8 +106,7 @@ public class Shop : MonoBehaviour
 							   "No more upgrade" + "\n" +
 							   "Range : " + range + "\n" +
 							   "HP : " + turret.maxHealthPoint + "/" + turret.currentHP + "\n" +
-							   "Damage : " + turret.atqPoints + "\n" +
-							   "Target : " + turret.targetType);
+							   "Damage : " + turret.atqPoints + "\n");
 				break;
 			default:
 				break;
@@ -129,8 +126,7 @@ public class Shop : MonoBehaviour
             infoTurretText.text = ("Price : " + turretData.turretPrice + "\n" +
                                    "Range : " + turretData.range + "\n" +
                                    "Life Points : " + turretData.healthPoints + "\n" +
-                                   "Damage : " + turretData.atqPoints + "\n" +
-                                   "Target : " + turretData.targetType);
+                                   "Damage : " + turretData.atqPoints + "\n");
 
 			BuildManager.Instance.SetTurretToBuild(kindOfTurret);
 		}
@@ -196,10 +192,15 @@ public class Shop : MonoBehaviour
 
 	public void Upgrade()
 	{
-        if (BuildManager.Instance.turretToBuild == KindOfTurret.DefaultDoNotUseIt)
-        {
-			Turret turret = selectedItemInGame.GetComponent<Turret>();
+		Turret turret = selectedItemInGame.GetComponent<Turret>();
 
+		if (turret.isMaxLevel || turret.currentLevel >= turret.maxLevel)
+        {
+			return;
+        }
+
+		if (BuildManager.Instance.turretToBuild == KindOfTurret.DefaultDoNotUseIt)
+        {
             turret.Upgrade();
 
             DisplayCurrentTurretStats();

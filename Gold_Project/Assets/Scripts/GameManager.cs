@@ -66,8 +66,7 @@ public class GameManager : MonoBehaviour
                                       "HP : " + turretData.healthPoints + "\n" +
                                       "Range : " + turretData.range + "\n" +
                                       "Damage : " + turretData.atqPoints + "\n" +
-                                      "Fire rate : " + turretData.fireRate + "/s"+ "\n" +
-                                      "Target : " + turretData.targetType);
+                                      "Fire rate : " + turretData.fireRate + "/s" + "\n");
         }
 
         if (currentScene.name == "MainMenu")

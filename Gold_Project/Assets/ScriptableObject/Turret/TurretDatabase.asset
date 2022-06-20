@@ -46,8 +46,10 @@ MonoBehaviour:
 
       Fire rate : 1,5/s
 
-      Target : Terreste'
-    descriptionPassive: '+100% atk speed for the next attack after hitting en enemy '
+'
+    descriptionPassive: "Passive : Fires its bullets in bursts of two. \r\n\nLevel
+      3 : Firing permanently increases the attack speed of the turret to +100% of
+      atkSpeed."
   - label: Mortar
     kindOfTurret: 2
     healthPoints: 125
@@ -81,8 +83,10 @@ MonoBehaviour:
 
       Fire rate : 0,25/s
 
-      Target : Terreste'
-    descriptionPassive: The enemy around the turret are slowed by 50%
+'
+    descriptionPassive: "Passive : Fires a shell dealing damage on 1 square around
+      it and slows down the enemies hit by 50%. \r\n\nLevel 3 : The slowdown is applied
+      on 2 squares around the impact."
   - label: Discord
     kindOfTurret: 3
     healthPoints: 150
@@ -116,8 +120,13 @@ MonoBehaviour:
 
       Fire rate : 0,75/s
 
-      Target : Both'
-    descriptionPassive: +5% atk damage for every hit on the same enemy
+'
+    descriptionPassive: 'Passive : Increases its damage by 5% per hit on the same
+      target. Cumulative 10 times.
+
+
+      Level 3 : Enemies take 5 damage on impact
+      per discord stack effect (max: 10).'
   - label: Sniper Tower
     kindOfTurret: 4
     healthPoints: 175
@@ -151,8 +160,12 @@ MonoBehaviour:
 
       Fire rate : 1/s
 
-      Target : Terreste'
-    descriptionPassive: +4% of max hp of the target of damage
+'
+    descriptionPassive: 'Passive : Inflicts 4% of the target''s max hp per shot.
+
+
+      Level
+      3 : +1 Range.'
   - label: Furnace
     kindOfTurret: 5
     healthPoints: 200
@@ -186,9 +199,15 @@ MonoBehaviour:
 
       Fire rate : 10/s
 
-      Target : Terreste'
-    descriptionPassive: The enemy that are hit 5 times get burned, and take 1 damage
-      per sec.
+'
+    descriptionPassive: 'Passive : Enemies that suffer 5 attacks are burned
+
+      burned
+      enemies suffer 1 point of damage per second for 5 seconds.
+
+
+      Level 3
+      : In addition deals 1% of the target''s max hp per second.'
   - label: Channelizer
     kindOfTurret: 6
     healthPoints: 225
@@ -222,8 +241,13 @@ MonoBehaviour:
 
       Fire rate : 0,75/s
 
-      Target : Terreste'
-    descriptionPassive: Out of fight charge it's next atk
+'
+    descriptionPassive: 'Passive : Charge attacks if no target is in range (up to
+      5) which are consumed on the first target.
+
+
+      Level 3 : Each shot inflicts
+      4% of the target''s current hp.'
   - label: Generator
     kindOfTurret: 7
     healthPoints: 200
@@ -257,8 +281,13 @@ MonoBehaviour:
 
       Fire rate : 0,5/s
 
-      Target : Terreste'
-    descriptionPassive: Genrate in gold 50% of it's atk damage
+'
+    descriptionPassive: 'Passive : Converts 50% of the damage inflicted as gold.
+
+
+      Level
+      3 : Increases the attack speed of nearby turrets (1 cell) by 15% and their
+      damage by 15. (do not stack).'
   - label: Immobilizer
     kindOfTurret: 8
     healthPoints: 300
@@ -292,8 +321,12 @@ MonoBehaviour:
 
       Fire rate : 0,5/s
 
-      Target : Both'
-    descriptionPassive: Stunt the enemy for 0.5sec every time it hit.
+'
+    descriptionPassive: 'Passive : Attacks 4 targets and immobilizes them for 0.5s.
+
+
+      Level
+      3 : Each attack inflicts 4% of the target''s missing hp.'
   - label: Zap
     kindOfTurret: 9
     healthPoints: 350
@@ -327,8 +360,13 @@ MonoBehaviour:
 
       Fire rate : 1/s
 
-      Target : Terreste'
-    descriptionPassive: +10% atk speed for every enemy hit stackable 7 times.
+'
+    descriptionPassive: 'Passive : Gains 0,1 attack speed per enemy hit for 1s cumulative
+      7 times.
+
+
+      Level 3 : After reaching maximum attack speed, deals 20 times
+      its damage around itself then enters stasis for 2 seconds. '
   - label: Spliter
     kindOfTurret: 10
     healthPoints: 400
@@ -362,6 +400,10 @@ MonoBehaviour:
 
       Fire rate : 2,25/s
 
-      Target : Both'
-    descriptionPassive: 2x damage for every time it hit the same enemy stackable
-      10 times.
+'
+    descriptionPassive: 'Passive : Doubles its damage each time the target is identical
+      to the previous one (max : 10).
+
+
+      Level 3 : Shoot now at 2 targets at
+      the same time.'
