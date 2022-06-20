@@ -24,12 +24,14 @@ MonoBehaviour:
     fireRate: 1.5
     maxAtqPoints: 50
     activeAtqCap: 0
+    delayBeforeShoot: 0
     basePassiveParameters: 100
     maxPassiveParameters: 5
     capPassive: 0
     inGameDesign: {fileID: 21300000, guid: 0b334ca2f87ee0545b4b21d44c5750e2, type: 3}
     barrel: {fileID: 21300000, guid: 1a722af402c4d39468f6fd3c55673b69, type: 3}
     UIDesign: {fileID: 21300000, guid: 102e56d1b9dc1fc42823ff7c635ab7ae, type: 3}
+    shootSound: {fileID: 0}
     description: 'Name : Basic
 
 
@@ -57,12 +59,14 @@ MonoBehaviour:
     fireRate: 0.25
     maxAtqPoints: 140
     activeAtqCap: 0
+    delayBeforeShoot: 0
     basePassiveParameters: 50
     maxPassiveParameters: 8
     capPassive: 2
     inGameDesign: {fileID: 21300000, guid: 744cc2f6ff4bfac43afc62faf4581209, type: 3}
     barrel: {fileID: 21300000, guid: 3fec711dd83f65049900c63632368724, type: 3}
     UIDesign: {fileID: 21300000, guid: 0f16975b29d62f845a1d41af56e2b00b, type: 3}
+    shootSound: {fileID: 0}
     description: 'Name : Mortar
 
 
@@ -90,12 +94,14 @@ MonoBehaviour:
     fireRate: 0.75
     maxAtqPoints: 140
     activeAtqCap: 0
+    delayBeforeShoot: 0
     basePassiveParameters: 5
     maxPassiveParameters: 5
     capPassive: 10
     inGameDesign: {fileID: 21300000, guid: 3f86696fad7cb1641a93ff5c46bb0c67, type: 3}
     barrel: {fileID: 21300000, guid: 264f7867db0477e4899934586a36e72d, type: 3}
     UIDesign: {fileID: 21300000, guid: e3d3393d21f99f145b199afc2a0084a9, type: 3}
+    shootSound: {fileID: 0}
     description: 'Name : Discord
 
 
@@ -123,12 +129,14 @@ MonoBehaviour:
     fireRate: 1
     maxAtqPoints: 180
     activeAtqCap: 0
+    delayBeforeShoot: 0
     basePassiveParameters: 4
     maxPassiveParameters: 2
     capPassive: 0
     inGameDesign: {fileID: 21300000, guid: 4db89b8381bc25d4a89f1e5fba90bac8, type: 3}
     barrel: {fileID: 21300000, guid: 5ef8167ef470d4c4faa72eabcaf38166, type: 3}
     UIDesign: {fileID: 21300000, guid: 3f074810cce335a4081ac124519ed72c, type: 3}
+    shootSound: {fileID: 0}
     description: 'Name : Sniper Tower
 
 
@@ -156,12 +164,14 @@ MonoBehaviour:
     fireRate: 10
     maxAtqPoints: 50
     activeAtqCap: 0
+    delayBeforeShoot: 0
     basePassiveParameters: 1
     maxPassiveParameters: 1
     capPassive: 5
     inGameDesign: {fileID: 21300000, guid: 744cc2f6ff4bfac43afc62faf4581209, type: 3}
     barrel: {fileID: 21300000, guid: 649fa9a3299cf794b82c4eade0ff0ed2, type: 3}
     UIDesign: {fileID: 21300000, guid: 8119b7a3c3fc769449d55861899b4cb1, type: 3}
+    shootSound: {fileID: 0}
     description: 'Name : Furnace
 
 
@@ -189,12 +199,14 @@ MonoBehaviour:
     fireRate: 0.75
     maxAtqPoints: 180
     activeAtqCap: 0
+    delayBeforeShoot: 0
     basePassiveParameters: 5
     maxPassiveParameters: 4
     capPassive: 0
     inGameDesign: {fileID: 21300000, guid: 4db89b8381bc25d4a89f1e5fba90bac8, type: 3}
     barrel: {fileID: 21300000, guid: a7875f0da770b9a459c31c4a66a381f8, type: 3}
     UIDesign: {fileID: 21300000, guid: 922c888b7cae39d4aa68ce85c77ede85, type: 3}
+    shootSound: {fileID: 0}
     description: 'Name : Channelizer
 
 
@@ -222,12 +234,14 @@ MonoBehaviour:
     fireRate: 0.5
     maxAtqPoints: 180
     activeAtqCap: 0
+    delayBeforeShoot: 0
     basePassiveParameters: 50
     maxPassiveParameters: 15
     capPassive: 0
     inGameDesign: {fileID: 21300000, guid: b257de5c2cd918f49983d0e67c886481, type: 3}
     barrel: {fileID: 21300000, guid: 9a47038f934edc342b6d7ee72b0509b8, type: 3}
     UIDesign: {fileID: 21300000, guid: c128d10f10a502f42819b4bca3962461, type: 3}
+    shootSound: {fileID: 0}
     description: 'Name : Generator
 
 
@@ -255,12 +269,14 @@ MonoBehaviour:
     fireRate: 0.5
     maxAtqPoints: 140
     activeAtqCap: 0
+    delayBeforeShoot: 0
     basePassiveParameters: 0.5
     maxPassiveParameters: 4
     capPassive: 0
     inGameDesign: {fileID: 21300000, guid: 4db89b8381bc25d4a89f1e5fba90bac8, type: 3}
     barrel: {fileID: 21300000, guid: b852462f34efdcb43b418ff687e587bf, type: 3}
     UIDesign: {fileID: 21300000, guid: e8f42b4a6b69c1f44a360a75128825c2, type: 3}
+    shootSound: {fileID: 0}
     description: 'Name : Immobilizer
 
 
@@ -281,19 +297,21 @@ MonoBehaviour:
     kindOfTurret: 9
     healthPoints: 350
     range: 1
-    nbrOfTarget: 0
+    nbrOfTarget: 30
     turretPrice: 275
     targetType: 1
     atqPoints: 10
     fireRate: 1
     maxAtqPoints: 50
     activeAtqCap: 0
+    delayBeforeShoot: 0
     basePassiveParameters: 10
     maxPassiveParameters: 2
     capPassive: 50
     inGameDesign: {fileID: 21300000, guid: c38b33700abfbe945848135796f88cc7, type: 3}
     barrel: {fileID: 21300000, guid: 0b8da974a6429b8489e21c2a5d8dd509, type: 3}
     UIDesign: {fileID: 21300000, guid: c38b33700abfbe945848135796f88cc7, type: 3}
+    shootSound: {fileID: 8300000, guid: 0d67d558aceeac442bb400be9e828f57, type: 3}
     description: 'Name : Zap
 
 
@@ -321,12 +339,14 @@ MonoBehaviour:
     fireRate: 2.25
     maxAtqPoints: 1536
     activeAtqCap: 0
+    delayBeforeShoot: 0
     basePassiveParameters: 10
     maxPassiveParameters: 10
     capPassive: 50
     inGameDesign: {fileID: 21300000, guid: 7f2fbacabda42b14ba84ae394bd9c683, type: 3}
     barrel: {fileID: 21300000, guid: ce1d12f0cc0febf42abc92d49efe32f7, type: 3}
     UIDesign: {fileID: 21300000, guid: dd1c574b84a238d428208ad6968c005c, type: 3}
+    shootSound: {fileID: 0}
     description: 'Name : Spliter
 
 
