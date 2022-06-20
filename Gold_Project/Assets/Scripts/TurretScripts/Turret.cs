@@ -411,7 +411,6 @@ public class Turret : MonoBehaviour
         // Max Level Passive and Passive that are turn ON all the time
         switch (kindOfTurret)
         {
-            case KindOfTurret.Basic:
             case KindOfTurret.Generator:
             case KindOfTurret.SniperTower:
             case KindOfTurret.Zap:
@@ -1108,6 +1107,16 @@ public class Turret : MonoBehaviour
 
         switch (kindOfTurret)
         {
+            case KindOfTurret.Basic:
+                {
+                    if (speedStack < 10)
+                    {
+                        speedStack++;
+                        fireRateBonus += baseFireRate * 0.10f;
+                    }
+                   
+                    break;
+                }
             case KindOfTurret.SniperTower:
                 {
                     if (!doOnce)
