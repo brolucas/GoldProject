@@ -63,6 +63,9 @@ public class WaveSpawner2 : MonoBehaviour
         }
         PlayerPrefs.SetInt("BarricadeUsed", 0);
         PlayerPrefs.SetInt("TowerUpgraded", 0);
+        PlayerPrefs.GetInt("3StarLvl4", 0);
+        PlayerPrefs.GetInt("3StarLvl5", 0);
+        PlayerPrefs.GetInt("3StarLvl6", 0);
 
     }
     // Update is called once per frame
@@ -97,6 +100,19 @@ public class WaveSpawner2 : MonoBehaviour
                         if (truck.Truck_Hp >= 5)
                         {
                             wave_Victory_Star3.SetActive(true);
+
+                            switch (currentLevel)
+                            {
+                                case 4:
+                                    PlayerPrefs.SetInt("3StarLvl4", 1);
+                                    break;
+                                case 5:
+                                    PlayerPrefs.SetInt("3StarLvl5", 1);
+                                    break;
+                                case 6:
+                                    PlayerPrefs.SetInt("3StarLvl6", 1);
+                                    break;
+                            }
                         }
                     }
                 }
@@ -111,6 +127,13 @@ public class WaveSpawner2 : MonoBehaviour
                 
                 if (PlayerPrefs.GetInt("BarricadeUsed") == 0) AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_dangerous_lifestyle);
                 if (PlayerPrefs.GetInt("TowerUpgraded") == 0) AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_better_simple);
+
+                if (PlayerPrefs.GetInt("3StartLvl1") == 1 && PlayerPrefs.GetInt("3StartLvl2") == 1 && PlayerPrefs.GetInt("3StartLvl3") == 1 &&
+                   PlayerPrefs.GetInt("3StartLvl4") == 1 && PlayerPrefs.GetInt("3StartLvl5") == 1 && PlayerPrefs.GetInt("3StartLvl6") == 1 &&
+                   PlayerPrefs.GetInt("3StartLvl7") == 1 && PlayerPrefs.GetInt("3StartLvl8") == 1 && PlayerPrefs.GetInt("3StartLvl9") == 1)
+                {
+                    AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_starman);
+                }
 
                 this.enabled = false;
             }
