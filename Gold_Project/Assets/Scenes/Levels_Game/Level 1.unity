@@ -5807,6 +5807,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5248474196252290467}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5248474196252290469 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5498548369616296427, guid: f6a4c70be5e3fbd43b83b03e67a8c95b,
+    type: 3}
+  m_PrefabInstance: {fileID: 5248474196252290467}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5988174197434973040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6226,6 +6232,11 @@ PrefabInstance:
       propertyPath: wave_Text
       value: 
       objectReference: {fileID: 1738370717}
+    - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
+        type: 3}
+      propertyPath: event_Panel
+      value: 
+      objectReference: {fileID: 5248474196252290469}
     - target: {fileID: 6774791142897126958, guid: fcb83c3b66d220949b0a9acbc2a0e49c,
         type: 3}
       propertyPath: spawnPoint2

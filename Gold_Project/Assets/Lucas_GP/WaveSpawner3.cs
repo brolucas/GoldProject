@@ -18,7 +18,8 @@ public class WaveSpawner3 : MonoBehaviour
     [SerializeField]
     private Transform spawnPoint2;
 
-   
+	public GameObject event_Panel;
+
 
     [SerializeField]
     private float timeBetweenWave = 5f;
@@ -64,6 +65,9 @@ public class WaveSpawner3 : MonoBehaviour
         enemyAlive = 0;
         PlayerPrefs.SetInt("BarricadeUsed", 0);
         PlayerPrefs.SetInt("TowerUpgraded", 0);
+        PlayerPrefs.GetInt("3StarLvl7", 0);
+        PlayerPrefs.GetInt("3StarLvl8", 0);
+        PlayerPrefs.GetInt("3StarLvl9", 0);
 
     }
     // Update is called once per frame
@@ -98,6 +102,19 @@ public class WaveSpawner3 : MonoBehaviour
                         if (truck.Truck_Hp >= 5)
                         {
                             wave_Victory_Star3.SetActive(true);
+
+                            switch (currentLevel)
+                            {
+                                case 7:
+                                    PlayerPrefs.SetInt("3StarLvl7", 1);
+                                    break;
+                                case 8:
+                                    PlayerPrefs.SetInt("3StarLvl8", 1);
+                                    break;
+                                case 9:
+                                    PlayerPrefs.SetInt("3StarLvl9", 1);
+                                    break;
+                            }
                         }
                     }
                 }
@@ -112,6 +129,13 @@ public class WaveSpawner3 : MonoBehaviour
 
                 if (PlayerPrefs.GetInt("BarricadeUsed") == 0) AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_dangerous_lifestyle);
                 if (PlayerPrefs.GetInt("TowerUpgraded") == 0) AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_better_simple);
+
+                if (PlayerPrefs.GetInt("3StartLvl1") == 1 && PlayerPrefs.GetInt("3StartLvl2") == 1 && PlayerPrefs.GetInt("3StartLvl3") == 1 &&
+                   PlayerPrefs.GetInt("3StartLvl4") == 1 && PlayerPrefs.GetInt("3StartLvl5") == 1 && PlayerPrefs.GetInt("3StartLvl6") == 1 &&
+                   PlayerPrefs.GetInt("3StartLvl7") == 1 && PlayerPrefs.GetInt("3StartLvl8") == 1 && PlayerPrefs.GetInt("3StartLvl9") == 1)
+                {
+                    AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_starman);
+                }
 
                 this.enabled = false;
 
@@ -205,8 +229,8 @@ public class WaveSpawner3 : MonoBehaviour
     {
         System.Random alea = new System.Random();
         int noevent = alea.Next(0,2);
-        
 
+        StartCoroutine(PanelEvent());
         switch (noevent)
         {
             case 0:
@@ -339,8 +363,8 @@ public class WaveSpawner3 : MonoBehaviour
                 GameObject istevent1 = Instantiate(listEvent[1], position1, Quaternion.identity);
                 GameObject istevent2 = Instantiate(listEvent[2], position2, Quaternion.identity);
                 GameObject istevent3 = Instantiate(listEvent[3], position3, Quaternion.identity);
-                GameObject istevent4 = Instantiate(listEvent[4], position2, Quaternion.identity);
-                GameObject istevent5 = Instantiate(listEvent[5], position3, Quaternion.identity);
+                GameObject istevent4 = Instantiate(listEvent[4], position4, Quaternion.identity);
+                GameObject istevent5 = Instantiate(listEvent[5], position5, Quaternion.identity);
 
                 //istevent.transform.GetChild(1).localScale = new Vector3(0, 0, 0);
                 break;
@@ -363,6 +387,13 @@ public class WaveSpawner3 : MonoBehaviour
 
         }
         
+
+    }
+    IEnumerator PanelEvent()
+    {
+        event_Panel.SetActive(true);
+        yield return new WaitForSeconds(3);
+        event_Panel.SetActive(false);
 
     }
 
