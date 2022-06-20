@@ -38,6 +38,7 @@ public class WaveSpawner3 : MonoBehaviour
 
     public AudioSource musicBg;
 
+    public SceneFader scenefader;
     [SerializeField]
     private GameObject[] listEvent;
     private bool notDone = false;
@@ -125,6 +126,8 @@ public class WaveSpawner3 : MonoBehaviour
                 if (currentLevel == 9)
                 {
                     AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_finishing_world_3);
+                    scenefader.FadeTo("Credits");
+
                 }
 
                 if (PlayerPrefs.GetInt("BarricadeUsed") == 0) AchivementsFinishing.instance.Achievement(true, GPGSIds.achievement_dangerous_lifestyle);

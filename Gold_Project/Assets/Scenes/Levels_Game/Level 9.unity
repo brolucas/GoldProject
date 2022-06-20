@@ -3305,6 +3305,7 @@ MonoBehaviour:
   wave_Victory_Star2: {fileID: 251790201}
   wave_Victory_Star3: {fileID: 251790199}
   musicBg: {fileID: 1921584665}
+  scenefader: {fileID: 985444799}
   listEvent:
   - {fileID: 882767662396786120, guid: 539bdea3b5feaaa42b1e67a2bddb5350, type: 3}
   - {fileID: 882767662396786120, guid: 89e53f269f7c4bb45b7b079d81bf7413, type: 3}
