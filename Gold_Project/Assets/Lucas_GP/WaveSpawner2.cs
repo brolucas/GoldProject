@@ -18,7 +18,8 @@ public class WaveSpawner2 : MonoBehaviour
     [SerializeField]
     private Transform spawnPoint2;
 
-   
+	public GameObject event_Panel;
+
 
     [SerializeField]
     private float timeBetweenWave = 5f;
@@ -205,8 +206,8 @@ public class WaveSpawner2 : MonoBehaviour
         System.Random alea = new System.Random();
         int noevent = alea.Next(0,2);
 
-        
 
+        StartCoroutine(PanelEvent());
         switch (noevent)
         {
             case 0:
@@ -325,6 +326,13 @@ public class WaveSpawner2 : MonoBehaviour
 
         }
         
+
+    }
+    IEnumerator PanelEvent()
+    {
+        event_Panel.SetActive(true);
+        yield return new WaitForSeconds(3);
+        event_Panel.SetActive(false);
 
     }
 
