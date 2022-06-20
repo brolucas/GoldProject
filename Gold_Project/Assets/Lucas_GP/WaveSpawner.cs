@@ -34,6 +34,7 @@ public class WaveSpawner : MonoBehaviour
 	public GameObject wave_Victory_Star2;
 	public GameObject wave_Victory_Star3;
 
+	public GameObject event_Panel;
     public AudioSource musicBg;
 
 	[SerializeField]
@@ -210,8 +211,8 @@ public class WaveSpawner : MonoBehaviour
 	{
 		System.Random alea = new System.Random();
 		int noevent = alea.Next(0,2);
-		
 
+		StartCoroutine(PanelEvent());
 		switch (noevent)
 		{
 			case 0:
@@ -289,5 +290,11 @@ public class WaveSpawner : MonoBehaviour
 		
 
 	}
+	IEnumerator PanelEvent()
+	{
+		event_Panel.SetActive(true);
+		yield return new WaitForSeconds(3);
+		event_Panel.SetActive(false);
 
+	}
 }
