@@ -340,8 +340,8 @@ public class WaveSpawner3 : MonoBehaviour
                 GameObject istevent1 = Instantiate(listEvent[1], position1, Quaternion.identity);
                 GameObject istevent2 = Instantiate(listEvent[2], position2, Quaternion.identity);
                 GameObject istevent3 = Instantiate(listEvent[3], position3, Quaternion.identity);
-                GameObject istevent4 = Instantiate(listEvent[4], position2, Quaternion.identity);
-                GameObject istevent5 = Instantiate(listEvent[5], position3, Quaternion.identity);
+                GameObject istevent4 = Instantiate(listEvent[4], position4, Quaternion.identity);
+                GameObject istevent5 = Instantiate(listEvent[5], position5, Quaternion.identity);
 
                 //istevent.transform.GetChild(1).localScale = new Vector3(0, 0, 0);
                 break;
