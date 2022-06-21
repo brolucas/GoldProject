@@ -356,10 +356,10 @@ public class WaveSpawner3 : MonoBehaviour
                 position3 = new Vector3(position3.x + Pathfinding.Instance.GetGrid().cellSize / 2, position3.y + Pathfinding.Instance.GetGrid().cellSize / 2);
 
                 Vector3 position4 = Pathfinding.Instance.GetGrid().GetWorldPosition(x, y - 2);
-                position2 = new Vector3(position4.x + Pathfinding.Instance.GetGrid().cellSize / 2, position4.y + Pathfinding.Instance.GetGrid().cellSize / 2);
+                position4 = new Vector3(position4.x + Pathfinding.Instance.GetGrid().cellSize / 2, position4.y + Pathfinding.Instance.GetGrid().cellSize / 2);
 
                 Vector3 position5 = Pathfinding.Instance.GetGrid().GetWorldPosition(x + 1, y - 2);
-                position3 = new Vector3(position5.x + Pathfinding.Instance.GetGrid().cellSize / 2, position5.y + Pathfinding.Instance.GetGrid().cellSize / 2);
+                position5 = new Vector3(position5.x + Pathfinding.Instance.GetGrid().cellSize / 2, position5.y + Pathfinding.Instance.GetGrid().cellSize / 2);
 
 
                 GameObject istevent = Instantiate(listEvent[0], position, Quaternion.identity);
