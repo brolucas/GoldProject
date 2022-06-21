@@ -194,7 +194,19 @@ public class Shop : MonoBehaviour
 	{
 		Turret turret = selectedItemInGame.GetComponent<Turret>();
 
-		if (turret.isMaxLevel || turret.currentLevel >= turret.maxLevel)
+		int upgradeCost = turret.turretPrice + 50;
+
+		switch (turret.currentLevel)
+		{
+			case 1:
+				upgradeCost = turret.turretPrice + 50;
+				break;
+			case 2:
+				upgradeCost = turret.turretPrice + 75;
+				break;
+		}
+
+		if (turret.isMaxLevel || turret.currentLevel >= turret.maxLevel || gameManager.truck.gold < upgradeCost)
         {
 			return;
         }
