@@ -758,7 +758,8 @@ public class Turret : MonoBehaviour
                 }
             case KindOfTurret.Mortar:
                 {
-                    bullet = Instantiate(particleShoot, enemy.transform.position, transform.rotation, this.transform);
+                    bullet = Instantiate(particleShoot, this.transform.position, transform.rotation, this.transform);
+                    bullet.GetComponent<Mortar>().target = enemy.transform.position;
                     break;
                 }
             case KindOfTurret.Channelizer:
