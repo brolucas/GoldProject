@@ -140,7 +140,7 @@ MonoBehaviour:
     fireRate: 1
     maxAtqPoints: 180
     activeAtqCap: 0
-    delayBeforeShoot: 0
+    delayBeforeShoot: 0.5
     basePassiveParameters: 4
     maxPassiveParameters: 2
     capPassive: 0
