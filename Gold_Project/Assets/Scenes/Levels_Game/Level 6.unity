@@ -4296,22 +4296,22 @@ PrefabInstance:
     - target: {fileID: 5220904859355785597, guid: 6d51f7d519f756d4496c11e08671447c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5220904859355785597, guid: 6d51f7d519f756d4496c11e08671447c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1254031486}
+      objectReference: {fileID: 985444799}
     - target: {fileID: 5220904859355785597, guid: 6d51f7d519f756d4496c11e08671447c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: BackToMainMenuVictory
+      value: FadeTo
       objectReference: {fileID: 0}
     - target: {fileID: 5220904859355785597, guid: 6d51f7d519f756d4496c11e08671447c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GoToGame, Assembly-CSharp
+      value: SceneFader, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d51f7d519f756d4496c11e08671447c, type: 3}
