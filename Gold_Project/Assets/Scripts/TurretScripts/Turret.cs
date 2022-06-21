@@ -48,8 +48,8 @@ public class Turret : MonoBehaviour
 
     private bool hasGeneratorBuffActived;
 
-    //hugo
-    float delais = 0.05f;
+    private int speedStack;
+
     #region Turret Stats
 
     public string label { get; private set; }
@@ -78,6 +78,7 @@ public class Turret : MonoBehaviour
     private float fireRateBonus;
     public int maxAtqPoints { get; private set; }
     protected bool isAtqCap;
+    private float delayBeforeShoot;
 
     //Design
     public Sprite inGameDesign { get; private set; }
@@ -90,6 +91,8 @@ public class Turret : MonoBehaviour
     #endregion
 
     private bool isInside;
+    private bool isShooting;
+    private bool cannotShoot;
     public EnemiesTemp currentTarget { get; set; } = null;
     public EnemiesTemp secondCurrentTarget { get; set; } = null;
 
@@ -101,6 +104,8 @@ public class Turret : MonoBehaviour
     public List<EnemiesTemp> inRangeEnemies = new List<EnemiesTemp>();
 
     public List<EnemiesTemp> targetList = new List<EnemiesTemp>();
+
+    public AudioSource shootingSound;
 
     public AudioSource breakingSound;
 
@@ -196,7 +201,7 @@ public class Turret : MonoBehaviour
         if (turretData.range <= 0)
             Debug.LogWarning("Shouldn't this turret.range be : 0" + this);
         if (turretData.nbrOfTarget <= 0)
-            Debug.LogWarning("Shouldn't this turret.nbrOfTarget be : 0" + this);
+            Debug.LogError("Shouldn't this turret.nbrOfTarget be : 0" + this);
         if (turretData.turretPrice <= 0)
             Debug.LogWarning("Shouldn't this turret.turretPrice be : 0" + this);
         if (turretData.targetType == TargetType.DefaultDoNotUseIt)
@@ -233,6 +238,7 @@ public class Turret : MonoBehaviour
         fireRateBonus = 0;
         maxAtqPoints = turretData.maxAtqPoints;
         isAtqCap = turretData.activeAtqCap;
+        delayBeforeShoot = turretData.delayBeforeShoot;
 
         inGameDesign = turretData.inGameDesign;
         UIDesign = turretData.UIDesign;
@@ -245,8 +251,24 @@ public class Turret : MonoBehaviour
 
         currentLevel = 1;
 
-    #endregion
-}
+        //Sound
+        shootingSound.clip = turretData.shootSound;
+
+        switch (kindOfTurret)
+        {
+            case KindOfTurret.Spliter:
+            case KindOfTurret.Furnace:
+            case KindOfTurret.Zap:
+                {
+                    shootingSound.loop = true;
+                }
+                break;
+            default:
+                break;
+        }
+
+        #endregion
+    }
 
     /*private void OnMouseDrag()
     {
@@ -283,10 +305,19 @@ public class Turret : MonoBehaviour
         // Change the visibility range // need opti
         rangeSprite.transform.localScale = new Vector3(range * 2, range * 2, 0);
 
+        if (cannotShoot == true)
+        {
+            for (int i = 1; i < transform.childCount; i++)
+            {
+                Destroy(transform.GetChild(1).gameObject);
+            }
+
+            return;
+        }
+
         Vector3 origin = transform.position;
 
         ChooseTarget(origin);
-
 
         if (targetList.Count > 0)
         {
@@ -298,7 +329,7 @@ public class Turret : MonoBehaviour
                     difference = targetList[0].transform.position - transform.position;
                     rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
 
-                    Shoot(targetList[0]);
+                    StartCoroutine(Shoot(targetList[0]));
                 }
                 if (nbrOfTarget > 1)
                 {
@@ -307,7 +338,7 @@ public class Turret : MonoBehaviour
                         difference = target.transform.position - transform.position;
                         rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
 
-                        Shoot(target);
+                        StartCoroutine(Shoot(target));
                     }
                 }
 
@@ -347,13 +378,42 @@ public class Turret : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            isShooting = false;
+        }
+
+        // Handle looping shoot sound for some kindOfTurret
+        switch (kindOfTurret)
+        {
+            case KindOfTurret.Spliter:
+            case KindOfTurret.Furnace:
+            case KindOfTurret.Zap:
+                {
+                    if (isShooting)
+                    {
+                        if (shootingSound.isPlaying == false)
+                        {
+                            //shootingSound.Play();
+                            shootingSound.PlayOneShot(shootingSound.clip);
+                        }
+                    }
+                    else
+                    {
+                        shootingSound.Stop();
+                    }
+                }
+                break;
+            default:
+                break;
+        }
 
         // Max Level Passive and Passive that are turn ON all the time
         switch (kindOfTurret)
         {
-            case KindOfTurret.Basic:
             case KindOfTurret.Generator:
             case KindOfTurret.SniperTower:
+            case KindOfTurret.Zap:
                 if (currentLevel >= maxLevel)
                     PassiveLevelmax(currentTarget);
                 break;
@@ -463,6 +523,7 @@ public class Turret : MonoBehaviour
             currentTarget = ChooseTargetClosestToTruck();
         }
 
+        //Choose Target
         switch (kindOfTurret)
         {
             case KindOfTurret.Mortar:
@@ -590,8 +651,29 @@ public class Turret : MonoBehaviour
                 }
             case KindOfTurret.Zap:
                 {
-                    // 
+                    foreach (var enemy in inRangeEnemies)
+                    {
+                        Vector2 objPos = enemy.transform.position;
 
+                        float distance = Vector2.Distance(objPos, origin);
+
+                        
+                        isInside = distance < range;
+                        
+                        if (isInside)
+                        {
+                            if (!targetList.Contains(enemy))
+                            {
+                                targetList.Add(enemy);
+                            }
+                        }
+                        else
+                        {
+                            enemy.attackingTurret.Remove(this);
+                            targetList.Remove(enemy);
+                            inRangeEnemies.Remove(enemy);
+                        }
+                    }
 
                     break;
                 }
@@ -610,6 +692,7 @@ public class Turret : MonoBehaviour
         difference = currentTarget.transform.position - transform.position;
         rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
 
+        // Rotate the turret's barrel
         switch (kindOfTurret)
         {
             case KindOfTurret.Basic:
@@ -649,13 +732,82 @@ public class Turret : MonoBehaviour
         }
     }
 
-    public void Shoot(EnemiesTemp enemy)
+    public IEnumerator Shoot(EnemiesTemp enemy)
     {
+        isShooting = true;
+
+        // Instantiate shaders and particles 
+        switch (kindOfTurret)
+        {
+            // if com don't change it 
+            //case KindOfTurret.Spliter:
+            case KindOfTurret.Basic:
+            case KindOfTurret.SniperTower:
+            case KindOfTurret.Immobilizer:
+                {
+                    bullet = Instantiate(particleShoot, particleSpawnPoint.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
+                    //bullet.GetComponent<rangeLifeTimeParticles>().target = targetList[0].transform;
+                    break;
+                }
+            case KindOfTurret.Furnace:
+            case KindOfTurret.Zap:
+
+                {
+                    bullet = Instantiate(particleShoot, particleSpawnPoint.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
+                    break;
+                }
+            case KindOfTurret.Mortar:
+                {
+                    bullet = Instantiate(particleShoot, enemy.transform.position, transform.rotation, this.transform);
+                    break;
+                }
+            case KindOfTurret.Channelizer:
+            case KindOfTurret.Generator:
+            case KindOfTurret.Discord:
+                {
+                    bullet = Instantiate(particleShoot, particleSpawnPoint.transform.position, Quaternion.Euler(0, 0, (90 + rotZ)));
+                    break;
+                }
+            default:
+                break;
+        }
+
+        if (delayBeforeShoot == 0 && kindOfTurret != KindOfTurret.Zap)
+        {
+            //Wait for the bullet to hit
+            delayBeforeShoot = 0.10f;
+        }
+
+        yield return new WaitForSeconds(delayBeforeShoot);
+
+        // Shooting Sound
+        switch (kindOfTurret)
+        {
+            //case KindOfTurret.Spliter:
+            //case KindOfTurret.Furnace:
+            //case KindOfTurret.Zap:
+            case KindOfTurret.Generator:
+            case KindOfTurret.Basic:
+            case KindOfTurret.SniperTower:
+            case KindOfTurret.Mortar:
+            case KindOfTurret.Discord:
+            case KindOfTurret.Channelizer:
+            case KindOfTurret.Immobilizer:
+                {
+                    shootingSound.pitch = Random.Range(1f, 1.10f);
+                    shootingSound.Play();
+                }
+                break;
+            default:
+                break;
+        }
+
         // Passive ON when shooting
         switch (kindOfTurret)
         {
             //don't need Level max passive here
             case KindOfTurret.Generator:
+            case KindOfTurret.Zap:
                 {
                     TurretPassive(enemy);
                     break;
@@ -667,7 +819,6 @@ public class Turret : MonoBehaviour
             case KindOfTurret.Furnace:
             case KindOfTurret.Channelizer:
             case KindOfTurret.Immobilizer:
-            case KindOfTurret.Zap:
             case KindOfTurret.Spliter:
                 {
                     TurretPassive(enemy);
@@ -706,44 +857,6 @@ public class Turret : MonoBehaviour
              damage = Mathf.Clamp(atqPoints + atqPtsBonusPassive, 0, maxAtqPoints);
         }
 
-        switch (kindOfTurret)
-        {
-            // if com don't change it 
-            //case KindOfTurret.Spliter:
-            case KindOfTurret.Basic:
-            case KindOfTurret.SniperTower:
-            case KindOfTurret.Immobilizer:
-                {
-                    bullet = Instantiate(particleShoot, particleSpawnPoint.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
-                    //bullet.GetComponent<rangeLifeTimeParticles>().target = targetList[0].transform;
-                    break;
-                }
-            case KindOfTurret.Furnace:
-            case KindOfTurret.Zap:
-            
-                {
-                    bullet = Instantiate(particleShoot, particleSpawnPoint.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform);
-                    break;
-                }
-            case KindOfTurret.Mortar:
-                {
-                    bullet = Instantiate(particleShoot, particleSpawnPoint.transform.position, transform.rotation, this.transform);
-                    bullet.GetComponent<Mortar>().target = enemy.transform.position;
-                    delais = 0.8f;
-                    //.GetComponent<Mortar>().target = enemy.transform;
-                    break;
-                }
-            case KindOfTurret.Channelizer:
-            case KindOfTurret.Generator:
-            case KindOfTurret.Discord:
-                {
-                    bullet = Instantiate(particleShoot, particleSpawnPoint.transform.position, Quaternion.Euler(0, 0, (90 + rotZ)));
-                    delais = .1f;
-                    break;
-                }
-            default:
-                break;
-        }
         enemy.TakeDamage(damage);
 
         if (kindOfTurret == KindOfTurret.Channelizer)
@@ -947,7 +1060,7 @@ public class Turret : MonoBehaviour
                 }
             case KindOfTurret.Zap:
                 {
-                    StartCoroutine(IncreaseAttackSpeed(enemy));
+                    StartCoroutine(ZapStackAttackSpeed());
                     break;
                 }
             case KindOfTurret.Generator:
@@ -999,6 +1112,16 @@ public class Turret : MonoBehaviour
 
         switch (kindOfTurret)
         {
+            case KindOfTurret.Basic:
+                {
+                    if (speedStack < 10)
+                    {
+                        speedStack++;
+                        fireRateBonus += baseFireRate * 0.10f;
+                    }
+                   
+                    break;
+                }
             case KindOfTurret.SniperTower:
                 {
                     if (!doOnce)
@@ -1023,7 +1146,15 @@ public class Turret : MonoBehaviour
                 }
             case KindOfTurret.Zap: 
                 {
-                    // 
+                    if (speedStack >= 7)
+                    {
+                        foreach (EnemiesTemp enemies in inRangeEnemies)
+                        {
+                            enemies.TakeDamage(atqPoints * 20);
+                        }
+
+                        StartCoroutine(Stase());
+                    }
 
 
                     break;
@@ -1176,22 +1307,45 @@ public class Turret : MonoBehaviour
         inRangeEnemies.Add(currentTarget);
     }
 
-    private IEnumerator IncreaseAttackSpeed(EnemiesTemp target)
+    private IEnumerator ZapStackAttackSpeed()
     {
-        if (this.fireRate < 6)
+        if (speedStack < 7)
         {
-            this.fireRate += 0.1f;
-        }
-        yield return new WaitForSeconds(1f);
-        if (target.getTouch)
-        {
-            StartCoroutine(IncreaseAttackSpeed(target));
-        }
-        else
-        {
-            this.fireRate = 1f;
+            speedStack++;
+            fireRate += 0.2f;
         }
 
+        yield return new WaitForSeconds(1.0f);
+
+        if (speedStack > 0)
+        {
+            speedStack--; 
+            fireRate -= 0.2f;
+        }
+    }
+
+    private IEnumerator Stase()
+    {
+        spriteRenderer.color = Color.gray;
+
+        bullet = Instantiate(particleShoot, particleSpawnPoint.transform.position, Quaternion.Euler(-rotZ, 90, 180), this.transform.GetChild(0));
+        bullet.GetComponent<ParticleSystem>().startSize = 10;
+        bullet.gameObject.transform.GetChild(2).GetComponent<ParticleSystem>().startSize = 10;
+
+        cannotShoot = true;
+
+        fireRate = 1;
+
+        speedStack = 0;
+  
+        yield return new WaitForSeconds(2.0f);
+
+        //spriteRenderer.color = baseColor;
+
+        spriteRenderer.color = Color.white;
+
+
+        cannotShoot = false;
     }
 
     private IEnumerator FadeAttackRange(SpriteRenderer rangeSpriteSRFade, float howMuchTimeToFade = 1.5f)

@@ -57,6 +57,7 @@ public class TurretData
     public int maxAtqPoints;
     [Tooltip("Check if yes")]
     public bool activeAtqCap;
+    public float delayBeforeShoot;
 
     [Header("Passive Stats")]
     public float basePassiveParameters;
@@ -68,8 +69,13 @@ public class TurretData
     public Sprite barrel;
     public Sprite UIDesign;
 
+    public AudioClip shootSound;
+
     [TextArea(5, 20)]
     public string description;
+
+    [TextArea(5, 15)]
+    public string targetDescription;
 
     [TextArea(5, 20)]
     public string descriptionPassive;

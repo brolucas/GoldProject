@@ -27,6 +27,8 @@ public class Deck : MonoBehaviour
 
     public Text description;
 
+    public Text descriptionPassive;
+
     private GameManager gameManager;
 
     [SerializeField]
@@ -126,6 +128,7 @@ public class Deck : MonoBehaviour
         TurretData turretData = gameManager.GetStatsKindOfTurret(kindOfTurret);
 
         description.text = turretData.description;
+        descriptionPassive.text = turretData.descriptionPassive;
         turretImageUI.sprite = turretData.UIDesign;
 
         if (gameManager.dataManager.deckData.deckTurret.Contains(kindOfTurret))

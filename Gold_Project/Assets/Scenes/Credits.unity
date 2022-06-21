@@ -517,10 +517,14 @@ MonoBehaviour:
   m_Text: "\n\n<B><SIZE=25><COLOR=Blue>Programming</COLOR></SIZE></B>\nT\xE9o Sautereau\nLucas
     Brossier\nK\xE9vin Vu-Morello\nNicolas Manach\n\n<B><SIZE= 25><COLOR=GREEN>Arts</COLOR></SIZE></B>\nJulien
     D'Arco\nMalik Boukhelif\n\n<B><SIZE= 25><COLOR=YELLOW>Design</COLOR></SIZE></B>\nLucas
-    Bourdon\nHugo Monmousseau\nVincent Parvillier\n\n<B><SIZE=25><COLOR=Red>Musics</COLOR></SIZE></B>\nSpace
-    Pirates <SIZE=16>by</SIZE> Waterflame\n\n<B><SIZE=25><COLOR=Orange>Sounds</COLOR></SIZE></B>\nRiot's
-    Sound Lab\nRonanMC\nFree Sounds Effects\nSahil Thakur\nSound Effects Library\n\n<B><SIZE=25><COLOR=Purple>Font</COLOR></SIZE></B>\nEthnocentric
-    <SIZE=16>by</SIZE> TypodermicFonts\nOceanicdrift <SIZE=16>by</SIZE> Iconian Fonts"
+    Bourdon\nHugo Monmousseau\n<COLOR=Black>ProgVincent Parvillier</COLOR>\n\n<B><SIZE=25><COLOR=Red>Musics</COLOR></SIZE></B>\nSpace
+    Pirates <SIZE=16>by</SIZE> Waterflame\nThe Visitor <SIZE=16>by</SIZE> White Bat
+    Studio\n\n<B><SIZE=25><COLOR=Orange>Sounds</COLOR></SIZE></B>\nRiot's Sound Lab\nRonanMC\nFree
+    Sounds Effects\nSahil Thakur\nSound Effects Library\nMAR Playz\nSound Effects\nSandra
+    Michelle\nGoat\nSound Effect Database\nFor Videos\nChiarey-Chan\nJochi SFX\nMotion
+    Array\n\n<B><SIZE=25><COLOR=Purple>Font</COLOR></SIZE></B>\nEthnocentric <SIZE=16>by</SIZE>
+    TypodermicFonts\nOceanicdrift <SIZE=16>by</SIZE> Iconian Fonts\nHemi_Head <SIZE=16>by</SIZE>
+    Typodemic Fonts"
 --- !u!224 &5251993054483419902
 RectTransform:
   m_ObjectHideFlags: 0
